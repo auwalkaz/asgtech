@@ -1,0 +1,802 @@
+[
+  {
+    "id": 101,
+    "word": "没有",
+    "meaning": "不拥有",
+    "example": "我没有狗。",
+    "tip": "没有 = 无",
+    "level": "beginner"
+  },
+  {
+    "id": 102,
+    "word": "是",
+    "meaning": "表示肯定",
+    "example": "她是我妈妈。",
+    "tip": "是 = yes",
+    "level": "beginner"
+  },
+  {
+    "id": 103,
+    "word": "不是",
+    "meaning": "表示否定",
+    "example": "那不是我的。",
+    "tip": "不是 = no",
+    "level": "beginner"
+  },
+  {
+    "id": 104,
+    "word": "爱",
+    "meaning": "喜欢到极深",
+    "example": "我爱你。",
+    "tip": "爱 = love",
+    "level": "beginner"
+  },
+  {
+    "id": 105,
+    "word": "喜欢",
+    "meaning": "感到愉快",
+    "example": "我喜欢吃水果。",
+    "tip": "喜欢 = like",
+    "level": "beginner"
+  },
+  {
+    "id": 106,
+    "word": "讨厌",
+    "meaning": "不喜欢",
+    "example": "我讨厌下雨。",
+    "tip": "讨厌 = hate",
+    "level": "beginner"
+  },
+  {
+    "id": 107,
+    "word": "想",
+    "meaning": "思考或思念",
+    "example": "我想你了。",
+    "tip": "想 = miss/think",
+    "level": "beginner"
+  },
+  {
+    "id": 108,
+    "word": "知道",
+    "meaning": "了解",
+    "example": "我知道答案。",
+    "tip": "知道 = know",
+    "level": "beginner"
+  },
+  {
+    "id": 109,
+    "word": "不知道",
+    "meaning": "不了解",
+    "example": "我不知道。",
+    "tip": "不知道 = don't know",
+    "level": "beginner"
+  },
+  {
+    "id": 110,
+    "word": "可以",
+    "meaning": "能够",
+    "example": "我可以去吗？",
+    "tip": "可以 = can",
+    "level": "beginner"
+  },
+  {
+    "id": 111,
+    "word": "要",
+    "meaning": "想要或需要",
+    "example": "我要喝水。",
+    "tip": "要 = want/need",
+    "level": "beginner"
+  },
+  {
+    "id": 112,
+    "word": "不要",
+    "meaning": "不想",
+    "example": "我不要。",
+    "tip": "不要 = don't want",
+    "level": "beginner"
+  },
+  {
+    "id": 113,
+    "word": "能",
+    "meaning": "有能力",
+    "example": "我能做到。",
+    "tip": "能 = able",
+    "level": "beginner"
+  },
+  {
+    "id": 114,
+    "word": "会",
+    "meaning": "学会或将要",
+    "example": "我会说中文。",
+    "tip": "会 = can/will",
+    "level": "beginner"
+  },
+  {
+    "id": 115,
+    "word": "一",
+    "meaning": "数字1",
+    "example": "我有一个哥哥。",
+    "tip": "一 = one",
+    "level": "beginner"
+  },
+  {
+    "id": 116,
+    "word": "二",
+    "meaning": "数字2",
+    "example": "我有两只手。",
+    "tip": "二 = two",
+    "level": "beginner"
+  },
+  {
+    "id": 117,
+    "word": "三",
+    "meaning": "数字3",
+    "example": "三角形有三条边。",
+    "tip": "三 = three",
+    "level": "beginner"
+  },
+  {
+    "id": 118,
+    "word": "四",
+    "meaning": "数字4",
+    "example": "汽车有四个轮子。",
+    "tip": "四 = four",
+    "level": "beginner"
+  },
+  {
+    "id": 119,
+    "word": "五",
+    "meaning": "数字5",
+    "example": "我有五根手指。",
+    "tip": "五 = five",
+    "level": "beginner"
+  },
+  {
+    "id": 120,
+    "word": "六",
+    "meaning": "数字6",
+    "example": "六的一半是三。",
+    "tip": "六 = six",
+    "level": "beginner"
+  },
+  {
+    "id": 121,
+    "word": "七",
+    "meaning": "数字7",
+    "example": "一周有七天。",
+    "tip": "七 = seven",
+    "level": "beginner"
+  },
+  {
+    "id": 122,
+    "word": "八",
+    "meaning": "数字8",
+    "example": "八条腿的是章鱼。",
+    "tip": "八 = eight",
+    "level": "beginner"
+  },
+  {
+    "id": 123,
+    "word": "九",
+    "meaning": "数字9",
+    "example": "猫有九条命。",
+    "tip": "九 = nine",
+    "level": "beginner"
+  },
+  {
+    "id": 124,
+    "word": "十",
+    "meaning": "数字10",
+    "example": "十是一个整数。",
+    "tip": "十 = ten",
+    "level": "beginner"
+  },
+  {
+    "id": 125,
+    "word": "朋友",
+    "meaning": "友好的人",
+    "example": "他是我最好的朋友。",
+    "tip": "朋友 = friend",
+    "level": "beginner"
+  },
+  {
+    "id": 126,
+    "word": "名字",
+    "meaning": "称呼一个人",
+    "example": "我叫什么名字？",
+    "tip": "名字 = name",
+    "level": "beginner"
+  },
+  {
+    "id": 127,
+    "word": "年龄",
+    "meaning": "岁数",
+    "example": "她的年龄是十岁。",
+    "tip": "年龄 = age",
+    "level": "beginner"
+  },
+  {
+    "id": 128,
+    "word": "工作",
+    "meaning": "上班",
+    "example": "我爸爸在工作。",
+    "tip": "工作 = job",
+    "level": "beginner"
+  },
+  {
+    "id": 129,
+    "word": "学习",
+    "meaning": "学知识",
+    "example": "我在学习中文。",
+    "tip": "学习 = study",
+    "level": "beginner"
+  },
+  {
+    "id": 130,
+    "word": "玩",
+    "meaning": "娱乐",
+    "example": "孩子们在玩。",
+    "tip": "玩 = play",
+    "level": "beginner"
+  },
+  {
+    "id": 131,
+    "word": "笑",
+    "meaning": "高兴的表情",
+    "example": "她笑得很开心。",
+    "tip": "笑 = smile",
+    "level": "beginner"
+  },
+  {
+    "id": 132,
+    "word": "哭",
+    "meaning": "伤心的表情",
+    "example": "孩子在哭。",
+    "tip": "哭 = cry",
+    "level": "beginner"
+  },
+  {
+    "id": 133,
+    "word": "怕",
+    "meaning": "害怕",
+    "example": "我怕黑。",
+    "tip": "怕 = fear",
+    "level": "beginner"
+  },
+  {
+    "id": 134,
+    "word": "生气",
+    "meaning": "愤怒",
+    "example": "妈妈生气了。",
+    "tip": "生气 = angry",
+    "level": "beginner"
+  },
+  {
+    "id": 135,
+    "word": "高兴",
+    "meaning": "快乐",
+    "example": "我很高兴见到你。",
+    "tip": "高兴 = happy",
+    "level": "beginner"
+  },
+  {
+    "id": 136,
+    "word": "早上",
+    "meaning": "一天的开始",
+    "example": "早上好。",
+    "tip": "早上 = morning",
+    "level": "beginner"
+  },
+  {
+    "id": 137,
+    "word": "中午",
+    "meaning": "中午十二点",
+    "example": "中午吃午饭。",
+    "tip": "中午 = noon",
+    "level": "beginner"
+  },
+  {
+    "id": 138,
+    "word": "晚上",
+    "meaning": "天黑的时候",
+    "example": "晚上看电视。",
+    "tip": "晚上 = evening",
+    "level": "beginner"
+  },
+  {
+    "id": 139,
+    "word": "今天",
+    "meaning": "这一天",
+    "example": "今天天气好。",
+    "tip": "今天 = today",
+    "level": "beginner"
+  },
+  {
+    "id": 140,
+    "word": "昨天",
+    "meaning": "前一天",
+    "example": "昨天我去公园。",
+    "tip": "昨天 = yesterday",
+    "level": "beginner"
+  },
+  {
+    "id": 141,
+    "word": "明天",
+    "meaning": "后一天",
+    "example": "明天见。",
+    "tip": "明天 = tomorrow",
+    "level": "beginner"
+  },
+  {
+    "id": 142,
+    "word": "星期",
+    "meaning": "七天的时间",
+    "example": "一个星期有七天。",
+    "tip": "星期 = week",
+    "level": "beginner"
+  },
+  {
+    "id": 143,
+    "word": "月",
+    "meaning": "三十天左右",
+    "example": "一年有十二个月。",
+    "tip": "月 = month",
+    "level": "beginner"
+  },
+  {
+    "id": 144,
+    "word": "年",
+    "meaning": "365天",
+    "example": "明年我就八岁了。",
+    "tip": "年 = year",
+    "level": "beginner"
+  },
+  {
+    "id": 145,
+    "word": "现在",
+    "meaning": "当下",
+    "example": "我现在很忙。",
+    "tip": "现在 = now",
+    "level": "beginner"
+  },
+  {
+    "id": 146,
+    "word": "以前",
+    "meaning": "过去",
+    "example": "以前这里是个公园。",
+    "tip": "以前 = before",
+    "level": "beginner"
+  },
+  {
+    "id": 147,
+    "word": "以后",
+    "meaning": "未来",
+    "example": "以后我要当医生。",
+    "tip": "以后 = after",
+    "level": "beginner"
+  },
+  {
+    "id": 148,
+    "word": "这里",
+    "meaning": "这个地方",
+    "example": "请来这里。",
+    "tip": "这里 = here",
+    "level": "beginner"
+  },
+  {
+    "id": 149,
+    "word": "那里",
+    "meaning": "那个地方",
+    "example": "他在那里。",
+    "tip": "那里 = there",
+    "level": "beginner"
+  },
+  {
+    "id": 150,
+    "word": "哪里",
+    "meaning": "问地方",
+    "example": "你在哪里？",
+    "tip": "哪里 = where",
+    "level": "beginner"
+  },
+  {
+    "id": 151,
+    "word": "什么",
+    "meaning": "问东西",
+    "example": "这是什么？",
+    "tip": "什么 = what",
+    "level": "beginner"
+  },
+  {
+    "id": 152,
+    "word": "谁",
+    "meaning": "问人",
+    "example": "她是谁？",
+    "tip": "谁 = who",
+    "level": "beginner"
+  },
+  {
+    "id": 153,
+    "word": "为什么",
+    "meaning": "问原因",
+    "example": "为什么你迟到了？",
+    "tip": "为什么 = why",
+    "level": "beginner"
+  },
+  {
+    "id": 154,
+    "word": "怎么",
+    "meaning": "问方式",
+    "example": "怎么去车站？",
+    "tip": "怎么 = how",
+    "level": "beginner"
+  },
+  {
+    "id": 155,
+    "word": "多少",
+    "meaning": "问数量",
+    "example": "多少钱？",
+    "tip": "多少 = how many",
+    "level": "beginner"
+  },
+  {
+    "id": 156,
+    "word": "几个",
+    "meaning": "问少量数量",
+    "example": "你有几个姐妹？",
+    "tip": "几个 = how many (few)",
+    "level": "beginner"
+  },
+  {
+    "id": 157,
+    "word": "桌子",
+    "meaning": "有腿的家具",
+    "example": "书在桌子上。",
+    "tip": "桌子 = desk",
+    "level": "beginner"
+  },
+  {
+    "id": 158,
+    "word": "椅子",
+    "meaning": "坐的家具",
+    "example": "请坐在椅子上。",
+    "tip": "椅子 = chair",
+    "level": "beginner"
+  },
+  {
+    "id": 159,
+    "word": "床",
+    "meaning": "睡觉的地方",
+    "example": "我的床很大。",
+    "tip": "床 = bed",
+    "level": "beginner"
+  },
+  {
+    "id": 160,
+    "word": "门",
+    "meaning": "入口",
+    "example": "请开门。",
+    "tip": "门 = door",
+    "level": "beginner"
+  },
+  {
+    "id": 161,
+    "word": "窗",
+    "meaning": "透光的地方",
+    "example": "打开窗透气。",
+    "tip": "窗 = window",
+    "level": "beginner"
+  },
+  {
+    "id": 162,
+    "word": "墙",
+    "meaning": "立体的结构",
+    "example": "墙上挂着一幅画。",
+    "tip": "墙 = wall",
+    "level": "beginner"
+  },
+  {
+    "id": 163,
+    "word": "地板",
+    "meaning": "地面",
+    "example": "地板很干净。",
+    "tip": "地板 = floor",
+    "level": "beginner"
+  },
+  {
+    "id": 164,
+    "word": "灯",
+    "meaning": "发光的东西",
+    "example": "请开灯。",
+    "tip": "灯 = lamp",
+    "level": "beginner"
+  },
+  {
+    "id": 165,
+    "word": "手机",
+    "meaning": "移动电话",
+    "example": "我用手机打电话。",
+    "tip": "手机 = phone",
+    "level": "beginner"
+  },
+  {
+    "id": 166,
+    "word": "电脑",
+    "meaning": "计算机",
+    "example": "我用电脑工作。",
+    "tip": "电脑 = computer",
+    "level": "beginner"
+  },
+  {
+    "id": 167,
+    "word": "电视",
+    "meaning": "看电视的机器",
+    "example": "晚上看电视。",
+    "tip": "电视 = TV",
+    "level": "beginner"
+  },
+  {
+    "id": 168,
+    "word": "书",
+    "meaning": "纸张做的读物",
+    "example": "我喜欢读书。",
+    "tip": "书 = book",
+    "level": "beginner"
+  },
+  {
+    "id": 169,
+    "word": "笔",
+    "meaning": "写字的工具",
+    "example": "用笔写字。",
+    "tip": "笔 = pen",
+    "level": "beginner"
+  },
+  {
+    "id": 170,
+    "word": "纸",
+    "meaning": "写字的白片",
+    "example": "给我一张纸。",
+    "tip": "纸 = paper",
+    "level": "beginner"
+  },
+  {
+    "id": 171,
+    "word": "包",
+    "meaning": "装东西的袋子",
+    "example": "书包很重。",
+    "tip": "包 = bag",
+    "level": "beginner"
+  },
+  {
+    "id": 172,
+    "word": "衣服",
+    "meaning": "身上穿的",
+    "example": "这件衣服好看。",
+    "tip": "衣服 = clothes",
+    "level": "beginner"
+  },
+  {
+    "id": 173,
+    "word": "鞋",
+    "meaning": "脚上穿的",
+    "example": "这双鞋太小。",
+    "tip": "鞋 = shoes",
+    "level": "beginner"
+  },
+  {
+    "id": 174,
+    "word": "帽子",
+    "meaning": "头上戴的",
+    "example": "冬天戴帽子保暖。",
+    "tip": "帽子 = hat",
+    "level": "beginner"
+  },
+  {
+    "id": 175,
+    "word": "车",
+    "meaning": "交通工具",
+    "example": "这是我的车。",
+    "tip": "车 = vehicle",
+    "level": "beginner"
+  },
+  {
+    "id": 176,
+    "word": "公交车",
+    "meaning": "公共汽车",
+    "example": "我坐公交车上学的。",
+    "tip": "公交车 = bus",
+    "level": "beginner"
+  },
+  {
+    "id": 177,
+    "word": "火车",
+    "meaning": "铁路车辆",
+    "example": "火车很快。",
+    "tip": "火车 = train",
+    "level": "beginner"
+  },
+  {
+    "id": 178,
+    "word": "飞机",
+    "meaning": "飞行的交通工具",
+    "example": "坐飞机去北京。",
+    "tip": "飞机 = airplane",
+    "level": "beginner"
+  },
+  {
+    "id": 179,
+    "word": "船",
+    "meaning": "水上的交通工具",
+    "example": "船在海上行驶。",
+    "tip": "船 = boat",
+    "level": "beginner"
+  },
+  {
+    "id": 180,
+    "word": "自行车",
+    "meaning": "两轮车",
+    "example": "我骑自行车上班。",
+    "tip": "自行车 = bike",
+    "level": "beginner"
+  },
+  {
+    "id": 181,
+    "word": "医生",
+    "meaning": "治病的人",
+    "example": "医生给我看病。",
+    "tip": "医生 = doctor",
+    "level": "beginner"
+  },
+  {
+    "id": 182,
+    "word": "护士",
+    "meaning": "协助医生的人",
+    "example": "护士很细心。",
+    "tip": "护士 = nurse",
+    "level": "beginner"
+  },
+  {
+    "id": 183,
+    "word": "学生",
+    "meaning": "学习的人",
+    "example": "我是学生。",
+    "tip": "学生 = student",
+    "level": "beginner"
+  },
+  {
+    "id": 184,
+    "word": "司机",
+    "meaning": "开车的人",
+    "example": "司机开车很稳。",
+    "tip": "司机 = driver",
+    "level": "beginner"
+  },
+  {
+    "id": 185,
+    "word": "警察",
+    "meaning": "维持治安的人",
+    "example": "警察抓坏人。",
+    "tip": "警察 = police",
+    "level": "beginner"
+  },
+  {
+    "id": 186,
+    "word": "厨师",
+    "meaning": "做饭的人",
+    "example": "厨师做的饭好吃。",
+    "tip": "厨师 = cook",
+    "level": "beginner"
+  },
+  {
+    "id": 187,
+    "word": "农民",
+    "meaning": "种地的人",
+    "example": "农民很辛苦。",
+    "tip": "农民 = farmer",
+    "level": "beginner"
+  },
+  {
+    "id": 188,
+    "word": "工人",
+    "meaning": "劳动的人",
+    "example": "工人在盖房子。",
+    "tip": "工人 = worker",
+    "level": "beginner"
+  },
+  {
+    "id": 189,
+    "word": "商",
+    "meaning": "做生意的人",
+    "example": "商人在卖东西。",
+    "tip": "商人 = businessman",
+    "level": "beginner"
+  },
+  {
+    "id": 190,
+    "word": "服务员",
+    "meaning": "服务客人的人",
+    "example": "服务员很热情。",
+    "tip": "服务员 = waiter",
+    "level": "beginner"
+  },
+  {
+    "id": 191,
+    "word": "一起",
+    "meaning": "共同",
+    "example": "我们一起玩。",
+    "tip": "一起 = together",
+    "level": "beginner"
+  },
+  {
+    "id": 192,
+    "word": "还是",
+    "meaning": "选择",
+    "example": "咖啡还是茶？",
+    "tip": "还是 = or",
+    "level": "beginner"
+  },
+  {
+    "id": 193,
+    "word": "但是",
+    "meaning": "转折",
+    "example": "我想去，但是没时间。",
+    "tip": "但是 = but",
+    "level": "beginner"
+  },
+  {
+    "id": 194,
+    "word": "因为",
+    "meaning": "原因",
+    "example": "因为下雨，所以我不出去了。",
+    "tip": "因为 = because",
+    "level": "beginner"
+  },
+  {
+    "id": 195,
+    "word": "所以",
+    "meaning": "结果",
+    "example": "我累了，所以想睡觉。",
+    "tip": "所以 = so",
+    "level": "beginner"
+  },
+  {
+    "id": 196,
+    "word": "很",
+    "meaning": "非常",
+    "example": "她很高。",
+    "tip": "很 = very",
+    "level": "beginner"
+  },
+  {
+    "id": 197,
+    "word": "太",
+    "meaning": "过度",
+    "example": "这件衣服太大了。",
+    "tip": "太 = too",
+    "level": "beginner"
+  },
+  {
+    "id": 198,
+    "word": "最",
+    "meaning": "极致",
+    "example": "她是我最好的朋友。",
+    "tip": "最 = most",
+    "level": "beginner"
+  },
+  {
+    "id": 199,
+    "word": "都",
+    "meaning": "全部",
+    "example": "我们都去。",
+    "tip": "都 = all",
+    "level": "beginner"
+  },
+  {
+    "id": 200,
+    "word": "只",
+    "meaning": "仅仅",
+    "example": "我只有一本书。",
+    "tip": "只 = only",
+    "level": "beginner"
+  }
+]

@@ -1,0 +1,2402 @@
+[
+  {
+    "id": 1,
+    "word": "قطة",
+    "meaning": "حيوان أليف صغير فروي",
+    "example": "القطة تنام على الأريكة.",
+    "tip": "القطط تقول مياو! 🐱",
+    "level": "beginner"
+  },
+  {
+    "id": 2,
+    "word": "كلب",
+    "meaning": "حيوان أليف وفي",
+    "example": "كلبي يحب اللعب.",
+    "tip": "الكلب هو أفضل صديق للإنسان",
+    "level": "beginner"
+  },
+  {
+    "id": 3,
+    "word": "منزل",
+    "meaning": "مبنى يسكن فيه الناس",
+    "example": "يسكنون في منزل كبير.",
+    "tip": "المنزل = الوطن",
+    "level": "beginner"
+  },
+  {
+    "id": 4,
+    "word": "سيارة",
+    "meaning": "مركبة للقيادة",
+    "example": "تقود سيارة حمراء.",
+    "tip": "السيارة = وسيلة نقل",
+    "level": "beginner"
+  },
+  {
+    "id": 5,
+    "word": "معلم",
+    "meaning": "شخص يعلّم",
+    "example": "معلمي يساعدني على التعلم.",
+    "tip": "المعلم = معطي المعرفة",
+    "level": "beginner"
+  },
+  {
+    "id": 6,
+    "word": "أم",
+    "meaning": "والدة",
+    "example": "أمي تطبخ جيداً.",
+    "tip": "الأم تحبك",
+    "level": "beginner"
+  },
+  {
+    "id": 7,
+    "word": "أب",
+    "meaning": "والد",
+    "example": "أبي يعمل في المكتب.",
+    "tip": "الأب قوي",
+    "level": "beginner"
+  },
+  {
+    "id": 8,
+    "word": "أخ",
+    "meaning": "شقيق ذكر",
+    "example": "أخي يلعب كرة القدم.",
+    "tip": "الأخ رائع",
+    "level": "beginner"
+  },
+  {
+    "id": 9,
+    "word": "أخت",
+    "meaning": "شقيقة",
+    "example": "أختي تساعدني.",
+    "tip": "الأخت لطيفة",
+    "level": "beginner"
+  },
+  {
+    "id": 10,
+    "word": "طفل",
+    "meaning": "صغير السن",
+    "example": "الطفل نائم.",
+    "tip": "الطفل لطيف",
+    "level": "beginner"
+  },
+  {
+    "id": 11,
+    "word": "جدة",
+    "meaning": "أم الأب أو الأم",
+    "example": "جدتي تصنع البسكويت.",
+    "tip": "الجدة تحب الأحفاد",
+    "level": "beginner"
+  },
+  {
+    "id": 12,
+    "word": "جد",
+    "meaning": "أب الأب أو الأم",
+    "example": "جدي يحكي قصصاً.",
+    "tip": "الجدة حكيم",
+    "level": "beginner"
+  },
+  {
+    "id": 13,
+    "word": "عم",
+    "meaning": "أخ الأب",
+    "example": "عمي مضحك.",
+    "tip": "العم مسلّي",
+    "level": "beginner"
+  },
+  {
+    "id": 14,
+    "word": "خال",
+    "meaning": "أخ الأم",
+    "example": "خالي يعطيني هدايا.",
+    "tip": "الخال حنون",
+    "level": "beginner"
+  },
+  {
+    "id": 15,
+    "word": "ابن عم",
+    "meaning": "ابن العم أو الخال",
+    "example": "ابن عمي صديقي.",
+    "tip": "ابن العم مثل الأخ",
+    "level": "beginner"
+  },
+  {
+    "id": 16,
+    "word": "صديق",
+    "meaning": "شخص تحبه وتثق به",
+    "example": "أنت أفضل صديق لي.",
+    "tip": "الصديق مثل العائلة",
+    "level": "beginner"
+  },
+  {
+    "id": 17,
+    "word": "رجل",
+    "meaning": "شخص بالغ ذكر",
+    "example": "الرجل طويل القامة.",
+    "tip": "سيد",
+    "level": "beginner"
+  },
+  {
+    "id": 18,
+    "word": "امرأة",
+    "meaning": "شخص بالغ أنثى",
+    "example": "المرأة تبتسم.",
+    "tip": "سيدة",
+    "level": "beginner"
+  },
+  {
+    "id": 19,
+    "word": "طائر",
+    "meaning": "حيوان يطير له ريش",
+    "example": "العصفور يطير عالياً.",
+    "tip": "طيور تغرد",
+    "level": "beginner"
+  },
+  {
+    "id": 20,
+    "word": "سمكة",
+    "meaning": "حيوان يعيش في الماء",
+    "example": "السمكة تسبح.",
+    "tip": "تعيش في الماء",
+    "level": "beginner"
+  },
+  {
+    "id": 21,
+    "word": "أرنب",
+    "meaning": "حيوان صغير له أذنان طويلتان",
+    "example": "الأرنب يقفز.",
+    "tip": "يحب الجزر",
+    "level": "beginner"
+  },
+  {
+    "id": 22,
+    "word": "حصان",
+    "meaning": "حيوان كبير للركوب",
+    "example": "تركب الفرس.",
+    "tip": "الحصان يركض بسرعة",
+    "level": "beginner"
+  },
+  {
+    "id": 23,
+    "word": "بقرة",
+    "meaning": "حيوان مزرعة يعطي الحليب",
+    "example": "البقرة تأكل العشب.",
+    "tip": "البقرة تصوت مووو",
+    "level": "beginner"
+  },
+  {
+    "id": 24,
+    "word": "خنزير",
+    "meaning": "حيوان مزرعة وردي",
+    "example": "الخنزير وردي.",
+    "tip": "الخنزير يصوت أوينك",
+    "level": "beginner"
+  },
+  {
+    "id": 25,
+    "word": "دجاجة",
+    "meaning": "طائر مزرعة",
+    "example": "الدجاجة تبيض البيض.",
+    "tip": "الدجاجة تصوت قاق",
+    "level": "beginner"
+  },
+  {
+    "id": 26,
+    "word": "بطة",
+    "meaning": "طائر مائي",
+    "example": "البطة تسبح.",
+    "tip": "البطة تصوت بق بق",
+    "level": "beginner"
+  },
+  {
+    "id": 27,
+    "word": "قرد",
+    "meaning": "حيوان مرن",
+    "example": "القرد يأكل الموز.",
+    "tip": "القرد يتسلق الأشجار",
+    "level": "beginner"
+  },
+  {
+    "id": 28,
+    "word": "أسد",
+    "meaning": "سنور كبير بري",
+    "example": "الأسد ملك الغابة.",
+    "tip": "للأسد عُرف",
+    "level": "beginner"
+  },
+  {
+    "id": 29,
+    "word": "فيل",
+    "meaning": "حيوان ضخم له خرطوم",
+    "example": "الفيل له آذان كبيرة.",
+    "tip": "الفيل لا ينسى",
+    "level": "beginner"
+  },
+  {
+    "id": 30,
+    "word": "زرافة",
+    "meaning": "حيوان طويل العنق",
+    "example": "الزرافة تأكل ورق الشجر.",
+    "tip": "الزرافة لها لسان بنفسجي",
+    "level": "beginner"
+  },
+  {
+    "id": 31,
+    "word": "جري",
+    "meaning": "التحرك بسرعة",
+    "example": "أجري كل صباح.",
+    "tip": "الماضي: ركضت",
+    "level": "beginner"
+  },
+  {
+    "id": 32,
+    "word": "مشي",
+    "meaning": "التحرك على الأقدام",
+    "example": "أمشي إلى المدرسة.",
+    "tip": "الماضي: مشيت",
+    "level": "beginner"
+  },
+  {
+    "id": 33,
+    "word": "أكل",
+    "meaning": "تناول الطعام",
+    "example": "لنأكل العشاء.",
+    "tip": "الماضي: أكلت",
+    "level": "beginner"
+  },
+  {
+    "id": 34,
+    "word": "شرب",
+    "meaning": "تناول السوائل",
+    "example": "أشرب الماء.",
+    "tip": "الماضي: شربت",
+    "level": "beginner"
+  },
+  {
+    "id": 35,
+    "word": "نوم",
+    "meaning": "الراحة وعيون مغلقة",
+    "example": "الأطفال ينامون كثيراً.",
+    "tip": "الماضي: نمت",
+    "level": "beginner"
+  },
+  {
+    "id": 36,
+    "word": "استيقظ",
+    "meaning": "التوقف عن النوم",
+    "example": "أستيقظ الساعة السابعة.",
+    "tip": "الاستيقاظ",
+    "level": "beginner"
+  },
+  {
+    "id": 37,
+    "word": "تحدث",
+    "meaning": "التواصل بالكلمات",
+    "example": "أتحدث العربية.",
+    "tip": "الماضي: تحدثت",
+    "level": "beginner"
+  },
+  {
+    "id": 38,
+    "word": "قراءة",
+    "meaning": "النظر إلى الكلمات المكتوبة",
+    "example": "أقرأ الكتب.",
+    "tip": "الماضي: قرأت",
+    "level": "beginner"
+  },
+  {
+    "id": 39,
+    "word": "كتابة",
+    "meaning": "وضع كلمات على الورق",
+    "example": "أكتب رسالة.",
+    "tip": "الماضي: كتبت",
+    "level": "beginner"
+  },
+  {
+    "id": 40,
+    "word": "نظر",
+    "meaning": "توجيه العينين نحو",
+    "example": "أنظر إلى التلفاز.",
+    "tip": "مرادف: رأى",
+    "level": "beginner"
+  },
+  {
+    "id": 41,
+    "word": "سمع",
+    "meaning": "إدراك عن طريق الأذن",
+    "example": "أسمع الموسيقى.",
+    "tip": "مرادف: أصغى",
+    "level": "beginner"
+  },
+  {
+    "id": 42,
+    "word": "جلس",
+    "meaning": "الاستراحة على كرسي",
+    "example": "اجلس من فضلك.",
+    "tip": "عكس: وقف",
+    "level": "beginner"
+  },
+  {
+    "id": 43,
+    "word": "وقف",
+    "meaning": "الوقوف على القدمين",
+    "example": "قف من فضلك.",
+    "tip": "عكس: جلس",
+    "level": "beginner"
+  },
+  {
+    "id": 44,
+    "word": "قفز",
+    "meaning": "الوثب من الأرض",
+    "example": "الأرنب يقفز.",
+    "tip": "ممتع",
+    "level": "beginner"
+  },
+  {
+    "id": 45,
+    "word": "لعب",
+    "meaning": "نشاط ممتع",
+    "example": "الأطفال يلعبون.",
+    "tip": "مرادف: دعب",
+    "level": "beginner"
+  },
+  {
+    "id": 46,
+    "word": "سعيد",
+    "meaning": "يشعر بالفرح",
+    "example": "كانت سعيدة.",
+    "tip": "عكس: حزين",
+    "level": "beginner"
+  },
+  {
+    "id": 47,
+    "word": "حزين",
+    "meaning": "يشعر بالأسى",
+    "example": "كان حزيناً.",
+    "tip": "عكس: سعيد",
+    "level": "beginner"
+  },
+  {
+    "id": 48,
+    "word": "كبير",
+    "meaning": "ضخم الحجم",
+    "example": "إنه منزل كبير.",
+    "tip": "عكس: صغير",
+    "level": "beginner"
+  },
+  {
+    "id": 49,
+    "word": "صغير",
+    "meaning": "صغير الحجم",
+    "example": "إنها قطة صغيرة.",
+    "tip": "عكس: كبير",
+    "level": "beginner"
+  },
+  {
+    "id": 50,
+    "word": "جميل",
+    "meaning": "ممتع للنظر",
+    "example": "جميل!",
+    "tip": "يصف المظهر",
+    "level": "beginner"
+  },
+  {
+    "id": 51,
+    "word": "قبيح",
+    "meaning": "غير جميل",
+    "example": "هذا الثوب قبيح.",
+    "tip": "عكس: جميل",
+    "level": "beginner"
+  },
+  {
+    "id": 52,
+    "word": "ساخن",
+    "meaning": "درجة حرارة عالية",
+    "example": "الحساء ساخن.",
+    "tip": "عكس: بارد",
+    "level": "beginner"
+  },
+  {
+    "id": 53,
+    "word": "بارد",
+    "meaning": "درجة حرارة منخفضة",
+    "example": "الجليد بارد.",
+    "tip": "عكس: ساخن",
+    "level": "beginner"
+  },
+  {
+    "id": 54,
+    "word": "جيد",
+    "meaning": "عال الجودة",
+    "example": "قمت بعمل جيد.",
+    "tip": "عكس: سيئ",
+    "level": "beginner"
+  },
+  {
+    "id": 55,
+    "word": "سيئ",
+    "meaning": "رديء الجودة",
+    "example": "هذه فكرة سيئة.",
+    "tip": "عكس: جيد",
+    "level": "beginner"
+  },
+  {
+    "id": 56,
+    "word": "جديد",
+    "meaning": "لم يُستخدم قط",
+    "example": "اشتريت سيارة جديدة.",
+    "tip": "عكس: قديم",
+    "level": "beginner"
+  },
+  {
+    "id": 57,
+    "word": "قديم",
+    "meaning": "مستعمل لفترة طويلة",
+    "example": "هذا الحذاء قديم.",
+    "tip": "عكس: جديد",
+    "level": "beginner"
+  },
+  {
+    "id": 58,
+    "word": "سريع",
+    "meaning": "يتحرك بسرعة",
+    "example": "السيارة سريعة.",
+    "tip": "عكس: بطيء",
+    "level": "beginner"
+  },
+  {
+    "id": 59,
+    "word": "بطيء",
+    "meaning": "يتحرك بتؤدة",
+    "example": "السلحفاة بطيئة.",
+    "tip": "عكس: سريع",
+    "level": "beginner"
+  },
+  {
+    "id": 60,
+    "word": "طويل",
+    "meaning": "قامة كبيرة",
+    "example": "هو طويل.",
+    "tip": "عكس: قصير",
+    "level": "beginner"
+  },
+  {
+    "id": 61,
+    "word": "قصير",
+    "meaning": "قامة صغيرة",
+    "example": "هو قصير.",
+    "tip": "عكس: طويل",
+    "level": "beginner"
+  },
+  {
+    "id": 62,
+    "word": "أحمر",
+    "meaning": "لون الدم",
+    "example": "لديها فستان أحمر.",
+    "tip": "الأحمر يعني قف",
+    "level": "beginner"
+  },
+  {
+    "id": 63,
+    "word": "أزرق",
+    "meaning": "لون السماء",
+    "example": "السماء زرقاء.",
+    "tip": "الأزرق مهدئ",
+    "level": "beginner"
+  },
+  {
+    "id": 64,
+    "word": "أخضر",
+    "meaning": "لون العشب",
+    "example": "العشب أخضر.",
+    "tip": "الأخضر يعني انطلق",
+    "level": "beginner"
+  },
+  {
+    "id": 65,
+    "word": "أصفر",
+    "meaning": "لون الشمس",
+    "example": "الموز أصفر.",
+    "tip": "الأصفر زاه",
+    "level": "beginner"
+  },
+  {
+    "id": 66,
+    "word": "أسود",
+    "meaning": "لون الليل",
+    "example": "شعرها أسود.",
+    "tip": "الأسود يمتص الضوء",
+    "level": "beginner"
+  },
+  {
+    "id": 67,
+    "word": "أبيض",
+    "meaning": "لون الثلج",
+    "example": "الورق أبيض.",
+    "tip": "الأبيض يعكس الضوء",
+    "level": "beginner"
+  },
+  {
+    "id": 68,
+    "word": "رمادي",
+    "meaning": "لون بين الأسود والأبيض",
+    "example": "السماء رمادية.",
+    "tip": "لون محايد",
+    "level": "beginner"
+  },
+  {
+    "id": 69,
+    "word": "بني",
+    "meaning": "لون الشوكولاتة",
+    "example": "الدب بني.",
+    "tip": "لون الأرض",
+    "level": "beginner"
+  },
+  {
+    "id": 70,
+    "word": "وردي",
+    "meaning": "لون فاتح للزهور",
+    "example": "الزهرة وردية.",
+    "tip": "لون رقيق",
+    "level": "beginner"
+  },
+  {
+    "id": 71,
+    "word": "طعام",
+    "meaning": "ما يؤكل",
+    "example": "الطعام لذيذ.",
+    "tip": "كل جيداً",
+    "level": "beginner"
+  },
+  {
+    "id": 72,
+    "word": "ماء",
+    "meaning": "سائل شفاف ضروري",
+    "example": "اشرب ماء كل يوم.",
+    "tip": "الماء ضروري للحياة",
+    "level": "beginner"
+  },
+  {
+    "id": 73,
+    "word": "خبز",
+    "meaning": "طعام مصنوع من الدقيق",
+    "example": "آكل خبزاً على الفطور.",
+    "tip": "طازج",
+    "level": "beginner"
+  },
+  {
+    "id": 74,
+    "word": "جبن",
+    "meaning": "طعام مصنوع من الحليب",
+    "example": "الجبن لذيذ.",
+    "tip": "أنواع كثيرة",
+    "level": "beginner"
+  },
+  {
+    "id": 75,
+    "word": "تفاح",
+    "meaning": "فاكهة مستديرة حمراء أو خضراء",
+    "example": "تفاحة في اليوم تغنيك عن الطبيب.",
+    "tip": "التفاح صحي",
+    "level": "beginner"
+  },
+  {
+    "id": 76,
+    "word": "موز",
+    "meaning": "فاكهة صفراء طويلة",
+    "example": "القرود تحب الموز.",
+    "tip": "الموز حلو",
+    "level": "beginner"
+  },
+  {
+    "id": 77,
+    "word": "برتقال",
+    "meaning": "فاكهة مستديرة برتقالية",
+    "example": "عصير البرتقال طيب.",
+    "tip": "فيتامين سي",
+    "level": "beginner"
+  },
+  {
+    "id": 78,
+    "word": "حليب",
+    "meaning": "سائل أبيض من البقر",
+    "example": "الحليب مفيد للعظام.",
+    "tip": "اشرب الحليب",
+    "level": "beginner"
+  },
+  {
+    "id": 79,
+    "word": "بيض",
+    "meaning": "طعام من الدجاج",
+    "example": "آكل بيضاً في الصباح.",
+    "tip": "بيض مخفوق",
+    "level": "beginner"
+  },
+  {
+    "id": 80,
+    "word": "لحم",
+    "meaning": "لحم حيوان",
+    "example": "البعض لا يأكل اللحم.",
+    "tip": "بروتين",
+    "level": "beginner"
+  },
+  {
+    "id": 81,
+    "word": "مدرسة",
+    "meaning": "مكان التعليم",
+    "example": "أذهب إلى المدرسة يومياً.",
+    "tip": "المدرسة = تعليم",
+    "level": "beginner"
+  },
+  {
+    "id": 82,
+    "word": "مستشفى",
+    "meaning": "مكان للمرضى",
+    "example": "تعمل في المستشفى.",
+    "tip": "أطباء وممرضون",
+    "level": "beginner"
+  },
+  {
+    "id": 83,
+    "word": "حديقة",
+    "meaning": "مساحة خضراء عامة",
+    "example": "نلعب في الحديقة.",
+    "tip": "طبيعة",
+    "level": "beginner"
+  },
+  {
+    "id": 84,
+    "word": "متجر",
+    "meaning": "مكان لشراء الأشياء",
+    "example": "اذهب إلى المتجر لشراء الحليب.",
+    "tip": "تسوق",
+    "level": "beginner"
+  },
+  {
+    "id": 85,
+    "word": "مطعم",
+    "meaning": "مكان للأكل",
+    "example": "نتناول العشاء في المطعم.",
+    "tip": "اطلب قائمة الطعام",
+    "level": "beginner"
+  },
+  {
+    "id": 86,
+    "word": "مكتبة",
+    "meaning": "مكان لاستعارة الكتب",
+    "example": "المكتبة هادئة.",
+    "tip": "اقرأ مجاناً",
+    "level": "beginner"
+  },
+  {
+    "id": 87,
+    "word": "بنك",
+    "meaning": "مكان لحفظ المال",
+    "example": "أودع المال في البنك.",
+    "tip": "البنك يعطي قروضاً",
+    "level": "beginner"
+  },
+  {
+    "id": 88,
+    "word": "مطار",
+    "meaning": "مكان الطائرات",
+    "example": "المطار مزدحم.",
+    "tip": "سافر بالطائرة",
+    "level": "beginner"
+  },
+  {
+    "id": 89,
+    "word": "محطة",
+    "meaning": "مكان القطارات أو الحافلات",
+    "example": "انتظر في المحطة.",
+    "tip": "محطة طرفية",
+    "level": "beginner"
+  },
+  {
+    "id": 90,
+    "word": "مكتب",
+    "meaning": "مكان العمل",
+    "example": "مكتبي به طاولة.",
+    "tip": "عمل",
+    "level": "beginner"
+  },
+  {
+    "id": 91,
+    "word": "كتاب",
+    "meaning": "صفحات نص مجمعة",
+    "example": "أقرأ كتاباً جيداً.",
+    "tip": "القراءة تحسن المفردات",
+    "level": "beginner"
+  },
+  {
+    "id": 92,
+    "word": "كرسي",
+    "meaning": "مقعد لشخص واحد",
+    "example": "اجلس على الكرسي.",
+    "tip": "مريح",
+    "level": "beginner"
+  },
+  {
+    "id": 93,
+    "word": "طاولة",
+    "meaning": "أثاث بأرجل",
+    "example": "العشاء على الطاولة.",
+    "tip": "طاولة طعام",
+    "level": "beginner"
+  },
+  {
+    "id": 94,
+    "word": "سرير",
+    "meaning": "أثاث للنوم",
+    "example": "سريري مريح.",
+    "tip": "رتّب سريرك",
+    "level": "beginner"
+  },
+  {
+    "id": 95,
+    "word": "باب",
+    "meaning": "مدخل الغرفة",
+    "example": "افتح الباب.",
+    "tip": "أغلق الباب",
+    "level": "beginner"
+  },
+  {
+    "id": 96,
+    "word": "نافذة",
+    "meaning": "فتحة زجاجية",
+    "example": "افتح النافذة لهواء نقي.",
+    "tip": "زجاج",
+    "level": "beginner"
+  },
+  {
+    "id": 97,
+    "word": "جدار",
+    "meaning": "هيكل رأسي",
+    "example": "الجدار أبيض.",
+    "tip": "لوحة على الجدار",
+    "level": "beginner"
+  },
+  {
+    "id": 98,
+    "word": "أرض",
+    "meaning": "سطح الأرض",
+    "example": "الأرض نظيفة.",
+    "tip": "امسح الأرض",
+    "level": "beginner"
+  },
+  {
+    "id": 99,
+    "word": "سقف",
+    "meaning": "سطح علوي",
+    "example": "السقف مرتفع.",
+    "tip": "انظر للأعلى",
+    "level": "beginner"
+  },
+  {
+    "id": 100,
+    "word": "ضوء",
+    "meaning": "مصدر الإضاءة",
+    "example": "أشعل الضوء.",
+    "tip": "المصباح يعطي ضوءً",
+    "level": "beginner"
+  },
+  {
+    "id": 101,
+    "word": "واحد",
+    "meaning": "الرقم 1",
+    "example": "لدي أخ واحد.",
+    "tip": "واحد = 1",
+    "level": "beginner"
+  },
+  {
+    "id": 102,
+    "word": "اثنان",
+    "meaning": "الرقم 2",
+    "example": "لدي يدان.",
+    "tip": "اثنان = 2",
+    "level": "beginner"
+  },
+  {
+    "id": 103,
+    "word": "ثلاثة",
+    "meaning": "الرقم 3",
+    "example": "لديه ثلاث قطط.",
+    "tip": "ثلاثة = 3",
+    "level": "beginner"
+  },
+  {
+    "id": 104,
+    "word": "أربعة",
+    "meaning": "الرقم 4",
+    "example": "السيارة لها أربع عجلات.",
+    "tip": "أربعة = 4",
+    "level": "beginner"
+  },
+  {
+    "id": 105,
+    "word": "خمسة",
+    "meaning": "الرقم 5",
+    "example": "لدي خمسة أصابع.",
+    "tip": "خمسة = 5",
+    "level": "beginner"
+  },
+  {
+    "id": 106,
+    "word": "ستة",
+    "meaning": "الرقم 6",
+    "example": "ستة رقم جيد.",
+    "tip": "ستة = 6",
+    "level": "beginner"
+  },
+  {
+    "id": 107,
+    "word": "سبعة",
+    "meaning": "الرقم 7",
+    "example": "سبعة أيام في الأسبوع.",
+    "tip": "سبعة = 7",
+    "level": "beginner"
+  },
+  {
+    "id": 108,
+    "word": "ثمانية",
+    "meaning": "الرقم 8",
+    "example": "للأخطبوط ثمانية أذرع.",
+    "tip": "ثمانية = 8",
+    "level": "beginner"
+  },
+  {
+    "id": 109,
+    "word": "تسعة",
+    "meaning": "الرقم 9",
+    "example": "تسعة تأتي قبل عشرة.",
+    "tip": "تسعة = 9",
+    "level": "beginner"
+  },
+  {
+    "id": 110,
+    "word": "عشرة",
+    "meaning": "الرقم 10",
+    "example": "لدي عشرة يورو.",
+    "tip": "عشرة = 10",
+    "level": "beginner"
+  },
+  {
+    "id": 111,
+    "word": "اليوم",
+    "meaning": "هذا اليوم",
+    "example": "اليوم يوم جيد.",
+    "tip": "اليوم الحالي",
+    "level": "beginner"
+  },
+  {
+    "id": 112,
+    "word": "أمس",
+    "meaning": "اليوم السابق",
+    "example": "أمس كنت متعباً.",
+    "tip": "قبل يوم",
+    "level": "beginner"
+  },
+  {
+    "id": 113,
+    "word": "غداً",
+    "meaning": "اليوم التالي",
+    "example": "أراك غداً!",
+    "tip": "اليوم القادم",
+    "level": "beginner"
+  },
+  {
+    "id": 114,
+    "word": "يوم",
+    "meaning": "فترة 24 ساعة",
+    "example": "اليوم يوم جيد.",
+    "tip": "يوم مشمس",
+    "level": "beginner"
+  },
+  {
+    "id": 115,
+    "word": "ليل",
+    "meaning": "فترة مظلمة",
+    "example": "أنام ليلاً.",
+    "tip": "نجوم",
+    "level": "beginner"
+  },
+  {
+    "id": 116,
+    "word": "صباح",
+    "meaning": "بداية اليوم",
+    "example": "صباح الخير!",
+    "tip": "استيقظ",
+    "level": "beginner"
+  },
+  {
+    "id": 117,
+    "word": "مساء",
+    "meaning": "جزء اليوم بعد الظهر",
+    "example": "أراك هذا المساء.",
+    "tip": "بعد الظهر",
+    "level": "beginner"
+  },
+  {
+    "id": 118,
+    "word": "أسبوع",
+    "meaning": "سبعة أيام",
+    "example": "أسبوع عطلة.",
+    "tip": "الاثنين إلى الأحد",
+    "level": "beginner"
+  },
+  {
+    "id": 119,
+    "word": "شهر",
+    "meaning": "حوالي 30 يوماً",
+    "example": "يناير هو شهر.",
+    "tip": "12 شهراً في السنة",
+    "level": "beginner"
+  },
+  {
+    "id": 120,
+    "word": "سنة",
+    "meaning": "365 أو 366 يوماً",
+    "example": "سنة جديدة سعيدة!",
+    "tip": "12 شهراً",
+    "level": "beginner"
+  },
+  {
+    "id": 121,
+    "word": "نعم",
+    "meaning": "إجابة إيجابية",
+    "example": "نعم، من فضلك.",
+    "tip": "عكس: لا",
+    "level": "beginner"
+  },
+  {
+    "id": 122,
+    "word": "لا",
+    "meaning": "إجابة سلبية",
+    "example": "لا، شكراً.",
+    "tip": "عكس: نعم",
+    "level": "beginner"
+  },
+  {
+    "id": 123,
+    "word": "شكراً",
+    "meaning": "التعبير عن الامتنان",
+    "example": "شكراً جزيلاً!",
+    "tip": "كن مهذباً دائماً",
+    "level": "beginner"
+  },
+  {
+    "id": 124,
+    "word": "من فضلك",
+    "meaning": "طلب مهذب",
+    "example": "قهوة، من فضلك.",
+    "tip": "الكلمة السحرية",
+    "level": "beginner"
+  },
+  {
+    "id": 125,
+    "word": "آسف",
+    "meaning": "اعتذار",
+    "example": "آسف، أنا متأخر.",
+    "tip": "أنا أعتذر",
+    "level": "beginner"
+  },
+  {
+    "id": 126,
+    "word": "صباح الخير",
+    "meaning": "تحية الصباح",
+    "example": "صباح الخير، كيف حالك؟",
+    "tip": "الصباح",
+    "level": "beginner"
+  },
+  {
+    "id": 127,
+    "word": "مساء الخير",
+    "meaning": "تحية المساء",
+    "example": "مساء الخير!",
+    "tip": "من الظهر حتى المساء",
+    "level": "beginner"
+  },
+  {
+    "id": 128,
+    "word": "تصبح على خير",
+    "meaning": "تحية الليل",
+    "example": "تصبح على خير!",
+    "tip": "عند النوم",
+    "level": "beginner"
+  },
+  {
+    "id": 129,
+    "word": "مع السلامة",
+    "meaning": "تحية الوداع",
+    "example": "مع السلامة، إلى الغد!",
+    "tip": "عند المغادرة",
+    "level": "beginner"
+  },
+  {
+    "id": 130,
+    "word": "شمس",
+    "meaning": "النجم الذي ينيرنا",
+    "example": "الشمس تشرق.",
+    "tip": "الجو حار",
+    "level": "beginner"
+  },
+  {
+    "id": 131,
+    "word": "قمر",
+    "meaning": "قمر الأرض",
+    "example": "القمر يضيء ليلاً.",
+    "tip": "قمر مكتمل",
+    "level": "beginner"
+  },
+  {
+    "id": 132,
+    "word": "نجم",
+    "meaning": "نقطة مضيئة في السماء",
+    "example": "سطع، أشرق، نجم صغير.",
+    "tip": "ليلة مرصعة بالنجوم",
+    "level": "beginner"
+  },
+  {
+    "id": 133,
+    "word": "مطر",
+    "meaning": "ماء يسقط من السماء",
+    "example": "إنها تمطر.",
+    "tip": "خذ مظلة",
+    "level": "beginner"
+  },
+  {
+    "id": 134,
+    "word": "ثلج",
+    "meaning": "بلورات جليدية",
+    "example": "إنها تثلج.",
+    "tip": "رجل الثلج",
+    "level": "beginner"
+  },
+  {
+    "id": 135,
+    "word": "ريح",
+    "meaning": "هواء متحرك",
+    "example": "الرياح تهب.",
+    "tip": "طائرة ورقية",
+    "level": "beginner"
+  },
+  {
+    "id": 136,
+    "word": "جبل",
+    "meaning": "ارتفاع طبيعي كبير",
+    "example": "نذهب إلى الجبل.",
+    "tip": "تزلج على الجبل",
+    "level": "beginner"
+  },
+  {
+    "id": 137,
+    "word": "بحر",
+    "meaning": "مساحة كبيرة من الماء المالح",
+    "example": "البحر أزرق.",
+    "tip": "شاطئ",
+    "level": "beginner"
+  },
+  {
+    "id": 138,
+    "word": "نهر",
+    "meaning": "مجرى ماء",
+    "example": "النهر يجري.",
+    "tip": "صيد في النهر",
+    "level": "beginner"
+  },
+  {
+    "id": 139,
+    "word": "غابة",
+    "meaning": "مساحة كبيرة مشجرة",
+    "example": "نزهة في الغابة.",
+    "tip": "أشجار في كل مكان",
+    "level": "beginner"
+  },
+  {
+    "id": 140,
+    "word": "زهرة",
+    "meaning": "نبتة زينة",
+    "example": "الوردة زهرة.",
+    "tip": "جميلة وعطرة",
+    "level": "beginner"
+  },
+  {
+    "id": 141,
+    "word": "شجرة",
+    "meaning": "نبتة بجذع",
+    "example": "الشجرة طويلة.",
+    "tip": "الأشجار تعطي ظلاً",
+    "level": "beginner"
+  },
+  {
+    "id": 142,
+    "word": "ربيع",
+    "meaning": "فصل ما بعد الشتاء",
+    "example": "الزهور تنمو في الربيع.",
+    "tip": "مارس إلى مايو",
+    "level": "beginner"
+  },
+  {
+    "id": 143,
+    "word": "صيف",
+    "meaning": "فصل حار",
+    "example": "أذهب إلى الشاطئ في الصيف.",
+    "tip": "يونيو إلى أغسطس",
+    "level": "beginner"
+  },
+  {
+    "id": 144,
+    "word": "خريف",
+    "meaning": "فصل تساقط الأوراق",
+    "example": "الأوراق تغير لونها.",
+    "tip": "سبتمبر إلى نوفمبر",
+    "level": "beginner"
+  },
+  {
+    "id": 145,
+    "word": "شتاء",
+    "meaning": "فصل بارد",
+    "example": "تثلج في الشتاء.",
+    "tip": "ديسمبر إلى فبراير",
+    "level": "beginner"
+  },
+  {
+    "id": 146,
+    "word": "خوف",
+    "meaning": "عاطفة مزعجة",
+    "example": "أخاف من العناكب.",
+    "tip": "انتبه",
+    "level": "beginner"
+  },
+  {
+    "id": 147,
+    "word": "غضب",
+    "meaning": "عاطفة عنيفة",
+    "example": "صرخ بغضب.",
+    "tip": "غاضب",
+    "level": "beginner"
+  },
+  {
+    "id": 148,
+    "word": "حب",
+    "meaning": "شعور عميق",
+    "example": "أحبك.",
+    "tip": "الحب جميل",
+    "level": "beginner"
+  },
+  {
+    "id": 149,
+    "word": "أمل",
+    "meaning": "توقع إيجابي",
+    "example": "حافظ على الأمل.",
+    "tip": "تفاؤل",
+    "level": "beginner"
+  },
+  {
+    "id": 150,
+    "word": "مساعدة",
+    "meaning": "تقديم يد العون",
+    "example": "هل يمكنني المساعدة؟",
+    "tip": "كن مفيداً",
+    "level": "beginner"
+  },
+  {
+    "id": 151,
+    "word": "عمل",
+    "meaning": "وظيفة أو مهمة",
+    "example": "والدي في العمل.",
+    "tip": "كسب العيش",
+    "level": "beginner"
+  },
+  {
+    "id": 152,
+    "word": "دراسة",
+    "meaning": "التعلم بجدية",
+    "example": "أدرس العربية.",
+    "tip": "ركّز",
+    "level": "beginner"
+  },
+  {
+    "id": 153,
+    "word": "سفر",
+    "meaning": "الذهاب بعيداً",
+    "example": "أريد السفر إلى إيطاليا.",
+    "tip": "اكتشف العالم",
+    "level": "beginner"
+  },
+  {
+    "id": 154,
+    "word": "موسيقى",
+    "meaning": "فن الأصوات",
+    "example": "أستمع إلى الموسيقى.",
+    "tip": "مريح",
+    "level": "beginner"
+  },
+  {
+    "id": 155,
+    "word": "رقص",
+    "meaning": "حركة بإيقاع",
+    "example": "نرقص معاً.",
+    "tip": "فرح",
+    "level": "beginner"
+  },
+  {
+    "id": 156,
+    "word": "كرة قدم",
+    "meaning": "رياضة شعبية",
+    "example": "البرازيل تحب كرة القدم!",
+    "tip": "هدف!",
+    "level": "beginner"
+  },
+  {
+    "id": 157,
+    "word": "شاطئ",
+    "meaning": "رمال بجانب البحر",
+    "example": "نذهب إلى الشاطئ.",
+    "tip": "حمام شمس",
+    "level": "beginner"
+  },
+  {
+    "id": 158,
+    "word": "مسبح",
+    "meaning": "مكان للسباحة",
+    "example": "أسبح في المسبح.",
+    "tip": "منعش",
+    "level": "beginner"
+  },
+  {
+    "id": 159,
+    "word": "سينما",
+    "meaning": "مشاهدة الأفلام على شاشة كبيرة",
+    "example": "نذهب إلى السينما.",
+    "tip": "إصدارات جديدة",
+    "level": "beginner"
+  },
+  {
+    "id": 160,
+    "word": "مسرح",
+    "meaning": "مكان للعروض الحية",
+    "example": "مسرحية اليوم.",
+    "tip": "ممثلون",
+    "level": "beginner"
+  },
+  {
+    "id": 161,
+    "word": "هاتف",
+    "meaning": "جهاز للمكالمات",
+    "example": "الهاتف يرن.",
+    "tip": "هاتف ذكي الآن",
+    "level": "beginner"
+  },
+  {
+    "id": 162,
+    "word": "حاسوب",
+    "meaning": "آلة للعمل",
+    "example": "أعمل على الحاسوب.",
+    "tip": "PC أو Mac",
+    "level": "beginner"
+  },
+  {
+    "id": 163,
+    "word": "تلفاز",
+    "meaning": "شاشة لمشاهدة البرامج",
+    "example": "أشاهد التلفاز.",
+    "tip": "نتفليكس على التلفاز",
+    "level": "beginner"
+  },
+  {
+    "id": 164,
+    "word": "ملابس",
+    "meaning": "ما نلبسه",
+    "example": "أشتري ملابس جديدة.",
+    "tip": "ثياب",
+    "level": "beginner"
+  },
+  {
+    "id": 165,
+    "word": "حذاء",
+    "meaning": "ما نضعه في القدمين",
+    "example": "هذا الحذاء صغير.",
+    "tip": "أحذية",
+    "level": "beginner"
+  },
+  {
+    "id": 166,
+    "word": "قبعة",
+    "meaning": "ما نضعه على الرأس",
+    "example": "القبعة تحمي من الشمس.",
+    "tip": "إكسسوار",
+    "level": "beginner"
+  },
+  {
+    "id": 167,
+    "word": "نظارات",
+    "meaning": "للرؤية بشكل أفضل",
+    "example": "أحتاج نظارات للقراءة.",
+    "tip": "درجة نظر",
+    "level": "beginner"
+  },
+  {
+    "id": 168,
+    "word": "ساعة",
+    "meaning": "لمعرفة الوقت",
+    "example": "كم الساعة؟",
+    "tip": "ساعة يد",
+    "level": "beginner"
+  },
+  {
+    "id": 169,
+    "word": "مفتاح",
+    "meaning": "لفتح الأبواب",
+    "example": "أضعت المفاتيح.",
+    "tip": "المنزل والسيارة",
+    "level": "beginner"
+  },
+  {
+    "id": 170,
+    "word": "مرآة",
+    "meaning": "لرؤية أنفسنا",
+    "example": "أنظر في المرآة.",
+    "tip": "انعكاس",
+    "level": "beginner"
+  },
+  {
+    "id": 171,
+    "word": "ابتسامة",
+    "meaning": "تعبير سعيد",
+    "example": "الابتسامة تغير كل شيء.",
+    "tip": "أظهر أسنانك",
+    "level": "beginner"
+  },
+  {
+    "id": 172,
+    "word": "دمعة",
+    "meaning": "ذرف الدموع",
+    "example": "الطفل يبكي.",
+    "tip": "حزن",
+    "level": "beginner"
+  },
+  {
+    "id": 173,
+    "word": "ضحك",
+    "meaning": "التعبير عن المتعة",
+    "example": "نضحك معاً.",
+    "tip": "الضحك صحي",
+    "level": "beginner"
+  },
+  {
+    "id": 174,
+    "word": "عناق",
+    "meaning": "معانقة شخص",
+    "example": "أحتاج إلى عناق.",
+    "tip": "حنان",
+    "level": "beginner"
+  },
+  {
+    "id": 175,
+    "word": "قبلة",
+    "meaning": "لمس بالشفاه",
+    "example": "قبلة على الخد.",
+    "tip": "مودة",
+    "level": "beginner"
+  },
+  {
+    "id": 176,
+    "word": "هدية",
+    "meaning": "عطية",
+    "example": "حصلت على هدية.",
+    "tip": "العطاء جميل",
+    "level": "beginner"
+  },
+  {
+    "id": 177,
+    "word": "مال",
+    "meaning": "عملات أو أوراق نقدية",
+    "example": "أحتاج إلى مال.",
+    "tip": "شراء أشياء",
+    "level": "beginner"
+  },
+  {
+    "id": 178,
+    "word": "سعادة",
+    "meaning": "حالة من الفرح",
+    "example": "السعادة في الأشياء الصغيرة.",
+    "tip": "ابتسم كثيراً",
+    "level": "beginner"
+  },
+  {
+    "id": 179,
+    "word": "صحة",
+    "meaning": "رفاهية جسدية",
+    "example": "الصحة هي الأهم.",
+    "tip": "اعتني بجسمك",
+    "level": "beginner"
+  },
+  {
+    "id": 180,
+    "word": "جمال",
+    "meaning": "صفة الجميل",
+    "example": "الجمال في عين الناظر.",
+    "tip": "قدّر",
+    "level": "beginner"
+  },
+  {
+    "id": 181,
+    "word": "صمت",
+    "meaning": "بدون ضوضاء",
+    "example": "صمتاً، من فضلك.",
+    "tip": "هدوء",
+    "level": "beginner"
+  },
+  {
+    "id": 182,
+    "word": "ضجيج",
+    "meaning": "صوت عالٍ",
+    "example": "ضجيج في المدينة.",
+    "tip": "إزعاج",
+    "level": "beginner"
+  },
+  {
+    "id": 183,
+    "word": "سؤال",
+    "meaning": "استفسار",
+    "example": "لدي سؤال.",
+    "tip": "اعرف أكثر",
+    "level": "beginner"
+  },
+  {
+    "id": 184,
+    "word": "إجابة",
+    "meaning": "حل",
+    "example": "أحتاج إلى إجابة.",
+    "tip": "أجب",
+    "level": "beginner"
+  },
+  {
+    "id": 185,
+    "word": "نجدة",
+    "meaning": "مساعدة",
+    "example": "أحتاج إلى نجدة.",
+    "tip": "اطلب النجدة",
+    "level": "beginner"
+  },
+  {
+    "id": 186,
+    "word": "سر",
+    "meaning": "معلومة مخفية",
+    "example": "لا تخبر السر.",
+    "tip": "سري",
+    "level": "beginner"
+  },
+  {
+    "id": 187,
+    "word": "حقيقة",
+    "meaning": "واقع",
+    "example": "قل الحقيقة.",
+    "tip": "صدق",
+    "level": "beginner"
+  },
+  {
+    "id": 188,
+    "word": "كذبة",
+    "meaning": "باطل",
+    "example": "لا أحب الكذب.",
+    "tip": "عدم أمانة",
+    "level": "beginner"
+  },
+  {
+    "id": 189,
+    "word": "حلم",
+    "meaning": "تخيل أو رغبة",
+    "example": "لدي حلم.",
+    "tip": "هدف",
+    "level": "beginner"
+  },
+  {
+    "id": 190,
+    "word": "وعد",
+    "meaning": "التزام",
+    "example": "قطعت وعداً.",
+    "tip": "أوفِ به",
+    "level": "beginner"
+  },
+  {
+    "id": 191,
+    "word": "حظ",
+    "meaning": "قدر ملائم",
+    "example": "حظاً سعيداً!",
+    "tip": "فرصة",
+    "level": "beginner"
+  },
+  {
+    "id": 192,
+    "word": "نحس",
+    "meaning": "قدر غير ملائم",
+    "example": "يا لها من نحس!",
+    "tip": "تعاسة",
+    "level": "beginner"
+  },
+  {
+    "id": 193,
+    "word": "شك",
+    "meaning": "تردد",
+    "example": "لدي شك.",
+    "tip": "غير متأكد",
+    "level": "beginner"
+  },
+  {
+    "id": 194,
+    "word": "يقين",
+    "meaning": "اقتناع",
+    "example": "لدي يقين.",
+    "tip": "بلا شك",
+    "level": "beginner"
+  },
+  {
+    "id": 195,
+    "word": "غياب",
+    "meaning": "عدم وجود",
+    "example": "أفتقدك.",
+    "tip": "حنين",
+    "level": "beginner"
+  },
+  {
+    "id": 196,
+    "word": "حذر",
+    "meaning": "انتباه، احتياط",
+    "example": "حذر! ساخن.",
+    "tip": "خذ حذرك",
+    "level": "beginner"
+  },
+  {
+    "id": 197,
+    "word": "صبر",
+    "meaning": "الانتظار بهدوء",
+    "example": "تحلّ بالصبر.",
+    "tip": "لكل شيء وقت",
+    "level": "beginner"
+  },
+  {
+    "id": 198,
+    "word": "شجاعة",
+    "meaning": "قوة لمواجهة الخوف",
+    "example": "تحلّ بالشجاعة!",
+    "tip": "جريء",
+    "level": "beginner"
+  },
+  {
+    "id": 199,
+    "word": "هدوء",
+    "meaning": "حالة سلمية",
+    "example": "حافظ على هدوئك.",
+    "tip": "لا تقلق",
+    "level": "beginner"
+  },
+  {
+    "id": 200,
+    "word": "عجلة",
+    "meaning": "استعجال",
+    "example": "أنا في عجلة من أمري.",
+    "tip": "بسرعة",
+    "level": "beginner"
+  },
+  {
+    "id": 201,
+    "word": "تحليل",
+    "meaning": "الدراسة بدقة",
+    "example": "العلماء يحللون البيانات.",
+    "tip": "مرادفات: فحص، دراسة",
+    "level": "intermediate"
+  },
+  {
+    "id": 202,
+    "word": "هام",
+    "meaning": "مهم جداً",
+    "example": "هذا اكتشاف هام!",
+    "tip": "ضد: غير هام",
+    "level": "intermediate"
+  },
+  {
+    "id": 203,
+    "word": "مثابرة",
+    "meaning": "جهد مستمر رغم الصعوبات",
+    "example": "بفضل مثابرتها، نجحت.",
+    "tip": "استمر مهما حدث",
+    "level": "intermediate"
+  },
+  {
+    "id": 204,
+    "word": "نتيجة",
+    "meaning": "نتيجة أو أثر فعل",
+    "example": "واجه العواقب.",
+    "tip": "سبب ونتيجة",
+    "level": "intermediate"
+  },
+  {
+    "id": 205,
+    "word": "ضروري",
+    "meaning": "ضروري جداً",
+    "example": "الماء ضروري للحياة.",
+    "tip": "مرادفات: حاسم، حيوي",
+    "level": "intermediate"
+  },
+  {
+    "id": 206,
+    "word": "مرن",
+    "meaning": "قادر على التغيير بسهولة",
+    "example": "لديها جدول مرن.",
+    "tip": "ضد: جامد",
+    "level": "intermediate"
+  },
+  {
+    "id": 207,
+    "word": "توليد",
+    "meaning": "إنتاج أو خلق",
+    "example": "الألواح الشمسية تولد كهرباء.",
+    "tip": "مرادفات: إنتاج، خلق",
+    "level": "intermediate"
+  },
+  {
+    "id": 208,
+    "word": "صيانة",
+    "meaning": "المحافظة على حالة جيدة",
+    "example": "اصنع صيانة لسيارتك بانتظام.",
+    "tip": "الصيانة الدورية مهمة",
+    "level": "intermediate"
+  },
+  {
+    "id": 209,
+    "word": "واضح",
+    "meaning": "مرئي أو مفهوم بسهولة",
+    "example": "الجواب كان واضحاً.",
+    "tip": "مرادفات: جلي، ظاهر",
+    "level": "intermediate"
+  },
+  {
+    "id": 210,
+    "word": "محتمل",
+    "meaning": "ممكن أو قادر على أن يصبح",
+    "example": "لديها إمكانيات كبيرة.",
+    "tip": "احتمال مستقبلي",
+    "level": "intermediate"
+  },
+  {
+    "id": 211,
+    "word": "ميزة",
+    "meaning": "شيء مفيد",
+    "example": "التحدث بلغتين ميزة.",
+    "tip": "نقطة إيجابية",
+    "level": "intermediate"
+  },
+  {
+    "id": 212,
+    "word": "عيب",
+    "meaning": "نقطة سلبية",
+    "example": "السعر هو العيب الوحيد.",
+    "tip": "مساوئ",
+    "level": "intermediate"
+  },
+  {
+    "id": 213,
+    "word": "بيئة",
+    "meaning": "الطبيعة من حولنا",
+    "example": "لنحمِ البيئة.",
+    "tip": "الكوكب",
+    "level": "intermediate"
+  },
+  {
+    "id": 214,
+    "word": "تطوير",
+    "meaning": "نمو أو تحسين",
+    "example": "التطوير الشخصي مهم.",
+    "tip": "تقدم",
+    "level": "intermediate"
+  },
+  {
+    "id": 215,
+    "word": "مسؤولية",
+    "meaning": "واجب",
+    "example": "تحمل مسؤولياتك.",
+    "tip": "جدير بالثقة",
+    "level": "intermediate"
+  },
+  {
+    "id": 216,
+    "word": "ثقة",
+    "meaning": "الإيمان بشخص ما",
+    "example": "لدي ثقة بك.",
+    "tip": "إيمان",
+    "level": "intermediate"
+  },
+  {
+    "id": 217,
+    "word": "شك",
+    "meaning": "عدم اليقين",
+    "example": "لدي شك.",
+    "tip": "لست متأكداً",
+    "level": "intermediate"
+  },
+  {
+    "id": 218,
+    "word": "دليل",
+    "meaning": "حقيقة تظهر الصواب",
+    "example": "هل لديك دليل؟",
+    "tip": "برهان",
+    "level": "intermediate"
+  },
+  {
+    "id": 219,
+    "word": "نظرية",
+    "meaning": "تفسير مبني على أفكار",
+    "example": "إنها مجرد نظرية.",
+    "tip": "لم تُثبت بعد",
+    "level": "intermediate"
+  },
+  {
+    "id": 220,
+    "word": "تطبيق",
+    "meaning": "وضع موضع التنفيذ",
+    "example": "النظرية بدون تطبيق لا فائدة منها.",
+    "tip": "افعل فعلياً",
+    "level": "intermediate"
+  },
+  {
+    "id": 221,
+    "word": "خبرة",
+    "meaning": "موقف عاشته",
+    "example": "الخبرة هي أفضل درس.",
+    "tip": "تعلم بالممارسة",
+    "level": "intermediate"
+  },
+  {
+    "id": 222,
+    "word": "هدف",
+    "meaning": "غاية لتحقيقها",
+    "example": "هدفي تعلم العربية.",
+    "tip": "هدف",
+    "level": "intermediate"
+  },
+  {
+    "id": 223,
+    "word": "تقدم",
+    "meaning": "تحسن إيجابي",
+    "example": "أنت تحرز تقدماً!",
+    "tip": "تحسين",
+    "level": "intermediate"
+  },
+  {
+    "id": 224,
+    "word": "حل",
+    "meaning": "جواب لمشكلة",
+    "example": "لنجد حلاً.",
+    "tip": "حسم",
+    "level": "intermediate"
+  },
+  {
+    "id": 225,
+    "word": "مشكلة",
+    "meaning": "صعوبة تحتاج حلاً",
+    "example": "لدي مشكلة.",
+    "tip": "تحدي",
+    "level": "intermediate"
+  },
+  {
+    "id": 226,
+    "word": "جودة",
+    "meaning": "مستوى الامتياز",
+    "example": "الجودة قبل الكمية.",
+    "tip": "معيار جيد",
+    "level": "intermediate"
+  },
+  {
+    "id": 227,
+    "word": "كمية",
+    "meaning": "كم العدد",
+    "example": "الكمية كبيرة.",
+    "tip": "عدد",
+    "level": "intermediate"
+  },
+  {
+    "id": 228,
+    "word": "فرصة",
+    "meaning": "مقدار ملائم",
+    "example": "حظاً سعيداً!",
+    "tip": "فرصة",
+    "level": "intermediate"
+  },
+  {
+    "id": 229,
+    "word": "خطر",
+    "meaning": "احتمال الخطر",
+    "example": "هل يستحق المخاطرة؟",
+    "tip": "خطر محتمل",
+    "level": "intermediate"
+  },
+  {
+    "id": 230,
+    "word": "خيار",
+    "meaning": "بديل للاختيار",
+    "example": "إنه خيارك.",
+    "tip": "قرار",
+    "level": "intermediate"
+  },
+  {
+    "id": 231,
+    "word": "رأي",
+    "meaning": "وجهة نظر شخصية",
+    "example": "لكل إنسان رأيه.",
+    "tip": "رأي",
+    "level": "intermediate"
+  },
+  {
+    "id": 232,
+    "word": "واقع",
+    "meaning": "ما هو صحيح",
+    "example": "عد إلى الواقع.",
+    "tip": "حقيقة",
+    "level": "intermediate"
+  },
+  {
+    "id": 233,
+    "word": "خيال",
+    "meaning": "قدرة تكوين صور ذهنية",
+    "example": "للأطفال خيال.",
+    "tip": "إبداع",
+    "level": "intermediate"
+  },
+  {
+    "id": 234,
+    "word": "نجاح",
+    "meaning": "تحقيق هدف",
+    "example": "النجاح يأتي بالعمل.",
+    "tip": "إنجاز",
+    "level": "intermediate"
+  },
+  {
+    "id": 235,
+    "word": "فشل",
+    "meaning": "عدم تحقيق الهدف",
+    "example": "الفشل درس.",
+    "tip": "عكس: نجاح",
+    "level": "intermediate"
+  },
+  {
+    "id": 236,
+    "word": "دافع",
+    "meaning": "الرغبة في الفعل",
+    "example": "أحتاج إلى دافع.",
+    "tip": "إلهام",
+    "level": "intermediate"
+  },
+  {
+    "id": 237,
+    "word": "شغف",
+    "meaning": "حب قوي لشيء",
+    "example": "الموسيقى هي شغفي.",
+    "tip": "الهواية المفضلة",
+    "level": "intermediate"
+  },
+  {
+    "id": 238,
+    "word": "رضا",
+    "meaning": "شعور بالارتياح",
+    "example": "العمل الجيد يعطي رضاً.",
+    "tip": "سعادة",
+    "level": "intermediate"
+  },
+  {
+    "id": 239,
+    "word": "توتر",
+    "meaning": "ضغط نفسي",
+    "example": "العمل يمكن أن يسبب توتراً.",
+    "tip": "قلق",
+    "level": "intermediate"
+  },
+  {
+    "id": 240,
+    "word": "هدوء",
+    "meaning": "حالة سلمية",
+    "example": "أحب الهدوء.",
+    "tip": "صامت",
+    "level": "intermediate"
+  },
+  {
+    "id": 241,
+    "word": "توازن",
+    "meaning": "الحفاظ على الاستقرار",
+    "example": "وازن وجباتك.",
+    "tip": "انسجام",
+    "level": "intermediate"
+  },
+  {
+    "id": 242,
+    "word": "فائدة",
+    "meaning": "كسب إيجابي",
+    "example": "للتمرين فوائد.",
+    "tip": "مزايا",
+    "level": "intermediate"
+  },
+  {
+    "id": 243,
+    "word": "اتجاه",
+    "meaning": "موجهة عامة",
+    "example": "إنه اتجاه حالي.",
+    "tip": "موضة",
+    "level": "intermediate"
+  },
+  {
+    "id": 244,
+    "word": "أزمة",
+    "meaning": "فترة صعبة",
+    "example": "ضربت الأزمة الاقتصادية.",
+    "tip": "طوارئ",
+    "level": "intermediate"
+  },
+  {
+    "id": 245,
+    "word": "أمل",
+    "meaning": "توقع إيجابي",
+    "example": "حافظ على الأمل.",
+    "tip": "تفاؤل",
+    "level": "intermediate"
+  },
+  {
+    "id": 246,
+    "word": "يأس",
+    "meaning": "انعدام الأمل",
+    "example": "سيطر عليه اليأس.",
+    "tip": "تشاؤم",
+    "level": "intermediate"
+  },
+  {
+    "id": 247,
+    "word": "شجاعة",
+    "meaning": "قوة في مواجهة الخوف",
+    "example": "تحل بالشجاعة!",
+    "tip": "جريء",
+    "level": "intermediate"
+  },
+  {
+    "id": 248,
+    "word": "خوف",
+    "meaning": "عاطفة مزعجة",
+    "example": "أخاف من العناكب.",
+    "tip": "رعب",
+    "level": "intermediate"
+  },
+  {
+    "id": 249,
+    "word": "غضب",
+    "meaning": "عاطفة عنيفة",
+    "example": "صرخ بغضب.",
+    "tip": "غيظ",
+    "level": "intermediate"
+  },
+  {
+    "id": 250,
+    "word": "مفاجأة",
+    "meaning": "حدث غير متوقع",
+    "example": "يا لها من مفاجأة سارة!",
+    "tip": "دهشة",
+    "level": "intermediate"
+  },
+  {
+    "id": 251,
+    "word": "ملل",
+    "meaning": "انعدام الاهتمام",
+    "example": "أشعر بالملل.",
+    "tip": "رتابة",
+    "level": "intermediate"
+  },
+  {
+    "id": 252,
+    "word": "حماس",
+    "meaning": "إثارة إيجابية كبيرة",
+    "example": "يتحدث بحماس.",
+    "tip": "طاقة إيجابية",
+    "level": "intermediate"
+  },
+  {
+    "id": 253,
+    "word": "صادق",
+    "meaning": "من يقول الحقيقة",
+    "example": "كن صادقاً دائماً.",
+    "tip": "مخلص",
+    "level": "intermediate"
+  },
+  {
+    "id": 254,
+    "word": "مخلص",
+    "meaning": "يبقى وفياً",
+    "example": "صديق مخلص.",
+    "tip": "يدعم دائماً",
+    "level": "intermediate"
+  },
+  {
+    "id": 255,
+    "word": "صبور",
+    "meaning": "يعرف كيف ينتظر",
+    "example": "كن صبوراً.",
+    "tip": "هادئ",
+    "level": "intermediate"
+  },
+  {
+    "id": 256,
+    "word": "مؤدب",
+    "meaning": "يظهر احتراماً",
+    "example": "طفل مؤدب.",
+    "tip": "يقول شكراً",
+    "level": "intermediate"
+  },
+  {
+    "id": 257,
+    "word": "كريم",
+    "meaning": "يعطي عن طيب خاطر",
+    "example": "هي كريمة جداً.",
+    "tip": "يشارك",
+    "level": "intermediate"
+  },
+  {
+    "id": 258,
+    "word": "أناني",
+    "meaning": "يفكر بنفسه فقط",
+    "example": "من الأنانية أخذ كل شيء.",
+    "tip": "لا يشارك",
+    "level": "intermediate"
+  },
+  {
+    "id": 259,
+    "word": "حديث",
+    "meaning": "معاصر",
+    "example": "هذه السيارة حديثة.",
+    "tip": "قديم",
+    "level": "intermediate"
+  },
+  {
+    "id": 260,
+    "word": "تقليدي",
+    "meaning": "قائم على العادة",
+    "example": "طبق تقليدي.",
+    "tip": "منقول منذ زمن طويل",
+    "level": "intermediate"
+  },
+  {
+    "id": 261,
+    "word": "معقد",
+    "meaning": "صعب الفهم",
+    "example": "هذه المشكلة معقدة.",
+    "tip": "محير",
+    "level": "intermediate"
+  },
+  {
+    "id": 262,
+    "word": "بسيط",
+    "meaning": "سهل الفهم",
+    "example": "إنه بسيط!",
+    "tip": "ليس معقداً",
+    "level": "intermediate"
+  },
+  {
+    "id": 263,
+    "word": "قادر",
+    "meaning": "يمتلك الكفاءة",
+    "example": "أنت قادر على النجاح.",
+    "tip": "يمكنه الفعل",
+    "level": "intermediate"
+  },
+  {
+    "id": 264,
+    "word": "موثوق",
+    "meaning": "جدير بالثقة",
+    "example": "هذه السيارة موثوقة.",
+    "tip": "آمن",
+    "level": "intermediate"
+  },
+  {
+    "id": 265,
+    "word": "دائم",
+    "meaning": "يدوم طويلاً",
+    "example": "بلاستيك دائم.",
+    "tip": "قوي",
+    "level": "intermediate"
+  },
+  {
+    "id": 266,
+    "word": "هش",
+    "meaning": "سهل الكسر",
+    "example": "هذا الكأس هش.",
+    "tip": "رقيق",
+    "level": "intermediate"
+  },
+  {
+    "id": 267,
+    "word": "متاح",
+    "meaning": "حر، يمكن الوصول إليه",
+    "example": "أنا متاح غداً.",
+    "tip": "ليس مشغولاً",
+    "level": "intermediate"
+  },
+  {
+    "id": 268,
+    "word": "مشغول",
+    "meaning": "غير حر",
+    "example": "آسف، أنا مشغول.",
+    "tip": "لديه الكثير ليفعله",
+    "level": "intermediate"
+  },
+  {
+    "id": 269,
+    "word": "دقيق",
+    "meaning": "محدد، صحيح",
+    "example": "أعط إجابة دقيقة.",
+    "tip": "ليس غامضاً",
+    "level": "intermediate"
+  },
+  {
+    "id": 270,
+    "word": "غامض",
+    "meaning": "غير واضح",
+    "example": "تفسيراته غامضة.",
+    "tip": "غير دقيق",
+    "level": "intermediate"
+  },
+  {
+    "id": 271,
+    "word": "متساو",
+    "meaning": "مطابق",
+    "example": "الجميع متساوون أمام القانون.",
+    "tip": "نفس الشيء",
+    "level": "intermediate"
+  },
+  {
+    "id": 272,
+    "word": "مختلف",
+    "meaning": "ليس نفسه",
+    "example": "نحن مختلفون.",
+    "tip": "ضد: مماثل",
+    "level": "intermediate"
+  },
+  {
+    "id": 273,
+    "word": "نشط",
+    "meaning": "يتحرك، يفعل",
+    "example": "هي نشيطة جداً.",
+    "tip": "يتحرك",
+    "level": "intermediate"
+  },
+  {
+    "id": 274,
+    "word": "سلبي",
+    "meaning": "غير نشط",
+    "example": "يبقى سلبياً.",
+    "tip": "لا يفعل شيئاً",
+    "level": "intermediate"
+  },
+  {
+    "id": 275,
+    "word": "واضح",
+    "meaning": "سهل الفهم",
+    "example": "إنه واضح.",
+    "tip": "مفهوم",
+    "level": "intermediate"
+  },
+  {
+    "id": 276,
+    "word": "غامض",
+    "meaning": "صعب الفهم",
+    "example": "معناه غامض.",
+    "tip": "ليس واضحاً",
+    "level": "intermediate"
+  },
+  {
+    "id": 277,
+    "word": "منتظم",
+    "meaning": "ثابت، متكرر",
+    "example": "تدريب منتظم.",
+    "tip": "متكرر",
+    "level": "intermediate"
+  },
+  {
+    "id": 278,
+    "word": "مباشر",
+    "meaning": "بدون تحويلة",
+    "example": "رحلة مباشرة.",
+    "tip": "خط مستقيم",
+    "level": "intermediate"
+  },
+  {
+    "id": 279,
+    "word": "غير مباشر",
+    "meaning": "مع تحويلة",
+    "example": "طريق غير مباشر.",
+    "tip": "ليس مباشراً",
+    "level": "intermediate"
+  },
+  {
+    "id": 280,
+    "word": "متكرر",
+    "meaning": "يحدث كثيراً",
+    "example": "إنه متكرر هنا.",
+    "tip": "شائع",
+    "level": "intermediate"
+  },
+  {
+    "id": 281,
+    "word": "نادر",
+    "meaning": "قليل الحدوث",
+    "example": "نوع نادر.",
+    "tip": "غير شائع",
+    "level": "intermediate"
+  },
+  {
+    "id": 282,
+    "word": "إيجابي",
+    "meaning": "بناء، ملائم",
+    "example": "موقف إيجابي.",
+    "tip": "متفائل",
+    "level": "intermediate"
+  },
+  {
+    "id": 283,
+    "word": "سلبي",
+    "meaning": "غير ملائم",
+    "example": "تأثير سلبي.",
+    "tip": "متشائم",
+    "level": "intermediate"
+  },
+  {
+    "id": 284,
+    "word": "نظيف",
+    "meaning": "بلا وسخ",
+    "example": "المنزل نظيف.",
+    "tip": "مغسول",
+    "level": "intermediate"
+  },
+  {
+    "id": 285,
+    "word": "وسخ",
+    "meaning": "به وسخ",
+    "example": "ملابس وسخة.",
+    "tip": "ضد: نظيف",
+    "level": "intermediate"
+  },
+  {
+    "id": 286,
+    "word": "كامل",
+    "meaning": "تام، شامل",
+    "example": "أكلت الكعكة كاملة.",
+    "tip": "كل شيء",
+    "level": "intermediate"
+  },
+  {
+    "id": 287,
+    "word": "جزئي",
+    "meaning": "غير كامل",
+    "example": "إجابة جزئية.",
+    "tip": "قليلاً فقط",
+    "level": "intermediate"
+  },
+  {
+    "id": 288,
+    "word": "رئيسي",
+    "meaning": "الأكثر أهمية",
+    "example": "السبب الرئيسي.",
+    "tip": "الأول",
+    "level": "intermediate"
+  },
+  {
+    "id": 289,
+    "word": "ثانوي",
+    "meaning": "أقل أهمية",
+    "example": "تفصيل ثانوي.",
+    "tip": "ليس رئيسياً",
+    "level": "intermediate"
+  },
+  {
+    "id": 290,
+    "word": "أكبر",
+    "meaning": "مهم جداً",
+    "example": "مشكلة أكبر.",
+    "tip": "خطير",
+    "level": "intermediate"
+  },
+  {
+    "id": 291,
+    "word": "أصغر",
+    "meaning": "قليل الأهمية",
+    "example": "تفصيل أصغر.",
+    "tip": "صغير",
+    "level": "intermediate"
+  },
+  {
+    "id": 292,
+    "word": "مفضل",
+    "meaning": "محبب",
+    "example": "أغنيتي المفضلة.",
+    "tip": "الأفضل",
+    "level": "intermediate"
+  },
+  {
+    "id": 293,
+    "word": "شائع",
+    "meaning": "محبوب من كثيرين",
+    "example": "هذا المغني شائع.",
+    "tip": "معروف",
+    "level": "intermediate"
+  },
+  {
+    "id": 294,
+    "word": "هادئ",
+    "meaning": "صامت، سلمي",
+    "example": "مكان هادئ.",
+    "tip": "ليس صاخباً",
+    "level": "intermediate"
+  },
+  {
+    "id": 295,
+    "word": "صاخب",
+    "meaning": "يحدث ضجة",
+    "example": "جيران صاخبون.",
+    "tip": "كثير الصوت",
+    "level": "intermediate"
+  },
+  {
+    "id": 296,
+    "word": "بعيد",
+    "meaning": "بعيد في المكان أو الزمان",
+    "example": "بلد بعيد.",
+    "tip": "ليس قريباً",
+    "level": "intermediate"
+  },
+  {
+    "id": 297,
+    "word": "قريب",
+    "meaning": "جنب",
+    "example": "المدرسة قريبة.",
+    "tip": "ليس بعيداً",
+    "level": "intermediate"
+  },
+  {
+    "id": 298,
+    "word": "ضخم",
+    "meaning": "كبير جداً",
+    "example": "الفيل ضخم.",
+    "tip": "عملاق",
+    "level": "intermediate"
+  },
+  {
+    "id": 299,
+    "word": "في كل مكان",
+    "meaning": "موجود في كل مكان",
+    "example": "الهواتف الذكية في كل مكان.",
+    "tip": "مرادفات: منتشر",
+    "level": "advanced"
+  },
+  {
+    "id": 300,
+    "word": "زائل",
+    "meaning": "يدوم لوقت قصير جداً",
+    "example": "جمال غروب الشمس زائل.",
+    "tip": "ضد: دائم، أبدي",
+    "level": "advanced"
+  }
+]

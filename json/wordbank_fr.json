@@ -1,0 +1,2402 @@
+[
+  {
+    "id": 1,
+    "word": "chat",
+    "meaning": "un petit animal de compagnie poilu",
+    "example": "Mon chat dort sur le canapé.",
+    "tip": "Les chats disent Miaou! 🐱",
+    "level": "beginner"
+  },
+  {
+    "id": 2,
+    "word": "chien",
+    "meaning": "un animal de compagnie fidèle",
+    "example": "Mon chien aime jouer.",
+    "tip": "Le chien est le meilleur ami de l'homme",
+    "level": "beginner"
+  },
+  {
+    "id": 3,
+    "word": "maison",
+    "meaning": "un bâtiment où les gens vivent",
+    "example": "Ils vivent dans une grande maison.",
+    "tip": "Maison = Foyer",
+    "level": "beginner"
+  },
+  {
+    "id": 4,
+    "word": "voiture",
+    "meaning": "un véhicule pour conduire",
+    "example": "Elle conduit une voiture rouge.",
+    "tip": "Voiture = Transport",
+    "level": "beginner"
+  },
+  {
+    "id": 5,
+    "word": "professeur",
+    "meaning": "une personne qui enseigne",
+    "example": "Mon professeur m'aide à apprendre.",
+    "tip": "Professeur = Donneur de savoir",
+    "level": "beginner"
+  },
+  {
+    "id": 6,
+    "word": "mère",
+    "meaning": "parent féminin",
+    "example": "Ma mère cuisine bien.",
+    "tip": "Maman t'aime",
+    "level": "beginner"
+  },
+  {
+    "id": 7,
+    "word": "père",
+    "meaning": "parent masculin",
+    "example": "Mon père travaille au bureau.",
+    "tip": "Papa est fort",
+    "level": "beginner"
+  },
+  {
+    "id": 8,
+    "word": "frère",
+    "meaning": "frère masculin",
+    "example": "Mon frère joue au foot.",
+    "tip": "Frérot est cool",
+    "level": "beginner"
+  },
+  {
+    "id": 9,
+    "word": "sœur",
+    "meaning": "sœur féminine",
+    "example": "Ma sœur m'aide.",
+    "tip": "Sœurette est gentille",
+    "level": "beginner"
+  },
+  {
+    "id": 10,
+    "word": "bébé",
+    "meaning": "très jeune enfant",
+    "example": "Le bébé dort.",
+    "tip": "Bébé est mignon",
+    "level": "beginner"
+  },
+  {
+    "id": 11,
+    "word": "courir",
+    "meaning": "se déplacer rapidement",
+    "example": "Je cours tous les matins.",
+    "tip": "Passé: couru",
+    "level": "beginner"
+  },
+  {
+    "id": 12,
+    "word": "manger",
+    "meaning": "consommer de la nourriture",
+    "example": "Mangeons le dîner.",
+    "tip": "Passé: mangé",
+    "level": "beginner"
+  },
+  {
+    "id": 13,
+    "word": "dormir",
+    "meaning": "se reposer avec les yeux fermés",
+    "example": "Les bébés dorment beaucoup.",
+    "tip": "Passé: dormi",
+    "level": "beginner"
+  },
+  {
+    "id": 14,
+    "word": "boire",
+    "meaning": "consommer un liquide",
+    "example": "Je bois de l'eau.",
+    "tip": "Passé: bu",
+    "level": "beginner"
+  },
+  {
+    "id": 15,
+    "word": "parler",
+    "meaning": "communiquer avec des mots",
+    "example": "Je parle français.",
+    "tip": "Passé: parlé",
+    "level": "beginner"
+  },
+  {
+    "id": 16,
+    "word": "lire",
+    "meaning": "regarder des mots écrits",
+    "example": "Je lis un livre.",
+    "tip": "Passé: lu",
+    "level": "beginner"
+  },
+  {
+    "id": 17,
+    "word": "écrire",
+    "meaning": "mettre des mots sur papier",
+    "example": "J'écris une lettre.",
+    "tip": "Passé: écrit",
+    "level": "beginner"
+  },
+  {
+    "id": 18,
+    "word": "regarder",
+    "meaning": "diriger les yeux vers",
+    "example": "Je regarde la télé.",
+    "tip": "Synonyme: voir",
+    "level": "beginner"
+  },
+  {
+    "id": 19,
+    "word": "entendre",
+    "meaning": "percevoir par l'oreille",
+    "example": "J'entends de la musique.",
+    "tip": "Synonyme: écouter",
+    "level": "beginner"
+  },
+  {
+    "id": 20,
+    "word": "marcher",
+    "meaning": "se déplacer à pied",
+    "example": "Je marche à l'école.",
+    "tip": "Passé: marché",
+    "level": "beginner"
+  },
+  {
+    "id": 21,
+    "word": "heureux",
+    "meaning": "ressentir de la joie",
+    "example": "Elle était heureuse.",
+    "tip": "Opposé: triste",
+    "level": "beginner"
+  },
+  {
+    "id": 22,
+    "word": "triste",
+    "meaning": "ressentir du chagrin",
+    "example": "Il était triste.",
+    "tip": "Opposé: heureux",
+    "level": "beginner"
+  },
+  {
+    "id": 23,
+    "word": "grand",
+    "meaning": "de grande taille",
+    "example": "C'est une grande maison.",
+    "tip": "Opposé: petit",
+    "level": "beginner"
+  },
+  {
+    "id": 24,
+    "word": "petit",
+    "meaning": "de petite taille",
+    "example": "C'est un petit chat.",
+    "tip": "Opposé: grand",
+    "level": "beginner"
+  },
+  {
+    "id": 25,
+    "word": "beau",
+    "meaning": "très agréable à regarder",
+    "example": "Beau coucher de soleil!",
+    "tip": "Décrit l'apparence",
+    "level": "beginner"
+  },
+  {
+    "id": 26,
+    "word": "chaud",
+    "meaning": "température élevée",
+    "example": "La soupe est chaude.",
+    "tip": "Opposé: froid",
+    "level": "beginner"
+  },
+  {
+    "id": 27,
+    "word": "froid",
+    "meaning": "température basse",
+    "example": "La glace est froide.",
+    "tip": "Opposé: chaud",
+    "level": "beginner"
+  },
+  {
+    "id": 28,
+    "word": "bon",
+    "meaning": "de bonne qualité",
+    "example": "Tu as fait du bon travail.",
+    "tip": "Opposé: mauvais",
+    "level": "beginner"
+  },
+  {
+    "id": 29,
+    "word": "mauvais",
+    "meaning": "de mauvaise qualité",
+    "example": "C'est une mauvaise idée.",
+    "tip": "Opposé: bon",
+    "level": "beginner"
+  },
+  {
+    "id": 30,
+    "word": "vite",
+    "meaning": "rapidement",
+    "example": "Elle a répondu vite.",
+    "tip": "Adverbe: rapidement",
+    "level": "beginner"
+  },
+  {
+    "id": 31,
+    "word": "lentement",
+    "meaning": "pas rapidement",
+    "example": "Il parle lentement.",
+    "tip": "Opposé: vite",
+    "level": "beginner"
+  },
+  {
+    "id": 32,
+    "word": "ami",
+    "meaning": "une personne que vous aimez",
+    "example": "Tu es mon meilleur ami.",
+    "tip": "Un ami est comme une famille",
+    "level": "beginner"
+  },
+  {
+    "id": 33,
+    "word": "livre",
+    "meaning": "pages de texte reliées",
+    "example": "Je lis un bon livre.",
+    "tip": "La lecture améliore le vocabulaire",
+    "level": "beginner"
+  },
+  {
+    "id": 34,
+    "word": "école",
+    "meaning": "un lieu d'apprentissage",
+    "example": "Je vais à l'école chaque jour.",
+    "tip": "École = Éducation",
+    "level": "beginner"
+  },
+  {
+    "id": 35,
+    "word": "eau",
+    "meaning": "liquide clair nécessaire",
+    "example": "Buvez de l'eau chaque jour.",
+    "tip": "L'eau est essentielle",
+    "level": "beginner"
+  },
+  {
+    "id": 36,
+    "word": "pain",
+    "meaning": "nourriture faite de farine",
+    "example": "Je mange du pain au petit-déjeuner.",
+    "tip": "La baguette est française",
+    "level": "beginner"
+  },
+  {
+    "id": 37,
+    "word": "fromage",
+    "meaning": "aliment fait de lait",
+    "example": "Le fromage est délicieux.",
+    "tip": "La France a 365 fromages",
+    "level": "beginner"
+  },
+  {
+    "id": 38,
+    "word": "pomme",
+    "meaning": "fruit rouge ou vert",
+    "example": "Une pomme par jour éloigne le médecin.",
+    "tip": "La pomme est saine",
+    "level": "beginner"
+  },
+  {
+    "id": 39,
+    "word": "orange",
+    "meaning": "fruit rond orange",
+    "example": "Le jus d'orange est bon.",
+    "tip": "Riche en vitamine C",
+    "level": "beginner"
+  },
+  {
+    "id": 40,
+    "word": "lait",
+    "meaning": "liquide blanc des vaches",
+    "example": "Le lait est bon pour les os.",
+    "tip": "Boire du lait",
+    "level": "beginner"
+  },
+  {
+    "id": 41,
+    "word": "œuf",
+    "meaning": "nourriture des poules",
+    "example": "Je mange des œufs le matin.",
+    "tip": "Œufs brouillés",
+    "level": "beginner"
+  },
+  {
+    "id": 42,
+    "word": "viande",
+    "meaning": "chair animale",
+    "example": "Certains ne mangent pas de viande.",
+    "tip": "Protéines",
+    "level": "beginner"
+  },
+  {
+    "id": 43,
+    "word": "poisson",
+    "meaning": "animal qui vit dans l'eau",
+    "example": "Le poisson nage.",
+    "tip": "Les poissons ont des écailles",
+    "level": "beginner"
+  },
+  {
+    "id": 44,
+    "word": "oiseau",
+    "meaning": "animal avec des ailes",
+    "example": "L'oiseau vole.",
+    "tip": "Les oiseaux chantent",
+    "level": "beginner"
+  },
+  {
+    "id": 45,
+    "word": "cheval",
+    "meaning": "grand animal à monter",
+    "example": "Elle monte à cheval.",
+    "tip": "Le cheval court vite",
+    "level": "beginner"
+  },
+  {
+    "id": 46,
+    "word": "vache",
+    "meaning": "animal de ferme qui donne du lait",
+    "example": "La vache mange de l'herbe.",
+    "tip": "La vache fait meuh",
+    "level": "beginner"
+  },
+  {
+    "id": 47,
+    "word": "cochon",
+    "meaning": "animal de ferme rose",
+    "example": "Le cochon est rose.",
+    "tip": "Le cochon fait groin",
+    "level": "beginner"
+  },
+  {
+    "id": 48,
+    "word": "poule",
+    "meaning": "oiseau de ferme",
+    "example": "La poule pond des œufs.",
+    "tip": "La poule fait cot cot",
+    "level": "beginner"
+  },
+  {
+    "id": 49,
+    "word": "canard",
+    "meaning": "oiseau aquatique",
+    "example": "Le canard nage.",
+    "tip": "Le canard fait coin coin",
+    "level": "beginner"
+  },
+  {
+    "id": 50,
+    "word": "lapin",
+    "meaning": "petit animal aux longues oreilles",
+    "example": "Le lapin saute.",
+    "tip": "Le lapin adore les carottes",
+    "level": "beginner"
+  },
+  {
+    "id": 51,
+    "word": "rouge",
+    "meaning": "couleur du sang",
+    "example": "Elle a une robe rouge.",
+    "tip": "Le rouge signifie arrêt",
+    "level": "beginner"
+  },
+  {
+    "id": 52,
+    "word": "bleu",
+    "meaning": "couleur du ciel",
+    "example": "Le ciel est bleu.",
+    "tip": "Le bleu est calmant",
+    "level": "beginner"
+  },
+  {
+    "id": 53,
+    "word": "vert",
+    "meaning": "couleur de l'herbe",
+    "example": "L'herbe est verte.",
+    "tip": "Le vert signifie 'go'",
+    "level": "beginner"
+  },
+  {
+    "id": 54,
+    "word": "jaune",
+    "meaning": "couleur du soleil",
+    "example": "Les bananes sont jaunes.",
+    "tip": "Le jaune est brillant",
+    "level": "beginner"
+  },
+  {
+    "id": 55,
+    "word": "noir",
+    "meaning": "couleur de la nuit",
+    "example": "Elle a les cheveux noirs.",
+    "tip": "Le noir absorbe la lumière",
+    "level": "beginner"
+  },
+  {
+    "id": 56,
+    "word": "blanc",
+    "meaning": "couleur de la neige",
+    "example": "Le papier est blanc.",
+    "tip": "Le blanc reflète la lumière",
+    "level": "beginner"
+  },
+  {
+    "id": 57,
+    "word": "maison",
+    "meaning": "bâtiment où l'on vit",
+    "example": "Bienvenue chez moi!",
+    "tip": "Ma maison est mon château",
+    "level": "beginner"
+  },
+  {
+    "id": 58,
+    "word": "appartement",
+    "meaning": "logement dans un immeuble",
+    "example": "Ils vivent dans un appartement.",
+    "tip": "Appartement en ville",
+    "level": "beginner"
+  },
+  {
+    "id": 59,
+    "word": "jardin",
+    "meaning": "espace vert extérieur",
+    "example": "Le jardin a des fleurs.",
+    "tip": "Jardiner est relaxant",
+    "level": "beginner"
+  },
+  {
+    "id": 60,
+    "word": "cuisine",
+    "meaning": "pièce pour cuisiner",
+    "example": "La cuisine sent bon.",
+    "tip": "On mange à la cuisine",
+    "level": "beginner"
+  },
+  {
+    "id": 61,
+    "word": "chambre",
+    "meaning": "pièce pour dormir",
+    "example": "Ma chambre est confortable.",
+    "tip": "Lit dans la chambre",
+    "level": "beginner"
+  },
+  {
+    "id": 62,
+    "word": "salon",
+    "meaning": "pièce pour se détendre",
+    "example": "Nous regardons la télé au salon.",
+    "tip": "Canapé au salon",
+    "level": "beginner"
+  },
+  {
+    "id": 63,
+    "word": "salle de bain",
+    "meaning": "pièce pour se laver",
+    "example": "Je prends une douche dans la salle de bain.",
+    "tip": "Douche et baignoire",
+    "level": "beginner"
+  },
+  {
+    "id": 64,
+    "word": "toilette",
+    "meaning": "pièce avec les WC",
+    "example": "Où sont les toilettes?",
+    "tip": "Important de savoir!",
+    "level": "beginner"
+  },
+  {
+    "id": 65,
+    "word": "garage",
+    "meaning": "endroit pour la voiture",
+    "example": "La voiture est au garage.",
+    "tip": "La voiture dort au garage",
+    "level": "beginner"
+  },
+  {
+    "id": 66,
+    "word": "table",
+    "meaning": "meuble avec des pieds",
+    "example": "Le dîner est sur la table.",
+    "tip": "Table à manger",
+    "level": "beginner"
+  },
+  {
+    "id": 67,
+    "word": "chaise",
+    "meaning": "siège pour une personne",
+    "example": "Asseyez-vous sur la chaise.",
+    "tip": "Chaise confortable",
+    "level": "beginner"
+  },
+  {
+    "id": 68,
+    "word": "lit",
+    "meaning": "meuble pour dormir",
+    "example": "Mon lit est doux.",
+    "tip": "Faire son lit",
+    "level": "beginner"
+  },
+  {
+    "id": 69,
+    "word": "porte",
+    "meaning": "entrée d'une pièce",
+    "example": "Ouvre la porte.",
+    "tip": "Ferme la porte",
+    "level": "beginner"
+  },
+  {
+    "id": 70,
+    "word": "fenêtre",
+    "meaning": "ouverture vitrée",
+    "example": "Ouvre la fenêtre pour de l'air frais.",
+    "tip": "La fenêtre donne sur la rue",
+    "level": "beginner"
+  },
+  {
+    "id": 71,
+    "word": "mur",
+    "meaning": "structure verticale",
+    "example": "Le mur est blanc.",
+    "tip": "Tableau au mur",
+    "level": "beginner"
+  },
+  {
+    "id": 72,
+    "word": "sol",
+    "meaning": "surface du sol",
+    "example": "Le sol est propre.",
+    "tip": "Par terre",
+    "level": "beginner"
+  },
+  {
+    "id": 73,
+    "word": "plafond",
+    "meaning": "surface supérieure",
+    "example": "Le plafond est haut.",
+    "tip": "Regarde en l'air",
+    "level": "beginner"
+  },
+  {
+    "id": 74,
+    "word": "lumière",
+    "meaning": "source d'éclairage",
+    "example": "Allume la lumière.",
+    "tip": "La lampe donne de la lumière",
+    "level": "beginner"
+  },
+  {
+    "id": 75,
+    "word": "téléphone",
+    "meaning": "appareil pour appeler",
+    "example": "Le téléphone sonne.",
+    "tip": "Smartphone maintenant",
+    "level": "beginner"
+  },
+  {
+    "id": 76,
+    "word": "ordinateur",
+    "meaning": "machine pour travailler",
+    "example": "Je travaille sur l'ordinateur.",
+    "tip": "PC ou Mac",
+    "level": "beginner"
+  },
+  {
+    "id": 77,
+    "word": "télévision",
+    "meaning": "écran pour regarder",
+    "example": "Je regarde la télévision.",
+    "tip": "Netflix à la télé",
+    "level": "beginner"
+  },
+  {
+    "id": 78,
+    "word": "vêtements",
+    "meaning": "ce qu'on porte",
+    "example": "J'achète des vêtements neufs.",
+    "tip": "Habits",
+    "level": "beginner"
+  },
+  {
+    "id": 79,
+    "word": "chaussures",
+    "meaning": "ce qu'on met aux pieds",
+    "example": "Ces chaussures sont petites.",
+    "tip": "Souliers",
+    "level": "beginner"
+  },
+  {
+    "id": 80,
+    "word": "chapeau",
+    "meaning": "ce qu'on met sur la tête",
+    "example": "Le chapeau protège du soleil.",
+    "tip": "Casquette ou chapeau",
+    "level": "beginner"
+  },
+  {
+    "id": 81,
+    "word": "un",
+    "meaning": "le nombre 1",
+    "example": "J'ai un frère.",
+    "tip": "Un = 1",
+    "level": "beginner"
+  },
+  {
+    "id": 82,
+    "word": "deux",
+    "meaning": "le nombre 2",
+    "example": "J'ai deux mains.",
+    "tip": "Deux = 2",
+    "level": "beginner"
+  },
+  {
+    "id": 83,
+    "word": "trois",
+    "meaning": "le nombre 3",
+    "example": "Il a trois chats.",
+    "tip": "Trois = 3",
+    "level": "beginner"
+  },
+  {
+    "id": 84,
+    "word": "quatre",
+    "meaning": "le nombre 4",
+    "example": "La voiture a quatre roues.",
+    "tip": "Quatre = 4",
+    "level": "beginner"
+  },
+  {
+    "id": 85,
+    "word": "cinq",
+    "meaning": "le nombre 5",
+    "example": "J'ai cinq doigts.",
+    "tip": "Cinq = 5",
+    "level": "beginner"
+  },
+  {
+    "id": 86,
+    "word": "six",
+    "meaning": "le nombre 6",
+    "example": "Six est un bon chiffre.",
+    "tip": "Six = 6",
+    "level": "beginner"
+  },
+  {
+    "id": 87,
+    "word": "sept",
+    "meaning": "le nombre 7",
+    "example": "Sept jours dans la semaine.",
+    "tip": "Sept = 7",
+    "level": "beginner"
+  },
+  {
+    "id": 88,
+    "word": "huit",
+    "meaning": "le nombre 8",
+    "example": "La pieuvre a huit bras.",
+    "tip": "Huit = 8",
+    "level": "beginner"
+  },
+  {
+    "id": 89,
+    "word": "neuf",
+    "meaning": "le nombre 9",
+    "example": "Neuf est avant dix.",
+    "tip": "Neuf = 9",
+    "level": "beginner"
+  },
+  {
+    "id": 90,
+    "word": "dix",
+    "meaning": "le nombre 10",
+    "example": "J'ai dix euros.",
+    "tip": "Dix = 10",
+    "level": "beginner"
+  },
+  {
+    "id": 91,
+    "word": "aujourd'hui",
+    "meaning": "ce jour",
+    "example": "Aujourd'hui est un bon jour.",
+    "tip": "Aujourd'hui = ce jour",
+    "level": "beginner"
+  },
+  {
+    "id": 92,
+    "word": "hier",
+    "meaning": "le jour précédent",
+    "example": "Hier j'étais fatigué.",
+    "tip": "La veille",
+    "level": "beginner"
+  },
+  {
+    "id": 93,
+    "word": "demain",
+    "meaning": "le jour suivant",
+    "example": "À demain!",
+    "tip": "Le lendemain",
+    "level": "beginner"
+  },
+  {
+    "id": 94,
+    "word": "matin",
+    "meaning": "début de la journée",
+    "example": "Bonjour!",
+    "tip": "Le réveil",
+    "level": "beginner"
+  },
+  {
+    "id": 95,
+    "word": "après-midi",
+    "meaning": "partie de la journée après midi",
+    "example": "On se voit cet après-midi.",
+    "tip": "Après 12h",
+    "level": "beginner"
+  },
+  {
+    "id": 96,
+    "word": "soir",
+    "meaning": "fin de la journée",
+    "example": "Je mange le soir.",
+    "tip": "Le dîner",
+    "level": "beginner"
+  },
+  {
+    "id": 97,
+    "word": "nuit",
+    "meaning": "période sombre",
+    "example": "Je dors la nuit.",
+    "tip": "Le ciel étoilé",
+    "level": "beginner"
+  },
+  {
+    "id": 98,
+    "word": "semaine",
+    "meaning": "sept jours",
+    "example": "Une semaine de vacances.",
+    "tip": "Lundi à dimanche",
+    "level": "beginner"
+  },
+  {
+    "id": 99,
+    "word": "mois",
+    "meaning": "environ 30 jours",
+    "example": "Janvier est un mois.",
+    "tip": "12 mois par an",
+    "level": "beginner"
+  },
+  {
+    "id": 100,
+    "word": "année",
+    "meaning": "365 ou 366 jours",
+    "example": "Bonne année!",
+    "tip": "12 mois",
+    "level": "beginner"
+  },
+  {
+    "id": 101,
+    "word": "printemps",
+    "meaning": "saison après l'hiver",
+    "example": "Les fleurs poussent au printemps.",
+    "tip": "Mars à mai",
+    "level": "beginner"
+  },
+  {
+    "id": 102,
+    "word": "été",
+    "meaning": "saison chaude",
+    "example": "Je vais à la plage en été.",
+    "tip": "Juin à août",
+    "level": "beginner"
+  },
+  {
+    "id": 103,
+    "word": "automne",
+    "meaning": "saison où les feuilles tombent",
+    "example": "Septembre à novembre",
+    "tip": "Les feuilles changent de couleur",
+    "level": "beginner"
+  },
+  {
+    "id": 104,
+    "word": "hiver",
+    "meaning": "saison froide",
+    "example": "Il neige en hiver.",
+    "tip": "Décembre à février",
+    "level": "beginner"
+  },
+  {
+    "id": 105,
+    "word": "soleil",
+    "meaning": "étoile qui nous éclaire",
+    "example": "Le soleil brille.",
+    "tip": "Il fait chaud",
+    "level": "beginner"
+  },
+  {
+    "id": 106,
+    "word": "lune",
+    "meaning": "satellite de la Terre",
+    "example": "La lune brille la nuit.",
+    "tip": "Pleine lune",
+    "level": "beginner"
+  },
+  {
+    "id": 107,
+    "word": "étoile",
+    "meaning": "point lumineux dans le ciel",
+    "example": "Brille brille petite étoile.",
+    "tip": "La nuit étoilée",
+    "level": "beginner"
+  },
+  {
+    "id": 108,
+    "word": "pluie",
+    "meaning": "eau qui tombe du ciel",
+    "example": "Il pleut.",
+    "tip": "Prends un parapluie",
+    "level": "beginner"
+  },
+  {
+    "id": 109,
+    "word": "neige",
+    "meaning": "cristaux de glace",
+    "example": "Il neige.",
+    "tip": "Bonhomme de neige",
+    "level": "beginner"
+  },
+  {
+    "id": 110,
+    "word": "vent",
+    "meaning": "air qui se déplace",
+    "example": "Le vent souffle.",
+    "tip": "Cerf-volant",
+    "level": "beginner"
+  },
+  {
+    "id": 111,
+    "word": "montagne",
+    "meaning": "grand relief naturel",
+    "example": "On va à la montagne.",
+    "tip": "Ski en montagne",
+    "level": "beginner"
+  },
+  {
+    "id": 112,
+    "word": "mer",
+    "meaning": "grande étendue d'eau salée",
+    "example": "La mer est bleue.",
+    "tip": "Plage",
+    "level": "beginner"
+  },
+  {
+    "id": 113,
+    "word": "rivière",
+    "meaning": "cours d'eau",
+    "example": "La rivière coule.",
+    "tip": "Pêche en rivière",
+    "level": "beginner"
+  },
+  {
+    "id": 114,
+    "word": "forêt",
+    "meaning": "grand espace boisé",
+    "example": "Balade en forêt.",
+    "tip": "Les arbres sont partout",
+    "level": "beginner"
+  },
+  {
+    "id": 115,
+    "word": "fleur",
+    "meaning": "plante décorative",
+    "example": "La rose est une fleur.",
+    "tip": "Joli et parfumé",
+    "level": "beginner"
+  },
+  {
+    "id": 116,
+    "word": "arbre",
+    "meaning": "plante avec un tronc",
+    "example": "L'arbre est grand.",
+    "tip": "Les arbres donnent de l'ombre",
+    "level": "beginner"
+  },
+  {
+    "id": 117,
+    "word": "gare",
+    "meaning": "lieu pour les trains",
+    "example": "Je vais à la gare.",
+    "tip": "Départ du train",
+    "level": "beginner"
+  },
+  {
+    "id": 118,
+    "word": "aéroport",
+    "meaning": "lieu pour les avions",
+    "example": "L'aéroport est grand.",
+    "tip": "On prend l'avion ici",
+    "level": "beginner"
+  },
+  {
+    "id": 119,
+    "word": "hôpital",
+    "meaning": "lieu de soins",
+    "example": "Il va à l'hôpital.",
+    "tip": "Docteurs et infirmières",
+    "level": "beginner"
+  },
+  {
+    "id": 120,
+    "word": "restaurant",
+    "meaning": "lieu pour manger",
+    "example": "Je dîne au restaurant.",
+    "tip": "On commande au menu",
+    "level": "beginner"
+  },
+  {
+    "id": 121,
+    "word": "café",
+    "meaning": "lieu pour boire du café",
+    "example": "On se voit au café.",
+    "tip": "Expresso ou thé",
+    "level": "beginner"
+  },
+  {
+    "id": 122,
+    "word": "hôtel",
+    "meaning": "lieu pour dormir en voyage",
+    "example": "Je réserve un hôtel.",
+    "tip": "Chambre d'hôtel",
+    "level": "beginner"
+  },
+  {
+    "id": 123,
+    "word": "supermarché",
+    "meaning": "grand magasin",
+    "example": "Je fais les courses au supermarché.",
+    "tip": "Nourriture et plus",
+    "level": "beginner"
+  },
+  {
+    "id": 124,
+    "word": "boulangerie",
+    "meaning": "lieu où on vend du pain",
+    "example": "La baguette vient de la boulangerie.",
+    "tip": "Pain et viennoiseries",
+    "level": "beginner"
+  },
+  {
+    "id": 125,
+    "word": "pharmacie",
+    "meaning": "lieu de médicaments",
+    "example": "La pharmacie est ouverte.",
+    "tip": "Croix verte",
+    "level": "beginner"
+  },
+  {
+    "id": 126,
+    "word": "médecin",
+    "meaning": "personne qui soigne",
+    "example": "Le médecin examine.",
+    "tip": "Docteur",
+    "level": "beginner"
+  },
+  {
+    "id": 127,
+    "word": "infirmier",
+    "meaning": "personne qui aide les malades",
+    "example": "L'infirmier est gentil.",
+    "tip": "Dans les hôpitaux",
+    "level": "beginner"
+  },
+  {
+    "id": 128,
+    "word": "policier",
+    "meaning": "personne qui protège",
+    "example": "Le policier arrête le voleur.",
+    "tip": "Police secours 17",
+    "level": "beginner"
+  },
+  {
+    "id": 129,
+    "word": "pompier",
+    "meaning": "personne qui éteint les feux",
+    "example": "Les pompiers sauvent des gens.",
+    "tip": "Casque rouge",
+    "level": "beginner"
+  },
+  {
+    "id": 130,
+    "word": "facteur",
+    "meaning": "personne qui livre le courrier",
+    "example": "Le facteur apporte les lettres.",
+    "tip": "Vélo jaune",
+    "level": "beginner"
+  },
+  {
+    "id": 131,
+    "word": "métro",
+    "meaning": "train souterrain",
+    "example": "Je prends le métro.",
+    "tip": "Rapide en ville",
+    "level": "beginner"
+  },
+  {
+    "id": 132,
+    "word": "bus",
+    "meaning": "grand véhicule pour passagers",
+    "example": "Je prends le bus matin.",
+    "tip": "Transport en commun",
+    "level": "beginner"
+  },
+  {
+    "id": 133,
+    "word": "vélo",
+    "meaning": "deux roues, à pédales",
+    "example": "Je fais du vélo.",
+    "tip": "Écologique",
+    "level": "beginner"
+  },
+  {
+    "id": 134,
+    "word": "train",
+    "meaning": "véhicule sur rails",
+    "example": "Je vais au travail en train.",
+    "tip": "Gare",
+    "level": "beginner"
+  },
+  {
+    "id": 135,
+    "word": "avion",
+    "meaning": "véhicule qui vole",
+    "example": "L'avion décolle.",
+    "tip": "Voyage à l'étranger",
+    "level": "beginner"
+  },
+  {
+    "id": 136,
+    "word": "oui",
+    "meaning": "réponse positive",
+    "example": "Oui, je veux bien.",
+    "tip": "Opposé: non",
+    "level": "beginner"
+  },
+  {
+    "id": 137,
+    "word": "non",
+    "meaning": "réponse négative",
+    "example": "Non, merci.",
+    "tip": "Opposé: oui",
+    "level": "beginner"
+  },
+  {
+    "id": 138,
+    "word": "merci",
+    "meaning": "exprimer la gratitude",
+    "example": "Merci beaucoup!",
+    "tip": "Toujours poli",
+    "level": "beginner"
+  },
+  {
+    "id": 139,
+    "word": "s'il vous plaît",
+    "meaning": "formule de politesse",
+    "example": "Un café, s'il vous plaît.",
+    "tip": "Vouvoiement",
+    "level": "beginner"
+  },
+  {
+    "id": 140,
+    "word": "désolé",
+    "meaning": "s'excuser",
+    "example": "Désolé, je suis en retard.",
+    "tip": "Pardon",
+    "level": "beginner"
+  },
+  {
+    "id": 141,
+    "word": "bonjour",
+    "meaning": "salutation le matin",
+    "example": "Bonjour, comment allez-vous?",
+    "tip": "Dire bonjour est poli",
+    "level": "beginner"
+  },
+  {
+    "id": 142,
+    "word": "bonsoir",
+    "meaning": "salutation le soir",
+    "example": "Bonsoir, belle soirée!",
+    "tip": "Le soir venu",
+    "level": "beginner"
+  },
+  {
+    "id": 143,
+    "word": "au revoir",
+    "meaning": "dire au revoir",
+    "example": "Au revoir, à demain!",
+    "tip": "Quand on part",
+    "level": "beginner"
+  },
+  {
+    "id": 144,
+    "word": "reposer",
+    "meaning": "se relaxer",
+    "example": "Je me repose dimanche.",
+    "tip": "Repos important",
+    "level": "beginner"
+  },
+  {
+    "id": 145,
+    "word": "sourire",
+    "meaning": "expression heureuse",
+    "example": "Un sourire change tout.",
+    "tip": "Montrer ses dents",
+    "level": "beginner"
+  },
+  {
+    "id": 146,
+    "word": "pleurer",
+    "meaning": "verser des larmes",
+    "example": "Le bébé pleure.",
+    "tip": "Triste",
+    "level": "beginner"
+  },
+  {
+    "id": 147,
+    "word": "rire",
+    "meaning": "exprimer l'amusement",
+    "example": "Nous rions ensemble.",
+    "tip": "Rire est bon pour la santé",
+    "level": "beginner"
+  },
+  {
+    "id": 148,
+    "word": "poser",
+    "meaning": "mettre quelque chose",
+    "example": "Pose le livre sur la table.",
+    "tip": "Ne pas jeter",
+    "level": "beginner"
+  },
+  {
+    "id": 149,
+    "word": "aider",
+    "meaning": "donner un coup de main",
+    "example": "Je peux t'aider?",
+    "tip": "Être utile",
+    "level": "beginner"
+  },
+  {
+    "id": 150,
+    "word": "chercher",
+    "meaning": "essayer de trouver",
+    "example": "Je cherche mes clés.",
+    "tip": "Regarder partout",
+    "level": "beginner"
+  },
+  {
+    "id": 151,
+    "word": "trouver",
+    "meaning": "découvrir par hasard",
+    "example": "J'ai trouvé mon stylo.",
+    "tip": "Succès de la recherche",
+    "level": "beginner"
+  },
+  {
+    "id": 152,
+    "word": "donner",
+    "meaning": "offrir quelque chose",
+    "example": "Donne-moi la main.",
+    "tip": "Donner c'est aimer",
+    "level": "beginner"
+  },
+  {
+    "id": 153,
+    "word": "recevoir",
+    "meaning": "accepter quelque chose",
+    "example": "J'ai reçu un cadeau.",
+    "tip": "Contraire de donner",
+    "level": "beginner"
+  },
+  {
+    "id": 154,
+    "word": "ouvrir",
+    "meaning": "rendre accessible",
+    "example": "Ouvre la fenêtre.",
+    "tip": "Opposé: fermer",
+    "level": "beginner"
+  },
+  {
+    "id": 155,
+    "word": "fermer",
+    "meaning": "rendre fermé",
+    "example": "Ferme la porte.",
+    "tip": "Opposé: ouvrir",
+    "level": "beginner"
+  },
+  {
+    "id": 156,
+    "word": "aimer",
+    "meaning": "avoir de l'affection",
+    "example": "J'aime ma famille.",
+    "tip": "Love in French",
+    "level": "beginner"
+  },
+  {
+    "id": 157,
+    "word": "adorer",
+    "meaning": "aimer beaucoup",
+    "example": "J'adore le chocolat.",
+    "tip": "Plus fort qu'aimer",
+    "level": "beginner"
+  },
+  {
+    "id": 158,
+    "word": "détester",
+    "meaning": "ne pas aimer",
+    "example": "Je déteste les mensonges.",
+    "tip": "Opposé: adorer",
+    "level": "beginner"
+  },
+  {
+    "id": 159,
+    "word": "préférer",
+    "meaning": "choisir plutôt qu'autre chose",
+    "example": "Je préfère le thé.",
+    "tip": "Préférence personnelle",
+    "level": "beginner"
+  },
+  {
+    "id": 160,
+    "word": "espérer",
+    "meaning": "souhaiter quelque chose",
+    "example": "J'espère qu'il fera beau.",
+    "tip": "Optimiste",
+    "level": "beginner"
+  },
+  {
+    "id": 161,
+    "word": "oublier",
+    "meaning": "ne plus se souvenir",
+    "example": "J'ai oublié ton nom.",
+    "tip": "Pas intentionnel",
+    "level": "beginner"
+  },
+  {
+    "id": 162,
+    "word": "rappeler",
+    "meaning": "se souvenir",
+    "example": "Rappelle-toi ce jour.",
+    "tip": "Ne pas oublier",
+    "level": "beginner"
+  },
+  {
+    "id": 163,
+    "word": "comprendre",
+    "meaning": "saisir le sens",
+    "example": "Je comprends la leçon.",
+    "tip": "Être capable",
+    "level": "beginner"
+  },
+  {
+    "id": 164,
+    "word": "expliquer",
+    "meaning": "rendre clair",
+    "example": "Explique-moi le problème.",
+    "tip": "Simplifier",
+    "level": "beginner"
+  },
+  {
+    "id": 165,
+    "word": "commencer",
+    "meaning": "débuter",
+    "example": "Le cours commence à 9h.",
+    "tip": "Démarrage",
+    "level": "beginner"
+  },
+  {
+    "id": 166,
+    "word": "finir",
+    "meaning": "terminer",
+    "example": "J'ai fini mes devoirs.",
+    "tip": "C'est terminé",
+    "level": "beginner"
+  },
+  {
+    "id": 167,
+    "word": "travailler",
+    "meaning": "exercer un métier",
+    "example": "Je travaille de 9h à 17h.",
+    "tip": "Gagner sa vie",
+    "level": "beginner"
+  },
+  {
+    "id": 168,
+    "word": "étudier",
+    "meaning": "apprendre sérieusement",
+    "example": "J'étudie le français.",
+    "tip": "Se concentrer",
+    "level": "beginner"
+  },
+  {
+    "id": 169,
+    "word": "jouer",
+    "meaning": "s'amuser",
+    "example": "Les enfants jouent dehors.",
+    "tip": "S'amuser",
+    "level": "beginner"
+  },
+  {
+    "id": 170,
+    "word": "chanter",
+    "meaning": "produire des sons musicaux",
+    "example": "Elle chante très bien.",
+    "tip": "Avec la voix",
+    "level": "beginner"
+  },
+  {
+    "id": 171,
+    "word": "danser",
+    "meaning": "bouger en rythme",
+    "example": "Nous dansons ensemble.",
+    "tip": "Musique",
+    "level": "beginner"
+  },
+  {
+    "id": 172,
+    "word": "voyager",
+    "meaning": "se déplacer loin",
+    "example": "Je veux voyager en Italie.",
+    "tip": "Découvrir le monde",
+    "level": "beginner"
+  },
+  {
+    "id": 173,
+    "word": "acheter",
+    "meaning": "payer pour avoir",
+    "example": "J'achète du pain.",
+    "tip": "Shopping",
+    "level": "beginner"
+  },
+  {
+    "id": 174,
+    "word": "vendre",
+    "meaning": "proposer contre argent",
+    "example": "Il vend sa voiture.",
+    "tip": "Opposé: acheter",
+    "level": "beginner"
+  },
+  {
+    "id": 175,
+    "word": "porter",
+    "meaning": "mettre sur soi",
+    "example": "Elle porte une robe rouge.",
+    "tip": "Habillement",
+    "level": "beginner"
+  },
+  {
+    "id": 176,
+    "word": "essayer",
+    "meaning": "tester",
+    "example": "J'essaie ce pantalon.",
+    "tip": "Voir si ça plaît",
+    "level": "beginner"
+  },
+  {
+    "id": 177,
+    "word": "ranger",
+    "meaning": "mettre en ordre",
+    "example": "Range ta chambre!",
+    "tip": "Nettoyer",
+    "level": "beginner"
+  },
+  {
+    "id": 178,
+    "word": "ménage",
+    "meaning": "nettoyer la maison",
+    "example": "Je fais le ménage samedi.",
+    "tip": "Balai et aspirateur",
+    "level": "beginner"
+  },
+  {
+    "id": 179,
+    "word": "cuisiner",
+    "meaning": "préparer la nourriture",
+    "example": "J'aime cuisiner italien.",
+    "tip": "Recettes",
+    "level": "beginner"
+  },
+  {
+    "id": 180,
+    "word": "laver",
+    "meaning": "nettoyer avec de l'eau",
+    "example": "Lave-toi les mains.",
+    "tip": "Propreté",
+    "level": "beginner"
+  },
+  {
+    "id": 181,
+    "word": "aller",
+    "meaning": "se déplacer vers un lieu",
+    "example": "Je vais au travail.",
+    "tip": "Verbe essentiel",
+    "level": "beginner"
+  },
+  {
+    "id": 182,
+    "word": "venir",
+    "meaning": "se déplacer ici",
+    "example": "Merci d'être venu.",
+    "tip": "Venir = arriver",
+    "level": "beginner"
+  },
+  {
+    "id": 183,
+    "word": "partir",
+    "meaning": "quitter un lieu",
+    "example": "Il part en vacances.",
+    "tip": "Quitter",
+    "level": "beginner"
+  },
+  {
+    "id": 184,
+    "word": "arriver",
+    "meaning": "atteindre un lieu",
+    "example": "Nous arrivons à Paris.",
+    "tip": "Destination",
+    "level": "beginner"
+  },
+  {
+    "id": 185,
+    "word": "entrer",
+    "meaning": "aller à l'intérieur",
+    "example": "Entre, s'il te plaît!",
+    "tip": "Pénétrer",
+    "level": "beginner"
+  },
+  {
+    "id": 186,
+    "word": "sortir",
+    "meaning": "aller à l'extérieur",
+    "example": "Je sors avec mes amis.",
+    "tip": "Quitter l'intérieur",
+    "level": "beginner"
+  },
+  {
+    "id": 187,
+    "word": "monter",
+    "meaning": "grimper vers le haut",
+    "example": "Monte dans la voiture.",
+    "tip": "Opposé: descendre",
+    "level": "beginner"
+  },
+  {
+    "id": 188,
+    "word": "descendre",
+    "meaning": "aller vers le bas",
+    "example": "Descends du bus.",
+    "tip": "Opposé: monter",
+    "level": "beginner"
+  },
+  {
+    "id": 189,
+    "word": "mettre",
+    "meaning": "placer quelque part",
+    "example": "Mets le livre sur l'étagère.",
+    "tip": "Positionner",
+    "level": "beginner"
+  },
+  {
+    "id": 190,
+    "word": "enlever",
+    "meaning": "retirer",
+    "example": "Enlève ton manteau.",
+    "tip": "Opposé: mettre",
+    "level": "beginner"
+  },
+  {
+    "id": 191,
+    "word": "changer",
+    "meaning": "rendre différent",
+    "example": "Je change de coiffure.",
+    "tip": "Transformer",
+    "level": "beginner"
+  },
+  {
+    "id": 192,
+    "word": "devoir",
+    "meaning": "obligation",
+    "example": "Je dois travailler.",
+    "tip": "Responsabilité",
+    "level": "beginner"
+  },
+  {
+    "id": 193,
+    "word": "pouvoir",
+    "meaning": "avoir la capacité",
+    "example": "Je peux t'aider.",
+    "tip": "Permis",
+    "level": "beginner"
+  },
+  {
+    "id": 194,
+    "word": "vouloir",
+    "meaning": "désirer",
+    "example": "Je veux un café.",
+    "tip": "Volonté",
+    "level": "beginner"
+  },
+  {
+    "id": 195,
+    "word": "savoir",
+    "meaning": "avoir la connaissance",
+    "example": "Je sais la réponse.",
+    "tip": "Connaissance",
+    "level": "beginner"
+  },
+  {
+    "id": 196,
+    "word": "croire",
+    "meaning": "penser vrai",
+    "example": "Je crois en toi.",
+    "tip": "Confiance",
+    "level": "beginner"
+  },
+  {
+    "id": 197,
+    "word": "penser",
+    "meaning": "avoir une opinion",
+    "example": "Je pense que oui.",
+    "tip": "Réfléchir",
+    "level": "beginner"
+  },
+  {
+    "id": 198,
+    "word": "sentir",
+    "meaning": "percevoir par l'odorat",
+    "example": "Ça sent bon!",
+    "tip": "Odeur",
+    "level": "beginner"
+  },
+  {
+    "id": 199,
+    "word": "regretter",
+    "meaning": "être désolé pour",
+    "example": "Je regrette mon erreur.",
+    "tip": "Triste",
+    "level": "beginner"
+  },
+  {
+    "id": 200,
+    "word": "cause",
+    "meaning": "raison",
+    "example": "Quelle est la cause?",
+    "tip": "Parce que",
+    "level": "beginner"
+  },
+  {
+    "id": 201,
+    "word": "analyser",
+    "meaning": "étudier attentivement quelque chose",
+    "example": "Les scientifiques analysent les données.",
+    "tip": "Synonymes: examiner, étudier",
+    "level": "intermediate"
+  },
+  {
+    "id": 202,
+    "word": "significatif",
+    "meaning": "très important ou significatif",
+    "example": "C'est une découverte significative!",
+    "tip": "Antonyme: insignifiant",
+    "level": "intermediate"
+  },
+  {
+    "id": 203,
+    "word": "persévérance",
+    "meaning": "effort continu malgré les difficultés",
+    "example": "Grâce à sa persévérance, elle a réussi.",
+    "tip": "Continuez quoi qu'il arrive",
+    "level": "intermediate"
+  },
+  {
+    "id": 204,
+    "word": "conséquence",
+    "meaning": "un résultat ou un effet d'une action",
+    "example": "Il a affronté les conséquences.",
+    "tip": "Cause et effet",
+    "level": "intermediate"
+  },
+  {
+    "id": 205,
+    "word": "essentiel",
+    "meaning": "absolument nécessaire",
+    "example": "L'eau est essentielle à la vie.",
+    "tip": "Synonymes: crucial, vital",
+    "level": "intermediate"
+  },
+  {
+    "id": 206,
+    "word": "flexible",
+    "meaning": "capable de changer facilement",
+    "example": "Elle a un emploi du temps flexible.",
+    "tip": "Opposé: rigide",
+    "level": "intermediate"
+  },
+  {
+    "id": 207,
+    "word": "générer",
+    "meaning": "produire ou créer",
+    "example": "Les panneaux solaires génèrent de l'électricité.",
+    "tip": "Synonymes: produire, créer",
+    "level": "intermediate"
+  },
+  {
+    "id": 208,
+    "word": "maintenir",
+    "meaning": "garder en bon état",
+    "example": "Entretenez votre voiture régulièrement.",
+    "tip": "L'entretien régulier est important",
+    "level": "intermediate"
+  },
+  {
+    "id": 209,
+    "word": "évident",
+    "meaning": "facilement vu ou compris",
+    "example": "La réponse était évidente.",
+    "tip": "Synonymes: clair, manifeste",
+    "level": "intermediate"
+  },
+  {
+    "id": 210,
+    "word": "potentiel",
+    "meaning": "possible ou capable de devenir",
+    "example": "Elle a un grand potentiel.",
+    "tip": "Possibilité future",
+    "level": "intermediate"
+  },
+  {
+    "id": 211,
+    "word": "avantage",
+    "meaning": "quelque chose de bénéfique",
+    "example": "Parler deux langues est un avantage.",
+    "tip": "Point positif",
+    "level": "intermediate"
+  },
+  {
+    "id": 212,
+    "word": "désavantage",
+    "meaning": "point négatif",
+    "example": "Le prix est un désavantage.",
+    "tip": "Inconvénient",
+    "level": "intermediate"
+  },
+  {
+    "id": 213,
+    "word": "environnement",
+    "meaning": "nature autour de nous",
+    "example": "Protégeons l'environnement.",
+    "tip": "La planète",
+    "level": "intermediate"
+  },
+  {
+    "id": 214,
+    "word": "développement",
+    "meaning": "croissance ou amélioration",
+    "example": "Le développement personnel compte.",
+    "tip": "Progrès",
+    "level": "intermediate"
+  },
+  {
+    "id": 215,
+    "word": "responsabilité",
+    "meaning": "devoir ou obligation",
+    "example": "Prends tes responsabilités.",
+    "tip": "Fiable",
+    "level": "intermediate"
+  },
+  {
+    "id": 216,
+    "word": "confiance",
+    "meaning": "croire en quelqu'un",
+    "example": "J'ai confiance en toi.",
+    "tip": "Foi",
+    "level": "intermediate"
+  },
+  {
+    "id": 217,
+    "word": "doute",
+    "meaning": "absence de certitude",
+    "example": "J'ai un doute.",
+    "tip": "Pas sûr",
+    "level": "intermediate"
+  },
+  {
+    "id": 218,
+    "word": "preuve",
+    "meaning": "fait qui montre la vérité",
+    "example": "As-tu une preuve?",
+    "tip": "Évidence",
+    "level": "intermediate"
+  },
+  {
+    "id": 219,
+    "word": "théorie",
+    "meaning": "explication basée sur des idées",
+    "example": "C'est juste une théorie.",
+    "tip": "Pas encore prouvé",
+    "level": "intermediate"
+  },
+  {
+    "id": 220,
+    "word": "pratique",
+    "meaning": "mettre en application",
+    "example": "La théorie sans pratique est inutile.",
+    "tip": "Faire réellement",
+    "level": "intermediate"
+  },
+  {
+    "id": 221,
+    "word": "expérience",
+    "meaning": "situation vécue",
+    "example": "L'expérience est la meilleure leçon.",
+    "tip": "Apprendre en faisant",
+    "level": "intermediate"
+  },
+  {
+    "id": 222,
+    "word": "objectif",
+    "meaning": "but à atteindre",
+    "example": "Mon objectif est d'apprendre le français.",
+    "tip": "Cible",
+    "level": "intermediate"
+  },
+  {
+    "id": 223,
+    "word": "progrès",
+    "meaning": "avancée positive",
+    "example": "Tu fais des progrès!",
+    "tip": "Amélioration",
+    "level": "intermediate"
+  },
+  {
+    "id": 224,
+    "word": "solution",
+    "meaning": "réponse à un problème",
+    "example": "Trouvons une solution.",
+    "tip": "Résolution",
+    "level": "intermediate"
+  },
+  {
+    "id": 225,
+    "word": "problème",
+    "meaning": "difficulté à résoudre",
+    "example": "J'ai un problème.",
+    "tip": "Défi",
+    "level": "intermediate"
+  },
+  {
+    "id": 226,
+    "word": "qualité",
+    "meaning": "niveau d'excellence",
+    "example": "Qualité plutôt que quantité.",
+    "tip": "Bon standard",
+    "level": "intermediate"
+  },
+  {
+    "id": 227,
+    "word": "quantité",
+    "meaning": "combien il y en a",
+    "example": "La quantité est grande.",
+    "tip": "Nombre",
+    "level": "intermediate"
+  },
+  {
+    "id": 228,
+    "word": "chance",
+    "meaning": "destin favorable",
+    "example": "Bonne chance!",
+    "tip": "Opportunité",
+    "level": "intermediate"
+  },
+  {
+    "id": 229,
+    "word": "risque",
+    "meaning": "possibilité de danger",
+    "example": "Ça vaut le risque?",
+    "tip": "Péril",
+    "level": "intermediate"
+  },
+  {
+    "id": 230,
+    "word": "choix",
+    "meaning": "option à sélectionner",
+    "example": "C'est ton choix.",
+    "tip": "Décision",
+    "level": "intermediate"
+  },
+  {
+    "id": 231,
+    "word": "opinion",
+    "meaning": "point de vue personnel",
+    "example": "Chacun a son opinion.",
+    "tip": "Avis",
+    "level": "intermediate"
+  },
+  {
+    "id": 232,
+    "word": "réalité",
+    "meaning": "ce qui est vrai",
+    "example": "Reviens à la réalité.",
+    "tip": "Vérité",
+    "level": "intermediate"
+  },
+  {
+    "id": 233,
+    "word": "imagination",
+    "meaning": "capacité à créer des images mentales",
+    "example": "Les enfants ont de l'imagination.",
+    "tip": "Créativité",
+    "level": "intermediate"
+  },
+  {
+    "id": 234,
+    "word": "réussite",
+    "meaning": "atteindre un but",
+    "example": "La réussite vient avec le travail.",
+    "tip": "Succès",
+    "level": "intermediate"
+  },
+  {
+    "id": 235,
+    "word": "échec",
+    "meaning": "ne pas atteindre le but",
+    "example": "L'échec est une leçon.",
+    "tip": "Opposé: réussite",
+    "level": "intermediate"
+  },
+  {
+    "id": 236,
+    "word": "motivation",
+    "meaning": "envie de faire",
+    "example": "J'ai besoin de motivation.",
+    "tip": "Inspiration",
+    "level": "intermediate"
+  },
+  {
+    "id": 237,
+    "word": "passion",
+    "meaning": "amour fort pour quelque chose",
+    "example": "La musique est ma passion.",
+    "tip": "Hobby favori",
+    "level": "intermediate"
+  },
+  {
+    "id": 238,
+    "word": "satisfaction",
+    "meaning": "sentiment de contentement",
+    "example": "Le travail bien fait donne satisfaction.",
+    "tip": "Bonheur",
+    "level": "intermediate"
+  },
+  {
+    "id": 239,
+    "word": "stress",
+    "meaning": "pression mentale",
+    "example": "Le travail peut causer du stress.",
+    "tip": "Anxiété",
+    "level": "intermediate"
+  },
+  {
+    "id": 240,
+    "word": "calme",
+    "meaning": "état paisible",
+    "example": "J'aime le calme.",
+    "tip": "Silencieux",
+    "level": "intermediate"
+  },
+  {
+    "id": 241,
+    "word": "équilibrer",
+    "meaning": "maintenir la stabilité",
+    "example": "Équilibre tes repas.",
+    "tip": "Harmonie",
+    "level": "intermediate"
+  },
+  {
+    "id": 242,
+    "word": "bénéfice",
+    "meaning": "gain positif",
+    "example": "L'exercice a des bénéfices.",
+    "tip": "Avantages",
+    "level": "intermediate"
+  },
+  {
+    "id": 243,
+    "word": "tendance",
+    "meaning": "direction générale",
+    "example": "C'est une tendance actuelle.",
+    "tip": "Mode",
+    "level": "intermediate"
+  },
+  {
+    "id": 244,
+    "word": "crise",
+    "meaning": "période difficile",
+    "example": "La crise économique a frappé.",
+    "tip": "Urgence",
+    "level": "intermediate"
+  },
+  {
+    "id": 245,
+    "word": "espoir",
+    "meaning": "attente positive",
+    "example": "Gardez espoir.",
+    "tip": "Optimisme",
+    "level": "intermediate"
+  },
+  {
+    "id": 246,
+    "word": "désespoir",
+    "meaning": "absence d'espoir",
+    "example": "Le désespoir l'a envahi.",
+    "tip": "Pessimisme",
+    "level": "intermediate"
+  },
+  {
+    "id": 247,
+    "word": "courage",
+    "meaning": "force face à la peur",
+    "example": "Aie du courage!",
+    "tip": "Brave",
+    "level": "intermediate"
+  },
+  {
+    "id": 248,
+    "word": "peur",
+    "meaning": "émotion désagréable",
+    "example": "J'ai peur des araignées.",
+    "tip": "Crainte",
+    "level": "intermediate"
+  },
+  {
+    "id": 249,
+    "word": "colère",
+    "meaning": "émotion violente",
+    "example": "Il a crié de colère.",
+    "tip": "Fâché",
+    "level": "intermediate"
+  },
+  {
+    "id": 250,
+    "word": "surprise",
+    "meaning": "événement inattendu",
+    "example": "Quelle bonne surprise!",
+    "tip": "Étonnement",
+    "level": "intermediate"
+  },
+  {
+    "id": 251,
+    "word": "ennui",
+    "meaning": "manque d'intérêt",
+    "example": "Je m'ennuie.",
+    "tip": "Monotone",
+    "level": "intermediate"
+  },
+  {
+    "id": 252,
+    "word": "enthousiasme",
+    "meaning": "grande excitation positive",
+    "example": "Il parle avec enthousiasme.",
+    "tip": "Énergie positive",
+    "level": "intermediate"
+  },
+  {
+    "id": 253,
+    "word": "honnête",
+    "meaning": "qui dit la vérité",
+    "example": "Sois toujours honnête.",
+    "tip": "Sincère",
+    "level": "intermediate"
+  },
+  {
+    "id": 254,
+    "word": "loyal",
+    "meaning": "rester fidèle",
+    "example": "Un ami loyal.",
+    "tip": "Soutient toujours",
+    "level": "intermediate"
+  },
+  {
+    "id": 255,
+    "word": "patient",
+    "meaning": "savoir attendre",
+    "example": "Sois patient.",
+    "tip": "Calme",
+    "level": "intermediate"
+  },
+  {
+    "id": 256,
+    "word": "impoli",
+    "meaning": "sans politesse",
+    "example": "C'est impoli de couper la parole.",
+    "tip": "Rude",
+    "level": "intermediate"
+  },
+  {
+    "id": 257,
+    "word": "poli",
+    "meaning": "qui montre du respect",
+    "example": "Un enfant poli.",
+    "tip": "Dit bonjour",
+    "level": "intermediate"
+  },
+  {
+    "id": 258,
+    "word": "généreux",
+    "meaning": "qui donne volontiers",
+    "example": "Elle est très généreuse.",
+    "tip": "Partage",
+    "level": "intermediate"
+  },
+  {
+    "id": 259,
+    "word": "égoïste",
+    "meaning": "ne pense qu'à soi",
+    "example": "C'est égoïste de tout prendre.",
+    "tip": "Pas de partage",
+    "level": "intermediate"
+  },
+  {
+    "id": 260,
+    "word": "moderne",
+    "meaning": "actuel, contemporain",
+    "example": "Cette voiture est moderne.",
+    "tip": "Pas ancien",
+    "level": "intermediate"
+  },
+  {
+    "id": 261,
+    "word": "traditionnel",
+    "meaning": "basé sur la coutume",
+    "example": "Un plat traditionnel.",
+    "tip": "Transmis depuis longtemps",
+    "level": "intermediate"
+  },
+  {
+    "id": 262,
+    "word": "complexe",
+    "meaning": "difficile à comprendre",
+    "example": "Ce problème est complexe.",
+    "tip": "Compliqué",
+    "level": "intermediate"
+  },
+  {
+    "id": 263,
+    "word": "simple",
+    "meaning": "facile à comprendre",
+    "example": "C'est simple.",
+    "tip": "Pas complexe",
+    "level": "intermediate"
+  },
+  {
+    "id": 264,
+    "word": "capable",
+    "meaning": "avoir la compétence",
+    "example": "Tu es capable de réussir.",
+    "tip": "Peut faire",
+    "level": "intermediate"
+  },
+  {
+    "id": 265,
+    "word": "fiable",
+    "meaning": "digne de confiance",
+    "example": "Cette voiture est fiable.",
+    "tip": "Sur",
+    "level": "intermediate"
+  },
+  {
+    "id": 266,
+    "word": "durable",
+    "meaning": "qui dure longtemps",
+    "example": "Du plastique durable.",
+    "tip": "Solide",
+    "level": "intermediate"
+  },
+  {
+    "id": 267,
+    "word": "fragile",
+    "meaning": "facile à casser",
+    "example": "Ce verre est fragile.",
+    "tip": "Délicat",
+    "level": "intermediate"
+  },
+  {
+    "id": 268,
+    "word": "disponible",
+    "meaning": "libre, accessible",
+    "example": "Je suis disponible demain.",
+    "tip": "Pas occupé",
+    "level": "intermediate"
+  },
+  {
+    "id": 269,
+    "word": "occupé",
+    "meaning": "pas libre",
+    "example": "Désolé, je suis occupé.",
+    "tip": "A beaucoup à faire",
+    "level": "intermediate"
+  },
+  {
+    "id": 270,
+    "word": "précis",
+    "meaning": "exact, juste",
+    "example": "Donne une réponse précise.",
+    "tip": "Pas vague",
+    "level": "intermediate"
+  },
+  {
+    "id": 271,
+    "word": "vague",
+    "meaning": "peu clair",
+    "example": "Ses explications sont vagues.",
+    "tip": "Imprécis",
+    "level": "intermediate"
+  },
+  {
+    "id": 272,
+    "word": "égal",
+    "meaning": "identique",
+    "example": "Tous égaux devant la loi.",
+    "tip": "Pareil",
+    "level": "intermediate"
+  },
+  {
+    "id": 273,
+    "word": "différent",
+    "meaning": "pas le même",
+    "example": "Nous sommes différents.",
+    "tip": "Contraire: semblable",
+    "level": "intermediate"
+  },
+  {
+    "id": 274,
+    "word": "actif",
+    "meaning": "qui bouge, qui fait",
+    "example": "Elle est très active.",
+    "tip": "Remue",
+    "level": "intermediate"
+  },
+  {
+    "id": 275,
+    "word": "passif",
+    "meaning": "inactif",
+    "example": "Il reste passif.",
+    "tip": "Ne fait rien",
+    "level": "intermediate"
+  },
+  {
+    "id": 276,
+    "word": "clair",
+    "meaning": "facile à comprendre",
+    "example": "C'est clair.",
+    "tip": "Compris",
+    "level": "intermediate"
+  },
+  {
+    "id": 277,
+    "word": "obscur",
+    "meaning": "difficile à comprendre",
+    "example": "Son sens est obscur.",
+    "tip": "Pas clair",
+    "level": "intermediate"
+  },
+  {
+    "id": 278,
+    "word": "régulier",
+    "meaning": "constant, répété",
+    "example": "Entraînement régulier.",
+    "tip": "Souvent",
+    "level": "intermediate"
+  },
+  {
+    "id": 279,
+    "word": "direct",
+    "meaning": "sans détour",
+    "example": "Un vol direct.",
+    "tip": "Ligne droite",
+    "level": "intermediate"
+  },
+  {
+    "id": 280,
+    "word": "indirect",
+    "meaning": "avec un détour",
+    "example": "Un chemin indirect.",
+    "tip": "Pas direct",
+    "level": "intermediate"
+  },
+  {
+    "id": 281,
+    "word": "fréquent",
+    "meaning": "qui arrive souvent",
+    "example": "C'est fréquent ici.",
+    "tip": "Commun",
+    "level": "intermediate"
+  },
+  {
+    "id": 282,
+    "word": "rare",
+    "meaning": "peu fréquent",
+    "example": "Une espèce rare.",
+    "tip": "Pas commun",
+    "level": "intermediate"
+  },
+  {
+    "id": 283,
+    "word": "positif",
+    "meaning": "constructif, favorable",
+    "example": "Une attitude positive.",
+    "tip": "Optimiste",
+    "level": "intermediate"
+  },
+  {
+    "id": 284,
+    "word": "négatif",
+    "meaning": "défavorable",
+    "example": "Un effet négatif.",
+    "tip": "Pessimiste",
+    "level": "intermediate"
+  },
+  {
+    "id": 285,
+    "word": "propre",
+    "meaning": "net, sans saleté",
+    "example": "La maison est propre.",
+    "tip": "Lavé",
+    "level": "intermediate"
+  },
+  {
+    "id": 286,
+    "word": "sale",
+    "meaning": "crasseux",
+    "example": "Des vêtements sales.",
+    "tip": "Opposé: propre",
+    "level": "intermediate"
+  },
+  {
+    "id": 287,
+    "word": "entier",
+    "meaning": "complet, total",
+    "example": "J'ai mangé le gâteau entier.",
+    "tip": "Tout",
+    "level": "intermediate"
+  },
+  {
+    "id": 288,
+    "word": "partiel",
+    "meaning": "pas complet",
+    "example": "Une réponse partielle.",
+    "tip": "Un peu seulement",
+    "level": "intermediate"
+  },
+  {
+    "id": 289,
+    "word": "principal",
+    "meaning": "le plus important",
+    "example": "La raison principale.",
+    "tip": "Premier",
+    "level": "intermediate"
+  },
+  {
+    "id": 290,
+    "word": "secondaire",
+    "meaning": "moins important",
+    "example": "Un détail secondaire.",
+    "tip": "Pas principal",
+    "level": "intermediate"
+  },
+  {
+    "id": 291,
+    "word": "majeur",
+    "meaning": "très important",
+    "example": "Un problème majeur.",
+    "tip": "Grave",
+    "level": "intermediate"
+  },
+  {
+    "id": 292,
+    "word": "mineur",
+    "meaning": "peu important",
+    "example": "Un détail mineur.",
+    "tip": "Petit",
+    "level": "intermediate"
+  },
+  {
+    "id": 293,
+    "word": "favori",
+    "meaning": "préféré",
+    "example": "Ma chanson favorite.",
+    "tip": "Le meilleur",
+    "level": "intermediate"
+  },
+  {
+    "id": 294,
+    "word": "populaire",
+    "meaning": "aimé par beaucoup",
+    "example": "Ce chanteur est populaire.",
+    "tip": "Connu",
+    "level": "intermediate"
+  },
+  {
+    "id": 295,
+    "word": "calme",
+    "meaning": "silencieux, paisible",
+    "example": "Un endroit calme.",
+    "tip": "Pas bruyant",
+    "level": "intermediate"
+  },
+  {
+    "id": 296,
+    "word": "bruyant",
+    "meaning": "qui fait du bruit",
+    "example": "Des voisins bruyants.",
+    "tip": "Beaucoup de son",
+    "level": "intermediate"
+  },
+  {
+    "id": 297,
+    "word": "lointain",
+    "meaning": "loin dans l'espace ou le temps",
+    "example": "Un pays lointain.",
+    "tip": "Pas proche",
+    "level": "intermediate"
+  },
+  {
+    "id": 298,
+    "word": "proche",
+    "meaning": "près",
+    "example": "L'école est proche.",
+    "tip": "Pas loin",
+    "level": "intermediate"
+  },
+  {
+    "id": 299,
+    "word": "omniscient",
+    "meaning": "qui sait tout",
+    "example": "Dans certains livres, le narrateur est omniscient.",
+    "tip": "Tout savoir",
+    "level": "advanced"
+  },
+  {
+    "id": 300,
+    "word": "omniprésent",
+    "meaning": "trouvé partout à la fois",
+    "example": "Les smartphones sont omniprésents.",
+    "tip": "Synonymes: partout",
+    "level": "advanced"
+  }
+]

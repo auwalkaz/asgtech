@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>📖 Reading Practice - AI Dictation with Accent Analysis</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: white;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.back-btn {
+    background: rgba(255,255,255,0.2);
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s;
+}
+
+.back-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+}
+
+.story-card {
+    background: rgba(30, 41, 59, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.story-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #a78bfa;
+}
+
+.story-content {
+    line-height: 1.8;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #0f172a;
+    border-radius: 15px;
+    font-size: 1.1em;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.reading-area {
+    background: #1e293b;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.reading-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.mic-btn {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    font-size: 1.8em;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: white;
+    position: relative;
+}
+
+.mic-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(239,68,68,0.5);
+}
+
+.mic-btn.recording {
+    animation: pulse 1s infinite;
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+.mic-btn.recording::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    border: 2px solid #ef4444;
+    animation: ripple 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+@keyframes ripple {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.3); opacity: 0; }
+}
+
+.pronounce-btn {
+    background: #10b981;
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.pronounce-btn:hover {
+    background: #059669;
+    transform: translateY(-2px);
+}
+
+.question {
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.question-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #0f172a;
+    color: white;
+    margin-top: 10px;
+}
+
+.btn {
+    padding: 12px 25px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; }
+.btn-success { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+.btn-ai { background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; }
+.btn-warning { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Word Recognition */
+.word-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.word-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid #334155;
+}
+
+.word-card:hover {
+    transform: translateY(-5px);
+    border-color: #8b5cf6;
+}
+
+.word-card.answered {
+    opacity: 0.6;
+    border-color: #10b981;
+}
+
+.word-text {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #60a5fa;
+    margin-bottom: 10px;
+}
+
+.word-actions {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.word-btn-small {
+    background: #3b82f6;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.7em;
+    transition: all 0.2s;
+}
+
+.word-btn-small:hover {
+    background: #2563eb;
+    transform: scale(1.05);
+}
+
+/* Dictation Area */
+.dictation-area {
+    background: #0f172a;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.dictation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.dictation-title {
+    font-size: 1em;
+    color: #a78bfa;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sentence-selector {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.sentence-nav-btn {
+    background: #334155;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: all 0.2s;
+}
+
+.sentence-nav-btn:hover {
+    background: #3b82f6;
+}
+
+.dictation-box {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.expected-sentence {
+    color: #a78bfa;
+    margin-bottom: 15px;
+    font-size: 1em;
+    padding: 12px;
+    background: #0f172a;
+    border-radius: 10px;
+    border-left: 3px solid #8b5cf6;
+}
+
+.user-sentence {
+    color: #fbbf24;
+    margin-bottom: 15px;
+    font-size: 1em;
+    padding: 12px;
+    background: #0f172a;
+    border-radius: 10px;
+    border-left: 3px solid #f59e0b;
+}
+
+.comparison-result {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 0.9em;
+}
+
+.comparison-match {
+    background: #064e3b;
+    color: #10b981;
+}
+
+.comparison-mismatch {
+    background: #7f1d1d;
+    color: #fca5a5;
+}
+
+.accuracy-meter {
+    margin-top: 10px;
+    height: 8px;
+    background: #334155;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.accuracy-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981);
+    width: 0%;
+    transition: width 0.5s;
+}
+
+.feedback {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.feedback.correct { background: #064e3b; color: #10b981; }
+.feedback.wrong { background: #7f1d1d; color: #ef4444; }
+.feedback.info { background: #1e3a5f; color: #60a5fa; }
+
+.progress-bar {
+    height: 10px;
+    background: #334155;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #3b82f6);
+    width: 0%;
+    transition: width 0.5s;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    flex: 1;
+    background: #0f172a;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #a78bfa;
+}
+
+.stat-label {
+    font-size: 0.8em;
+    color: #94a3b8;
+    margin-top: 5px;
+}
+
+.refresh-btn {
+    margin-left: 15px;
+    padding: 5px 12px;
+    font-size: 0.8em;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #a78bfa;
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #a78bfa;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.volume-meter {
+    height: 4px;
+    background: #334155;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.volume-fill {
+    height: 100%;
+    width: 0%;
+    background: #10b981;
+    transition: width 0.1s;
+}
+
+.keyboard-hint {
+    font-size: 0.7em;
+    color: #64748b;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.9);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    z-index: 9999;
+    font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+    .word-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .stats-container {
+        flex-direction: column;
+    }
+    .reading-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    .mic-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5em;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header">
+        <a href="index.html" class="back-btn">← Back to Dashboard</a>
+        <div>📖 Reading Practice <span style="background: #8b5cf6; padding: 2px 8px; border-radius: 15px; font-size: 0.7em;">🤖 AI Dictation + Accent Analysis</span></div>
+        <div id="languageDisplay">English</div>
+    </div>
+
+    <!-- Word Recognition -->
+    <div class="story-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <div>
+                <h3>📚 Word Recognition</h3>
+                <p style="font-size: 0.8em; color: #94a3b8;">💡 Click on any word card to learn its meaning and pronunciation</p>
+            </div>
+            <button class="btn-ai refresh-btn" onclick="loadVocabularyWords()">🔄 New Words</button>
+        </div>
+        
+        <div class="word-grid" id="wordGrid">
+            <div class="loading"><div class="loading-spinner"></div> Loading vocabulary...</div>
+        </div>
+        
+        <div id="wordFeedback" class="feedback"></div>
+    </div>
+
+    <!-- Story Reading with AI Dictation -->
+    <div class="story-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <h3>📖 AI Dictation Practice</h3>
+            <button class="btn-ai refresh-btn" onclick="loadStories()">🔄 New Story</button>
+        </div>
+        <div class="story-title" id="storyTitle">Loading story...</div>
+        <div class="story-content" id="storyContent"></div>
+        
+        <!-- Dictation Area -->
+        <div class="dictation-area">
+            <div class="dictation-header">
+                <div class="dictation-title">
+                    <span>🎙️</span> AI-Powered Dictation with Accent Analysis
+                </div>
+                <div class="sentence-selector">
+                    <span style="font-size: 0.8em; color: #94a3b8;">Sentence:</span>
+                    <button class="sentence-nav-btn" onclick="previousSentence()">◀ Prev</button>
+                    <span id="sentenceCounter" style="font-size: 0.8em;">1/1</span>
+                    <button class="sentence-nav-btn" onclick="nextSentence()">Next ▶</button>
+                </div>
+            </div>
+            
+            <div class="dictation-box">
+                <div class="expected-sentence" id="expectedSentence">
+                    📖 <strong>Read this:</strong> Click the microphone to start
+                </div>
+                <div class="user-sentence" id="userSentence">
+                    🎤 <strong>You said:</strong> Not yet recorded
+                </div>
+                <div class="accuracy-meter">
+                    <div class="accuracy-fill" id="accuracyFill"></div>
+                </div>
+                <div class="volume-meter">
+                    <div class="volume-fill" id="volumeFill"></div>
+                </div>
+                <div id="comparisonResult" class="comparison-result"></div>
+            </div>
+        </div>
+        
+        <!-- Controls -->
+        <div class="reading-area">
+            <div class="reading-controls">
+                <button class="pronounce-btn" onclick="listenToCurrentSentence()">
+                    🔊 Listen to Sentence
+                </button>
+                <button class="pronounce-btn" onclick="listenToStory()">
+                    📖 Listen to Full Story
+                </button>
+                <button class="btn-warning" onclick="testAudio()" style="background: #f59e0b;">
+                    🔧 Test Audio
+                </button>
+                <button class="mic-btn" id="micBtn" onclick="startDictation()">
+                    🎙️
+                </button>
+            </div>
+            <div id="speechFeedback" class="feedback" style="text-align: center;">
+                💡 Click the microphone (or press Space), then read the sentence aloud clearly
+            </div>
+            <div class="keyboard-hint">
+                ⌨️ Keyboard shortcuts: Space = Start/Stop recording | Ctrl+L = Listen to sentence
+            </div>
+        </div>
+        
+        <div id="questionsArea"></div>
+        <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="checkAnswers()">✓ Submit Answers</button>
+            <button class="btn btn-warning" onclick="resetDictation()">🔄 Reset Dictation</button>
+        </div>
+        <div id="readingFeedback" class="feedback" style="margin-top: 15px;"></div>
+    </div>
+
+    <!-- Progress -->
+    <div class="story-card">
+        <h3>📊 Your Progress</h3>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-value" id="wordsRecognized">0</div>
+                <div class="stat-label">Words Learned</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="storiesCompleted">0</div>
+                <div class="stat-label">Stories Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="dictationScore">0%</div>
+                <div class="stat-label">Dictation Accuracy</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let currentLang = localStorage.getItem('preferredLanguage') || 'en';
+let currentLevel = localStorage.getItem('userLevel') || 'beginner';
+let currentStoryIndex = 0;
+let stories = [];
+let vocabularyWords = [];
+let currentSentences = [];
+let currentSentenceIndex = 0;
+let wordScores = { recognized: 0, stories: 0, dictation: 0 };
+let vocabAnswered = {};
+let storyCompleted = {};
+let isRecording = false;
+let currentAudio = null;
+let loadingOverlay = null;
+
+// Check if mobile device
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+let recognition = null;
+let mediaStream = null;
+let audioContext = null;
+let recordingTimeout = null;
+
+document.getElementById('languageDisplay').innerHTML = currentLang.toUpperCase();
+
+function getSpeechLang() {
+    const langMap = {
+        'en': 'en-US', 'fr': 'fr-FR', 'es': 'es-ES',
+        'pt': 'pt-PT', 'sw': 'sw-KE', 'zh': 'zh-CN',
+        'it': 'it-IT', 'de': 'de-DE', 'ja': 'ja-JP', 'ko': 'ko-KR'
+    };
+    return langMap[currentLang] || 'en-US';
+}
+
+// Loading overlay functions
+function showLoading(message = 'Analyzing...') {
+    if (loadingOverlay) hideLoading();
+    loadingOverlay = document.createElement('div');
+    loadingOverlay.className = 'loading-overlay';
+    loadingOverlay.innerHTML = `⏳ ${message}`;
+    document.body.appendChild(loadingOverlay);
+}
+
+function hideLoading() {
+    if (loadingOverlay) {
+        loadingOverlay.remove();
+        loadingOverlay = null;
+    }
+}
+
+// ================= AUDIO FUNCTIONS =================
+async function pronounceText(text) {
+    if (!text) return;
+    try {
+        const response = await fetch('/api/reading/pronounce', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text: text, language: currentLang })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success && data.audio) {
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio = null;
+            }
+            const binary = atob(data.audio);
+            const bytes = new Uint8Array(binary.length);
+            for (let i = 0; i < binary.length; i++) {
+                bytes[i] = binary.charCodeAt(i);
+            }
+            const blob = new Blob([bytes], { type: 'audio/mp3' });
+            const url = URL.createObjectURL(blob);
+            currentAudio = new Audio(url);
+            currentAudio.play();
+            currentAudio.onended = () => URL.revokeObjectURL(url);
+        } else {
+            fallbackTTS(text);
+        }
+    } catch (error) {
+        console.error('TTS error:', error);
+        fallbackTTS(text);
+    }
+}
+
+function fallbackTTS(text) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = getSpeechLang();
+    utterance.rate = 0.8;
+    speechSynthesis.speak(utterance);
+}
+
+async function testAudio() {
+    const feedback = document.getElementById('speechFeedback');
+    feedback.innerHTML = '🔊 Testing audio system...';
+    feedback.className = 'feedback info';
+    try {
+        const response = await fetch('/api/reading/pronounce', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text: "Hello, this is a test.", language: 'en' })
+        });
+        const data = await response.json();
+        if (data.success && data.audio) {
+            const binary = atob(data.audio);
+            const bytes = new Uint8Array(binary.length);
+            for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+            const blob = new Blob([bytes], { type: 'audio/mp3' });
+            const url = URL.createObjectURL(blob);
+            if (currentAudio) currentAudio.pause();
+            currentAudio = new Audio(url);
+            currentAudio.play();
+            feedback.innerHTML = '✅ Audio test successful! You should hear the test message.';
+            feedback.className = 'feedback correct';
+            currentAudio.onended = () => URL.revokeObjectURL(url);
+        } else {
+            throw new Error('No audio received');
+        }
+    } catch (error) {
+        console.error('Audio test error:', error);
+        fallbackTTS("Hello, this is a test using browser speech.");
+        feedback.innerHTML = '✅ Using browser speech synthesis.';
+        feedback.className = 'feedback correct';
+    }
+}
+
+// ================= VOLUME METER =================
+async function startVolumeMeter() {
+    try {
+        if (mediaStream) {
+            mediaStream.getTracks().forEach(track => track.stop());
+        }
+        if (audioContext) {
+            await audioContext.close();
+        }
+        
+        mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const source = audioContext.createMediaStreamSource(mediaStream);
+        const analyser = audioContext.createAnalyser();
+        analyser.fftSize = 256;
+        source.connect(analyser);
+        
+        const dataArray = new Uint8Array(analyser.frequencyBinCount);
+        
+        const updateVolume = () => {
+            if (!isRecording) return;
+            analyser.getByteTimeDomainData(dataArray);
+            let maxSample = 0;
+            for (let i = 0; i < dataArray.length; i++) {
+                const v = (dataArray[i] - 128) / 128;
+                maxSample = Math.max(maxSample, Math.abs(v));
+            }
+            const volumePercent = Math.min(100, maxSample * 100);
+            const volumeFill = document.getElementById('volumeFill');
+            if (volumeFill) {
+                volumeFill.style.width = `${volumePercent}%`;
+                volumeFill.style.backgroundColor = volumePercent > 30 ? '#10b981' : '#fbbf24';
+            }
+            if (isRecording) {
+                requestAnimationFrame(updateVolume);
+            }
+        };
+        updateVolume();
+    } catch (err) {
+        console.log('Volume meter not available:', err);
+    }
+}
+
+function stopVolumeMeter() {
+    if (mediaStream) {
+        mediaStream.getTracks().forEach(track => track.stop());
+        mediaStream = null;
+    }
+    if (audioContext) {
+        audioContext.close();
+        audioContext = null;
+    }
+    const volumeFill = document.getElementById('volumeFill');
+    if (volumeFill) volumeFill.style.width = '0%';
+}
+
+// ================= WORD RECOGNITION =================
+async function loadVocabularyWords() {
+    const grid = document.getElementById('wordGrid');
+    grid.innerHTML = '<div class="loading"><div class="loading-spinner"></div> Loading vocabulary...</div>';
+    
+    try {
+        const response = await fetch(`/api/reading/words?language=${currentLang}&level=${currentLevel}&count=6`);
+        const data = await response.json();
+        if (data.success && data.words && data.words.length > 0) {
+            vocabularyWords = data.words;
+        } else {
+            throw new Error('No words received');
+        }
+    } catch (error) {
+        console.log('Using fallback words');
+        vocabularyWords = [
+            { word: "Beautiful", meaning: "Very pleasing to look at" },
+            { word: "Adventure", meaning: "An exciting experience" },
+            { word: "Important", meaning: "Having great meaning" },
+            { word: "Different", meaning: "Not the same" },
+            { word: "Celebrate", meaning: "To mark a special occasion" },
+            { word: "Wonderful", meaning: "Extremely good" }
+        ];
+    }
+    displayVocabularyWords();
+}
+
+function displayVocabularyWords() {
+    const grid = document.getElementById('wordGrid');
+    grid.innerHTML = '';
+    
+    vocabularyWords.forEach((item, idx) => {
+        const isAnswered = vocabAnswered[idx];
+        const card = document.createElement('div');
+        card.className = `word-card ${isAnswered ? 'answered' : ''}`;
+        card.innerHTML = `
+            <div class="word-text">${escapeHtml(item.word)}</div>
+            <div class="word-actions">
+                <button class="word-btn-small" onclick="event.stopPropagation(); pronounceText('${escapeHtml(item.word)}')">🔊 Listen</button>
+                <button class="word-btn-small" onclick="event.stopPropagation(); learnWord(${idx}, '${escapeHtml(item.word)}', '${escapeHtml(item.meaning)}')">📖 Learn</button>
+            </div>
+        `;
+        card.onclick = () => learnWord(idx, item.word, item.meaning);
+        grid.appendChild(card);
+    });
+}
+
+function learnWord(idx, word, meaning) {
+    if (vocabAnswered[idx]) {
+        document.getElementById('wordFeedback').innerHTML = `✅ You already learned "${word}"!`;
+        document.getElementById('wordFeedback').className = 'feedback correct';
+        pronounceText(word);
+        return;
+    }
+    
+    document.getElementById('wordFeedback').innerHTML = `📖 "${word}" means: ${meaning} 🎉 +10 points!`;
+    document.getElementById('wordFeedback').className = 'feedback correct';
+    vocabAnswered[idx] = true;
+    wordScores.recognized++;
+    updateProgress();
+    saveActivity('reading_practice', 10);
+    pronounceText(word);
+    displayVocabularyWords();
+    
+    setTimeout(() => {
+        const fb = document.getElementById('wordFeedback');
+        fb.innerHTML = '';
+        fb.className = 'feedback';
+    }, 3000);
+}
+
+// ================= STORY FUNCTIONS =================
+async function loadStories() {
+    const storyTitle = document.getElementById('storyTitle');
+    const storyContent = document.getElementById('storyContent');
+    const questionsArea = document.getElementById('questionsArea');
+    
+    storyTitle.innerHTML = '<div class="loading"><div class="loading-spinner"></div> Loading story...</div>';
+    storyContent.innerHTML = '';
+    questionsArea.innerHTML = '';
+    
+    try {
+        const response = await fetch(`/api/reading/stories?language=${currentLang}&level=${currentLevel}&count=2`);
+        const data = await response.json();
+        if (data.success && data.stories && data.stories.length > 0) {
+            stories = data.stories;
+            currentStoryIndex = 0;
+            extractSentences();
+        } else {
+            throw new Error('No stories received');
+        }
+    } catch (error) {
+        console.log('Using fallback stories');
+        stories = [
+            {
+                title: "A Day at the Beach",
+                content: "Emma loves going to the beach. Every weekend, she builds sandcastles and collects seashells. The sound of waves makes her feel peaceful. She always brings a picnic lunch to enjoy by the ocean.",
+                questions: [
+                    { question: "What does Emma build at the beach?", answer: "sandcastles" },
+                    { question: "When does Emma go to the beach?", answer: "weekend" },
+                    { question: "What does she bring to eat?", answer: "picnic lunch" }
+                ]
+            },
+            {
+                title: "The Friendly Dog",
+                content: "Tom has a golden retriever named Buddy. Buddy loves to play fetch in the park. Every morning, Tom takes Buddy for a long walk. Buddy is very friendly and loves meeting new people.",
+                questions: [
+                    { question: "What is the dog's name?", answer: "Buddy" },
+                    { question: "What game does Buddy like to play?", answer: "fetch" }
+                ]
+            }
+        ];
+        extractSentences();
+    }
+    displayStory(currentStoryIndex);
+}
+
+function extractSentences() {
+    const story = stories[currentStoryIndex];
+    if (story && story.content) {
+        currentSentences = story.content.split(/[.!?]+/).filter(s => s.trim().length > 10);
+        if (currentSentences.length === 0 && story.content) {
+            currentSentences = [story.content];
+        }
+        currentSentenceIndex = 0;
+        updateSentenceDisplay();
+        document.getElementById('sentenceCounter').innerHTML = `${currentSentenceIndex + 1}/${currentSentences.length}`;
+    }
+}
+
+function updateSentenceDisplay() {
+    if (currentSentences.length > 0 && currentSentences[currentSentenceIndex]) {
+        document.getElementById('expectedSentence').innerHTML = `📖 <strong>Read this:</strong> "${currentSentences[currentSentenceIndex].trim()}"`;
+    }
+}
+
+function previousSentence() {
+    if (currentSentenceIndex > 0) {
+        currentSentenceIndex--;
+        updateSentenceDisplay();
+        document.getElementById('sentenceCounter').innerHTML = `${currentSentenceIndex + 1}/${currentSentences.length}`;
+        resetDictationDisplay();
+    }
+}
+
+function nextSentence() {
+    if (currentSentenceIndex < currentSentences.length - 1) {
+        currentSentenceIndex++;
+        updateSentenceDisplay();
+        document.getElementById('sentenceCounter').innerHTML = `${currentSentenceIndex + 1}/${currentSentences.length}`;
+        resetDictationDisplay();
+    }
+}
+
+function listenToCurrentSentence() {
+    if (currentSentences.length > 0 && currentSentences[currentSentenceIndex]) {
+        pronounceText(currentSentences[currentSentenceIndex].trim());
+    }
+}
+
+function displayStory(index) {
+    const story = stories[index];
+    if (!story) return;
+    
+    document.getElementById('storyTitle').innerHTML = escapeHtml(story.title);
+    document.getElementById('storyContent').innerHTML = escapeHtml(story.content);
+    extractSentences();
+    
+    const questionsHtml = story.questions.map((q, i) => `
+        <div class="question">
+            <div>❓ ${escapeHtml(q.question)}</div>
+            <input type="text" class="question-input" id="q${i}" placeholder="Type your answer..." autocomplete="off">
+            <button class="pronounce-btn" style="margin-top: 8px; padding: 4px 12px; font-size: 0.7em;" onclick="pronounceText('${escapeHtml(q.question)}')">🔊 Listen to Question</button>
+        </div>
+    `).join('');
+    
+    document.getElementById('questionsArea').innerHTML = questionsHtml;
+    document.getElementById('readingFeedback').innerHTML = '';
+}
+
+function listenToStory() {
+    const storyContent = document.getElementById('storyContent').innerText;
+    pronounceText(storyContent);
+}
+
+// ================= AI-POWERED DICTATION WITH ACCENT ANALYSIS =================
+async function startDictation() {
+    if (!SpeechRecognitionAPI) {
+        document.getElementById('speechFeedback').innerHTML = '❌ Speech recognition not supported. Please use Chrome, Edge, or Safari.';
+        return;
+    }
+    
+    if (currentSentences.length === 0) {
+        document.getElementById('speechFeedback').innerHTML = '⚠️ No sentences available. Load a story first.';
+        return;
+    }
+    
+    const micBtn = document.getElementById('micBtn');
+    const feedback = document.getElementById('speechFeedback');
+    const expectedSentence = currentSentences[currentSentenceIndex].trim();
+    
+    if (isRecording) {
+        if (recognition) recognition.stop();
+        if (recordingTimeout) clearTimeout(recordingTimeout);
+        micBtn.classList.remove('recording');
+        isRecording = false;
+        stopVolumeMeter();
+        feedback.innerHTML = '🎤 Recording stopped.';
+        return;
+    }
+    
+    recognition = new SpeechRecognitionAPI();
+    recognition.lang = getSpeechLang();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    
+    recognition.onstart = () => {
+        micBtn.classList.add('recording');
+        isRecording = true;
+        feedback.innerHTML = '🎙️ Listening... Please read the sentence aloud clearly.';
+        feedback.className = 'feedback info';
+        startVolumeMeter();
+        
+        // Auto-stop after 15 seconds
+        recordingTimeout = setTimeout(() => {
+            if (isRecording && recognition) {
+                recognition.stop();
+                feedback.innerHTML = '⏱️ Timeout - please try again';
+                micBtn.classList.remove('recording');
+                isRecording = false;
+                stopVolumeMeter();
+            }
+        }, 15000);
+    };
+    
+    recognition.onresult = async (event) => {
+        if (recordingTimeout) clearTimeout(recordingTimeout);
+        const spoken = event.results[0][0].transcript;
+        
+        document.getElementById('userSentence').innerHTML = `🎤 <strong>You said:</strong> "${spoken}"`;
+        feedback.innerHTML = '🤖 AI is analyzing your pronunciation and accent...';
+        showLoading('Analyzing pronunciation...');
+        
+        try {
+            // First, get basic comparison
+            const compareResponse = await fetch('/api/reading/compare', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    user_text: spoken,
+                    expected_text: expectedSentence,
+                    language: currentLang
+                })
+            });
+            
+            const compareData = await compareResponse.json();
+            const accuracy = compareData.accuracy || 0;
+            const accuracyFill = document.getElementById('accuracyFill');
+            accuracyFill.style.width = `${accuracy}%`;
+            
+            // Get detailed accent analysis
+            const accentResponse = await fetch('/api/reading/accent-analysis', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    user_text: spoken,
+                    expected_text: expectedSentence,
+                    language: currentLang
+                })
+            });
+            
+            const accentData = await accentResponse.json();
+            const comparisonDiv = document.getElementById('comparisonResult');
+            
+            if (compareData.is_match || accuracy >= 70) {
+                let accentHtml = '';
+                if (accentData.problem_words && accentData.problem_words.length > 0) {
+                    accentHtml = `
+                        <div style="margin-top: 10px; padding: 10px; background: #1e3a5f; border-radius: 8px;">
+                            <div style="color: #fbbf24; margin-bottom: 8px;">🎯 Accent Improvement Tips:</div>
+                            <div style="font-size: 0.85em;">${accentData.accent_tips || 'Keep practicing to sound more natural!'}</div>
+                            ${accentData.practice_words && accentData.practice_words.length > 0 ? `
+                                <div style="margin-top: 8px; color: #a78bfa;">
+                                    Practice these words: ${accentData.practice_words.map(w => `<button class="word-btn-small" onclick="pronounceText('${w}')" style="margin: 2px;">🔊 ${w}</button>`).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                }
+                
+                comparisonDiv.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
+                        <span style="color: #10b981;">✅ GREAT JOB! (${accuracy}% accuracy)</span>
+                        <span>🎉 Excellent reading!</span>
+                    </div>
+                    <div>${compareData.feedback || 'Excellent pronunciation!'}</div>
+                    ${accentHtml}
+                    <div style="margin-top: 10px; color: #60a5fa;">💪 Keep practicing to reduce your accent and sound more fluent!</div>
+                `;
+                comparisonDiv.className = 'comparison-result comparison-match';
+                feedback.innerHTML = `✅ ${compareData.feedback || 'Excellent!'} 🎉`;
+                feedback.className = 'feedback correct';
+                
+                if (wordScores.dictation < 100) {
+                    wordScores.dictation = Math.min(100, wordScores.dictation + Math.min(15, Math.floor(accuracy / 10)));
+                    updateProgress();
+                    saveActivity('speaking_practice', Math.min(15, Math.floor(accuracy / 10)));
+                }
+            } else {
+                let problemWordsHtml = '';
+                if (accentData.problem_words && accentData.problem_words.length > 0) {
+                    problemWordsHtml = `
+                        <div style="margin-top: 10px; padding: 10px; background: #0f172a; border-radius: 8px;">
+                            <div style="color: #fbbf24; margin-bottom: 8px;">🔍 Words to Focus On:</div>
+                            ${accentData.problem_words.map(pw => `
+                                <div style="margin-bottom: 10px; padding: 8px; background: #1e293b; border-radius: 6px;">
+                                    <div><span style="color: #ef4444;">❌</span> <strong>${pw.word}</strong></div>
+                                    <div style="font-size: 0.85em; margin-top: 4px;">
+                                        📝 You said: "${pw.user_said || 'different pronunciation'}"<br>
+                                        🎯 Correct: "${pw.should_sound || pw.word}"<br>
+                                        💡 ${pw.common_mistake || 'Practice this sound slowly'}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+                
+                comparisonDiv.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
+                        <span style="color: #ef4444;">❌ NEEDS PRACTICE (${accuracy}%)</span>
+                    </div>
+                    <div>${compareData.feedback || 'Keep practicing! You can do it!'}</div>
+                    ${problemWordsHtml}
+                    <div style="margin-top: 10px; padding: 10px; background: #1e3a5f; border-radius: 8px;">
+                        <div style="color: #fbbf24; margin-bottom: 5px;">💡 Accent Reduction Tips:</div>
+                        <div style="font-size: 0.85em;">${accentData.accent_tips || 'Listen carefully to each sound. Break words into syllables and practice slowly.'}</div>
+                        ${accentData.practice_words && accentData.practice_words.length > 0 ? `
+                            <div style="margin-top: 8px;">
+                                Practice these sounds: 
+                                ${accentData.practice_words.map(w => `<button class="word-btn-small" onclick="pronounceText('${w}')" style="margin: 2px;">🔊 ${w}</button>`).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                    <div style="margin-top: 10px; color: #a78bfa;">
+                        💪 Pro tip: Click any word above to hear correct pronunciation!
+                    </div>
+                `;
+                comparisonDiv.className = 'comparison-result comparison-mismatch';
+                feedback.innerHTML = `❌ ${Math.round(accuracy)}% accurate. Let's fix those sounds!`;
+                feedback.className = 'feedback wrong';
+            }
+        } catch (error) {
+            console.error('Analysis error:', error);
+            // Enhanced fallback with better word matching
+            const spokenLower = spoken.toLowerCase().trim();
+            const expectedLower = expectedSentence.toLowerCase().trim();
+            const spokenWords = spokenLower.split(/\s+/);
+            const expectedWords = expectedLower.split(/\s+/);
+            
+            let correctWords = 0;
+            const matchedExpected = new Array(expectedWords.length).fill(false);
+            
+            for (let spokenWord of spokenWords) {
+                for (let i = 0; i < expectedWords.length; i++) {
+                    if (!matchedExpected[i] && spokenWord === expectedWords[i]) {
+                        correctWords++;
+                        matchedExpected[i] = true;
+                        break;
+                    }
+                }
+            }
+            const accuracy = Math.round((correctWords / expectedWords.length) * 100);
+            document.getElementById('accuracyFill').style.width = `${accuracy}%`;
+            
+            const comparisonDiv = document.getElementById('comparisonResult');
+            
+            comparisonDiv.innerHTML = `
+                <div><span style="color: ${accuracy >= 70 ? '#10b981' : '#ef4444'};">${accuracy >= 70 ? '✅' : '❌'} ${accuracy}% accurate</span></div>
+                <div style="margin-top: 10px;">💡 Expected: "${expectedSentence}"</div>
+                <div>📝 You said: "${spoken}"</div>
+                <div style="margin-top: 10px; color: #fbbf24;">🔊 Click "Listen to Sentence" to hear the correct pronunciation.</div>
+                <div style="margin-top: 8px;">💪 Tip: Break the sentence into smaller parts and practice each word slowly.</div>
+                <div style="margin-top: 8px;">🎯 Remember: Focus on vowel sounds and word stress!</div>
+            `;
+            comparisonDiv.className = accuracy >= 70 ? 'comparison-result comparison-match' : 'comparison-result comparison-mismatch';
+            feedback.innerHTML = accuracy >= 70 ? '✅ Good effort! Keep practicing to reduce your accent!' : '❌ Keep practicing! Focus on the highlighted words.';
+            feedback.className = accuracy >= 70 ? 'feedback correct' : 'feedback wrong';
+            
+            if (accuracy >= 70 && wordScores.dictation < 100) {
+                wordScores.dictation = Math.min(100, wordScores.dictation + 10);
+                updateProgress();
+                saveActivity('speaking_practice', 10);
+            }
+        } finally {
+            hideLoading();
+        }
+        
+        micBtn.classList.remove('recording');
+        isRecording = false;
+        stopVolumeMeter();
+        recognition = null;
+    };
+    
+    recognition.onerror = (event) => {
+        if (recordingTimeout) clearTimeout(recordingTimeout);
+        let errorMsg = '❌ Could not hear you. ';
+        if (event.error === 'no-speech') {
+            errorMsg += 'No speech detected. Please speak louder and try again.';
+        } else if (event.error === 'audio-capture') {
+            errorMsg += 'No microphone found. Please check your microphone.';
+        } else if (event.error === 'not-allowed') {
+            errorMsg += 'Microphone permission denied. Please allow microphone access.';
+        } else {
+            errorMsg += 'Check microphone and try again.';
+        }
+        feedback.innerHTML = errorMsg;
+        feedback.className = 'feedback wrong';
+        micBtn.classList.remove('recording');
+        isRecording = false;
+        stopVolumeMeter();
+        recognition = null;
+    };
+    
+    recognition.start();
+}
+
+function resetDictationDisplay() {
+    document.getElementById('userSentence').innerHTML = '🎤 <strong>You said:</strong> Not yet recorded';
+    document.getElementById('comparisonResult').innerHTML = '';
+    document.getElementById('accuracyFill').style.width = '0%';
+    document.getElementById('speechFeedback').innerHTML = '💡 Click the microphone (or press Space), then read the sentence aloud clearly';
+    document.getElementById('speechFeedback').className = 'feedback info';
+}
+
+function resetDictation() {
+    resetDictationDisplay();
+    if (isRecording && recognition) {
+        recognition.stop();
+        document.getElementById('micBtn').classList.remove('recording');
+        isRecording = false;
+        stopVolumeMeter();
+    }
+}
+
+function checkAnswers() {
+    const story = stories[currentStoryIndex];
+    if (!story) return;
+    
+    let correctCount = 0;
+    story.questions.forEach((q, i) => {
+        const userAnswer = document.getElementById(`q${i}`).value.trim().toLowerCase();
+        const correctAnswer = q.answer.toLowerCase();
+        if (userAnswer === correctAnswer || correctAnswer.includes(userAnswer) || userAnswer.includes(correctAnswer)) {
+            correctCount++;
+        }
+    });
+    
+    const feedback = document.getElementById('readingFeedback');
+    if (correctCount === story.questions.length) {
+        feedback.innerHTML = '✅ Perfect! You understood the story completely! 🎉 +20 points!';
+        feedback.className = 'feedback correct';
+        if (!storyCompleted[currentStoryIndex]) {
+            wordScores.stories++;
+            storyCompleted[currentStoryIndex] = true;
+            updateProgress();
+            saveActivity('reading_practice', 20);
+        }
+        setTimeout(() => {
+            if (currentStoryIndex < stories.length - 1) {
+                currentStoryIndex++;
+                displayStory(currentStoryIndex);
+                resetDictationDisplay();
+                feedback.innerHTML = '';
+            } else {
+                feedback.innerHTML = '🎉 Congratulations! You completed all stories! 🎉';
+            }
+        }, 2000);
+    } else {
+        feedback.innerHTML = `📖 You got ${correctCount}/${story.questions.length} correct. Try reading the story again carefully!`;
+        feedback.className = 'feedback wrong';
+    }
+}
+
+function updateProgress() {
+    const totalWords = vocabularyWords.length || 1;
+    const totalStories = stories.length || 1;
+    const wordPercent = (wordScores.recognized / totalWords) * 20;
+    const storyPercent = (wordScores.stories / totalStories) * 30;
+    const dictationPercent = (wordScores.dictation / 100) * 50;
+    const totalProgress = Math.min(100, wordPercent + storyPercent + dictationPercent);
+    
+    document.getElementById('progressFill').style.width = `${totalProgress}%`;
+    document.getElementById('wordsRecognized').textContent = `${wordScores.recognized}/${totalWords}`;
+    document.getElementById('storiesCompleted').textContent = `${wordScores.stories}/${totalStories}`;
+    document.getElementById('dictationScore').textContent = `${Math.round(wordScores.dictation)}%`;
+}
+
+async function saveActivity(type, points) {
+    try {
+        await fetch('/api/activity/save', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ language: currentLang, type: type, points: points })
+        });
+    } catch (error) {
+        console.log('Activity saved locally:', type, points);
+        // Store in localStorage as backup
+        const activities = JSON.parse(localStorage.getItem('activities') || '[]');
+        activities.push({ type, points, date: new Date().toISOString() });
+        localStorage.setItem('activities', JSON.stringify(activities));
+    }
+}
+
+function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+    }).replace(/['"]/g, '');
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+    // Spacebar to start/stop recording (if not typing in input)
+    if (e.code === 'Space' && !e.target.matches('input, textarea, button')) {
+        e.preventDefault();
+        startDictation();
+    }
+    // Ctrl+L to listen to current sentence
+    if (e.code === 'KeyL' && e.ctrlKey) {
+        e.preventDefault();
+        listenToCurrentSentence();
+    }
+    // Ctrl+N for next sentence
+    if (e.code === 'KeyN' && e.ctrlKey) {
+        e.preventDefault();
+        nextSentence();
+    }
+    // Ctrl+P for previous sentence
+    if (e.code === 'KeyP' && e.ctrlKey) {
+        e.preventDefault();
+        previousSentence();
+    }
+});
+
+// Clean up on page unload
+window.addEventListener('beforeunload', () => {
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio = null;
+    }
+    if (recognition && isRecording) {
+        recognition.stop();
+    }
+    if (mediaStream) {
+        mediaStream.getTracks().forEach(track => track.stop());
+    }
+    if (audioContext) {
+        audioContext.close();
+    }
+    window.speechSynthesis.cancel();
+});
+
+// Initialize
+loadVocabularyWords();
+loadStories();
+
+// Mobile-friendly adjustments
+if (isMobile) {
+    const micBtn = document.getElementById('micBtn');
+    if (micBtn) {
+        micBtn.style.padding = '15px';
+    }
+    document.getElementById('speechFeedback').innerHTML = '📱 Tap the microphone and allow permission when prompted';
+}
+</script>
+</body>
+</html>

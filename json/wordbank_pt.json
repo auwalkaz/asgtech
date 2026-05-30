@@ -1,0 +1,2402 @@
+[
+  {
+    "id": 1,
+    "word": "gato",
+    "meaning": "um pequeno animal de estimação peludo",
+    "example": "O gato dorme no sofá.",
+    "tip": "Gatos dizem Miau! 🐱",
+    "level": "beginner"
+  },
+  {
+    "id": 2,
+    "word": "cão",
+    "meaning": "um animal de estimação leal",
+    "example": "Meu cão adora brincar.",
+    "tip": "Cão é melhor amigo do homem",
+    "level": "beginner"
+  },
+  {
+    "id": 3,
+    "word": "casa",
+    "meaning": "um edifício onde as pessoas vivem",
+    "example": "Eles vivem numa casa grande.",
+    "tip": "Casa = Lar",
+    "level": "beginner"
+  },
+  {
+    "id": 4,
+    "word": "carro",
+    "meaning": "um veículo para dirigir",
+    "example": "Ela dirige um carro vermelho.",
+    "tip": "Carro = Transporte",
+    "level": "beginner"
+  },
+  {
+    "id": 5,
+    "word": "professor",
+    "meaning": "uma pessoa que ensina",
+    "example": "Meu professor me ajuda a aprender.",
+    "tip": "Professor = Doador de conhecimento",
+    "level": "beginner"
+  },
+  {
+    "id": 6,
+    "word": "mãe",
+    "meaning": "uma parente feminina",
+    "example": "Minha mãe cozinha bem.",
+    "tip": "Mãe te ama",
+    "level": "beginner"
+  },
+  {
+    "id": 7,
+    "word": "pai",
+    "meaning": "um parente masculino",
+    "example": "Meu pai trabalha no escritório.",
+    "tip": "Pai é forte",
+    "level": "beginner"
+  },
+  {
+    "id": 8,
+    "word": "irmão",
+    "meaning": "um irmão masculino",
+    "example": "Meu irmão joga futebol.",
+    "tip": "Mano é legal",
+    "level": "beginner"
+  },
+  {
+    "id": 9,
+    "word": "irmã",
+    "meaning": "uma irmã feminina",
+    "example": "Minha irmã me ajuda.",
+    "tip": "Mana é gentil",
+    "level": "beginner"
+  },
+  {
+    "id": 10,
+    "word": "bebê",
+    "meaning": "uma criança muito nova",
+    "example": "O bebê está dormindo.",
+    "tip": "Bebê é fofo",
+    "level": "beginner"
+  },
+  {
+    "id": 11,
+    "word": "avó",
+    "meaning": "mãe dos pais",
+    "example": "Minha avó faz biscoitos.",
+    "tip": "Avó ama netos",
+    "level": "beginner"
+  },
+  {
+    "id": 12,
+    "word": "avô",
+    "meaning": "pai dos pais",
+    "example": "Meu avô conta histórias.",
+    "tip": "Avô é sábio",
+    "level": "beginner"
+  },
+  {
+    "id": 13,
+    "word": "tio",
+    "meaning": "irmão dos pais",
+    "example": "Meu tio é engraçado.",
+    "tip": "Tio é divertido",
+    "level": "beginner"
+  },
+  {
+    "id": 14,
+    "word": "tia",
+    "meaning": "irmã dos pais",
+    "example": "Minha tia dá presentes.",
+    "tip": "Tia é carinhosa",
+    "level": "beginner"
+  },
+  {
+    "id": 15,
+    "word": "primo",
+    "meaning": "filho do tio ou tia",
+    "example": "Meu primo é meu amigo.",
+    "tip": "Primo é como irmão",
+    "level": "beginner"
+  },
+  {
+    "id": 16,
+    "word": "amigo",
+    "meaning": "uma pessoa que você gosta",
+    "example": "Você é meu melhor amigo.",
+    "tip": "Amigo é família",
+    "level": "beginner"
+  },
+  {
+    "id": 17,
+    "word": "criança",
+    "meaning": "uma pessoa jovem",
+    "example": "A criança está brincando.",
+    "tip": "Criança é feliz",
+    "level": "beginner"
+  },
+  {
+    "id": 18,
+    "word": "adulto",
+    "meaning": "pessoa crescida",
+    "example": "Ela é um adulto.",
+    "tip": "Adulto trabalha",
+    "level": "beginner"
+  },
+  {
+    "id": 19,
+    "word": "homem",
+    "meaning": "adulto masculino",
+    "example": "O homem é alto.",
+    "tip": "Senhor",
+    "level": "beginner"
+  },
+  {
+    "id": 20,
+    "word": "mulher",
+    "meaning": "adulto feminino",
+    "example": "A mulher sorri.",
+    "tip": "Senhora",
+    "level": "beginner"
+  },
+  {
+    "id": 21,
+    "word": "pássaro",
+    "meaning": "animal com penas que voa",
+    "example": "O pássaro voa alto.",
+    "tip": "Piu piu",
+    "level": "beginner"
+  },
+  {
+    "id": 22,
+    "word": "peixe",
+    "meaning": "animal que vive na água",
+    "example": "O peixe nada.",
+    "tip": "Vive na água",
+    "level": "beginner"
+  },
+  {
+    "id": 23,
+    "word": "coelho",
+    "meaning": "animal pequeno com orelhas longas",
+    "example": "O coelho pula.",
+    "tip": "Adora cenouras",
+    "level": "beginner"
+  },
+  {
+    "id": 24,
+    "word": "cavalo",
+    "meaning": "animal grande para montar",
+    "example": "Ela monta no cavalo.",
+    "tip": "Cavalo corre rápido",
+    "level": "beginner"
+  },
+  {
+    "id": 25,
+    "word": "vaca",
+    "meaning": "animal de fazenda que dá leite",
+    "example": "A vaca come capim.",
+    "tip": "Vaca faz muuu",
+    "level": "beginner"
+  },
+  {
+    "id": 26,
+    "word": "porco",
+    "meaning": "animal de fazenda rosa",
+    "example": "O porco é rosa.",
+    "tip": "Porco faz oinc",
+    "level": "beginner"
+  },
+  {
+    "id": 27,
+    "word": "galinha",
+    "meaning": "ave de fazenda",
+    "example": "A galinha bota ovos.",
+    "tip": "Galinha faz cocó",
+    "level": "beginner"
+  },
+  {
+    "id": 28,
+    "word": "pato",
+    "meaning": "ave aquática",
+    "example": "O pato nada.",
+    "tip": "Pato faz quack",
+    "level": "beginner"
+  },
+  {
+    "id": 29,
+    "word": "macaco",
+    "meaning": "primatas brincalhões",
+    "example": "O macaco come banana.",
+    "tip": "Macaco sobe em árvores",
+    "level": "beginner"
+  },
+  {
+    "id": 30,
+    "word": "leão",
+    "meaning": "grande felino selvagem",
+    "example": "O leão é rei da selva.",
+    "tip": "Leão tem juba",
+    "level": "beginner"
+  },
+  {
+    "id": 31,
+    "word": "correr",
+    "meaning": "mover-se rapidamente",
+    "example": "Eu corro toda manhã.",
+    "tip": "Passado: corri",
+    "level": "beginner"
+  },
+  {
+    "id": 32,
+    "word": "andar",
+    "meaning": "mover-se a pé",
+    "example": "Eu ando para a escola.",
+    "tip": "Passado: andei",
+    "level": "beginner"
+  },
+  {
+    "id": 33,
+    "word": "comer",
+    "meaning": "consumir alimentos",
+    "example": "Vamos comer o jantar.",
+    "tip": "Passado: comi",
+    "level": "beginner"
+  },
+  {
+    "id": 34,
+    "word": "beber",
+    "meaning": "consumir líquido",
+    "example": "Eu bebo água.",
+    "tip": "Passado: bebi",
+    "level": "beginner"
+  },
+  {
+    "id": 35,
+    "word": "dormir",
+    "meaning": "descansar com olhos fechados",
+    "example": "Os bebês dormem muito.",
+    "tip": "Passado: dormi",
+    "level": "beginner"
+  },
+  {
+    "id": 36,
+    "word": "acordar",
+    "meaning": "parar de dormir",
+    "example": "Eu acordo às 7h.",
+    "tip": "Despertar",
+    "level": "beginner"
+  },
+  {
+    "id": 37,
+    "word": "falar",
+    "meaning": "comunicar com palavras",
+    "example": "Eu falo português.",
+    "tip": "Passado: falei",
+    "level": "beginner"
+  },
+  {
+    "id": 38,
+    "word": "ler",
+    "meaning": "olhar palavras escritas",
+    "example": "Eu leio livros.",
+    "tip": "Passado: li",
+    "level": "beginner"
+  },
+  {
+    "id": 39,
+    "word": "escrever",
+    "meaning": "colocar palavras no papel",
+    "example": "Eu escrevo uma carta.",
+    "tip": "Passado: escrevi",
+    "level": "beginner"
+  },
+  {
+    "id": 40,
+    "word": "olhar",
+    "meaning": "dirigir os olhos para",
+    "example": "Eu olho televisão.",
+    "tip": "Sinônimo: ver",
+    "level": "beginner"
+  },
+  {
+    "id": 41,
+    "word": "ouvir",
+    "meaning": "perceber pelo ouvido",
+    "example": "Eu ouço música.",
+    "tip": "Escutar",
+    "level": "beginner"
+  },
+  {
+    "id": 42,
+    "word": "sentar",
+    "meaning": "descansar numa cadeira",
+    "example": "Sente-se, por favor.",
+    "tip": "Opposto: levantar",
+    "level": "beginner"
+  },
+  {
+    "id": 43,
+    "word": "levantar",
+    "meaning": "ficar em pé",
+    "example": "Levante-se, por favor.",
+    "tip": "Opposto: sentar",
+    "level": "beginner"
+  },
+  {
+    "id": 44,
+    "word": "pular",
+    "meaning": "saltar do chão",
+    "example": "O coelho pula.",
+    "tip": "Divertido",
+    "level": "beginner"
+  },
+  {
+    "id": 45,
+    "word": "brincar",
+    "meaning": "atividade divertida",
+    "example": "As crianças brincam.",
+    "tip": "Jogar",
+    "level": "beginner"
+  },
+  {
+    "id": 46,
+    "word": "feliz",
+    "meaning": "sentindo alegria",
+    "example": "Ela estava feliz.",
+    "tip": "Opposto: triste",
+    "level": "beginner"
+  },
+  {
+    "id": 47,
+    "word": "triste",
+    "meaning": "sentindo tristeza",
+    "example": "Ele estava triste.",
+    "tip": "Opposto: feliz",
+    "level": "beginner"
+  },
+  {
+    "id": 48,
+    "word": "grande",
+    "meaning": "de tamanho grande",
+    "example": "É uma casa grande.",
+    "tip": "Opposto: pequeno",
+    "level": "beginner"
+  },
+  {
+    "id": 49,
+    "word": "pequeno",
+    "meaning": "de tamanho pequeno",
+    "example": "É um gato pequeno.",
+    "tip": "Opposto: grande",
+    "level": "beginner"
+  },
+  {
+    "id": 50,
+    "word": "bonito",
+    "meaning": "agradável de ver",
+    "example": "Linda!",
+    "tip": "Descreve aparência",
+    "level": "beginner"
+  },
+  {
+    "id": 51,
+    "word": "feio",
+    "meaning": "não bonito",
+    "example": "Essa roupa é feia.",
+    "tip": "Opposto: bonito",
+    "level": "beginner"
+  },
+  {
+    "id": 52,
+    "word": "quente",
+    "meaning": "temperatura alta",
+    "example": "A sopa está quente.",
+    "tip": "Opposto: frio",
+    "level": "beginner"
+  },
+  {
+    "id": 53,
+    "word": "frio",
+    "meaning": "temperatura baixa",
+    "example": "O gelo é frio.",
+    "tip": "Opposto: quente",
+    "level": "beginner"
+  },
+  {
+    "id": 54,
+    "word": "bom",
+    "meaning": "de boa qualidade",
+    "example": "Você fez um bom trabalho.",
+    "tip": "Opposto: mau",
+    "level": "beginner"
+  },
+  {
+    "id": 55,
+    "word": "mau",
+    "meaning": "de má qualidade",
+    "example": "Essa é uma má ideia.",
+    "tip": "Opposto: bom",
+    "level": "beginner"
+  },
+  {
+    "id": 56,
+    "word": "novo",
+    "meaning": "nunca usado",
+    "example": "Comprei um carro novo.",
+    "tip": "Opposto: velho",
+    "level": "beginner"
+  },
+  {
+    "id": 57,
+    "word": "velho",
+    "meaning": "usado por muito tempo",
+    "example": "Este sapato é velho.",
+    "tip": "Opposto: novo",
+    "level": "beginner"
+  },
+  {
+    "id": 58,
+    "word": "rápido",
+    "meaning": "move-se rapidamente",
+    "example": "O carro é rápido.",
+    "tip": "Opposto: lento",
+    "level": "beginner"
+  },
+  {
+    "id": 59,
+    "word": "lento",
+    "meaning": "move-se devagar",
+    "example": "A tartaruga é lenta.",
+    "tip": "Opposto: rápido",
+    "level": "beginner"
+  },
+  {
+    "id": 60,
+    "word": "alto",
+    "meaning": "grande altura",
+    "example": "Ele é alto.",
+    "tip": "Opposto: baixo",
+    "level": "beginner"
+  },
+  {
+    "id": 61,
+    "word": "baixo",
+    "meaning": "pequena altura",
+    "example": "Ele é baixo.",
+    "tip": "Opposto: alto",
+    "level": "beginner"
+  },
+  {
+    "id": 62,
+    "word": "vermelho",
+    "meaning": "cor do sangue",
+    "example": "Ela tem um vestido vermelho.",
+    "tip": "Vermelho = pare",
+    "level": "beginner"
+  },
+  {
+    "id": 63,
+    "word": "azul",
+    "meaning": "cor do céu",
+    "example": "O céu é azul.",
+    "tip": "Azul é calma",
+    "level": "beginner"
+  },
+  {
+    "id": 64,
+    "word": "verde",
+    "meaning": "cor da relva",
+    "example": "A relva é verde.",
+    "tip": "Verde = vá",
+    "level": "beginner"
+  },
+  {
+    "id": 65,
+    "word": "amarelo",
+    "meaning": "cor do sol",
+    "example": "As bananas são amarelas.",
+    "tip": "Amarelo é brilhante",
+    "level": "beginner"
+  },
+  {
+    "id": 66,
+    "word": "preto",
+    "meaning": "cor da noite",
+    "example": "Ela tem cabelo preto.",
+    "tip": "Preto absorve luz",
+    "level": "beginner"
+  },
+  {
+    "id": 67,
+    "word": "branco",
+    "meaning": "cor da neve",
+    "example": "O papel é branco.",
+    "tip": "Branco reflete luz",
+    "level": "beginner"
+  },
+  {
+    "id": 68,
+    "word": "cinza",
+    "meaning": "cor entre preto e branco",
+    "example": "O céu está cinza.",
+    "tip": "Cor neutra",
+    "level": "beginner"
+  },
+  {
+    "id": 69,
+    "word": "marrom",
+    "meaning": "cor do chocolate",
+    "example": "O urso é marrom.",
+    "tip": "Cor da terra",
+    "level": "beginner"
+  },
+  {
+    "id": 70,
+    "word": "rosa",
+    "meaning": "cor clara de flor",
+    "example": "A flor é rosa.",
+    "tip": "Cor delicada",
+    "level": "beginner"
+  },
+  {
+    "id": 71,
+    "word": "comida",
+    "meaning": "o que se come",
+    "example": "A comida está saborosa.",
+    "tip": "Comer bem",
+    "level": "beginner"
+  },
+  {
+    "id": 72,
+    "word": "água",
+    "meaning": "líquido claro necessário",
+    "example": "Beba água todos os dias.",
+    "tip": "Água é essencial",
+    "level": "beginner"
+  },
+  {
+    "id": 73,
+    "word": "pão",
+    "meaning": "alimento feito de farinha",
+    "example": "Como pão ao pequeno-almoço.",
+    "tip": "Fresquinho",
+    "level": "beginner"
+  },
+  {
+    "id": 74,
+    "word": "queijo",
+    "meaning": "alimento feito de leite",
+    "example": "O queijo é delicioso.",
+    "tip": "Muitos tipos",
+    "level": "beginner"
+  },
+  {
+    "id": 75,
+    "word": "maçã",
+    "meaning": "fruta redonda vermelha ou verde",
+    "example": "Uma maçã por dia afasta o médico.",
+    "tip": "Maçã é saudável",
+    "level": "beginner"
+  },
+  {
+    "id": 76,
+    "word": "banana",
+    "meaning": "fruta amarela comprida",
+    "example": "Macacos adoram bananas.",
+    "tip": "Banana é doce",
+    "level": "beginner"
+  },
+  {
+    "id": 77,
+    "word": "laranja",
+    "meaning": "fruta redonda laranja",
+    "example": "Sumo de laranja é bom.",
+    "tip": "Vitamina C",
+    "level": "beginner"
+  },
+  {
+    "id": 78,
+    "word": "leite",
+    "meaning": "líquido branco das vacas",
+    "example": "Leite é bom para os ossos.",
+    "tip": "Beber leite",
+    "level": "beginner"
+  },
+  {
+    "id": 79,
+    "word": "ovo",
+    "meaning": "alimento das galinhas",
+    "example": "Como ovos de manhã.",
+    "tip": "Ovos mexidos",
+    "level": "beginner"
+  },
+  {
+    "id": 80,
+    "word": "carne",
+    "meaning": "carne de animal",
+    "example": "Alguns não comem carne.",
+    "tip": "Proteínas",
+    "level": "beginner"
+  },
+  {
+    "id": 81,
+    "word": "escola",
+    "meaning": "lugar de aprendizagem",
+    "example": "Vou à escola todos os dias.",
+    "tip": "Escola = Educação",
+    "level": "beginner"
+  },
+  {
+    "id": 82,
+    "word": "hospital",
+    "meaning": "lugar para doentes",
+    "example": "Ela trabalha no hospital.",
+    "tip": "Médicos e enfermeiras",
+    "level": "beginner"
+  },
+  {
+    "id": 83,
+    "word": "parque",
+    "meaning": "espaço verde público",
+    "example": "Vamos brincar no parque.",
+    "tip": "Natureza",
+    "level": "beginner"
+  },
+  {
+    "id": 84,
+    "word": "loja",
+    "meaning": "lugar para comprar coisas",
+    "example": "Vá à loja comprar leite.",
+    "tip": "Compras",
+    "level": "beginner"
+  },
+  {
+    "id": 85,
+    "word": "restaurante",
+    "meaning": "lugar para comer",
+    "example": "Jantamos no restaurante.",
+    "tip": "Pedir menu",
+    "level": "beginner"
+  },
+  {
+    "id": 86,
+    "word": "biblioteca",
+    "meaning": "lugar para pedir livros",
+    "example": "A biblioteca é silenciosa.",
+    "tip": "Ler grátis",
+    "level": "beginner"
+  },
+  {
+    "id": 87,
+    "word": "banco",
+    "meaning": "lugar para guardar dinheiro",
+    "example": "Deposito dinheiro no banco.",
+    "tip": "Banco dá empréstimos",
+    "level": "beginner"
+  },
+  {
+    "id": 88,
+    "word": "aeroporto",
+    "meaning": "lugar de aviões",
+    "example": "O aeroporto é movimentado.",
+    "tip": "Viajar de avião",
+    "level": "beginner"
+  },
+  {
+    "id": 89,
+    "word": "estação",
+    "meaning": "lugar de comboios ou autocarros",
+    "example": "Espere na estação.",
+    "tip": "Terminal",
+    "level": "beginner"
+  },
+  {
+    "id": 90,
+    "word": "escritório",
+    "meaning": "lugar de trabalho",
+    "example": "Meu escritório tem secretária.",
+    "tip": "Trabalho",
+    "level": "beginner"
+  },
+  {
+    "id": 91,
+    "word": "livro",
+    "meaning": "páginas de texto unidas",
+    "example": "Leio um bom livro.",
+    "tip": "Ler melhora vocabulário",
+    "level": "beginner"
+  },
+  {
+    "id": 92,
+    "word": "cadeira",
+    "meaning": "assento para uma pessoa",
+    "example": "Sente-se na cadeira.",
+    "tip": "Confortável",
+    "level": "beginner"
+  },
+  {
+    "id": 93,
+    "word": "mesa",
+    "meaning": "móvel com pernas",
+    "example": "O jantar está na mesa.",
+    "tip": "Mesa de jantar",
+    "level": "beginner"
+  },
+  {
+    "id": 94,
+    "word": "cama",
+    "meaning": "móvel para dormir",
+    "example": "Minha cama é macia.",
+    "tip": "Fazer a cama",
+    "level": "beginner"
+  },
+  {
+    "id": 95,
+    "word": "porta",
+    "meaning": "entrada de uma sala",
+    "example": "Abra a porta.",
+    "tip": "Feche a porta",
+    "level": "beginner"
+  },
+  {
+    "id": 96,
+    "word": "janela",
+    "meaning": "abertura com vidro",
+    "example": "Abra a janela para ar fresco.",
+    "tip": "Vidro",
+    "level": "beginner"
+  },
+  {
+    "id": 97,
+    "word": "parede",
+    "meaning": "estrutura vertical",
+    "example": "A parede é branca.",
+    "tip": "Quadro na parede",
+    "level": "beginner"
+  },
+  {
+    "id": 98,
+    "word": "chão",
+    "meaning": "superfície do solo",
+    "example": "O chão está limpo.",
+    "tip": "Varrer o chão",
+    "level": "beginner"
+  },
+  {
+    "id": 99,
+    "word": "teto",
+    "meaning": "superfície superior",
+    "example": "O teto é alto.",
+    "tip": "Olhe para cima",
+    "level": "beginner"
+  },
+  {
+    "id": 100,
+    "word": "luz",
+    "meaning": "fonte de iluminação",
+    "example": "Acenda a luz.",
+    "tip": "Lâmpada dá luz",
+    "level": "beginner"
+  },
+  {
+    "id": 101,
+    "word": "um",
+    "meaning": "o número 1",
+    "example": "Tenho um irmão.",
+    "tip": "Um = 1",
+    "level": "beginner"
+  },
+  {
+    "id": 102,
+    "word": "dois",
+    "meaning": "o número 2",
+    "example": "Tenho duas mãos.",
+    "tip": "Dois = 2",
+    "level": "beginner"
+  },
+  {
+    "id": 103,
+    "word": "três",
+    "meaning": "o número 3",
+    "example": "Ele tem três gatos.",
+    "tip": "Três = 3",
+    "level": "beginner"
+  },
+  {
+    "id": 104,
+    "word": "quatro",
+    "meaning": "o número 4",
+    "example": "Um carro tem quatro rodas.",
+    "tip": "Quatro = 4",
+    "level": "beginner"
+  },
+  {
+    "id": 105,
+    "word": "cinco",
+    "meaning": "o número 5",
+    "example": "Tenho cinco dedos.",
+    "tip": "Cinco = 5",
+    "level": "beginner"
+  },
+  {
+    "id": 106,
+    "word": "seis",
+    "meaning": "o número 6",
+    "example": "Seis é um bom número.",
+    "tip": "Seis = 6",
+    "level": "beginner"
+  },
+  {
+    "id": 107,
+    "word": "sete",
+    "meaning": "o número 7",
+    "example": "Sete dias na semana.",
+    "tip": "Sete = 7",
+    "level": "beginner"
+  },
+  {
+    "id": 108,
+    "word": "oito",
+    "meaning": "o número 8",
+    "example": "O polvo tem oito braços.",
+    "tip": "Oito = 8",
+    "level": "beginner"
+  },
+  {
+    "id": 109,
+    "word": "nove",
+    "meaning": "o número 9",
+    "example": "Nove vem antes de dez.",
+    "tip": "Nove = 9",
+    "level": "beginner"
+  },
+  {
+    "id": 110,
+    "word": "dez",
+    "meaning": "o número 10",
+    "example": "Tenho dez euros.",
+    "tip": "Dez = 10",
+    "level": "beginner"
+  },
+  {
+    "id": 111,
+    "word": "hoje",
+    "meaning": "neste dia",
+    "example": "Hoje é um bom dia.",
+    "tip": "Dia atual",
+    "level": "beginner"
+  },
+  {
+    "id": 112,
+    "word": "ontem",
+    "meaning": "o dia anterior",
+    "example": "Ontem eu estava cansado.",
+    "tip": "Um dia atrás",
+    "level": "beginner"
+  },
+  {
+    "id": 113,
+    "word": "amanhã",
+    "meaning": "o dia seguinte",
+    "example": "Vejo-te amanhã!",
+    "tip": "Próximo dia",
+    "level": "beginner"
+  },
+  {
+    "id": 114,
+    "word": "dia",
+    "meaning": "período de 24 horas",
+    "example": "Hoje é um bom dia.",
+    "tip": "Dia claro",
+    "level": "beginner"
+  },
+  {
+    "id": 115,
+    "word": "noite",
+    "meaning": "período escuro",
+    "example": "Durmo à noite.",
+    "tip": "Estrelas",
+    "level": "beginner"
+  },
+  {
+    "id": 116,
+    "word": "manhã",
+    "meaning": "início do dia",
+    "example": "Bom dia!",
+    "tip": "Acordar",
+    "level": "beginner"
+  },
+  {
+    "id": 117,
+    "word": "tarde",
+    "meaning": "parte do dia após o meio-dia",
+    "example": "Vejo-te esta tarde.",
+    "tip": "Depois do almoço",
+    "level": "beginner"
+  },
+  {
+    "id": 118,
+    "word": "semana",
+    "meaning": "sete dias",
+    "example": "Uma semana de férias.",
+    "tip": "Segunda a domingo",
+    "level": "beginner"
+  },
+  {
+    "id": 119,
+    "word": "mês",
+    "meaning": "cerca de 30 dias",
+    "example": "Janeiro é um mês.",
+    "tip": "12 meses por ano",
+    "level": "beginner"
+  },
+  {
+    "id": 120,
+    "word": "ano",
+    "meaning": "365 ou 366 dias",
+    "example": "Feliz Ano Novo!",
+    "tip": "12 meses",
+    "level": "beginner"
+  },
+  {
+    "id": 121,
+    "word": "sim",
+    "meaning": "resposta positiva",
+    "example": "Sim, por favor.",
+    "tip": "Opposto: não",
+    "level": "beginner"
+  },
+  {
+    "id": 122,
+    "word": "não",
+    "meaning": "resposta negativa",
+    "example": "Não, obrigado.",
+    "tip": "Opposto: sim",
+    "level": "beginner"
+  },
+  {
+    "id": 123,
+    "word": "obrigado",
+    "meaning": "expressar gratidão",
+    "example": "Muito obrigado!",
+    "tip": "Sempre educado",
+    "level": "beginner"
+  },
+  {
+    "id": 124,
+    "word": "por favor",
+    "meaning": "pedido educado",
+    "example": "Um café, por favor.",
+    "tip": "Palavra mágica",
+    "level": "beginner"
+  },
+  {
+    "id": 125,
+    "word": "desculpa",
+    "meaning": "pedir desculpa",
+    "example": "Desculpa, estou atrasado.",
+    "tip": "Perdão",
+    "level": "beginner"
+  },
+  {
+    "id": 126,
+    "word": "bom dia",
+    "meaning": "saudação de manhã",
+    "example": "Bom dia, como está?",
+    "tip": "Manhã",
+    "level": "beginner"
+  },
+  {
+    "id": 127,
+    "word": "boa tarde",
+    "meaning": "saudação da tarde",
+    "example": "Boa tarde a todos!",
+    "tip": "Meio-dia até anoitecer",
+    "level": "beginner"
+  },
+  {
+    "id": 128,
+    "word": "boa noite",
+    "meaning": "saudação da noite",
+    "example": "Boa noite!",
+    "tip": "Ao anoitecer ou ir dormir",
+    "level": "beginner"
+  },
+  {
+    "id": 129,
+    "word": "adeus",
+    "meaning": "despedida",
+    "example": "Adeus, até amanhã!",
+    "tip": "Ao sair",
+    "level": "beginner"
+  },
+  {
+    "id": 130,
+    "word": "sol",
+    "meaning": "estrela que nos ilumina",
+    "example": "O sol brilha.",
+    "tip": "Está calor",
+    "level": "beginner"
+  },
+  {
+    "id": 131,
+    "word": "lua",
+    "meaning": "satélite da Terra",
+    "example": "A lua brilha à noite.",
+    "tip": "Lua cheia",
+    "level": "beginner"
+  },
+  {
+    "id": 132,
+    "word": "estrela",
+    "meaning": "ponto brilhante no céu",
+    "example": "Brilha, brilha, estrelinha.",
+    "tip": "Noite estrelada",
+    "level": "beginner"
+  },
+  {
+    "id": 133,
+    "word": "chuva",
+    "meaning": "água que cai do céu",
+    "example": "Está a chover.",
+    "tip": "Leva guarda-chuva",
+    "level": "beginner"
+  },
+  {
+    "id": 134,
+    "word": "neve",
+    "meaning": "cristais de gelo",
+    "example": "Está a nevar.",
+    "tip": "Boneco de neve",
+    "level": "beginner"
+  },
+  {
+    "id": 135,
+    "word": "vento",
+    "meaning": "ar em movimento",
+    "example": "O vento sopra.",
+    "tip": "Papagaio de papel",
+    "level": "beginner"
+  },
+  {
+    "id": 136,
+    "word": "montanha",
+    "meaning": "grande elevação natural",
+    "example": "Vamos à montanha.",
+    "tip": "Esqui na montanha",
+    "level": "beginner"
+  },
+  {
+    "id": 137,
+    "word": "mar",
+    "meaning": "grande extensão de água salgada",
+    "example": "O mar é azul.",
+    "tip": "Praia",
+    "level": "beginner"
+  },
+  {
+    "id": 138,
+    "word": "rio",
+    "meaning": "curso de água",
+    "example": "O rio corre.",
+    "tip": "Pescar no rio",
+    "level": "beginner"
+  },
+  {
+    "id": 139,
+    "word": "floresta",
+    "meaning": "grande espaço arborizado",
+    "example": "Caminhada na floresta.",
+    "tip": "Árvores em todo lado",
+    "level": "beginner"
+  },
+  {
+    "id": 140,
+    "word": "flor",
+    "meaning": "planta decorativa",
+    "example": "A rosa é uma flor.",
+    "tip": "Bonita e cheirosa",
+    "level": "beginner"
+  },
+  {
+    "id": 141,
+    "word": "árvore",
+    "meaning": "planta com tronco",
+    "example": "A árvore é alta.",
+    "tip": "Árvores dão sombra",
+    "level": "beginner"
+  },
+  {
+    "id": 142,
+    "word": "primavera",
+    "meaning": "estação após inverno",
+    "example": "As flores crescem na primavera.",
+    "tip": "Março a maio",
+    "level": "beginner"
+  },
+  {
+    "id": 143,
+    "word": "verão",
+    "meaning": "estação quente",
+    "example": "Vou à praia no verão.",
+    "tip": "Junho a agosto",
+    "level": "beginner"
+  },
+  {
+    "id": 144,
+    "word": "outono",
+    "meaning": "estação em que as folhas caem",
+    "example": "As folhas mudam de cor.",
+    "tip": "Setembro a novembro",
+    "level": "beginner"
+  },
+  {
+    "id": 145,
+    "word": "inverno",
+    "meaning": "estação fria",
+    "example": "Neva no inverno.",
+    "tip": "Dezembro a fevereiro",
+    "level": "beginner"
+  },
+  {
+    "id": 146,
+    "word": "medo",
+    "meaning": "emoção desagradável",
+    "example": "Tenho medo de aranhas.",
+    "tip": "Cuidado",
+    "level": "beginner"
+  },
+  {
+    "id": 147,
+    "word": "raiva",
+    "meaning": "emoção violenta",
+    "example": "Ele gritou com raiva.",
+    "tip": "Zangado",
+    "level": "beginner"
+  },
+  {
+    "id": 148,
+    "word": "amor",
+    "meaning": "sentimento profundo",
+    "example": "Eu te amo.",
+    "tip": "Amor é lindo",
+    "level": "beginner"
+  },
+  {
+    "id": 149,
+    "word": "esperança",
+    "meaning": "expectativa positiva",
+    "example": "Mantenha a esperança.",
+    "tip": "Otimismo",
+    "level": "beginner"
+  },
+  {
+    "id": 150,
+    "word": "ajuda",
+    "meaning": "dar uma mão",
+    "example": "Posso ajudar?",
+    "tip": "Ser útil",
+    "level": "beginner"
+  },
+  {
+    "id": 151,
+    "word": "trabalho",
+    "meaning": "emprego ou tarefa",
+    "example": "Meu pai está no trabalho.",
+    "tip": "Ganhar a vida",
+    "level": "beginner"
+  },
+  {
+    "id": 152,
+    "word": "estudo",
+    "meaning": "aprender seriamente",
+    "example": "Eu estudo português.",
+    "tip": "Concentrar-se",
+    "level": "beginner"
+  },
+  {
+    "id": 153,
+    "word": "viagem",
+    "meaning": "deslocar-se para longe",
+    "example": "Quero viajar para Itália.",
+    "tip": "Descobrir o mundo",
+    "level": "beginner"
+  },
+  {
+    "id": 154,
+    "word": "música",
+    "meaning": "arte dos sons",
+    "example": "Eu ouço música.",
+    "tip": "Relaxante",
+    "level": "beginner"
+  },
+  {
+    "id": 155,
+    "word": "dança",
+    "meaning": "movimento com ritmo",
+    "example": "Nós dançamos juntos.",
+    "tip": "Alegria",
+    "level": "beginner"
+  },
+  {
+    "id": 156,
+    "word": "futebol",
+    "meaning": "desporto popular",
+    "example": "Brasil ama futebol!",
+    "tip": "Golo!",
+    "level": "beginner"
+  },
+  {
+    "id": 157,
+    "word": "praia",
+    "meaning": "areia à beira-mar",
+    "example": "Vamos à praia.",
+    "tip": "Banhos de sol",
+    "level": "beginner"
+  },
+  {
+    "id": 158,
+    "word": "piscina",
+    "meaning": "lugar para nadar",
+    "example": "Nado na piscina.",
+    "tip": "Refrescante",
+    "level": "beginner"
+  },
+  {
+    "id": 159,
+    "word": "cinema",
+    "meaning": "ver filmes num ecrã grande",
+    "example": "Vamos ao cinema.",
+    "tip": "Estreias",
+    "level": "beginner"
+  },
+  {
+    "id": 160,
+    "word": "teatro",
+    "meaning": "lugar com actuações ao vivo",
+    "example": "Peça de teatro hoje.",
+    "tip": "Actores",
+    "level": "beginner"
+  },
+  {
+    "id": 161,
+    "word": "telefone",
+    "meaning": "aparelho para chamadas",
+    "example": "O telefone toca.",
+    "tip": "Smartphone agora",
+    "level": "beginner"
+  },
+  {
+    "id": 162,
+    "word": "computador",
+    "meaning": "máquina para trabalhar",
+    "example": "Trabalho no computador.",
+    "tip": "PC ou Mac",
+    "level": "beginner"
+  },
+  {
+    "id": 163,
+    "word": "televisão",
+    "meaning": "ecrã para ver programas",
+    "example": "Vejo televisão.",
+    "tip": "Netflix na TV",
+    "level": "beginner"
+  },
+  {
+    "id": 164,
+    "word": "roupa",
+    "meaning": "o que vestimos",
+    "example": "Compro roupa nova.",
+    "tip": "Vestuário",
+    "level": "beginner"
+  },
+  {
+    "id": 165,
+    "word": "sapato",
+    "meaning": "o que calçamos nos pés",
+    "example": "Estes sapatos são pequenos.",
+    "tip": "Calçado",
+    "level": "beginner"
+  },
+  {
+    "id": 166,
+    "word": "chapéu",
+    "meaning": "o que pomos na cabeça",
+    "example": "O chapéu protege do sol.",
+    "tip": "Acessório",
+    "level": "beginner"
+  },
+  {
+    "id": 167,
+    "word": "óculos",
+    "meaning": "para ver melhor",
+    "example": "Preciso dos óculos para ler.",
+    "tip": "Grau",
+    "level": "beginner"
+  },
+  {
+    "id": 168,
+    "word": "relógio",
+    "meaning": "para saber as horas",
+    "example": "Que horas são?",
+    "tip": "Pulseira",
+    "level": "beginner"
+  },
+  {
+    "id": 169,
+    "word": "chave",
+    "meaning": "para abrir portas",
+    "example": "Perdi as chaves.",
+    "tip": "Casa e carro",
+    "level": "beginner"
+  },
+  {
+    "id": 170,
+    "word": "espelho",
+    "meaning": "para nos vermos",
+    "example": "Olho-me no espelho.",
+    "tip": "Reflexo",
+    "level": "beginner"
+  },
+  {
+    "id": 171,
+    "word": "sorriso",
+    "meaning": "expressão feliz",
+    "example": "Sorriso muda tudo.",
+    "tip": "Mostrar dentes",
+    "level": "beginner"
+  },
+  {
+    "id": 172,
+    "word": "lágrima",
+    "meaning": "derramar lágrimas",
+    "example": "O bebê chora.",
+    "tip": "Tristeza",
+    "level": "beginner"
+  },
+  {
+    "id": 173,
+    "word": "riso",
+    "meaning": "expressar divertimento",
+    "example": "Rimos juntos.",
+    "tip": "Rir é saudável",
+    "level": "beginner"
+  },
+  {
+    "id": 174,
+    "word": "abraço",
+    "meaning": "abraçar alguém",
+    "example": "Preciso de um abraço.",
+    "tip": "Carinho",
+    "level": "beginner"
+  },
+  {
+    "id": 175,
+    "word": "beijo",
+    "meaning": "tocar com os lábios",
+    "example": "Beijo na bochecha.",
+    "tip": "Afeto",
+    "level": "beginner"
+  },
+  {
+    "id": 176,
+    "word": "presente",
+    "meaning": "oferta",
+    "example": "Ganhei um presente.",
+    "tip": "Dar é bom",
+    "level": "beginner"
+  },
+  {
+    "id": 177,
+    "word": "dinheiro",
+    "meaning": "moeda ou notas",
+    "example": "Preciso de dinheiro.",
+    "tip": "Comprar coisas",
+    "level": "beginner"
+  },
+  {
+    "id": 178,
+    "word": "felicidade",
+    "meaning": "estado de alegria",
+    "example": "A felicidade está nas pequenas coisas.",
+    "tip": "Sorrir muito",
+    "level": "beginner"
+  },
+  {
+    "id": 179,
+    "word": "saúde",
+    "meaning": "bem-estar físico",
+    "example": "A saúde é o mais importante.",
+    "tip": "Cuidar do corpo",
+    "level": "beginner"
+  },
+  {
+    "id": 180,
+    "word": "beleza",
+    "meaning": "qualidade de ser bonito",
+    "example": "A beleza está nos olhos de quem vê.",
+    "tip": "Apreciar",
+    "level": "beginner"
+  },
+  {
+    "id": 181,
+    "word": "silêncio",
+    "meaning": "sem ruído",
+    "example": "Silêncio, por favor.",
+    "tip": "Calma",
+    "level": "beginner"
+  },
+  {
+    "id": 182,
+    "word": "barulho",
+    "meaning": "som alto",
+    "example": "Muito barulho na cidade.",
+    "tip": "Ruído",
+    "level": "beginner"
+  },
+  {
+    "id": 183,
+    "word": "pergunta",
+    "meaning": "questão",
+    "example": "Tenho uma pergunta.",
+    "tip": "Saber mais",
+    "level": "beginner"
+  },
+  {
+    "id": 184,
+    "word": "resposta",
+    "meaning": "solução",
+    "example": "Preciso de uma resposta.",
+    "tip": "Responder",
+    "level": "beginner"
+  },
+  {
+    "id": 185,
+    "word": "ajuda",
+    "meaning": "socorro",
+    "example": "Preciso de ajuda.",
+    "tip": "Pedir socorro",
+    "level": "beginner"
+  },
+  {
+    "id": 186,
+    "word": "segredo",
+    "meaning": "informação escondida",
+    "example": "Não contes o segredo.",
+    "tip": "Confidencial",
+    "level": "beginner"
+  },
+  {
+    "id": 187,
+    "word": "verdade",
+    "meaning": "realidade",
+    "example": "Diz a verdade.",
+    "tip": "Honestidade",
+    "level": "beginner"
+  },
+  {
+    "id": 188,
+    "word": "mentira",
+    "meaning": "falsidade",
+    "example": "Não gosto de mentiras.",
+    "tip": "Desonestidade",
+    "level": "beginner"
+  },
+  {
+    "id": 189,
+    "word": "sonho",
+    "meaning": "imaginar ou desejar",
+    "example": "Tenho um sonho.",
+    "tip": "Objetivo",
+    "level": "beginner"
+  },
+  {
+    "id": 190,
+    "word": "promessa",
+    "meaning": "compromisso",
+    "example": "Fiz uma promessa.",
+    "tip": "Cumprir",
+    "level": "beginner"
+  },
+  {
+    "id": 191,
+    "word": "sorte",
+    "meaning": "destino favorável",
+    "example": "Boa sorte!",
+    "tip": "Oportunidade",
+    "level": "beginner"
+  },
+  {
+    "id": 192,
+    "word": "azar",
+    "meaning": "falta de sorte",
+    "example": "Que azar!",
+    "tip": "Infelicidade",
+    "level": "beginner"
+  },
+  {
+    "id": 193,
+    "word": "dúvida",
+    "meaning": "incerteza",
+    "example": "Tenho uma dúvida.",
+    "tip": "Não certeza",
+    "level": "beginner"
+  },
+  {
+    "id": 194,
+    "word": "certeza",
+    "meaning": "convicção",
+    "example": "Tenho certeza.",
+    "tip": "Sem dúvida",
+    "level": "beginner"
+  },
+  {
+    "id": 195,
+    "word": "falta",
+    "meaning": "ausência",
+    "example": "Sinto a tua falta.",
+    "tip": "Saudade",
+    "level": "beginner"
+  },
+  {
+    "id": 196,
+    "word": "cuidado",
+    "meaning": "atenção, precaução",
+    "example": "Cuidado! Está quente.",
+    "tip": "Tomar cuidado",
+    "level": "beginner"
+  },
+  {
+    "id": 197,
+    "word": "paciência",
+    "meaning": "esperar com calma",
+    "example": "Tenha paciência.",
+    "tip": "Tudo ao seu tempo",
+    "level": "beginner"
+  },
+  {
+    "id": 198,
+    "word": "coragem",
+    "meaning": "força para enfrentar o medo",
+    "example": "Tenha coragem!",
+    "tip": "Bravo",
+    "level": "beginner"
+  },
+  {
+    "id": 199,
+    "word": "calma",
+    "meaning": "estado pacífico",
+    "example": "Mantenha a calma.",
+    "tip": "Não se preocupe",
+    "level": "beginner"
+  },
+  {
+    "id": 200,
+    "word": "pressa",
+    "meaning": "urgência",
+    "example": "Estou com pressa.",
+    "tip": "Depressa",
+    "level": "beginner"
+  },
+  {
+    "id": 201,
+    "word": "analisar",
+    "meaning": "estudar cuidadosamente",
+    "example": "Os cientistas analisam os dados.",
+    "tip": "Sinónimos: examinar, estudar",
+    "level": "intermediate"
+  },
+  {
+    "id": 202,
+    "word": "significativo",
+    "meaning": "importante",
+    "example": "É uma descoberta significativa!",
+    "tip": "Antónimo: insignificante",
+    "level": "intermediate"
+  },
+  {
+    "id": 203,
+    "word": "perseverança",
+    "meaning": "esforço contínuo apesar das dificuldades",
+    "example": "Graças à sua perseverança, ela venceu.",
+    "tip": "Continuar não importa o quê",
+    "level": "intermediate"
+  },
+  {
+    "id": 204,
+    "word": "consequência",
+    "meaning": "resultado ou efeito de uma ação",
+    "example": "Ele enfrentou as consequências.",
+    "tip": "Causa e efeito",
+    "level": "intermediate"
+  },
+  {
+    "id": 205,
+    "word": "essencial",
+    "meaning": "absolutamente necessário",
+    "example": "A água é essencial para a vida.",
+    "tip": "Sinónimos: crucial, vital",
+    "level": "intermediate"
+  },
+  {
+    "id": 206,
+    "word": "flexível",
+    "meaning": "capaz de mudar facilmente",
+    "example": "Ela tem um horário flexível.",
+    "tip": "Antónimo: rígido",
+    "level": "intermediate"
+  },
+  {
+    "id": 207,
+    "word": "gerar",
+    "meaning": "produzir ou criar",
+    "example": "Os painéis solares geram eletricidade.",
+    "tip": "Sinónimos: produzir, criar",
+    "level": "intermediate"
+  },
+  {
+    "id": 208,
+    "word": "manter",
+    "meaning": "conservar em bom estado",
+    "example": "Faça a manutenção do seu carro regularmente.",
+    "tip": "Manutenção regular é importante",
+    "level": "intermediate"
+  },
+  {
+    "id": 209,
+    "word": "evidente",
+    "meaning": "facilmente visto ou compreendido",
+    "example": "A resposta era evidente.",
+    "tip": "Sinónimos: claro, óbvio",
+    "level": "intermediate"
+  },
+  {
+    "id": 210,
+    "word": "potencial",
+    "meaning": "possível ou capaz de se tornar",
+    "example": "Ela tem um grande potencial.",
+    "tip": "Possibilidade futura",
+    "level": "intermediate"
+  },
+  {
+    "id": 211,
+    "word": "vantagem",
+    "meaning": "algo benéfico",
+    "example": "Falar duas línguas é uma vantagem.",
+    "tip": "Ponto positivo",
+    "level": "intermediate"
+  },
+  {
+    "id": 212,
+    "word": "desvantagem",
+    "meaning": "ponto negativo",
+    "example": "O preço é uma desvantagem.",
+    "tip": "Inconveniente",
+    "level": "intermediate"
+  },
+  {
+    "id": 213,
+    "word": "ambiente",
+    "meaning": "natureza à nossa volta",
+    "example": "Protejamos o ambiente.",
+    "tip": "Planeta",
+    "level": "intermediate"
+  },
+  {
+    "id": 214,
+    "word": "desenvolvimento",
+    "meaning": "crescimento ou melhoria",
+    "example": "O desenvolvimento pessoal é importante.",
+    "tip": "Progresso",
+    "level": "intermediate"
+  },
+  {
+    "id": 215,
+    "word": "responsabilidade",
+    "meaning": "dever ou obrigação",
+    "example": "Assume as tuas responsabilidades.",
+    "tip": "Confiável",
+    "level": "intermediate"
+  },
+  {
+    "id": 216,
+    "word": "confiança",
+    "meaning": "acreditar em alguém",
+    "example": "Tenho confiança em ti.",
+    "tip": "Fé",
+    "level": "intermediate"
+  },
+  {
+    "id": 217,
+    "word": "dúvida",
+    "meaning": "falta de certeza",
+    "example": "Tenho uma dúvida.",
+    "tip": "Não tenho a certeza",
+    "level": "intermediate"
+  },
+  {
+    "id": 218,
+    "word": "prova",
+    "meaning": "facto que mostra a verdade",
+    "example": "Tens alguma prova?",
+    "tip": "Evidência",
+    "level": "intermediate"
+  },
+  {
+    "id": 219,
+    "word": "teoria",
+    "meaning": "explicação baseada em ideias",
+    "example": "É apenas uma teoria.",
+    "tip": "Ainda não provado",
+    "level": "intermediate"
+  },
+  {
+    "id": 220,
+    "word": "prática",
+    "meaning": "colocar em aplicação",
+    "example": "Teoria sem prática é inútil.",
+    "tip": "Fazer realmente",
+    "level": "intermediate"
+  },
+  {
+    "id": 221,
+    "word": "experiência",
+    "meaning": "situação vivida",
+    "example": "A experiência é a melhor lição.",
+    "tip": "Aprender fazendo",
+    "level": "intermediate"
+  },
+  {
+    "id": 222,
+    "word": "objetivo",
+    "meaning": "meta a alcançar",
+    "example": "O meu objetivo é aprender português.",
+    "tip": "Alvo",
+    "level": "intermediate"
+  },
+  {
+    "id": 223,
+    "word": "progresso",
+    "meaning": "avanço positivo",
+    "example": "Estás a fazer progressos!",
+    "tip": "Melhoria",
+    "level": "intermediate"
+  },
+  {
+    "id": 224,
+    "word": "solução",
+    "meaning": "resposta para um problema",
+    "example": "Vamos encontrar uma solução.",
+    "tip": "Resolução",
+    "level": "intermediate"
+  },
+  {
+    "id": 225,
+    "word": "problema",
+    "meaning": "dificuldade a resolver",
+    "example": "Tenho um problema.",
+    "tip": "Desafio",
+    "level": "intermediate"
+  },
+  {
+    "id": 226,
+    "word": "qualidade",
+    "meaning": "nível de excelência",
+    "example": "Qualidade antes de quantidade.",
+    "tip": "Bom padrão",
+    "level": "intermediate"
+  },
+  {
+    "id": 227,
+    "word": "quantidade",
+    "meaning": "quantos existem",
+    "example": "A quantidade é grande.",
+    "tip": "Número",
+    "level": "intermediate"
+  },
+  {
+    "id": 228,
+    "word": "chance",
+    "meaning": "destino favorável",
+    "example": "Boa sorte!",
+    "tip": "Oportunidade",
+    "level": "intermediate"
+  },
+  {
+    "id": 229,
+    "word": "risco",
+    "meaning": "possibilidade de perigo",
+    "example": "Vale o risco?",
+    "tip": "Perigo potencial",
+    "level": "intermediate"
+  },
+  {
+    "id": 230,
+    "word": "escolha",
+    "meaning": "opção a selecionar",
+    "example": "É a tua escolha.",
+    "tip": "Decisão",
+    "level": "intermediate"
+  },
+  {
+    "id": 231,
+    "word": "opinião",
+    "meaning": "ponto de vista pessoal",
+    "example": "Cada um tem a sua opinião.",
+    "tip": "Achar",
+    "level": "intermediate"
+  },
+  {
+    "id": 232,
+    "word": "realidade",
+    "meaning": "o que é verdade",
+    "example": "Volta à realidade.",
+    "tip": "Verdade",
+    "level": "intermediate"
+  },
+  {
+    "id": 233,
+    "word": "imaginação",
+    "meaning": "capacidade de criar imagens mentais",
+    "example": "As crianças têm imaginação.",
+    "tip": "Criatividade",
+    "level": "intermediate"
+  },
+  {
+    "id": 234,
+    "word": "sucesso",
+    "meaning": "atingir uma meta",
+    "example": "O sucesso vem com o trabalho.",
+    "tip": "Conquista",
+    "level": "intermediate"
+  },
+  {
+    "id": 235,
+    "word": "fracasso",
+    "meaning": "não atingir a meta",
+    "example": "O fracasso é uma lição.",
+    "tip": "Anti-sucesso",
+    "level": "intermediate"
+  },
+  {
+    "id": 236,
+    "word": "motivação",
+    "meaning": "vontade de fazer",
+    "example": "Preciso de motivação.",
+    "tip": "Inspiração",
+    "level": "intermediate"
+  },
+  {
+    "id": 237,
+    "word": "paixão",
+    "meaning": "amor forte por algo",
+    "example": "A música é a minha paixão.",
+    "tip": "Hobby favorito",
+    "level": "intermediate"
+  },
+  {
+    "id": 238,
+    "word": "satisfação",
+    "meaning": "sentimento de contentamento",
+    "example": "Trabalho bem feito dá satisfação.",
+    "tip": "Felicidade",
+    "level": "intermediate"
+  },
+  {
+    "id": 239,
+    "word": "estresse",
+    "meaning": "pressão mental",
+    "example": "O trabalho pode causar estresse.",
+    "tip": "Ansiedade",
+    "level": "intermediate"
+  },
+  {
+    "id": 240,
+    "word": "calma",
+    "meaning": "estado pacífico",
+    "example": "Gosto da calma.",
+    "tip": "Silencioso",
+    "level": "intermediate"
+  },
+  {
+    "id": 241,
+    "word": "equilíbrio",
+    "meaning": "manter a estabilidade",
+    "example": "Equilibra as tuas refeições.",
+    "tip": "Harmonia",
+    "level": "intermediate"
+  },
+  {
+    "id": 242,
+    "word": "benefício",
+    "meaning": "ganho positivo",
+    "example": "O exercício tem benefícios.",
+    "tip": "Vantagens",
+    "level": "intermediate"
+  },
+  {
+    "id": 243,
+    "word": "tendência",
+    "meaning": "direção geral",
+    "example": "É uma tendência atual.",
+    "tip": "Moda",
+    "level": "intermediate"
+  },
+  {
+    "id": 244,
+    "word": "crise",
+    "meaning": "período difícil",
+    "example": "A crise económica atingiu.",
+    "tip": "Emergência",
+    "level": "intermediate"
+  },
+  {
+    "id": 245,
+    "word": "esperança",
+    "meaning": "expectativa positiva",
+    "example": "Mantém a esperança.",
+    "tip": "Otimismo",
+    "level": "intermediate"
+  },
+  {
+    "id": 246,
+    "word": "desespero",
+    "meaning": "falta de esperança",
+    "example": "O desespero tomou conta dele.",
+    "tip": "Pessimismo",
+    "level": "intermediate"
+  },
+  {
+    "id": 247,
+    "word": "coragem",
+    "meaning": "força face ao medo",
+    "example": "Tem coragem!",
+    "tip": "Bravo",
+    "level": "intermediate"
+  },
+  {
+    "id": 248,
+    "word": "medo",
+    "meaning": "emoção desagradável",
+    "example": "Tenho medo de aranhas.",
+    "tip": "Receio",
+    "level": "intermediate"
+  },
+  {
+    "id": 249,
+    "word": "raiva",
+    "meaning": "emoção violenta",
+    "example": "Ele gritou de raiva.",
+    "tip": "Zanga",
+    "level": "intermediate"
+  },
+  {
+    "id": 250,
+    "word": "surpresa",
+    "meaning": "evento inesperado",
+    "example": "Que boa surpresa!",
+    "tip": "Espanto",
+    "level": "intermediate"
+  },
+  {
+    "id": 251,
+    "word": "tédio",
+    "meaning": "falta de interesse",
+    "example": "Estou entediado.",
+    "tip": "Monótono",
+    "level": "intermediate"
+  },
+  {
+    "id": 252,
+    "word": "entusiasmo",
+    "meaning": "grande excitação positiva",
+    "example": "Ele fala com entusiasmo.",
+    "tip": "Energia positiva",
+    "level": "intermediate"
+  },
+  {
+    "id": 253,
+    "word": "honesto",
+    "meaning": "que diz a verdade",
+    "example": "Sê sempre honesto.",
+    "tip": "Sincero",
+    "level": "intermediate"
+  },
+  {
+    "id": 254,
+    "word": "leal",
+    "meaning": "permanecer fiel",
+    "example": "Um amigo leal.",
+    "tip": "Apoia sempre",
+    "level": "intermediate"
+  },
+  {
+    "id": 255,
+    "word": "paciente",
+    "meaning": "saber esperar",
+    "example": "Sê paciente.",
+    "tip": "Calmo",
+    "level": "intermediate"
+  },
+  {
+    "id": 256,
+    "word": "educado",
+    "meaning": "que mostra respeito",
+    "example": "Uma criança educada.",
+    "tip": "Diz obrigado",
+    "level": "intermediate"
+  },
+  {
+    "id": 257,
+    "word": "generoso",
+    "meaning": "que dá de boa vontade",
+    "example": "Ela é muito generosa.",
+    "tip": "Partilha",
+    "level": "intermediate"
+  },
+  {
+    "id": 258,
+    "word": "egoísta",
+    "meaning": "só pensa em si",
+    "example": "É egoísta levar tudo.",
+    "tip": "Não partilha",
+    "level": "intermediate"
+  },
+  {
+    "id": 259,
+    "word": "moderno",
+    "meaning": "atual, contemporâneo",
+    "example": "Este carro é moderno.",
+    "tip": "Não antigo",
+    "level": "intermediate"
+  },
+  {
+    "id": 260,
+    "word": "tradicional",
+    "meaning": "baseado no costume",
+    "example": "Um prato tradicional.",
+    "tip": "Transmitido há muito tempo",
+    "level": "intermediate"
+  },
+  {
+    "id": 261,
+    "word": "complexo",
+    "meaning": "difícil de compreender",
+    "example": "Este problema é complexo.",
+    "tip": "Complicado",
+    "level": "intermediate"
+  },
+  {
+    "id": 262,
+    "word": "simples",
+    "meaning": "fácil de compreender",
+    "example": "É simples!",
+    "tip": "Não complexo",
+    "level": "intermediate"
+  },
+  {
+    "id": 263,
+    "word": "capaz",
+    "meaning": "ter competência",
+    "example": "Tu és capaz de vencer.",
+    "tip": "Pode fazer",
+    "level": "intermediate"
+  },
+  {
+    "id": 264,
+    "word": "confiável",
+    "meaning": "digno de confiança",
+    "example": "Este carro é confiável.",
+    "tip": "Seguro",
+    "level": "intermediate"
+  },
+  {
+    "id": 265,
+    "word": "durável",
+    "meaning": "que dura muito tempo",
+    "example": "Plástico durável.",
+    "tip": "Resistente",
+    "level": "intermediate"
+  },
+  {
+    "id": 266,
+    "word": "frágil",
+    "meaning": "fácil de partir",
+    "example": "Este copo é frágil.",
+    "tip": "Delicado",
+    "level": "intermediate"
+  },
+  {
+    "id": 267,
+    "word": "disponível",
+    "meaning": "livre, acessível",
+    "example": "Estou disponível amanhã.",
+    "tip": "Não ocupado",
+    "level": "intermediate"
+  },
+  {
+    "id": 268,
+    "word": "ocupado",
+    "meaning": "não livre",
+    "example": "Desculpa, estou ocupado.",
+    "tip": "Tem muito que fazer",
+    "level": "intermediate"
+  },
+  {
+    "id": 269,
+    "word": "preciso",
+    "meaning": "exato, correto",
+    "example": "Dá uma resposta precisa.",
+    "tip": "Não vago",
+    "level": "intermediate"
+  },
+  {
+    "id": 270,
+    "word": "vago",
+    "meaning": "pouco claro",
+    "example": "As suas explicações são vagas.",
+    "tip": "Impreciso",
+    "level": "intermediate"
+  },
+  {
+    "id": 271,
+    "word": "igual",
+    "meaning": "idêntico",
+    "example": "Todos iguais perante a lei.",
+    "tip": "Mesmo",
+    "level": "intermediate"
+  },
+  {
+    "id": 272,
+    "word": "diferente",
+    "meaning": "não é o mesmo",
+    "example": "Somos diferentes.",
+    "tip": "Antónimo: igual",
+    "level": "intermediate"
+  },
+  {
+    "id": 273,
+    "word": "ativo",
+    "meaning": "que se mexe, que faz",
+    "example": "Ela é muito ativa.",
+    "tip": "Muda-se",
+    "level": "intermediate"
+  },
+  {
+    "id": 274,
+    "word": "passivo",
+    "meaning": "inativo",
+    "example": "Ele fica passivo.",
+    "tip": "Não faz nada",
+    "level": "intermediate"
+  },
+  {
+    "id": 275,
+    "word": "claro",
+    "meaning": "fácil de compreender",
+    "example": "Está claro.",
+    "tip": "Compreendido",
+    "level": "intermediate"
+  },
+  {
+    "id": 276,
+    "word": "obscuro",
+    "meaning": "difícil de compreender",
+    "example": "O seu significado é obscuro.",
+    "tip": "Não claro",
+    "level": "intermediate"
+  },
+  {
+    "id": 277,
+    "word": "regular",
+    "meaning": "constante, repetido",
+    "example": "Treino regular.",
+    "tip": "Frequentemente",
+    "level": "intermediate"
+  },
+  {
+    "id": 278,
+    "word": "direto",
+    "meaning": "sem desvios",
+    "example": "Um voo direto.",
+    "tip": "Linha reta",
+    "level": "intermediate"
+  },
+  {
+    "id": 279,
+    "word": "indireto",
+    "meaning": "com desvio",
+    "example": "Um caminho indireto.",
+    "tip": "Não direto",
+    "level": "intermediate"
+  },
+  {
+    "id": 280,
+    "word": "frequente",
+    "meaning": "que acontece frequentemente",
+    "example": "É frequente aqui.",
+    "tip": "Comum",
+    "level": "intermediate"
+  },
+  {
+    "id": 281,
+    "word": "raro",
+    "meaning": "pouco frequente",
+    "example": "Uma espécie rara.",
+    "tip": "Não comum",
+    "level": "intermediate"
+  },
+  {
+    "id": 282,
+    "word": "positivo",
+    "meaning": "construtivo, favorável",
+    "example": "Uma atitude positiva.",
+    "tip": "Otimista",
+    "level": "intermediate"
+  },
+  {
+    "id": 283,
+    "word": "negativo",
+    "meaning": "desfavorável",
+    "example": "Um efeito negativo.",
+    "tip": "Pessimista",
+    "level": "intermediate"
+  },
+  {
+    "id": 284,
+    "word": "limpo",
+    "meaning": "sem sujidade",
+    "example": "A casa está limpa.",
+    "tip": "Lavado",
+    "level": "intermediate"
+  },
+  {
+    "id": 285,
+    "word": "sujo",
+    "meaning": "com sujidade",
+    "example": "Roupas sujas.",
+    "tip": "Antónimo: limpo",
+    "level": "intermediate"
+  },
+  {
+    "id": 286,
+    "word": "inteiro",
+    "meaning": "completo, total",
+    "example": "Comi o bolo inteiro.",
+    "tip": "Todo",
+    "level": "intermediate"
+  },
+  {
+    "id": 287,
+    "word": "parcial",
+    "meaning": "não completo",
+    "example": "Uma resposta parcial.",
+    "tip": "Apenas um pouco",
+    "level": "intermediate"
+  },
+  {
+    "id": 288,
+    "word": "principal",
+    "meaning": "o mais importante",
+    "example": "A razão principal.",
+    "tip": "Primeiro",
+    "level": "intermediate"
+  },
+  {
+    "id": 289,
+    "word": "secundário",
+    "meaning": "menos importante",
+    "example": "Um detalhe secundário.",
+    "tip": "Não principal",
+    "level": "intermediate"
+  },
+  {
+    "id": 290,
+    "word": "maior",
+    "meaning": "muito importante",
+    "example": "Um problema maior.",
+    "tip": "Grave",
+    "level": "intermediate"
+  },
+  {
+    "id": 291,
+    "word": "menor",
+    "meaning": "pouco importante",
+    "example": "Um detalhe menor.",
+    "tip": "Pequeno",
+    "level": "intermediate"
+  },
+  {
+    "id": 292,
+    "word": "favorito",
+    "meaning": "preferido",
+    "example": "A minha canção favorita.",
+    "tip": "O melhor",
+    "level": "intermediate"
+  },
+  {
+    "id": 293,
+    "word": "popular",
+    "meaning": "amado por muitos",
+    "example": "Este cantor é popular.",
+    "tip": "Conhecido",
+    "level": "intermediate"
+  },
+  {
+    "id": 294,
+    "word": "calmo",
+    "meaning": "silencioso, pacífico",
+    "example": "Um lugar calmo.",
+    "tip": "Não barulhento",
+    "level": "intermediate"
+  },
+  {
+    "id": 295,
+    "word": "barulhento",
+    "meaning": "que faz barulho",
+    "example": "Vizinhos barulhentos.",
+    "tip": "Muito som",
+    "level": "intermediate"
+  },
+  {
+    "id": 296,
+    "word": "distante",
+    "meaning": "longe no espaço ou tempo",
+    "example": "Um país distante.",
+    "tip": "Não perto",
+    "level": "intermediate"
+  },
+  {
+    "id": 297,
+    "word": "perto",
+    "meaning": "próximo",
+    "example": "A escola é perto.",
+    "tip": "Não longe",
+    "level": "intermediate"
+  },
+  {
+    "id": 298,
+    "word": "enorme",
+    "meaning": "muito grande",
+    "example": "Um elefante é enorme.",
+    "tip": "Gigante",
+    "level": "intermediate"
+  },
+  {
+    "id": 299,
+    "word": "onipresente",
+    "meaning": "encontrado em toda a parte",
+    "example": "Os smartphones são onipresentes.",
+    "tip": "Sinónimos: ubíquo",
+    "level": "advanced"
+  },
+  {
+    "id": 300,
+    "word": "efêmero",
+    "meaning": "que dura muito pouco tempo",
+    "example": "A beleza de um pôr do sol é efêmera.",
+    "tip": "Antónimo: permanente, eterno",
+    "level": "advanced"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "word": "Katze",
+    "meaning": "ein kleines pelziges Haustier",
+    "example": "Die Katze schläft auf dem Sofa.",
+    "tip": "Katzen sagen Miau! 🐱",
+    "level": "beginner"
+  },
+  {
+    "id": 2,
+    "word": "Hund",
+    "meaning": "ein treues Haustier",
+    "example": "Mein Hund spielt gerne.",
+    "tip": "Hund ist bester Freund des Menschen",
+    "level": "beginner"
+  },
+  {
+    "id": 3,
+    "word": "Haus",
+    "meaning": "ein Gebäude zum Wohnen",
+    "example": "Sie leben in einem großen Haus.",
+    "tip": "Haus = Zuhause",
+    "level": "beginner"
+  },
+  {
+    "id": 4,
+    "word": "Auto",
+    "meaning": "ein Fahrzeug zum Fahren",
+    "example": "Sie fährt ein rotes Auto.",
+    "tip": "Auto = Transport",
+    "level": "beginner"
+  },
+  {
+    "id": 5,
+    "word": "Lehrer",
+    "meaning": "eine Person, die unterrichtet",
+    "example": "Mein Lehrer hilft mir zu lernen.",
+    "tip": "Lehrer = Wissensvermittler",
+    "level": "beginner"
+  }
+]

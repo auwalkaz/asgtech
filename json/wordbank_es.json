@@ -1,0 +1,186 @@
+[
+  {
+    "id": 1,
+    "word": "gato",
+    "meaning": "un pequeño animal de compañía peludo",
+    "example": "Mi gato duerme en el sofá.",
+    "tip": "¡Los gatos dicen Miau! 🐱",
+    "level": "beginner"
+  },
+  {
+    "id": 2,
+    "word": "perro",
+    "meaning": "un animal de compañía fiel",
+    "example": "Mi perro ama jugar.",
+    "tip": "El perro es el mejor amigo del hombre",
+    "level": "beginner"
+  },
+  {
+    "id": 3,
+    "word": "casa",
+    "meaning": "un edificio donde vive la gente",
+    "example": "Viven en una casa grande.",
+    "tip": "Casa = Hogar",
+    "level": "beginner"
+  },
+  {
+    "id": 4,
+    "word": "coche",
+    "meaning": "un vehículo para conducir",
+    "example": "Ella conduce un coche rojo.",
+    "tip": "Coche = Transporte",
+    "level": "beginner"
+  },
+  {
+    "id": 5,
+    "word": "profesor",
+    "meaning": "una persona que enseña",
+    "example": "Mi profesor me ayuda a aprender.",
+    "tip": "Profesor = Dador de conocimiento",
+    "level": "beginner"
+  },
+  {
+    "id": 6,
+    "word": "correr",
+    "meaning": "moverse rápidamente",
+    "example": "Corro todas las mañanas.",
+    "tip": "Pasado: corrí",
+    "level": "beginner"
+  },
+  {
+    "id": 7,
+    "word": "comer",
+    "meaning": "consumir alimentos",
+    "example": "Comamos la cena.",
+    "tip": "Pasado: comí",
+    "level": "beginner"
+  },
+  {
+    "id": 8,
+    "word": "dormir",
+    "meaning": "descansar con los ojos cerrados",
+    "example": "Los bebés duermen mucho.",
+    "tip": "Pasado: dormí",
+    "level": "beginner"
+  },
+  {
+    "id": 9,
+    "word": "feliz",
+    "meaning": "sintiendo alegría",
+    "example": "Ella era feliz.",
+    "tip": "Opuesto: triste",
+    "level": "beginner"
+  },
+  {
+    "id": 10,
+    "word": "triste",
+    "meaning": "sintiendo pena",
+    "example": "Él estaba triste.",
+    "tip": "Opuesto: feliz",
+    "level": "beginner"
+  },
+  {
+    "id": 11,
+    "word": "grande",
+    "meaning": "de gran tamaño",
+    "example": "Esa es una casa grande.",
+    "tip": "Opuesto: pequeño",
+    "level": "beginner"
+  },
+  {
+    "id": 12,
+    "word": "pequeño",
+    "meaning": "de tamaño pequeño",
+    "example": "Este es un gato pequeño.",
+    "tip": "Opuesto: grande",
+    "level": "beginner"
+  },
+  {
+    "id": 13,
+    "word": "hermoso",
+    "meaning": "muy agradable de ver",
+    "example": "¡Hermoso atardecer!",
+    "tip": "Describe apariencia",
+    "level": "beginner"
+  },
+  {
+    "id": 14,
+    "word": "amigo",
+    "meaning": "una persona que te gusta y en quien confías",
+    "example": "Eres mi mejor amigo.",
+    "tip": "Un amigo es como la familia",
+    "level": "beginner"
+  },
+  {
+    "id": 15,
+    "word": "aprender",
+    "meaning": "adquirir nuevos conocimientos",
+    "example": "Aprendo palabras nuevas cada día.",
+    "tip": "¡Aprender es divertido!",
+    "level": "beginner"
+  },
+  {
+    "id": 16,
+    "word": "rápido",
+    "meaning": "veloz",
+    "example": "Ella dio una respuesta rápida.",
+    "tip": "Adverbio: rápidamente",
+    "level": "beginner"
+  },
+  {
+    "id": 17,
+    "word": "lento",
+    "meaning": "no veloz",
+    "example": "La tortuga es lenta.",
+    "tip": "Adverbio: lentamente",
+    "level": "beginner"
+  },
+  {
+    "id": 18,
+    "word": "libro",
+    "meaning": "páginas de texto encuadernadas",
+    "example": "Leo un buen libro.",
+    "tip": "Leer mejora el vocabulario",
+    "level": "beginner"
+  },
+  {
+    "id": 19,
+    "word": "escuela",
+    "meaning": "un lugar para aprender",
+    "example": "Voy a la escuela cada día.",
+    "tip": "Escuela = Educación",
+    "level": "beginner"
+  },
+  {
+    "id": 20,
+    "word": "agua",
+    "meaning": "líquido claro necesario para la vida",
+    "example": "Bebe agua cada día.",
+    "tip": "El agua es esencial",
+    "level": "beginner"
+  },
+  {
+    "id": 21,
+    "word": "analizar",
+    "meaning": "estudiar algo cuidadosamente",
+    "example": "Los científicos analizan datos.",
+    "tip": "Sinónimos: examinar, estudiar",
+    "level": "intermediate"
+  },
+  {
+    "id": 22,
+    "word": "significativo",
+    "meaning": "muy importante o significativo",
+    "example": "¡Este es un descubrimiento significativo!",
+    "tip": "Antónimo: insignificante",
+    "level": "intermediate"
+  },
+  {
+    "id": 23,
+    "word": "perseverancia",
+    "meaning": "esfuerzo continuo a pesar de las dificultades",
+    "example": "Gracias a su perseverancia, ella tuvo éxito.",
+    "tip": "Sigue adelante pase lo que pase",
+    "level": "intermediate"
+  }
+]

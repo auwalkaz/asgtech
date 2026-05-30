@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "word": "gatto",
+    "meaning": "un piccolo animale domestico peloso",
+    "example": "Il gatto dorme sul divano.",
+    "tip": "I gatti dicono Miao! 🐱",
+    "level": "beginner"
+  },
+  {
+    "id": 2,
+    "word": "cane",
+    "meaning": "un animale domestico fedele",
+    "example": "Il mio cane ama giocare.",
+    "tip": "Il cane è il migliore amico dell'uomo",
+    "level": "beginner"
+  },
+  {
+    "id": 3,
+    "word": "casa",
+    "meaning": "un edificio dove le persone vivono",
+    "example": "Vivono in una grande casa.",
+    "tip": "Casa = Dimora",
+    "level": "beginner"
+  },
+  {
+    "id": 4,
+    "word": "macchina",
+    "meaning": "un veicolo per guidare",
+    "example": "Lei guida una macchina rossa.",
+    "tip": "Macchina = Trasporto",
+    "level": "beginner"
+  },
+  {
+    "id": 5,
+    "word": "insegnante",
+    "meaning": "una persona che insegna",
+    "example": "Il mio insegnante mi aiuta a imparare.",
+    "tip": "Insegnante = Donatore di conoscenza",
+    "level": "beginner"
+  }
+]

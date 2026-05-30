@@ -1,0 +1,18 @@
+{
+  "beginner": [
+    {"word": "hello", "meaning": "a greeting", "example": "Hello, how are you?"},
+    {"word": "good", "meaning": "pleasant or satisfactory", "example": "This is a good book."},
+    {"word": "bad", "meaning": "of poor quality", "example": "That was a bad movie."},
+    {"word": "happy", "meaning": "feeling pleasure", "example": "I am happy today."},
+    {"word": "sad", "meaning": "feeling sorrow", "example": "She looks sad."}
+  ],
+  "intermediate": [
+    {"word": "beautiful", "meaning": "pleasing the senses", "example": "The sunset is beautiful."},
+    {"word": "necessary", "meaning": "required to be done", "example": "It is necessary to study."},
+    {"word": "accommodation", "meaning": "a place to live", "example": "We need accommodation for the night."}
+  ],
+  "advanced": [
+    {"word": "quintessential", "meaning": "representing the perfect example", "example": "She is the quintessential teacher."},
+    {"word": "serendipity", "meaning": "fortunate accident", "example": "Finding this book was serendipity."}
+  ]
+}

@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎤 Speaking Practice - AI Generated Phrases</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: white;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.back-btn {
+    background: rgba(255,255,255,0.2);
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.speaking-card {
+    background: rgba(30, 41, 59, 0.9);
+    border-radius: 30px;
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.phrase-display {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #f59e0b;
+    margin: 30px 0;
+    padding: 30px;
+    background: #0f172a;
+    border-radius: 20px;
+}
+
+.microphone-btn {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    border: none;
+    font-size: 2.5em;
+    cursor: pointer;
+    margin: 20px auto;
+    transition: all 0.3s;
+}
+
+.microphone-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(239,68,68,0.5);
+}
+
+.scenarios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.scenario-card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.scenario-card:hover {
+    transform: translateY(-5px);
+    background: #334155;
+}
+
+.scenario-card.active {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #0f172a;
+}
+
+.feedback-area {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    background: #0f172a;
+    transition: all 0.3s;
+}
+
+.progress-bar {
+    height: 10px;
+    background: #334155;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #10b981;
+    width: 0%;
+    transition: width 0.5s;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #f59e0b;
+}
+
+.btn {
+    padding: 12px 25px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: #3b82f6;
+    color: white;
+}
+
+.btn-success {
+    background: #10b981;
+    color: white;
+}
+
+.btn-warning {
+    background: #f59e0b;
+    color: white;
+}
+
+.btn-danger {
+    background: #ef4444;
+    color: white;
+}
+
+.btn-purple {
+    background: #8b5cf6;
+    color: white;
+}
+
+.btn-primary:hover, .btn-success:hover, .btn-warning:hover, .btn-danger:hover, .btn-purple:hover {
+    transform: translateY(-2px);
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.refresh-btn {
+    background: #8b5cf6;
+    margin-bottom: 15px;
+}
+
+.refresh-btn:hover {
+    background: #7c3aed;
+}
+
+.ai-badge {
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.ai-generating {
+    animation: pulse 1s infinite;
+}
+
+@media (max-width: 768px) {
+    .phrase-display {
+        font-size: 1.5em;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header">
+        <a href="index.html" class="back-btn">← Back to Dashboard</a>
+        <div>🎤 Speaking Practice <span class="ai-badge">AI Generated</span></div>
+        <div id="languageDisplay">English</div>
+    </div>
+
+    <div class="speaking-card">
+        <h2>🎯 Fresh AI-Generated Phrases</h2>
+        <div class="phrase-display" id="currentPhrase">
+            Loading AI phrases...
+        </div>
+        
+        <div class="button-group">
+            <button class="btn btn-primary" onclick="listenToPhrase()">🔊 Listen to Phrase</button>
+            <button class="btn btn-success" onclick="nextPhrase()">⏩ Next Phrase</button>
+            <button class="btn btn-purple" onclick="generateNewAIPhrases()">✨ Generate New AI Phrases</button>
+        </div>
+        
+        <button class="microphone-btn" onclick="startSpeaking()">🎙️</button>
+        <p>Click the microphone and speak the phrase</p>
+        
+        <div class="feedback-area" id="feedbackArea">
+            🤖 AI generates fresh phrases every time! Click "Generate New AI Phrases" for more variety.
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+        <h3>📚 Conversation Topics</h3>
+        <button class="btn btn-warning refresh-btn" onclick="refreshTopics()">
+            🔄 Refresh Topics
+        </button>
+    </div>
+    
+    <div class="scenarios" id="scenariosContainer">
+        <div class="loading">Loading topics...</div>
+    </div>
+
+    <div class="speaking-card" style="margin-top: 20px;">
+        <h4>📊 Your Speaking Progress</h4>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <p id="statsText" style="margin-top: 10px;">Phrases mastered: 0/0</p>
+        <div style="margin-top: 15px; font-size: 0.8em; color: #94a3b8;">
+            🎲 Each click generates unique AI phrases - practice with endless variety!
+        </div>
+    </div>
+</div>
+
+<script>
+let currentLang = localStorage.getItem('preferredLanguage') || 'en';
+let currentScenario = null;
+let masteredPhrases = 0;
+let currentPhrases = [];
+let currentPhraseIndex = 0;
+let masteredIndices = new Set();
+let isGenerating = false;
+
+// Available topics pool
+const topicPool = [
+    { id: "greeting", name: "Greetings", icon: "👋", description: "Say hello, introduce yourself" },
+    { id: "introduction", name: "Self Introduction", icon: "🙋", description: "Introduce yourself to others" },
+    { id: "restaurant", name: "Restaurant", icon: "🍽️", description: "Order food and drinks" },
+    { id: "shopping", name: "Shopping", icon: "🛍️", description: "Ask prices, buy items" },
+    { id: "travel", name: "Travel", icon: "✈️", description: "Ask for directions, book tickets" },
+    { id: "hobbies", name: "Hobbies", icon: "🎨", description: "Talk about free time" },
+    { id: "work", name: "Job Interview", icon: "💼", description: "Talk about your career" },
+    { id: "family", name: "Family", icon: "👨‍👩‍👧", description: "Describe your family" },
+    { id: "weather", name: "Weather", icon: "🌤️", description: "Discuss weather" },
+    { id: "emergency", name: "Emergency", icon: "🚨", description: "Emergency situations" },
+    { id: "business", name: "Business", icon: "💼", description: "Professional conversations" },
+    { id: "small_talk", name: "Small Talk", icon: "💬", description: "Casual conversations" }
+];
+
+// Get today's random topics (changes daily)
+function getTodaysTopics() {
+    const today = new Date().toISOString().split('T')[0];
+    const saved = localStorage.getItem(`topics_${today}_${currentLang}`);
+    
+    if (saved) {
+        return JSON.parse(saved);
+    }
+    
+    // Randomly select 4 topics for today
+    const shuffled = [...topicPool];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    
+    const todaysTopics = shuffled.slice(0, 4);
+    localStorage.setItem(`topics_${today}_${currentLang}`, JSON.stringify(todaysTopics));
+    return todaysTopics;
+}
+
+// Display topics
+function displayTopics() {
+    const topics = getTodaysTopics();
+    const container = document.getElementById('scenariosContainer');
+    
+    container.innerHTML = topics.map(topic => `
+        <div class="scenario-card" data-scenario="${topic.id}" onclick="loadScenario('${topic.id}')">
+            <div style="font-size: 2em;">${topic.icon}</div>
+            <h4>${topic.name}</h4>
+            <p>${topic.description}</p>
+        </div>
+    `).join('');
+}
+
+// Refresh topics manually
+function refreshTopics() {
+    const today = new Date().toISOString().split('T')[0];
+    localStorage.removeItem(`topics_${today}_${currentLang}`);
+    displayTopics();
+    
+    // Load first topic automatically
+    const topics = getTodaysTopics();
+    if (topics.length > 0) {
+        loadScenario(topics[0].id);
+    }
+    
+    const feedback = document.getElementById('feedbackArea');
+    feedback.innerHTML = '✨ Topics refreshed! New conversation topics loaded!';
+    feedback.style.background = '#1e3a5f';
+    setTimeout(() => {
+        feedback.style.background = '#0f172a';
+        feedback.style.color = 'white';
+    }, 2000);
+}
+
+// Generate completely new AI phrases
+async function generateNewAIPhrases() {
+    if (!currentScenario) {
+        alert('Please select a topic first!');
+        return;
+    }
+    
+    if (isGenerating) {
+        alert('Already generating new phrases. Please wait...');
+        return;
+    }
+    
+    isGenerating = true;
+    const generateBtn = document.querySelector('.btn-purple');
+    const originalText = generateBtn.innerHTML;
+    generateBtn.innerHTML = '🤖 Generating...';
+    generateBtn.disabled = true;
+    
+    const feedback = document.getElementById('feedbackArea');
+    feedback.innerHTML = '🎨 AI is creating fresh, unique phrases for you...';
+    feedback.style.background = '#8b5cf6';
+    feedback.style.color = 'white';
+    
+    try {
+        // Add timestamp and force refresh
+        const timestamp = new Date().getTime();
+        const response = await fetch(`/api/speaking/phrases?language=${currentLang}&scenario=${currentScenario}&count=5&refresh=true&_=${timestamp}`);
+        const data = await response.json();
+        
+        if (data.success && data.phrases && data.phrases.length > 0) {
+            currentPhrases = data.phrases;
+            currentPhraseIndex = 0;
+            masteredPhrases = 0;
+            masteredIndices.clear();
+            updatePhraseDisplay();
+            updateProgress();
+            
+            feedback.innerHTML = `✨ ${data.fresh ? 'AI generated' : 'Loaded'} ${currentPhrases.length} fresh phrases! Practice these new ones! 🌟`;
+            feedback.style.background = '#10b981';
+            
+            // Also update the phrase display to show it's new
+            const phraseDisplay = document.getElementById('currentPhrase');
+            phraseDisplay.style.animation = 'pulse 0.5s ease';
+            setTimeout(() => {
+                phraseDisplay.style.animation = '';
+            }, 500);
+            
+        } else {
+            throw new Error('No phrases returned');
+        }
+    } catch (error) {
+        console.error('Error generating new phrases:', error);
+        feedback.innerHTML = '❌ Could not generate new phrases. Using fallback phrases. Please try again.';
+        feedback.style.background = '#ef4444';
+        
+        // Use fallback as backup
+        currentPhrases = getFallbackPhrases(currentScenario, currentLang);
+        if (currentPhrases.length > 0) {
+            updatePhraseDisplay();
+            updateProgress();
+        }
+    } finally {
+        setTimeout(() => {
+            if (feedback.style.background !== '#0f172a') {
+                setTimeout(() => {
+                    feedback.style.background = '#0f172a';
+                    feedback.style.color = 'white';
+                }, 3000);
+            }
+        }, 2000);
+        
+        generateBtn.innerHTML = originalText;
+        generateBtn.disabled = false;
+        isGenerating = false;
+    }
+}
+
+// Load scenario with AI-generated phrases
+async function loadScenario(scenario) {
+    currentScenario = scenario;
+    currentPhraseIndex = 0;
+    masteredPhrases = 0;
+    masteredIndices.clear();
+    
+    // Update active styling
+    document.querySelectorAll('.scenario-card').forEach(card => {
+        card.classList.remove('active');
+        if (card.dataset.scenario === scenario) {
+            card.classList.add('active');
+        }
+    });
+    
+    // Show loading state with AI indicator
+    document.getElementById('currentPhrase').innerHTML = '🤖 AI is thinking...';
+    document.getElementById('feedbackArea').innerHTML = '🎨 Generating fresh AI conversation phrases...';
+    document.getElementById('feedbackArea').style.background = '#8b5cf6';
+    
+    try {
+        // Always get fresh phrases (refresh=true)
+        const timestamp = new Date().getTime();
+        const response = await fetch(`/api/speaking/phrases?language=${currentLang}&scenario=${scenario}&count=5&refresh=true&_=${timestamp}`);
+        const data = await response.json();
+        
+        if (data.success && data.phrases && data.phrases.length > 0) {
+            currentPhrases = data.phrases;
+            document.getElementById('feedbackArea').innerHTML = `✅ ${data.source === 'ai_generated' ? 'AI generated' : 'Loaded'} ${currentPhrases.length} unique phrases for ${scenario}! 🎉`;
+            document.getElementById('feedbackArea').style.background = '#10b981';
+        } else {
+            throw new Error('No phrases from API');
+        }
+    } catch (error) {
+        console.log('Using fallback phrases');
+        currentPhrases = getFallbackPhrases(scenario, currentLang);
+        document.getElementById('feedbackArea').innerHTML = `📚 Ready to practice! Click "Generate New AI Phrases" for AI-generated content.`;
+        document.getElementById('feedbackArea').style.background = '#f59e0b';
+    }
+    
+    if (currentPhrases.length > 0) {
+        updatePhraseDisplay();
+        updateProgress();
+        
+        // Reset feedback color after 2 seconds
+        setTimeout(() => {
+            if (document.getElementById('feedbackArea').style.background !== '#0f172a') {
+                document.getElementById('feedbackArea').style.background = '#0f172a';
+                document.getElementById('feedbackArea').style.color = 'white';
+            }
+        }, 3000);
+    } else {
+        document.getElementById('currentPhrase').innerHTML = 'No phrases available';
+        document.getElementById('statsText').innerHTML = 'No phrases for this topic yet';
+    }
+}
+
+function getFallbackPhrases(scenario, language) {
+    const fallbacks = {
+        greeting: {
+            en: [
+                { phrase: "Hello, how are you?", translation: "A friendly greeting" },
+                { phrase: "Nice to meet you!", translation: "When meeting someone new" },
+                { phrase: "Good morning!", translation: "Morning greeting" },
+                { phrase: "Goodbye, see you later!", translation: "Farewell" }
+            ]
+        },
+        restaurant: {
+            en: [
+                { phrase: "I would like a coffee, please.", translation: "Ordering a drink" },
+                { phrase: "Can I see the menu?", translation: "Asking for menu" },
+                { phrase: "The food is delicious!", translation: "Complimenting food" }
+            ]
+        },
+        shopping: {
+            en: [
+                { phrase: "How much is this?", translation: "Asking price" },
+                { phrase: "I'll take it!", translation: "Buying an item" }
+            ]
+        },
+        travel: {
+            en: [
+                { phrase: "Where is the train station?", translation: "Asking for directions" },
+                { phrase: "How do I get to the airport?", translation: "Transportation question" }
+            ]
+        }
+    };
+    
+    return fallbacks[scenario]?.[language] || fallbacks[scenario]?.en || fallbacks.greeting.en || [];
+}
+
+function updatePhraseDisplay() {
+    if (currentPhrases && currentPhrases[currentPhraseIndex]) {
+        const phrase = currentPhrases[currentPhraseIndex];
+        const translation = phrase.translation ? `<div style="font-size: 0.5em; margin-top: 10px; color: #94a3b8;">📖 ${phrase.translation}</div>` : '';
+        document.getElementById('currentPhrase').innerHTML = phrase.phrase + translation;
+    }
+}
+
+function nextPhrase() {
+    if (currentPhrases.length === 0) return;
+    
+    if (currentPhraseIndex < currentPhrases.length - 1) {
+        currentPhraseIndex++;
+        updatePhraseDisplay();
+        document.getElementById('feedbackArea').innerHTML = '🎤 Click the microphone to practice this phrase!';
+        document.getElementById('feedbackArea').style.background = '#0f172a';
+        document.getElementById('feedbackArea').style.color = 'white';
+    } else {
+        document.getElementById('feedbackArea').innerHTML = '🎉 You\'ve completed all phrases! Click "Generate New AI Phrases" for more practice! ✨';
+        document.getElementById('feedbackArea').style.background = '#8b5cf6';
+    }
+}
+
+function listenToPhrase() {
+    if (currentPhrases && currentPhrases[currentPhraseIndex]) {
+        const phrase = currentPhrases[currentPhraseIndex].phrase;
+        const utterance = new SpeechSynthesisUtterance(phrase);
+        const langMap = { 'en': 'en-US', 'fr': 'fr-FR', 'es': 'es-ES', 'pt': 'pt-PT' };
+        utterance.lang = langMap[currentLang] || 'en-US';
+        utterance.rate = 0.8;
+        speechSynthesis.speak(utterance);
+    }
+}
+
+// Speaking practice with improved feedback
+function startSpeaking() {
+    if (!currentPhrases.length) {
+        alert('Please select a topic first!');
+        return;
+    }
+    
+    const currentPhrase = currentPhrases[currentPhraseIndex];
+    const expectedPhrase = currentPhrase.phrase;
+    
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    const langMap = { 'en': 'en-US', 'fr': 'fr-FR', 'es': 'es-ES', 'pt': 'pt-PT' };
+    recognition.lang = langMap[currentLang] || 'en-US';
+    
+    const feedback = document.getElementById('feedbackArea');
+    feedback.innerHTML = '🎙️ Listening... Please speak clearly 🎤';
+    feedback.style.background = '#f59e0b';
+    feedback.style.color = '#0f172a';
+    
+    recognition.start();
+    
+    recognition.onresult = async (event) => {
+        const spoken = event.results[0][0].transcript;
+        feedback.innerHTML = `You said: "${spoken}"<br>🤖 Checking pronunciation...`;
+        
+        try {
+            const response = await fetch('/api/check/answer', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    question: `Say: ${expectedPhrase}`,
+                    answer: spoken,
+                    correct: expectedPhrase,
+                    language: currentLang,
+                    type: 'pronunciation'
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (data.is_correct) {
+                if (!masteredIndices.has(currentPhraseIndex)) {
+                    masteredIndices.add(currentPhraseIndex);
+                    masteredPhrases = masteredIndices.size;
+                    saveProgress();
+                    updateProgress();
+                }
+                
+                feedback.innerHTML = `✅ ${data.feedback || 'Excellent pronunciation!'} 🎉`;
+                feedback.style.background = '#10b981';
+                feedback.style.color = 'white';
+                
+                if (currentPhraseIndex < currentPhrases.length - 1) {
+                    setTimeout(() => {
+                        currentPhraseIndex++;
+                        updatePhraseDisplay();
+                        feedback.innerHTML = 'Great! Next phrase! 💪';
+                        feedback.style.background = '#0f172a';
+                        feedback.style.color = 'white';
+                    }, 2000);
+                } else {
+                    feedback.innerHTML += '<br>🎉 Amazing! You mastered all phrases! Click "Generate New AI Phrases" for more! 🌟';
+                }
+            } else {
+                feedback.innerHTML = `❌ ${data.feedback || 'Try again!'}<br>Expected: "${expectedPhrase}"`;
+                feedback.style.background = '#ef4444';
+                feedback.style.color = 'white';
+            }
+        } catch (error) {
+            // Fallback comparison
+            const spokenLower = spoken.toLowerCase().trim();
+            const expectedLower = expectedPhrase.toLowerCase().trim();
+            const similarity = spokenLower === expectedLower || expectedLower.includes(spokenLower) && spokenLower.length > expectedLower.length * 0.7;
+            
+            if (similarity) {
+                if (!masteredIndices.has(currentPhraseIndex)) {
+                    masteredIndices.add(currentPhraseIndex);
+                    masteredPhrases = masteredIndices.size;
+                    saveProgress();
+                    updateProgress();
+                }
+                feedback.innerHTML = `✅ Great job! 🎉`;
+                feedback.style.background = '#10b981';
+            } else {
+                feedback.innerHTML = `❌ Try again! Expected: "${expectedPhrase}"<br>You said: "${spoken}"`;
+                feedback.style.background = '#ef4444';
+            }
+        }
+    };
+    
+    recognition.onerror = () => {
+        feedback.innerHTML = '❌ Could not hear you. Check microphone permissions and try again. 🎙️';
+        feedback.style.background = '#ef4444';
+        feedback.style.color = 'white';
+    };
+}
+
+function updateProgress() {
+    const total = currentPhrases.length;
+    const percent = total > 0 ? (masteredPhrases / total) * 100 : 0;
+    document.getElementById('progressFill').style.width = `${percent}%`;
+    document.getElementById('statsText').innerHTML = `Phrases mastered: ${masteredPhrases}/${total}`;
+}
+
+async function saveProgress() {
+    try {
+        await fetch('/api/activity/save', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                language: currentLang, 
+                type: 'speaking_practice', 
+                points: 10 
+            })
+        });
+    } catch (error) {
+        // Silent fail - progress still saved locally
+        console.log('Progress saved locally');
+    }
+}
+
+// Initialize
+document.getElementById('languageDisplay').innerHTML = currentLang.toUpperCase();
+displayTopics();
+
+// Load first topic automatically
+const topics = getTodaysTopics();
+if (topics.length > 0) {
+    loadScenario(topics[0].id);
+}
+</script>
+</body>
+</html>

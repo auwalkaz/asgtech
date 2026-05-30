@@ -1,0 +1,266 @@
+{
+  "en": {
+    "nouns": [
+      { "id": 1, "word": "cat", "meaning": "a small furry domestic animal", "example": "The cat sleeps on the sofa.", "level": "beginner", "synonyms": ["kitten", "feline"], "antonyms": ["dog"], "memoryTip": "Cats say Meow!" },
+      { "id": 2, "word": "dog", "meaning": "a loyal domestic pet", "example": "The dog barks loudly.", "level": "beginner", "synonyms": ["puppy", "canine"], "antonyms": ["cat"], "memoryTip": "Dog = Man's best friend" },
+      { "id": 3, "word": "house", "meaning": "a building where people live", "example": "They live in a big house.", "level": "beginner", "synonyms": ["home", "dwelling"], "antonyms": [], "memoryTip": "House = Home" },
+      { "id": 4, "word": "car", "meaning": "a vehicle for driving", "example": "She drives a red car.", "level": "beginner", "synonyms": ["automobile", "vehicle"], "antonyms": [], "memoryTip": "Car = Transportation" },
+      { "id": 5, "word": "teacher", "meaning": "a person who teaches", "example": "My teacher helps me learn.", "level": "beginner", "synonyms": ["instructor", "educator"], "antonyms": ["student"], "memoryTip": "Teacher = Knowledge giver" },
+      { "id": 6, "word": "perseverance", "meaning": "continued effort despite difficulties", "example": "Through perseverance, she succeeded.", "level": "advanced", "synonyms": ["determination", "persistence"], "antonyms": ["giving up"], "memoryTip": "Keep going no matter what" }
+    ],
+    "verbs": [
+      { "id": 7, "word": "run", "meaning": "to move quickly using your legs", "example": "I run every morning.", "level": "beginner", "synonyms": ["sprint", "dash"], "antonyms": ["walk", "stop"], "memoryTip": "Run = Rapid movement" },
+      { "id": 8, "word": "eat", "meaning": "to put food into mouth and swallow", "example": "I eat breakfast daily.", "level": "beginner", "synonyms": ["consume", "devour"], "antonyms": ["fast", "starve"], "memoryTip": "Eat = Energy intake" },
+      { "id": 9, "word": "write", "meaning": "to put words on paper", "example": "She writes in her journal.", "level": "beginner", "synonyms": ["record", "note"], "antonyms": ["erase", "delete"], "memoryTip": "Write = Words Recorded In Text" },
+      { "id": 10, "word": "read", "meaning": "to look at and understand written words", "example": "I read books every night.", "level": "beginner", "synonyms": ["scan", "study"], "antonyms": ["ignore"], "memoryTip": "Read = Recognize, Explore, Absorb, Discover" },
+      { "id": 11, "word": "speak", "meaning": "to say words; to talk", "example": "He speaks three languages.", "level": "beginner", "synonyms": ["talk", "communicate"], "antonyms": ["listen", "remain silent"], "memoryTip": "Speak = Sound Production" }
+    ],
+    "adjectives": [
+      { "id": 12, "word": "beautiful", "meaning": "very attractive to look at", "example": "She has a beautiful smile.", "level": "intermediate", "synonyms": ["gorgeous", "stunning"], "antonyms": ["ugly", "hideous"], "memoryTip": "Beautiful = Pleasing to the eye" },
+      { "id": 13, "word": "happy", "meaning": "feeling joy and pleasure", "example": "I am happy to see you.", "level": "beginner", "synonyms": ["joyful", "cheerful"], "antonyms": ["sad", "unhappy"], "memoryTip": "Happy = Positive feeling" },
+      { "id": 14, "word": "big", "meaning": "large in size", "example": "That is a big house.", "level": "beginner", "synonyms": ["large", "huge"], "antonyms": ["small", "tiny"], "memoryTip": "Big = Large in size" },
+      { "id": 15, "word": "meticulous", "meaning": "showing great attention to detail", "example": "She is a meticulous editor.", "level": "advanced", "synonyms": ["thorough", "painstaking"], "antonyms": ["careless", "sloppy"], "memoryTip": "Meticulous = Measuring everything carefully" }
+    ],
+    "adverbs": [
+      { "id": 16, "word": "quickly", "meaning": "at a fast speed", "example": "He runs quickly.", "level": "beginner", "synonyms": ["fast", "rapidly"], "antonyms": ["slowly"], "memoryTip": "Quickly = With speed" },
+      { "id": 17, "word": "happily", "meaning": "in a happy way", "example": "She smiled happily.", "level": "beginner", "synonyms": ["joyfully", "cheerfully"], "antonyms": ["sadly"], "memoryTip": "Happily = With joy" },
+      { "id": 18, "word": "carefully", "meaning": "with great attention", "example": "Drive carefully on the ice.", "level": "intermediate", "synonyms": ["cautiously", "attentively"], "antonyms": ["carelessly"], "memoryTip": "Carefully = With caution" }
+    ],
+    "pronouns": [
+      { "id": 19, "word": "I", "meaning": "refers to yourself", "example": "I am learning English.", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "I = Yourself" },
+      { "id": 20, "word": "you", "meaning": "refers to the person spoken to", "example": "You are my friend.", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "You = The person I'm talking to" },
+      { "id": 21, "word": "he", "meaning": "refers to a male person", "example": "He is a doctor.", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "He = A man or boy" },
+      { "id": 22, "word": "she", "meaning": "refers to a female person", "example": "She is a teacher.", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "She = A woman or girl" },
+      { "id": 23, "word": "it", "meaning": "refers to a thing or animal", "example": "It is a cat.", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "It = A thing or animal" },
+      { "id": 24, "word": "we", "meaning": "refers to yourself and others", "example": "We are learning.", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "We = Me and others" },
+      { "id": 25, "word": "they", "meaning": "refers to multiple people or things", "example": "They are students.", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "They = Multiple people or things" }
+    ],
+    "prepositions": [
+      { "id": 26, "word": "in", "meaning": "inside something", "example": "The pen is in the box.", "level": "beginner", "synonyms": ["inside"], "antonyms": ["out"], "memoryTip": "In = Inside" },
+      { "id": 27, "word": "on", "meaning": "touching the surface", "example": "The book is on the table.", "level": "beginner", "synonyms": ["upon"], "antonyms": ["under"], "memoryTip": "On = On top of" },
+      { "id": 28, "word": "at", "meaning": "specific point or location", "example": "Meet me at the park.", "level": "beginner", "synonyms": ["by"], "antonyms": [], "memoryTip": "At = Specific location" },
+      { "id": 29, "word": "under", "meaning": "below something", "example": "The cat is under the bed.", "level": "beginner", "synonyms": ["beneath"], "antonyms": ["over"], "memoryTip": "Under = Below" },
+      { "id": 30, "word": "over", "meaning": "above something", "example": "The plane flew over the city.", "level": "beginner", "synonyms": ["above"], "antonyms": ["under"], "memoryTip": "Over = Above" }
+    ],
+    "conjunctions": [
+      { "id": 31, "word": "and", "meaning": "adds information", "example": "I like apples and bananas.", "level": "beginner", "synonyms": ["plus"], "antonyms": [], "memoryTip": "And = Adds more" },
+      { "id": 32, "word": "but", "meaning": "shows contrast", "example": "I am tired but happy.", "level": "beginner", "synonyms": ["however"], "antonyms": [], "memoryTip": "But = Shows difference" },
+      { "id": 33, "word": "or", "meaning": "shows a choice", "example": "Do you want tea or coffee?", "level": "beginner", "synonyms": ["either"], "antonyms": [], "memoryTip": "Or = Gives a choice" },
+      { "id": 34, "word": "so", "meaning": "shows a result", "example": "I was hungry so I ate.", "level": "intermediate", "synonyms": ["therefore"], "antonyms": [], "memoryTip": "So = Shows result" },
+      { "id": 35, "word": "because", "meaning": "shows a reason", "example": "I stayed because it rained.", "level": "intermediate", "synonyms": ["since", "as"], "antonyms": [], "memoryTip": "Because = Gives reason" }
+    ],
+    "interjections": [
+      { "id": 36, "word": "wow", "meaning": "expresses surprise or amazement", "example": "Wow! That's amazing!", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "Wow = Surprise!" },
+      { "id": 37, "word": "oh", "meaning": "expresses realization or surprise", "example": "Oh! I forgot my keys.", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "Oh = Realization" },
+      { "id": 38, "word": "ouch", "meaning": "expresses pain", "example": "Ouch! That hurts!", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "Ouch = Pain!" },
+      { "id": 39, "word": "yay", "meaning": "expresses joy and excitement", "example": "Yay! We won!", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "Yay = Joy!" },
+      { "id": 40, "word": "oops", "meaning": "expresses a small mistake", "example": "Oops! I dropped my pen.", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "Oops = Small mistake" }
+    ]
+  },
+
+  "sw": {
+    "nouns": [
+      { "id": 1, "word": "paka", "meaning": "mnyama mdogo wa kufugwa", "example": "Paka analala kwenye sofa.", "level": "beginner", "synonyms": ["kibwagio"], "antonyms": ["mbwa"], "memoryTip": "Paka anasema Meow!" },
+      { "id": 2, "word": "mbwa", "meaning": "mnyama mwaminifu wa kufugwa", "example": "Mbwa anabweka kwa sauti kubwa.", "level": "beginner", "synonyms": ["mwaminifu"], "antonyms": ["paka"], "memoryTip": "Mbwa = Rafiki wa binadamu" },
+      { "id": 3, "word": "nyumba", "meaning": "jengo la makazi", "example": "Wanaishi katika nyumba kubwa.", "level": "beginner", "synonyms": ["makazi"], "antonyms": [], "memoryTip": "Nyumba = Makazi" }
+    ],
+    "verbs": [
+      { "id": 4, "word": "kukimbia", "meaning": "kusonga kwa kasi kwa miguu", "example": "Ninakimbia kila asubuhi.", "level": "beginner", "synonyms": ["kuturuka"], "antonyms": ["kutembea", "kusimama"], "memoryTip": "Kukimbia = mwendo wa haraka" },
+      { "id": 5, "word": "kula", "meaning": "kuweka chakula mdomoni", "example": "Ninakula kiamsha kinywa.", "level": "beginner", "synonyms": ["kumeza"], "antonyms": ["kufunga"], "memoryTip": "Kula = kuchukua nishati" },
+      { "id": 6, "word": "kuandika", "meaning": "kuweka maneno kwenye karatasi", "example": "Anaandika katika shajara.", "level": "beginner", "synonyms": ["kurekodi"], "antonyms": ["kufuta"], "memoryTip": "Kuandika = kurekodi maneno" },
+      { "id": 7, "word": "kusoma", "meaning": "kuangalia na kuelewa maneno", "example": "Ninasoma vitabu kila usiku.", "level": "beginner", "synonyms": ["kuchunguza"], "antonyms": ["kupuuza"], "memoryTip": "Kusoma = Kutambua na Kuchunguza" }
+    ],
+    "adjectives": [
+      { "id": 8, "word": "zuri", "meaning": "ya kupendeza na ya kuvutia", "example": "Ana tabasamu zuri.", "level": "intermediate", "synonyms": ["nzuri", "tamu"], "antonyms": ["baya"], "memoryTip": "Zuri = inayopendeza macho" },
+      { "id": 9, "word": "furaha", "meaning": "kuhisi raha na furaha", "example": "Nina furaha kukuona.", "level": "beginner", "synonyms": ["shangwe"], "antonyms": ["huzuni"], "memoryTip": "Furaha = hisia nzuri" },
+      { "id": 10, "word": "kubwa", "meaning": "la ukubwa mkubwa", "example": "Hiyo ni nyumba kubwa.", "level": "beginner", "synonyms": ["tupu"], "antonyms": ["ndogo"], "memoryTip": "Kubwa = la ukubwa" }
+    ],
+    "adverbs": [
+      { "id": 11, "word": "haraka", "meaning": "kwa kasi kubwa", "example": "Anakimbia haraka.", "level": "beginner", "synonyms": ["upesi"], "antonyms": ["polepole"], "memoryTip": "Haraka = na kasi" },
+      { "id": 12, "word": "polepole", "meaning": "kwa mwendo mdogo", "example": "Tembea polepole.", "level": "beginner", "synonyms": ["taratibu"], "antonyms": ["haraka"], "memoryTip": "Polepole = mwendo mdogo" }
+    ],
+    "pronouns": [
+      { "id": 13, "word": "mimi", "meaning": "inarejelea wewe mwenyewe", "example": "Mimi ninajifunza Kiingereza.", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "Mimi = Wewe mwenyewe" },
+      { "id": 14, "word": "wewe", "meaning": "inarejelea mtu unayezungumza naye", "example": "Wewe ni rafiki yangu.", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "Wewe = Mtu ninayezungumza naye" },
+      { "id": 15, "word": "yeye", "meaning": "inarejelea mtu wa kiume au wa kike", "example": "Yeye ni daktari.", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "Yeye = Mtu" }
+    ],
+    "prepositions": [
+      { "id": 16, "word": "katika", "meaning": "ndani ya kitu", "example": "Kalamu iko katika sanduku.", "level": "beginner", "synonyms": ["ndani ya"], "antonyms": ["nje ya"], "memoryTip": "Katika = Ndani ya" },
+      { "id": 17, "word": "juu ya", "meaning": "kugusa uso", "example": "Kitabu kiko juu ya meza.", "level": "beginner", "synonyms": [], "antonyms": ["chini ya"], "memoryTip": "Juu ya = Juu ya uso" }
+    ],
+    "conjunctions": [
+      { "id": 18, "word": "na", "meaning": "inaongeza habari", "example": "Napenda tufaha na ndizi.", "level": "beginner", "synonyms": ["pamoja na"], "antonyms": [], "memoryTip": "Na = Inaongeza" },
+      { "id": 19, "word": "lakini", "meaning": "inaonyesha tofauti", "example": "Nimechoka lakini nina furaha.", "level": "beginner", "synonyms": ["hata hivyo"], "antonyms": [], "memoryTip": "Lakini = Inaonyesha tofauti" }
+    ],
+    "interjections": [
+      { "id": 20, "word": "wow", "meaning": "inaonyesha mshangao", "example": "Wow! Hiyo ni ajabu!", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "Wow = Mshangao!" }
+    ]
+  },
+
+  "de": {
+    "nouns": [
+      { "id": 1, "word": "Katze", "meaning": "kleines pelziges Haustier", "example": "Die Katze schläft auf dem Sofa.", "level": "beginner", "synonyms": ["Stubentiger"], "antonyms": ["Hund"], "memoryTip": "Katzen sagen Miau!" },
+      { "id": 2, "word": "Hund", "meaning": "loyales Haustier", "example": "Der Hund bellt laut.", "level": "beginner", "synonyms": ["Haushund"], "antonyms": ["Katze"], "memoryTip": "Hund = Bester Freund des Menschen" }
+    ],
+    "verbs": [
+      { "id": 3, "word": "rennen", "meaning": "sich schnell bewegen", "example": "Ich renne jeden Morgen.", "level": "beginner", "synonyms": ["sprinten"], "antonyms": ["gehen"], "memoryTip": "Rennen = schnelle Bewegung" },
+      { "id": 4, "word": "essen", "meaning": "Nahrung zu sich nehmen", "example": "Ich esse jeden Tag Frühstück.", "level": "beginner", "synonyms": ["verzehren"], "antonyms": ["fasten"], "memoryTip": "Essen = Energieaufnahme" },
+      { "id": 5, "word": "schreiben", "meaning": "Wörter auf Papier setzen", "example": "Sie schreibt in ihr Tagebuch.", "level": "beginner", "synonyms": ["notieren"], "antonyms": ["löschen"], "memoryTip": "Schreiben = Wörter festhalten" },
+      { "id": 6, "word": "lesen", "meaning": "geschriebene Wörter verstehen", "example": "Ich lese jeden Abend Bücher.", "level": "beginner", "synonyms": ["studieren"], "antonyms": ["ignorieren"], "memoryTip": "Lesen = Erkennen und Verstehen" }
+    ],
+    "adjectives": [
+      { "id": 7, "word": "schön", "meaning": "sehr anziehend", "example": "Sie hat ein schönes Lächeln.", "level": "intermediate", "synonyms": ["wunderschön"], "antonyms": ["hässlich"], "memoryTip": "Schön = angenehm für das Auge" },
+      { "id": 8, "word": "glücklich", "meaning": "Freude empfindend", "example": "Ich bin glücklich, dich zu sehen.", "level": "beginner", "synonyms": ["fröhlich"], "antonyms": ["traurig"], "memoryTip": "Glücklich = positives Gefühl" },
+      { "id": 9, "word": "groß", "meaning": "von großer Größe", "example": "Das ist ein großes Haus.", "level": "beginner", "synonyms": ["riesig"], "antonyms": ["klein"], "memoryTip": "Groß = breit in der Geometrie" }
+    ],
+    "adverbs": [
+      { "id": 10, "word": "schnell", "meaning": "mit hoher Geschwindigkeit", "example": "Er rennt schnell.", "level": "beginner", "synonyms": ["rasch"], "antonyms": ["langsam"], "memoryTip": "Schnell = mit Geschwindigkeit" },
+      { "id": 11, "word": "langsam", "meaning": "mit niedriger Geschwindigkeit", "example": "Bitte sprechen Sie langsamer.", "level": "beginner", "synonyms": ["gemächlich"], "antonyms": ["schnell"], "memoryTip": "Langsam = niedrige Geschwindigkeit" }
+    ],
+    "pronouns": [
+      { "id": 12, "word": "ich", "meaning": "bezieht sich auf dich selbst", "example": "Ich lerne Deutsch.", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "Ich = Ich selbst" },
+      { "id": 13, "word": "du", "meaning": "bezieht sich auf die angesprochene Person", "example": "Du bist mein Freund.", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "Du = Die Person, mit der ich spreche" }
+    ],
+    "prepositions": [
+      { "id": 14, "word": "in", "meaning": "innerhalb von etwas", "example": "Der Stift ist in der Box.", "level": "beginner", "synonyms": ["innerhalb"], "antonyms": ["außerhalb"], "memoryTip": "In = Innerhalb" },
+      { "id": 15, "word": "auf", "meaning": "die Oberfläche berührend", "example": "Das Buch ist auf dem Tisch.", "level": "beginner", "synonyms": ["oben auf"], "antonyms": ["unter"], "memoryTip": "Auf = Auf der Oberfläche" }
+    ],
+    "conjunctions": [
+      { "id": 16, "word": "und", "meaning": "fügt Informationen hinzu", "example": "Ich mag Äpfel und Bananen.", "level": "beginner", "synonyms": ["sowie"], "antonyms": [], "memoryTip": "Und = Fügt hinzu" },
+      { "id": 17, "word": "aber", "meaning": "zeigt einen Gegensatz", "example": "Ich bin müde, aber glücklich.", "level": "beginner", "synonyms": ["jedoch"], "antonyms": [], "memoryTip": "Aber = Zeigt Unterschied" }
+    ],
+    "interjections": [
+      { "id": 18, "word": "wow", "meaning": "drückt Überraschung aus", "example": "Wow! Das ist erstaunlich!", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "Wow = Überraschung!" }
+    ]
+  },
+
+  "hi": {
+    "nouns": [
+      { "id": 1, "word": "बिल्ली", "meaning": "एक छोटा प्यारा पालतू जानवर", "example": "बिल्ली सोफे पर सोती है।", "level": "beginner", "synonyms": ["मार्जार"], "antonyms": ["कुत्ता"], "memoryTip": "बिल्लियाँ म्याऊ कहती हैं!" },
+      { "id": 2, "word": "कुत्ता", "meaning": "एक वफादार पालतू जानवर", "example": "कुत्ता जोर से भौंकता है।", "level": "beginner", "synonyms": ["श्वान"], "antonyms": ["बिल्ली"], "memoryTip": "कुत्ता = मनुष्य का सबसे अच्छा दोस्त" }
+    ],
+    "verbs": [
+      { "id": 3, "word": "दौड़ना", "meaning": "तेजी से चलना", "example": "मैं हर सुबह दौड़ता हूँ।", "level": "beginner", "synonyms": ["भागना"], "antonyms": ["चलना"], "memoryTip": "दौड़ना = तीव्र गति" },
+      { "id": 4, "word": "खाना", "meaning": "भोजन करना", "example": "मैं रोज़ नाश्ता करता हूँ।", "level": "beginner", "synonyms": ["भोजन करना"], "antonyms": ["उपवास करना"], "memoryTip": "खाना = ऊर्जा ग्रहण" },
+      { "id": 5, "word": "लिखना", "meaning": "कागज पर शब्द लिखना", "example": "वह रोज़ अपनी डायरी में लिखती है।", "level": "beginner", "synonyms": ["अंकित करना"], "antonyms": ["मिटाना"], "memoryTip": "लिखना = शब्दों को दर्ज करना" },
+      { "id": 6, "word": "पढ़ना", "meaning": "लिखित शब्दों को समझना", "example": "मैं हर रात किताबें पढ़ता हूँ।", "level": "beginner", "synonyms": ["अध्ययन करना"], "antonyms": ["अनदेखा करना"], "memoryTip": "पढ़ना = पहचानना और समझना" }
+    ],
+    "adjectives": [
+      { "id": 7, "word": "सुंदर", "meaning": "बहुत आकर्षक", "example": "उसकी मुस्कान बहुत सुंदर है।", "level": "intermediate", "synonyms": ["खूबसूरत"], "antonyms": ["बदसूरत"], "memoryTip": "सुंदर = आँखों को अच्छा लगने वाला" },
+      { "id": 8, "word": "खुश", "meaning": "आनंद महसूस करना", "example": "तुम्हें देखकर मुझे खुशी होती है।", "level": "beginner", "synonyms": ["प्रसन्न"], "antonyms": ["उदास"], "memoryTip": "खुश = सकारात्मक भावना" },
+      { "id": 9, "word": "बड़ा", "meaning": "आकार में बड़ा", "example": "वह एक बड़ा घर है।", "level": "beginner", "synonyms": ["विशाल"], "antonyms": ["छोटा"], "memoryTip": "बड़ा = ज्यामिति में चौड़ा" }
+    ],
+    "adverbs": [
+      { "id": 10, "word": "तेज़ी से", "meaning": "तेज़ गति से", "example": "वह तेज़ी से दौड़ता है।", "level": "beginner", "synonyms": ["जल्दी से"], "antonyms": ["धीरे-धीरे"], "memoryTip": "तेज़ी से = गति के साथ" }
+    ],
+    "pronouns": [
+      { "id": 11, "word": "मैं", "meaning": "स्वयं को संदर्भित करता है", "example": "मैं हिंदी सीख रहा हूँ।", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "मैं = स्वयं" },
+      { "id": 12, "word": "तुम", "meaning": "उस व्यक्ति को संदर्भित करता है जिससे बात की जा रही है", "example": "तुम मेरे दोस्त हो।", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "तुम = जिससे मैं बात कर रहा हूँ" }
+    ],
+    "prepositions": [
+      { "id": 13, "word": "में", "meaning": "किसी चीज़ के अंदर", "example": "कलम डिब्बे में है।", "level": "beginner", "synonyms": ["अंदर"], "antonyms": ["बाहर"], "memoryTip": "में = अंदर" },
+      { "id": 14, "word": "पर", "meaning": "सतह को छूना", "example": "किताब मेज़ पर है।", "level": "beginner", "synonyms": ["ऊपर"], "antonyms": ["नीचे"], "memoryTip": "पर = ऊपर" }
+    ],
+    "conjunctions": [
+      { "id": 15, "word": "और", "meaning": "जानकारी जोड़ता है", "example": "मुझे सेब और केले पसंद हैं।", "level": "beginner", "synonyms": ["तथा"], "antonyms": [], "memoryTip": "और = जोड़ता है" },
+      { "id": 16, "word": "लेकिन", "meaning": "विरोधाभास दिखाता है", "example": "मैं थक गया हूँ लेकिन खुश हूँ।", "level": "beginner", "synonyms": ["परंतु"], "antonyms": [], "memoryTip": "लेकिन = अंतर दिखाता है" }
+    ],
+    "interjections": [
+      { "id": 17, "word": "वाह", "meaning": "आश्चर्य व्यक्त करता है", "example": "वाह! यह अद्भुत है!", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "वाह = आश्चर्य!" }
+    ]
+  },
+
+  "ar": {
+    "nouns": [
+      { "id": 1, "word": "قطة", "meaning": "حيوان أليف صغير فروي", "example": "القطة تنام على الأريكة.", "level": "beginner", "synonyms": ["هرة"], "antonyms": ["كلب"], "memoryTip": "القطط تقول مياو!" },
+      { "id": 2, "word": "كلب", "meaning": "حيوان أليف وفي", "example": "الكلب ينبح بصوت عالٍ.", "level": "beginner", "synonyms": ["وفيّ"], "antonyms": ["قطة"], "memoryTip": "الكلب = صديق الإنسان" }
+    ],
+    "verbs": [
+      { "id": 3, "word": "يركض", "meaning": "يتحرك بسرعة", "example": "أنا أركض كل صباح.", "level": "beginner", "synonyms": ["يسرع"], "antonyms": ["يمشي"], "memoryTip": "يركض = حركة سريعة" },
+      { "id": 4, "word": "يأكل", "meaning": "يتناول الطعام", "example": "أتناول الفطور كل يوم.", "level": "beginner", "synonyms": ["يتناول"], "antonyms": ["يصوم"], "memoryTip": "يأكل = تناول الطاقة" },
+      { "id": 5, "word": "يكتب", "meaning": "يضع الكلمات على الورق", "example": "تكتب في مذكراتها.", "level": "beginner", "synonyms": ["يدون"], "antonyms": ["يمسح"], "memoryTip": "يكتب = تسجيل الكلمات" },
+      { "id": 6, "word": "يقرأ", "meaning": "ينظر إلى الكلمات ويفهمها", "example": "أقرأ الكتب كل ليلة.", "level": "beginner", "synonyms": ["يستعرض"], "antonyms": ["يتجاهل"], "memoryTip": "يقرأ = يتعرف ويفهم" }
+    ],
+    "adjectives": [
+      { "id": 7, "word": "جميل", "meaning": "جذاب جداً", "example": "لديها ابتسامة جميلة.", "level": "intermediate", "synonyms": ["رائع"], "antonyms": ["قبيح"], "memoryTip": "جميل = مرضي للعين" },
+      { "id": 8, "word": "سعيد", "meaning": "يشعر بالفرح", "example": "أنا سعيد برؤيتك.", "level": "beginner", "synonyms": ["فرح"], "antonyms": ["حزين"], "memoryTip": "سعيد = شعور إيجابي" },
+      { "id": 9, "word": "كبير", "meaning": "كبير في الحجم", "example": "هذا منزل كبير.", "level": "beginner", "synonyms": ["ضخم"], "antonyms": ["صغير"], "memoryTip": "كبير = عريض في القياس" }
+    ],
+    "adverbs": [
+      { "id": 10, "word": "بسرعة", "meaning": "بسرعة عالية", "example": "يركض بسرعة.", "level": "beginner", "synonyms": ["عاجلاً"], "antonyms": ["ببطء"], "memoryTip": "بسرعة = مع السرعة" }
+    ],
+    "pronouns": [
+      { "id": 11, "word": "أنا", "meaning": "يشير إلى نفسك", "example": "أنا أتعلم العربية.", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "أنا = النفس" },
+      { "id": 12, "word": "أنت", "meaning": "يشير إلى الشخص المخاطب", "example": "أنت صديقي.", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "أنت = الشخص الذي أتحدث إليه" }
+    ],
+    "prepositions": [
+      { "id": 13, "word": "في", "meaning": "داخل شيء ما", "example": "القلم في الصندوق.", "level": "beginner", "synonyms": ["داخل"], "antonyms": ["خارج"], "memoryTip": "في = داخل" },
+      { "id": 14, "word": "على", "meaning": "ملامساً للسطح", "example": "الكتاب على الطاولة.", "level": "beginner", "synonyms": ["فوق"], "antonyms": ["تحت"], "memoryTip": "على = فوق" }
+    ],
+    "conjunctions": [
+      { "id": 15, "word": "و", "meaning": "يضيف معلومات", "example": "أحب التفاح والموز.", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "و = يضيف" },
+      { "id": 16, "word": "لكن", "meaning": "يظهر تبايناً", "example": "أنا متعب لكن سعيد.", "level": "beginner", "synonyms": ["ولكن"], "antonyms": [], "memoryTip": "لكن = يظهر الفرق" }
+    ],
+    "interjections": [
+      { "id": 17, "word": "واو", "meaning": "يعبر عن الدهشة", "example": "واو! هذا مذهل!", "level": "beginner", "synonyms": [], "antonyms": [], "memoryTip": "واو = دهشة!" }
+    ]
+  },
+
+  "fr": {
+    "nouns": [
+      { "id": 1, "word": "chat", "meaning": "petit animal domestique", "example": "Le chat dort sur le canapé.", "level": "beginner", "synonyms": ["minou"], "antonyms": ["chien"], "memoryTip": "Les chats disent Miaou!" }
+    ],
+    "verbs": [
+      { "id": 2, "word": "courir", "meaning": "se déplacer rapidement", "example": "Je cours tous les matins.", "level": "beginner", "synonyms": ["sprint"], "antonyms": ["marcher"], "memoryTip": "Courir = mouvement rapide" },
+      { "id": 3, "word": "manger", "meaning": "consommer de la nourriture", "example": "Je mange tous les jours.", "level": "beginner", "synonyms": ["dévorer"], "antonyms": ["jeûner"], "memoryTip": "Manger = prendre de l'énergie" }
+    ],
+    "adjectives": [
+      { "id": 4, "word": "heureux", "meaning": "qui ressent de la joie", "example": "Je suis heureux de te voir.", "level": "beginner", "synonyms": ["joyeux"], "antonyms": ["triste"], "memoryTip": "Heureux = sentiment positif" }
+    ],
+    "adverbs": [
+      { "id": 5, "word": "rapidement", "meaning": "à grande vitesse", "example": "Il court rapidement.", "level": "beginner", "synonyms": ["vite"], "antonyms": ["lentement"], "memoryTip": "Rapidement = avec vitesse" }
+    ],
+    "pronouns": [],
+    "prepositions": [],
+    "conjunctions": [],
+    "interjections": []
+  },
+
+  "es": {
+    "nouns": [
+      { "id": 1, "word": "gato", "meaning": "animal doméstico pequeño", "example": "El gato duerme en el sofá.", "level": "beginner", "synonyms": ["minino"], "antonyms": ["perro"], "memoryTip": "Los gatos dicen ¡Miau!" }
+    ],
+    "verbs": [
+      { "id": 2, "word": "correr", "meaning": "moverse rápidamente", "example": "Corro todas las mañanas.", "level": "beginner", "synonyms": ["sprint"], "antonyms": ["caminar"], "memoryTip": "Correr = movimiento rápido" }
+    ],
+    "adjectives": [
+      { "id": 3, "word": "feliz", "meaning": "sintiendo alegría", "example": "Estoy feliz de verte.", "level": "beginner", "synonyms": ["contento"], "antonyms": ["triste"], "memoryTip": "Feliz = sentimiento positivo" }
+    ],
+    "adverbs": [
+      { "id": 4, "word": "rápidamente", "meaning": "a gran velocidad", "example": "Él corre rápidamente.", "level": "beginner", "synonyms": ["velozmente"], "antonyms": ["lentamente"], "memoryTip": "Rápidamente = con velocidad" }
+    ],
+    "pronouns": [],
+    "prepositions": [],
+    "conjunctions": [],
+    "interjections": []
+  },
+
+  "pt": {
+    "nouns": [
+      { "id": 1, "word": "gato", "meaning": "animal doméstico pequeno", "example": "O gato dorme no sofá.", "level": "beginner", "synonyms": ["bichano"], "antonyms": ["cão"], "memoryTip": "Gatos dizem Miau!" }
+    ],
+    "verbs": [
+      { "id": 2, "word": "correr", "meaning": "mover-se rapidamente", "example": "Corro todas as manhãs.", "level": "beginner", "synonyms": ["sprintar"], "antonyms": ["andar"], "memoryTip": "Correr = movimento rápido" }
+    ],
+    "adjectives": [
+      { "id": 3, "word": "feliz", "meaning": "sentindo alegria", "example": "Estou feliz em te ver.", "level": "beginner", "synonyms": ["contente"], "antonyms": ["triste"], "memoryTip": "Feliz = sentimento positivo" }
+    ],
+    "adverbs": [
+      { "id": 4, "word": "rapidamente", "meaning": "em alta velocidade", "example": "Ele corre rapidamente.", "level": "beginner", "synonyms": ["velozmente"], "antonyms": ["lentamente"], "memoryTip": "Rapidamente = com velocidade" }
+    ],
+    "pronouns": [],
+    "prepositions": [],
+    "conjunctions": [],
+    "interjections": []
+  }
+}
