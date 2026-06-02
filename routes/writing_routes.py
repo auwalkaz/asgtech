@@ -54,37 +54,33 @@ def load_words_from_json(language, level='all', limit=50):
 
 # ==================== LANGUAGE LIST ENDPOINT ====================
 
+@writing_bp.route("/list", methods=["GET"])
 @writing_bp.route("/words/list", methods=["GET"])
 def get_available_languages():
     """Return list of available language word banks"""
-    # Dynamic path to json folder
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    json_folder = os.path.join(os.path.dirname(current_dir), 'json')
+    # Return default languages that we know work
+    languages = ['en', 'es', 'fr', 'ar', 'zh', 'pt', 'sw', 'de', 'it']
     
+    # Try to get actual languages from json folder
     try:
-        languages = []
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        json_folder = os.path.join(os.path.dirname(current_dir), 'json')
+        
         if os.path.exists(json_folder):
+            found_langs = []
             for file in os.listdir(json_folder):
                 if file.startswith('wordbank_') and file.endswith('.json'):
-                    # Extract language code from wordbank_en.json
                     lang_code = file.replace('wordbank_', '').replace('.json', '')
-                    languages.append(lang_code)
-        
-        if not languages:
-            # Fallback languages if no JSON files found
-            languages = ['en', 'es', 'fr', 'ar', 'zh', 'pt', 'sw', 'de', 'it']
-        
-        return jsonify({
-            'success': True,
-            'languages': sorted(languages)
-        })
+                    found_langs.append(lang_code)
+            if found_langs:
+                languages = found_langs
     except Exception as e:
-        print(f"Error getting languages: {e}")
-        return jsonify({
-            'success': False,
-            'error': str(e),
-            'languages': ['en']  # Fallback
-        }), 500
+        print(f"Error scanning languages: {e}")
+    
+    return jsonify({
+        'success': True,
+        'languages': sorted(languages)
+    })
 
 # ==================== WORDS BY LANGUAGE ENDPOINT ====================
 
