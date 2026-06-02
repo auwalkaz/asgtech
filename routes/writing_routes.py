@@ -517,4 +517,4 @@ def get_writing_stats():
     except Exception as e:
         return jsonify({"success": False, "error": str(e)}), 500
 
-print("✅ Writing routes loaded successfully with JSON file support!")
+print("✅ Writing routes loaded successfully with JSON file support!")# Force redeploy - Tue Jun  2 11:10:05 PM WAT 2026
