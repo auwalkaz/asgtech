@@ -15,7 +15,9 @@ writing_bp = Blueprint("writing", __name__, url_prefix="/api")
 # Helper function to load words from JSON files
 def load_words_from_json(language, level='all', limit=50):
     """Load words directly from JSON files in the json folder"""
-    json_folder = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'json')
+    # Dynamic path that works on local and Render
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    json_folder = os.path.join(os.path.dirname(current_dir), 'json')
     file_path = os.path.join(json_folder, f'wordbank_{language}.json')
     
     # Try alternative naming if not found
@@ -49,6 +51,97 @@ def load_words_from_json(language, level='all', limit=50):
     except Exception as e:
         print(f"Error loading JSON for {language}: {e}")
         return []
+
+# ==================== LANGUAGE LIST ENDPOINT ====================
+
+@writing_bp.route("/words/list", methods=["GET"])
+def get_available_languages():
+    """Return list of available language word banks"""
+    # Dynamic path to json folder
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    json_folder = os.path.join(os.path.dirname(current_dir), 'json')
+    
+    try:
+        languages = []
+        if os.path.exists(json_folder):
+            for file in os.listdir(json_folder):
+                if file.startswith('wordbank_') and file.endswith('.json'):
+                    # Extract language code from wordbank_en.json
+                    lang_code = file.replace('wordbank_', '').replace('.json', '')
+                    languages.append(lang_code)
+        
+        if not languages:
+            # Fallback languages if no JSON files found
+            languages = ['en', 'es', 'fr', 'ar', 'zh', 'pt', 'sw', 'de', 'it']
+        
+        return jsonify({
+            'success': True,
+            'languages': sorted(languages)
+        })
+    except Exception as e:
+        print(f"Error getting languages: {e}")
+        return jsonify({
+            'success': False,
+            'error': str(e),
+            'languages': ['en']  # Fallback
+        }), 500
+
+# ==================== WORDS BY LANGUAGE ENDPOINT ====================
+
+@writing_bp.route("/words/<language>", methods=["GET"])
+def get_words_by_language(language):
+    """Get words for a specific language directly from JSON files"""
+    # Dynamic path that works on local and Render
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    json_folder = os.path.join(os.path.dirname(current_dir), 'json')
+    file_path = os.path.join(json_folder, f'wordbank_{language}.json')
+    
+    # Try alternative filename if not found
+    if not os.path.exists(file_path):
+        file_path = os.path.join(json_folder, f'{language}.json')
+    
+    print(f"Looking for file: {file_path}")
+    print(f"JSON folder exists: {os.path.exists(json_folder)}")
+    
+    if not os.path.exists(file_path):
+        return jsonify({
+            "success": False,
+            "error": f"No word bank found for language: {language}",
+            "file_tried": file_path,
+            "words": []
+        }), 404
+    
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        # Handle different JSON structures
+        if isinstance(data, dict) and 'words' in data:
+            words_data = data['words']
+        elif isinstance(data, dict) and 'vocabulary' in data:
+            words_data = data['vocabulary']
+        elif isinstance(data, list):
+            words_data = data
+        else:
+            words_data = []
+        
+        print(f"Loaded {len(words_data)} words for {language}")
+        
+        return jsonify({
+            "success": True,
+            "language": language,
+            "words": words_data,
+            "count": len(words_data)
+        })
+    except Exception as e:
+        print(f"Error loading {language}: {e}")
+        return jsonify({
+            "success": False,
+            "error": str(e),
+            "words": []
+        }), 500
+
+# ==================== WRITING EXERCISES ====================
 
 @writing_bp.route("/writing/exercises", methods=["GET"])
 def get_writing_exercises():
@@ -119,6 +212,8 @@ def get_writing_exercises():
         "source": "json_files"
     })
 
+# ==================== WORD BANK GENERATION ====================
+
 @writing_bp.route("/words/bank/generate", methods=["GET"])
 def generate_word_bank():
     """Get word bank for sentence building from JSON files"""
@@ -184,7 +279,9 @@ def generate_word_bank():
         "source": "json_files"
     })
 
-@writing_bp.route("/words/list", methods=["GET"])
+# ==================== VOCABULARY WORDS ====================
+
+@writing_bp.route("/words/vocabulary", methods=["GET"])
 def get_vocabulary_words():
     """Get vocabulary words by language and level from JSON"""
     language = request.args.get("language", session.get('language', 'en'))
@@ -206,6 +303,8 @@ def get_vocabulary_words():
         "count": len(words),
         "source": "json_files" if words else "vocabulary_service"
     })
+
+# ==================== SEARCH ====================
 
 @writing_bp.route("/words/search", methods=["GET"])
 def search_vocabulary():
@@ -243,6 +342,8 @@ def search_vocabulary():
         "count": len(results)
     })
 
+# ==================== THEMES ====================
+
 @writing_bp.route("/words/themes", methods=["GET"])
 def get_themes():
     """Get available themes/categories"""
@@ -255,54 +356,9 @@ def get_themes():
         "language": language,
         "themes": themes
     })
-@writing_bp.route("/words/<language>", methods=["GET"])
-def get_words_by_language(language):
-    """Get words for a specific language directly from JSON files"""
-    import json
-    import os
-    
-    # Use absolute path
-    json_folder = '/home/auwalkz/app/json'
-    file_path = os.path.join(json_folder, f'wordbank_{language}.json')
-    
-    print(f"Looking for file: {file_path}")
-    
-    if not os.path.exists(file_path):
-        return jsonify({
-            "success": False,
-            "error": f"No word bank found for language: {language}",
-            "file_tried": file_path,
-            "words": []
-        }), 404
-    
-    try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        
-        # Handle different JSON structures
-        if isinstance(data, dict) and 'words' in data:
-            words_data = data['words']
-        elif isinstance(data, list):
-            words_data = data
-        else:
-            words_data = []
-        
-        print(f"Loaded {len(words_data)} words for {language}")
-        
-        return jsonify({
-            "success": True,
-            "language": language,
-            "words": words_data,
-            "count": len(words_data)
-        })
-    except Exception as e:
-        print(f"Error loading {language}: {e}")
-        return jsonify({
-            "success": False,
-            "error": str(e),
-            "words": []
-        }), 500
-    
+
+# ==================== SENTENCE CHECKING ====================
+
 @writing_bp.route("/check/sentence", methods=["POST"])
 def check_sentence():
     """Check user's sentence for grammar and correctness"""
@@ -377,6 +433,8 @@ def check_sentence():
             "feedback": "Could not check sentence. Please try again."
         }), 500
 
+# ==================== SPELLING CHECK ====================
+
 @writing_bp.route("/check/spelling", methods=["POST"])
 def check_spelling():
     """Check spelling of a word"""
@@ -409,6 +467,8 @@ def check_spelling():
     except Exception as e:
         return jsonify({"success": False, "error": str(e)}), 500
 
+# ==================== ACTIVITY SAVING ====================
+
 @writing_bp.route("/activity/save", methods=["POST"])
 def save_activity():
     """Save user activity progress"""
@@ -438,6 +498,8 @@ def save_activity():
         
     except Exception as e:
         return jsonify({"success": False, "error": str(e)}), 500
+
+# ==================== STATISTICS ====================
 
 @writing_bp.route("/stats", methods=["GET"])
 def get_writing_stats():
