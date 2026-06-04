@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+<meta name="theme-color" content="#0f172a">
 <title>Astech - Language Learning Hub</title>
 
 <style>
@@ -14,47 +15,52 @@
 
 body {
     background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-    font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+    font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
 }
 
-/* Main Layout */
+/* ========= MOBILE-FRIENDLY LAYOUT ========= */
 .app-wrapper {
     display: flex;
     min-height: 100vh;
     position: relative;
 }
 
-/* ========= SIDEBAR ========= */
+/* Sidebar - Slide out on mobile */
 .sidebar {
-    width: 320px;
-    background: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(10px);
+    width: 280px;
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(12px);
     border-right: 1px solid rgba(59, 130, 246, 0.3);
-    transition: all 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: fixed;
     left: 0;
     top: 0;
     height: 100vh;
     overflow-y: auto;
-    z-index: 100;
+    z-index: 1000;
+    transform: translateX(-100%);
 }
 
-.sidebar.collapsed {
-    left: -320px;
+.sidebar.open {
+    transform: translateX(0);
 }
 
 .sidebar-header {
-    padding: 25px;
+    padding: 20px;
     border-bottom: 1px solid #334155;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    background: rgba(15, 23, 42, 0.98);
+    z-index: 10;
 }
 
 .sidebar-header h2 {
-    font-size: 1.3em;
+    font-size: 1.2rem;
     color: white;
 }
 
@@ -62,224 +68,70 @@ body {
     background: #3b82f6;
     border: none;
     color: white;
-    font-size: 1.2em;
-    cursor: pointer;
     width: 35px;
     height: 35px;
     border-radius: 8px;
-    transition: all 0.3s;
-}
-
-.toggle-sidebar-btn:hover {
-    background: #2563eb;
-}
-
-.sidebar-content {
-    padding: 20px;
-}
-
-.section {
-    margin-bottom: 30px;
-}
-
-.section-title {
-    color: #94a3b8;
-    font-size: 0.75em;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-}
-
-.lang-select {
-    width: 100%;
-    padding: 12px 15px;
-    background: #0f172a;
-    border: 1px solid #334155;
-    border-radius: 12px;
-    color: white;
-    font-size: 1em;
     cursor: pointer;
+    font-size: 1rem;
 }
 
-.level-buttons {
-    display: flex;
-    gap: 8px;
-}
-
-.level-btn {
-    flex: 1;
-    padding: 10px;
-    background: #0f172a;
-    border: 1px solid #334155;
-    border-radius: 10px;
-    color: #94a3b8;
-    cursor: pointer;
-    text-align: center;
-    font-size: 0.85em;
-    transition: all 0.3s;
-}
-
-.level-btn.active {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
-    border-color: #3b82f6;
-    color: white;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-}
-
-.stat-card {
-    background: #0f172a;
-    border-radius: 12px;
-    padding: 15px;
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #60a5fa;
-}
-
-.stat-label {
-    font-size: 0.7em;
-    color: #94a3b8;
-    margin-top: 5px;
-}
-
-.progress-container {
-    background: #0f172a;
-    border-radius: 12px;
-    padding: 15px;
-}
-
-.progress-text {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    font-size: 0.8em;
-}
-
-.progress-track {
-    height: 6px;
-    background: #334155;
-    border-radius: 3px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #10b981, #3b82f6);
-    width: 0%;
-}
-
-.streak-card {
-    background: linear-gradient(135deg, #f59e0b, #d97706);
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-}
-
-.streak-number {
-    font-size: 2em;
-    font-weight: bold;
-}
-
-.toggle-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid #334155;
-}
-
-.toggle-switch {
-    width: 45px;
-    height: 24px;
-    background: #334155;
-    border-radius: 12px;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.toggle-switch.active {
-    background: #3b82f6;
-}
-
-.toggle-knob {
-    width: 20px;
-    height: 20px;
-    background: white;
-    border-radius: 10px;
-    position: absolute;
-    top: 2px;
-    left: 3px;
-    transition: all 0.3s;
-}
-
-.toggle-switch.active .toggle-knob {
-    left: 22px;
-}
-
-/* Premium Badge */
-.premium-badge {
-    background: linear-gradient(135deg, #f59e0b, #d97706);
-    color: white;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    font-weight: bold;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-}
-
-/* ========= MAIN CONTENT ========= */
+/* Main Content */
 .main-content {
     flex: 1;
-    margin-left: 320px;
-    transition: all 0.3s ease;
-    padding: 30px;
-}
-
-.main-content.expanded {
     margin-left: 0;
+    padding: 16px;
+    width: 100%;
+    transition: all 0.3s ease;
 }
 
-.show-sidebar-btn {
+/* Floating Menu Button for Mobile */
+.menu-btn {
     position: fixed;
-    left: 20px;
-    top: 20px;
-    background: #3b82f6;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
     border: none;
     color: white;
-    width: 45px;
-    height: 45px;
-    border-radius: 12px;
+    width: 56px;
+    height: 56px;
+    border-radius: 28px;
     cursor: pointer;
-    font-size: 1.2em;
+    font-size: 1.5rem;
     z-index: 99;
-    display: none;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
     transition: all 0.3s;
-}
-
-.main-content.expanded .show-sidebar-btn {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.menu-btn:active {
+    transform: scale(0.95);
+}
+
+/* Overlay for mobile sidebar */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
 }
 
 /* ========= HEADER ========= */
 .main-header {
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
     backdrop-filter: blur(10px);
-    border-radius: 30px;
-    padding: 25px 35px;
-    margin-bottom: 35px;
+    border-radius: 24px;
+    padding: 20px;
+    margin-bottom: 20px;
     border: 1px solid rgba(59, 130, 246, 0.3);
     position: relative;
     overflow: hidden;
@@ -300,63 +152,62 @@ body {
     position: absolute;
     bottom: -20px;
     right: -20px;
-    font-size: 120px;
+    font-size: 100px;
     opacity: 0.05;
     pointer-events: none;
 }
 
 .header-top {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
+    flex-direction: column;
+    gap: 15px;
     margin-bottom: 15px;
 }
 
 .header-greeting h1 {
-    font-size: 2em;
+    font-size: 1.5rem;
     background: linear-gradient(135deg, #fff, #60a5fa);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 .header-greeting p {
     color: #94a3b8;
-    font-size: 0.9em;
+    font-size: 0.8rem;
 }
 
 .header-stats {
     display: flex;
-    gap: 15px;
+    gap: 12px;
 }
 
 .header-stat {
     text-align: center;
-    padding: 8px 18px;
+    padding: 6px 12px;
     background: rgba(15, 23, 42, 0.6);
-    border-radius: 20px;
+    border-radius: 16px;
+    flex: 1;
 }
 
 .header-stat-value {
-    font-size: 1.3em;
+    font-size: 1.1rem;
     font-weight: bold;
     color: #60a5fa;
 }
 
 .header-stat-label {
-    font-size: 0.65em;
+    font-size: 0.6rem;
     color: #94a3b8;
 }
 
 .header-progress {
-    margin-bottom: 15px;
+    margin: 15px 0;
 }
 
 .header-progress-bar {
-    height: 6px;
+    height: 5px;
     background: #1e293b;
     border-radius: 10px;
     overflow: hidden;
@@ -374,7 +225,7 @@ body {
 .header-progress-text {
     display: flex;
     justify-content: space-between;
-    font-size: 0.7em;
+    font-size: 0.65rem;
     color: #94a3b8;
 }
 
@@ -382,14 +233,14 @@ body {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 .header-badge {
-    padding: 4px 12px;
+    padding: 4px 10px;
     background: rgba(59, 130, 246, 0.2);
     border-radius: 20px;
-    font-size: 0.7em;
+    font-size: 0.65rem;
     color: #60a5fa;
     display: flex;
     align-items: center;
@@ -400,8 +251,8 @@ body {
 .tips-section {
     background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.1));
     border-radius: 20px;
-    padding: 5px 0;
-    margin-top: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
     border: 1px solid rgba(139, 92, 246, 0.2);
 }
 
@@ -411,47 +262,54 @@ body {
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
-    margin: 10px 15px 0 15px;
+    margin-bottom: 12px;
 }
 
 .tips-label {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     background: rgba(139, 92, 246, 0.3);
-    padding: 4px 12px;
+    padding: 4px 10px;
     border-radius: 20px;
-    font-size: 0.7em;
+    font-size: 0.7rem;
     font-weight: bold;
     color: #c4b5fd;
+}
+
+.tip-date {
+    font-size: 0.65rem;
+    color: #94a3b8;
+    background: rgba(0,0,0,0.3);
+    padding: 4px 10px;
+    border-radius: 20px;
 }
 
 .refresh-tips-btn {
     background: linear-gradient(135deg, #10b981, #059669);
     border: none;
-    padding: 5px 15px;
+    padding: 6px 12px;
     border-radius: 20px;
     color: white;
     cursor: pointer;
-    font-size: 0.7em;
+    font-size: 0.7rem;
     font-weight: bold;
     transition: all 0.3s;
 }
 
-.refresh-tips-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 2px 10px rgba(16, 185, 129, 0.4);
+.refresh-tips-btn:active {
+    transform: scale(0.95);
 }
 
 .carousel-container {
     position: relative;
     overflow: hidden;
-    padding: 15px 20px;
+    padding: 10px 30px;
 }
 
 .carousel-track {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.4s ease-in-out;
 }
 
 .carousel-slide {
@@ -462,13 +320,16 @@ body {
 .tip-card-integrated {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     flex-wrap: wrap;
+    background: rgba(15, 23, 42, 0.5);
+    border-radius: 16px;
+    padding: 15px;
 }
 
 .tip-icon-large {
-    font-size: 2.5em;
-    min-width: 60px;
+    font-size: 2rem;
+    min-width: 50px;
     text-align: center;
 }
 
@@ -477,35 +338,61 @@ body {
 }
 
 .tip-title-bold {
-    font-size: 1.1em;
+    font-size: 0.9rem;
     font-weight: 800;
     color: #c4b5fd;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     letter-spacing: -0.3px;
 }
 
 .tip-text-bold {
-    font-size: 1em;
-    font-weight: 600;
+    font-size: 0.85rem;
+    font-weight: 500;
     color: #e2e8f0;
     line-height: 1.4;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
 .tip-category-light {
-    font-size: 0.7em;
+    font-size: 0.65rem;
     color: #94a3b8;
     display: inline-block;
     background: rgba(139, 92, 246, 0.2);
-    padding: 2px 10px;
-    border-radius: 15px;
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(139, 92, 246, 0.5);
+    border: none;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.carousel-prev { left: 0; }
+.carousel-next { right: 0; }
+
+.carousel-prev:active, .carousel-next:active {
+    transform: translateY(-50%) scale(0.9);
 }
 
 .carousel-dots {
     display: flex;
     justify-content: center;
-    gap: 8px;
-    padding-bottom: 12px;
+    gap: 6px;
+    margin-top: 12px;
 }
 
 .dot {
@@ -523,81 +410,59 @@ body {
     background: #8b5cf6;
 }
 
-.carousel-prev, .carousel-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(139, 92, 246, 0.4);
-    border: none;
-    color: white;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 0.9em;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-}
-
-.carousel-prev { left: 5px; }
-.carousel-next { right: 5px; }
-
-.carousel-prev:hover, .carousel-next:hover {
-    background: #8b5cf6;
-}
-
 /* ========= LEARNING PATHS GRID ========= */
 .paths-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 20px;
 }
 
 .path-card {
     background: #1e293b;
     border-radius: 20px;
-    padding: 25px;
+    padding: 20px;
     cursor: pointer;
     transition: all 0.3s;
-    text-decoration: none;
-    display: block;
     border: 1px solid #334155;
+    position: relative;
+    overflow: hidden;
+}
+
+.path-card:active {
+    transform: scale(0.98);
 }
 
 .path-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     border-color: #3b82f6;
     background: #334155;
 }
 
 .path-icon {
-    font-size: 2.5em;
-    margin-bottom: 15px;
+    font-size: 2rem;
+    margin-bottom: 12px;
 }
 
 .path-title {
-    font-size: 1.2em;
+    font-size: 1.1rem;
     font-weight: bold;
     color: white;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .path-desc {
-    font-size: 0.85em;
+    font-size: 0.75rem;
     color: #94a3b8;
     line-height: 1.4;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .path-badge {
     display: inline-block;
-    padding: 4px 12px;
+    padding: 3px 10px;
     border-radius: 20px;
-    font-size: 0.7em;
+    font-size: 0.65rem;
     font-weight: 600;
 }
 
@@ -606,90 +471,330 @@ body {
 .badge-advanced { background: #ef4444; color: white; }
 .badge-all { background: #8b5cf6; color: white; }
 
+/* ========= SIDEBAR STYLES ========= */
+.sidebar-content {
+    padding: 16px;
+}
+
+.section {
+    margin-bottom: 24px;
+}
+
+.section-title {
+    color: #94a3b8;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.lang-select {
+    width: 100%;
+    padding: 12px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.level-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.level-btn {
+    flex: 1;
+    padding: 10px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    color: #94a3b8;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.8rem;
+    transition: all 0.3s;
+}
+
+.level-btn.active {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    border-color: #3b82f6;
+    color: white;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.stat-card {
+    background: #0f172a;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #60a5fa;
+}
+
+.stat-label {
+    font-size: 0.65rem;
+    color: #94a3b8;
+    margin-top: 4px;
+}
+
+.progress-container {
+    background: #0f172a;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 0.7rem;
+}
+
+.progress-track {
+    height: 5px;
+    background: #334155;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #3b82f6);
+    width: 0%;
+}
+
+.streak-card {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+}
+
+.streak-number {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.toggle-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #334155;
+}
+
+.toggle-switch {
+    width: 40px;
+    height: 22px;
+    background: #334155;
+    border-radius: 11px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.toggle-switch.active {
+    background: #3b82f6;
+}
+
+.toggle-knob {
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 9px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: all 0.3s;
+}
+
+.toggle-switch.active .toggle-knob {
+    left: 20px;
+}
+
 /* Toast Notification */
 .toast {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #10b981;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1f2937;
     color: white;
-    padding: 12px 20px;
-    border-radius: 8px;
-    z-index: 1000;
-    animation: slideIn 0.3s ease;
+    padding: 10px 18px;
+    border-radius: 30px;
+    z-index: 1001;
+    animation: slideUp 0.3s ease;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-@keyframes slideIn {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
+@keyframes slideUp {
+    from { transform: translateX(-50%) translateY(20px); opacity: 0; }
+    to { transform: translateX(-50%) translateY(0); opacity: 1; }
 }
 
-/* Upgrade Modal Animation */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 280px;
-    }
-    
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+}
+
+/* ========= UPGRADE MODAL ========= */
+.upgrade-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.upgrade-modal-content {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    max-width: 450px;
+    width: 90%;
+    border-radius: 28px;
+    padding: 35px;
+    text-align: center;
+    border: 1px solid #f59e0b;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+}
+
+.upgrade-modal-content h2 {
+    color: white;
+    margin-bottom: 15px;
+}
+
+.upgrade-modal-content p {
+    color: #94a3b8;
+    margin-bottom: 20px;
+}
+
+.upgrade-benefits {
+    background: #0f172a;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.upgrade-benefits p {
+    color: #cbd5e1;
+    margin: 8px 0;
+}
+
+.upgrade-btn {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    border: none;
+    padding: 14px 30px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.later-btn {
+    background: transparent;
+    border: 1px solid #475569;
+    padding: 14px 30px;
+    border-radius: 50px;
+    color: #94a3b8;
+    cursor: pointer;
+    margin: 10px;
+}
+
+/* ========= RESPONSIVE ========= */
+@media (min-width: 768px) {
     .main-content {
+        padding: 24px;
         margin-left: 0;
-        padding: 20px;
-    }
-    
-    .show-sidebar-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
     
     .paths-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .main-header {
-        padding: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
     }
     
     .header-top {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
     
-    .header-greeting h1 {
-        font-size: 1.5em;
+    .header-stats {
+        gap: 15px;
     }
     
-    .tip-card-integrated {
-        flex-direction: column;
-        text-align: center;
+    .header-stat {
+        padding: 8px 18px;
     }
     
-    .carousel-prev, .carousel-next {
+    .menu-btn {
         display: none;
     }
     
-    .tips-header {
-        flex-direction: column;
-        align-items: flex-start;
+    .sidebar {
+        transform: translateX(0);
+        width: 280px;
+        position: fixed;
+    }
+    
+    .main-content {
+        margin-left: 280px;
+        padding: 24px 32px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .paths-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
 }
 </style>
 </head>
-
 <body>
 
 <div class="app-wrapper">
+    <!-- Overlay for mobile -->
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
     
     <!-- SIDEBAR -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h2>⚙️ Settings</h2>
-            <button class="toggle-sidebar-btn" onclick="toggleSidebar()">✕</button>
+            <button class="toggle-sidebar-btn" onclick="closeSidebar()">✕</button>
         </div>
         
         <div class="sidebar-content">
@@ -697,8 +802,8 @@ body {
                 <div class="section-title">🌍 TARGET LANGUAGE</div>
                 <select id="globalLanguage" class="lang-select">
                     <option value="en">🇬🇧 English</option>
-                    <option value="fr">🇫🇷 French</option>
                     <option value="es">🇪🇸 Spanish</option>
+                    <option value="fr">🇫🇷 French</option>
                     <option value="pt">🇵🇹 Portuguese</option>
                     <option value="sw">🇹🇿 Swahili</option>
                     <option value="ar">🇸🇦 Arabic</option>
@@ -743,7 +848,7 @@ body {
                         <div class="stat-label">Reading</div>
                     </div>
                 </div>
-                <div class="progress-container" style="margin-top: 15px;">
+                <div class="progress-container" style="margin-top: 12px;">
                     <div class="progress-text">
                         <span>Overall</span>
                         <span id="overallPercent">0%</span>
@@ -770,20 +875,19 @@ body {
                     </div>
                 </div>
                 <div class="toggle-item">
-                    <span>🔔 Reminders</span>
+                    <span>🔔 Daily Reminders</span>
                     <div class="toggle-switch" id="remindersToggle" onclick="toggleReminders()">
                         <div class="toggle-knob"></div>
                     </div>
                 </div>
             </div>
             
-            <!-- Language Info Display -->
             <div class="section">
                 <div class="section-title">📌 ACTIVE LANGUAGE</div>
-                <div style="background: #0f172a; border-radius: 12px; padding: 15px; text-align: center;">
-                    <div style="font-size: 2rem;" id="activeLanguageFlag">🇬🇧</div>
-                    <div style="color: white; font-weight: bold; margin-top: 5px;" id="activeLanguageName">English</div>
-                    <div style="color: #94a3b8; font-size: 0.7rem; margin-top: 5px;">Selected language will apply to all learning cards</div>
+                <div style="background: #0f172a; border-radius: 12px; padding: 12px; text-align: center;">
+                    <div style="font-size: 1.8rem;" id="activeLanguageFlag">🇬🇧</div>
+                    <div style="color: white; font-weight: bold; margin-top: 4px;" id="activeLanguageName">English</div>
+                    <div style="color: #94a3b8; font-size: 0.65rem; margin-top: 4px;">Selected for all learning</div>
                 </div>
             </div>
         </div>
@@ -791,9 +895,9 @@ body {
 
     <!-- MAIN CONTENT -->
     <div class="main-content" id="mainContent">
-        <button class="show-sidebar-btn" onclick="showSidebar()">☰</button>
+        <button class="menu-btn" onclick="openSidebar()">☰</button>
         
-        <!-- HEADER WITH AI TIPS CAROUSEL -->
+        <!-- HEADER -->
         <div class="main-header">
             <div class="header-top">
                 <div class="header-greeting">
@@ -827,40 +931,40 @@ body {
                 <div class="header-badge" id="languageBadge">🇬🇧 Learning English</div>
                 <div class="header-badge" id="subscriptionBadge">📖 Free Account</div>
             </div>
+        </div>
 
-            <!-- AI TIPS CAROUSEL -->
-            <div class="tips-section">
-                <div class="tips-header">
-                    <div class="tips-label">
-                        <span>💡</span> AI GENERATED TIPS
-                    </div>
-                    <button class="refresh-tips-btn" onclick="refreshTips()">
-                        🔄 Get New Tips (Unlimited)
-                    </button>
+        <!-- AI TIPS CAROUSEL -->
+        <div class="tips-section">
+            <div class="tips-header">
+                <div class="tips-label">
+                    <span>💡</span> AI GENERATED TIPS
                 </div>
-                <div class="carousel-container">
-                    <button class="carousel-prev" onclick="prevTip()">‹</button>
-                    <button class="carousel-next" onclick="nextTip()">›</button>
-                    <div class="carousel-track" id="carouselTrack">
-                        <div class="carousel-slide">
-                            <div class="tip-card-integrated">
-                                <div class="tip-icon-large">🤖</div>
-                                <div class="tip-content-wrapper">
-                                    <div class="tip-title-bold">AI is generating tips...</div>
-                                    <div class="tip-text-bold">Please wait while we create interesting educational content for you!</div>
-                                    <div class="tip-category-light">AI Generated</div>
-                                </div>
+                <div class="tip-date" id="tipDate">Today's Tips</div>
+                <button class="refresh-tips-btn" onclick="refreshTipsManually()">
+                    🔄 Get New Tips
+                </button>
+            </div>
+            <div class="carousel-container">
+                <button class="carousel-prev" onclick="prevTip()">‹</button>
+                <button class="carousel-next" onclick="nextTip()">›</button>
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide">
+                        <div class="tip-card-integrated">
+                            <div class="tip-icon-large">🤖</div>
+                            <div class="tip-content-wrapper">
+                                <div class="tip-title-bold">AI is generating tips...</div>
+                                <div class="tip-text-bold">Please wait while we create interesting educational content for you!</div>
+                                <div class="tip-category-light">AI Generated</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-dots" id="carouselDots"></div>
             </div>
+            <div class="carousel-dots" id="carouselDots"></div>
         </div>
 
-        <!-- LEARNING PATHS GRID - All cards pass the selected language -->
+        <!-- LEARNING PATHS GRID -->
         <div class="paths-grid">
-            <!-- CARD 1: BEGINNER FULL COURSE -->
             <div class="path-card" data-url="/beginner-full.html" data-title="Complete Beginner">
                 <div class="path-icon">🌱</div>
                 <div class="path-title">Complete Beginner</div>
@@ -868,7 +972,6 @@ body {
                 <span class="path-badge badge-beginner">🎯 Start Here</span>
             </div>
 
-            <!-- CARD 2: VOCABULARY BUILDER -->
             <div class="path-card" data-url="/vocabulary-builder.html" data-title="Vocabulary Builder">
                 <div class="path-icon">📚</div>
                 <div class="path-title">Vocabulary Builder</div>
@@ -876,7 +979,6 @@ body {
                 <span class="path-badge badge-beginner">Build</span>
             </div>
 
-            <!-- CARD 3: SPEAKING PRACTICE -->
             <div class="path-card" data-url="/speaking-only.html" data-title="Speaking Practice">
                 <div class="path-icon">🎤</div>
                 <div class="path-title">Speaking Practice</div>
@@ -884,7 +986,6 @@ body {
                 <span class="path-badge badge-intermediate">Speak</span>
             </div>
 
-            <!-- CARD 4: WRITING PRACTICE -->
             <div class="path-card" data-url="/writing-focus.html" data-title="Writing Practice">
                 <div class="path-icon">✍️</div>
                 <div class="path-title">Writing Practice</div>
@@ -892,7 +993,6 @@ body {
                 <span class="path-badge badge-intermediate">Write</span>
             </div>
 
-            <!-- CARD 5: READING PRACTICE -->
             <div class="path-card" data-url="/reading-focus.html" data-title="Reading Practice">
                 <div class="path-icon">📖</div>
                 <div class="path-title">Reading Practice</div>
@@ -900,7 +1000,6 @@ body {
                 <span class="path-badge badge-intermediate">Read</span>
             </div>
 
-            <!-- CARD 6: ADVANCED CONVERSATION -->
             <div class="path-card" data-url="/advanced-conversation.html" data-title="Advanced Conversation">
                 <div class="path-icon">💬</div>
                 <div class="path-title">Advanced Conversation</div>
@@ -908,7 +1007,6 @@ body {
                 <span class="path-badge badge-advanced">AI Tutor</span>
             </div>
 
-            <!-- CARD 7: DAILY WORDS -->
             <div class="path-card" data-url="/daily-words.html" data-title="Daily Words Challenge">
                 <div class="path-icon">📅</div>
                 <div class="path-title">Daily Words Challenge</div>
@@ -916,7 +1014,6 @@ body {
                 <span class="path-badge badge-all">Daily</span>
             </div>
 
-            <!-- CARD 8: LANGUAGE TRANSLATOR -->
             <div class="path-card" data-url="/language-translator.html" data-title="Language Translator">
                 <div class="path-icon">🔄</div>
                 <div class="path-title">Language Translator</div>
@@ -924,7 +1021,6 @@ body {
                 <span class="path-badge badge-all">Translate</span>
             </div>
 
-            <!-- CARD 9: GRAMMAR PRACTICE -->
             <div class="path-card" data-url="/grammar-practice.html" data-title="Grammar Practice">
                 <div class="path-icon">📐</div>
                 <div class="path-title">Grammar Practice</div>
@@ -963,8 +1059,66 @@ const languageInfo = {
     'nl': { flag: '🇳🇱', name: 'Dutch', native: 'Nederlands' }
 };
 
-// ================= PREMIUM CHECK FUNCTIONALITY =================
+// ================= LANGUAGE MANAGEMENT =================
+function setLanguage(langCode) {
+    currentLanguage = langCode;
+    localStorage.setItem('preferredLanguage', langCode);
+    sessionStorage.setItem('selectedLanguage', langCode);
+    
+    // Update UI
+    updateActiveLanguageDisplay();
+    
+    // Update language selector dropdown
+    const langSelect = document.getElementById('globalLanguage');
+    if (langSelect) langSelect.value = langCode;
+    
+    // Refresh tips for new language (clear cache)
+    localStorage.removeItem('dailyTips');
+    localStorage.removeItem('tipsDate');
+    
+    // Reload stats and tips for new language
+    startSession().then(() => { 
+        loadDashboardStats(); 
+        loadDailyTips(); 
+    });
+    
+    showToast(`🌍 Language changed to ${languageInfo[langCode]?.name || langCode}`, 'success');
+}
 
+function updateActiveLanguageDisplay() {
+    const info = languageInfo[currentLanguage] || languageInfo['en'];
+    document.getElementById('activeLanguageFlag').textContent = info.flag;
+    document.getElementById('activeLanguageName').textContent = info.name;
+    document.getElementById('activeLearningLanguage').innerHTML = `🎯 Learning ${info.name} - Click any card to start!`;
+    document.getElementById('languageBadge').innerHTML = `${info.flag} Learning ${info.name}`;
+}
+
+// ================= CARD NAVIGATION WITH LANGUAGE =================
+function navigateToPage(url, title) {
+    // Save current language before navigating
+    localStorage.setItem('preferredLanguage', currentLanguage);
+    sessionStorage.setItem('selectedLanguage', currentLanguage);
+    
+    // Add language parameter to URL
+    const separator = url.includes('?') ? '&' : '?';
+    const finalUrl = `${url}${separator}lang=${currentLanguage}`;
+    
+    window.location.href = finalUrl;
+}
+
+async function handleCardClick(url, title) {
+    // First check premium status
+    const isPremium = await checkPremiumStatus();
+    
+    if (isPremium) {
+        navigateToPage(url, title);
+    } else {
+        // Free user - show upgrade modal
+        showUpgradeModal(title);
+    }
+}
+
+// ================= PREMIUM CHECK FUNCTIONALITY =================
 async function checkPremiumStatus() {
     try {
         const response = await fetch('/api/check-premium');
@@ -990,140 +1144,17 @@ async function checkPremiumStatus() {
     }
 }
 
-async function handleCardClick(url, title) {
-    // First check premium status
-    const isPremium = await checkPremiumStatus();
-    
-    if (isPremium) {
-        // Premium user - go to the page
-        window.location.href = url;
-    } else {
-        // Free user - show upgrade modal
-        showUpgradeModal(title);
-    }
-}
-
-function showUpgradeModal(cardName) {
-    // Remove existing modal if any
-    const existingModal = document.getElementById('upgradeModal');
-    if (existingModal) existingModal.remove();
-    
-    const modal = document.createElement('div');
-    modal.id = 'upgradeModal';
-    modal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.95);
-        z-index: 10001;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        animation: fadeIn 0.3s ease;
-    `;
-    
-    modal.innerHTML = `
-        <div style="background: linear-gradient(135deg, #1e293b, #0f172a); max-width: 500px; width: 90%; border-radius: 28px; padding: 40px; text-align: center; border: 1px solid #f59e0b; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);">
-            <div style="font-size: 4rem; margin-bottom: 10px;">🔒</div>
-            <h2 style="color: white; margin-bottom: 15px;">Premium Required</h2>
-            <p style="color: #94a3b8; margin-bottom: 20px;">
-                "<strong style="color: #f59e0b;">${escapeHtml(cardName)}</strong>" is a premium feature.
-            </p>
-            <p style="color: #94a3b8; margin-bottom: 25px;">
-                Upgrade to unlock all learning features and accelerate your language journey!
-            </p>
-            
-            <div style="background: #0f172a; border-radius: 20px; padding: 20px; margin: 20px 0;">
-                <h3 style="color: #f59e0b; margin-bottom: 15px;">⭐ Premium Benefits</h3>
-                <div style="text-align: left; color: #cbd5e1;">
-                    <p style="margin: 8px 0;">✓ Unlimited AI grammar checks</p>
-                    <p style="margin: 8px 0;">✓ Unlimited vocabulary words</p>
-                    <p style="margin: 8px 0;">✓ Voice pronunciation lessons</p>
-                    <p style="margin: 8px 0;">✓ Downloadable certificates</p>
-                    <p style="margin: 8px 0;">✓ No advertisements</p>
-                    <p style="margin: 8px 0;">✓ Priority support</p>
-                </div>
-            </div>
-            
-            <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
-                <button onclick="window.location.href='/upgrade'" style="background: linear-gradient(135deg, #f59e0b, #d97706); border: none; padding: 14px 30px; border-radius: 50px; color: white; font-weight: bold; cursor: pointer; flex: 1; min-width: 150px;">
-                    🚀 Upgrade Now
-                </button>
-                <button onclick="closeUpgradeModal()" style="background: transparent; border: 1px solid #475569; padding: 14px 30px; border-radius: 50px; color: #94a3b8; cursor: pointer; flex: 1; min-width: 150px;">
-                    Maybe Later
-                </button>
-            </div>
-            
-            <div style="margin-top: 20px; font-size: 0.7rem; color: #475569;">
-                <a href="/auth" style="color: #60a5fa;">Switch account</a> | 
-                <a href="/dev-panel" style="color: #60a5fa;">Developer Panel</a>
-            </div>
-        </div>
-    `;
-    
-    document.body.appendChild(modal);
-}
-
-function closeUpgradeModal() {
-    const modal = document.getElementById('upgradeModal');
-    if (modal) modal.remove();
-}
-
-function escapeHtml(str) {
-    if (!str) return '';
-    return str.replace(/[&<>]/g, function(m) {
-        if (m === '&') return '&amp;';
-        if (m === '<') return '&lt;';
-        if (m === '>') return '&gt;';
-        return m;
-    });
-}
-
-// Initialize all cards with click handlers
-function initializeCards() {
-    const cards = document.querySelectorAll('.path-card');
-    cards.forEach(card => {
-        const url = card.getAttribute('data-url');
-        const title = card.getAttribute('data-title');
-        
-        if (url && title) {
-            // Remove any existing click listeners
-            const newCard = card.cloneNode(true);
-            card.parentNode.replaceChild(newCard, card);
-            
-            newCard.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                handleCardClick(url, title);
-            });
-        }
-    });
-}
-
-// Update active language display
-function updateActiveLanguageDisplay() {
-    const info = languageInfo[currentLanguage] || languageInfo['en'];
-    document.getElementById('activeLanguageFlag').textContent = info.flag;
-    document.getElementById('activeLanguageName').textContent = info.name;
-    document.getElementById('activeLearningLanguage').innerHTML = `🎯 Learning ${info.name} - Click any card to start!`;
-    document.getElementById('languageBadge').innerHTML = `${info.flag} Learning ${info.name}`;
-}
-
 // ================= SIDEBAR FUNCTIONS =================
-function toggleSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    const mainContent = document.getElementById('mainContent');
-    sidebar.classList.toggle('collapsed');
-    mainContent.classList.toggle('expanded');
+function openSidebar() {
+    document.getElementById('sidebar').classList.add('open');
+    document.getElementById('overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
 }
 
-function showSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    const mainContent = document.getElementById('mainContent');
-    sidebar.classList.remove('collapsed');
-    mainContent.classList.remove('expanded');
+function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('overlay').classList.remove('active');
+    document.body.style.overflow = '';
 }
 
 function updateGreeting() {
@@ -1157,41 +1188,6 @@ async function startSession() {
         console.error('Session error:', error);
         return false;
     }
-}
-
-function init() {
-    updateGreeting();
-    updateActiveLanguageDisplay();
-    
-    document.querySelectorAll('.level-btn').forEach(btn => {
-        if (btn.dataset.level === userLevel) btn.classList.add('active');
-    });
-    
-    document.getElementById('globalLanguage').value = currentLanguage;
-    
-    const levelNames = { 'beginner': '🌱 Beginner Level', 'intermediate': '🌟 Intermediate Level', 'advanced': '🚀 Advanced Level' };
-    document.getElementById('levelBadge').innerHTML = levelNames[userLevel];
-    
-    const saveHistory = localStorage.getItem('saveHistory') !== 'false';
-    const reminders = localStorage.getItem('reminders') === 'true';
-    
-    if (saveHistory) document.getElementById('saveHistoryToggle')?.classList.add('active');
-    if (reminders) document.getElementById('remindersToggle')?.classList.add('active');
-    
-    startSession().then(() => { loadDashboardStats(); refreshTips(); });
-    
-    document.getElementById('globalLanguage').addEventListener('change', function(e) {
-        currentLanguage = e.target.value;
-        localStorage.setItem('preferredLanguage', currentLanguage);
-        updateActiveLanguageDisplay();
-        startSession().then(() => { loadDashboardStats(); refreshTips(); });
-    });
-    
-    // Initialize cards after everything else
-    setTimeout(() => {
-        initializeCards();
-        checkPremiumStatus();
-    }, 500);
 }
 
 function selectLevel(level) {
@@ -1228,30 +1224,83 @@ async function loadDashboardStats() {
     } catch (error) { console.error('Error loading stats:', error); }
 }
 
-// ================= AI TIPS CAROUSEL =================
+// ================= DAILY TIPS WITH AUTO-REFRESH =================
 let tipsData = [];
 let currentTipIndex = 0;
 let autoSlideInterval = null;
-const slideIntervalTime = 8000;
+const slideIntervalTime = 7000;
 
-async function refreshTips() {
+function getTodayKey() {
+    return new Date().toISOString().split('T')[0];
+}
+
+function getStoredTips() {
+    const stored = localStorage.getItem('dailyTips');
+    const storedDate = localStorage.getItem('tipsDate');
+    const today = getTodayKey();
+    
+    if (stored && storedDate === today) {
+        return JSON.parse(stored);
+    }
+    return null;
+}
+
+function saveTipsToStorage(tips) {
+    localStorage.setItem('dailyTips', JSON.stringify(tips));
+    localStorage.setItem('tipsDate', getTodayKey());
+}
+
+async function loadDailyTips() {
     const track = document.getElementById('carouselTrack');
     const dotsContainer = document.getElementById('carouselDots');
-    track.innerHTML = '<div class="carousel-slide"><div class="tip-card-integrated"><div class="tip-icon-large">🤖</div><div class="tip-content-wrapper"><div class="tip-title-bold">AI is generating fresh tips...</div><div class="tip-text-bold">Creating new interesting facts just for you!</div><div class="tip-category-light">Generating</div></div></div></div>';
+    const tipDateSpan = document.getElementById('tipDate');
+    
+    // Show today's date
+    tipDateSpan.innerHTML = `📅 ${new Date().toLocaleDateString()}`;
+    
+    // Check if we already have today's tips
+    const cachedTips = getStoredTips();
+    if (cachedTips && cachedTips.length > 0) {
+        tipsData = cachedTips;
+        displayTipsInCarousel(track, dotsContainer);
+        startAutoSlide();
+        return;
+    }
+    
+    // Fetch new tips from API
+    track.innerHTML = '<div class="carousel-slide"><div class="tip-card-integrated"><div class="tip-icon-large">🤖</div><div class="tip-content-wrapper"><div class="tip-title-bold">Generating daily tips...</div><div class="tip-text-bold">Creating fresh educational content for you!</div><div class="tip-category-light">AI Generating</div></div></div></div>';
     
     try {
         const response = await fetch(`${API_BASE}/tips/generate?category=all&language=${currentLanguage}&count=6&t=${Date.now()}`);
         const data = await response.json();
+        
         if (data.success && data.tips && data.tips.length > 0) {
-            tipsData = data.tips.map(tip => ({ icon: getIconForCategory(tip.category), title: tip.title, content: tip.content, category: tip.category }));
-            displayTipsInCarousel(track, dotsContainer);
-            showToast('✨ Fresh tips loaded!', 'success');
-        } else { throw new Error('No tips received'); }
+            tipsData = data.tips.map(tip => ({
+                icon: getIconForCategory(tip.category),
+                title: tip.title,
+                content: tip.content,
+                category: tip.category
+            }));
+            saveTipsToStorage(tipsData);
+        } else {
+            throw new Error('No tips received');
+        }
     } catch (error) {
+        console.error('Tips error:', error);
         tipsData = getFallbackTips();
-        shuffleArray(tipsData);
-        displayTipsInCarousel(track, dotsContainer);
+        saveTipsToStorage(tipsData);
     }
+    
+    displayTipsInCarousel(track, dotsContainer);
+    startAutoSlide();
+}
+
+function refreshTipsManually() {
+    // Clear cached tips to force new fetch
+    localStorage.removeItem('dailyTips');
+    localStorage.removeItem('tipsDate');
+    loadDailyTips();
+    showToast('✨ Fetching fresh tips!', 'success');
 }
 
 function getFallbackTips() {
@@ -1260,17 +1309,24 @@ function getFallbackTips() {
         { icon: "🧠", title: "Spaced Repetition", content: "Review words just before you forget them - it's the most efficient way to memorize!", category: "Memory" },
         { icon: "🎯", title: "Set Small Goals", content: "Small daily goals lead to big achievements!", category: "Motivation" },
         { icon: "🗣️", title: "Practice Speaking", content: "Talk to yourself in your target language - it works!", category: "Speaking" },
-        { icon: "📖", title: "Read Daily", content: "Read 5 minutes every day in your target language!", category: "Reading" }
+        { icon: "📖", title: "Read Daily", content: "Read 5 minutes every day in your target language!", category: "Reading" },
+        { icon: "✍️", title: "Write Every Day", content: "Keep a journal in your target language - even one sentence helps!", category: "Writing" }
     ];
 }
 
 function getIconForCategory(category) {
-    const icons = { 'learning': '💡', 'memory': '🧠', 'motivation': '🎯', 'speaking': '🗣️', 'reading': '📖', 'writing': '✍️', 'listening': '🎧', 'culture': '🌍' };
+    const icons = { 
+        'learning': '💡', 'memory': '🧠', 'motivation': '🎯', 
+        'speaking': '🗣️', 'reading': '📖', 'writing': '✍️', 
+        'listening': '🎧', 'culture': '🌍', 'grammar': '📐',
+        'vocabulary': '📚', 'pronunciation': '🔊'
+    };
     return icons[category?.toLowerCase()] || '💡';
 }
 
 function displayTipsInCarousel(track, dotsContainer) {
     if (!tipsData || tipsData.length === 0) tipsData = getFallbackTips();
+    
     track.innerHTML = tipsData.map((tip) => `
         <div class="carousel-slide">
             <div class="tip-card-integrated">
@@ -1283,35 +1339,231 @@ function displayTipsInCarousel(track, dotsContainer) {
             </div>
         </div>
     `).join('');
+    
     dotsContainer.innerHTML = tipsData.map((_, index) => `<div class="dot ${index === 0 ? 'active' : ''}" onclick="goToTip(${index})"></div>`).join('');
     currentTipIndex = 0;
+    updateCarouselPosition();
+}
+
+function startAutoSlide() {
+    if (autoSlideInterval) clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(() => nextTip(), slideIntervalTime);
+}
+
+function nextTip() {
+    if (tipsData.length === 0) return;
+    currentTipIndex = (currentTipIndex + 1) % tipsData.length;
+    updateCarouselPosition();
+    updateDots();
+}
+
+function prevTip() {
+    if (tipsData.length === 0) return;
+    currentTipIndex = (currentTipIndex - 1 + tipsData.length) % tipsData.length;
+    updateCarouselPosition();
+    updateDots();
+}
+
+function goToTip(index) {
+    if (index >= tipsData.length) return;
+    currentTipIndex = index;
+    updateCarouselPosition();
+    updateDots();
     startAutoSlide();
 }
 
-function startAutoSlide() { if (autoSlideInterval) clearInterval(autoSlideInterval); autoSlideInterval = setInterval(() => nextTip(), slideIntervalTime); }
-function nextTip() { if (tipsData.length === 0) return; currentTipIndex = (currentTipIndex + 1) % tipsData.length; updateCarousel(); }
-function prevTip() { if (tipsData.length === 0) return; currentTipIndex = (currentTipIndex - 1 + tipsData.length) % tipsData.length; updateCarousel(); }
-function goToTip(index) { if (index >= tipsData.length) return; currentTipIndex = index; updateCarousel(); startAutoSlide(); }
-function updateCarousel() { const track = document.getElementById('carouselTrack'); const dots = document.querySelectorAll('.dot'); if (track) track.style.transform = `translateX(-${currentTipIndex * 100}%)`; dots.forEach((dot, index) => { if (index === currentTipIndex) dot.classList.add('active'); else dot.classList.remove('active'); }); }
-function shuffleArray(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } }
-function showToast(message, type = 'info') { const toast = document.createElement('div'); toast.className = 'toast'; toast.style.background = type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'; toast.textContent = message; document.body.appendChild(toast); setTimeout(() => toast.remove(), 3000); }
-function toggleSaveHistory() { const toggle = document.getElementById('saveHistoryToggle'); const isActive = toggle.classList.contains('active'); if (isActive) { toggle.classList.remove('active'); localStorage.setItem('saveHistory', 'false'); } else { toggle.classList.add('active'); localStorage.setItem('saveHistory', 'true'); } }
-function toggleReminders() { const toggle = document.getElementById('remindersToggle'); const isActive = toggle.classList.contains('active'); if (isActive) { toggle.classList.remove('active'); localStorage.setItem('reminders', 'false'); } else { toggle.classList.add('active'); localStorage.setItem('reminders', 'true'); if ('Notification' in window && Notification.permission === 'default') { Notification.requestPermission(); } } }
+function updateCarouselPosition() {
+    const track = document.getElementById('carouselTrack');
+    if (track) {
+        track.style.transform = `translateX(-${currentTipIndex * 100}%)`;
+    }
+}
 
-// Initialize
+function updateDots() {
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+        if (index === currentTipIndex) dot.classList.add('active');
+        else dot.classList.remove('active');
+    });
+}
+
+// ================= UPGRADE MODAL =================
+function showUpgradeModal(cardName) {
+    const existingModal = document.getElementById('upgradeModal');
+    if (existingModal) existingModal.remove();
+    
+    const modal = document.createElement('div');
+    modal.id = 'upgradeModal';
+    modal.className = 'upgrade-modal';
+    
+    modal.innerHTML = `
+        <div class="upgrade-modal-content">
+            <div style="font-size: 4rem; margin-bottom: 10px;">🔒</div>
+            <h2>Premium Required</h2>
+            <p>"<strong style="color: #f59e0b;">${escapeHtml(cardName)}</strong>" is a premium feature.</p>
+            <p>Upgrade to unlock all learning features!</p>
+            
+            <div class="upgrade-benefits">
+                <p>✓ Unlimited AI grammar checks</p>
+                <p>✓ Unlimited vocabulary words</p>
+                <p>✓ Voice pronunciation lessons</p>
+                <p>✓ Downloadable certificates</p>
+                <p>✓ No advertisements</p>
+                <p>✓ Priority support</p>
+            </div>
+            
+            <div>
+                <button class="upgrade-btn" onclick="window.location.href='/upgrade'">🚀 Upgrade Now</button>
+                <button class="later-btn" onclick="closeUpgradeModal()">Maybe Later</button>
+            </div>
+            
+            <div style="margin-top: 15px; font-size: 0.7rem; color: #475569;">
+                <a href="/auth" style="color: #60a5fa;">Switch account</a> | 
+                <a href="/dev-panel" style="color: #60a5fa;">Developer Panel</a>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+}
+
+function closeUpgradeModal() {
+    const modal = document.getElementById('upgradeModal');
+    if (modal) modal.remove();
+}
+
+// ================= UTILITIES =================
+function showToast(message, type = 'success') {
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.style.background = type === 'success' ? '#10b981' : '#3b82f6';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2500);
+}
+
+function toggleSaveHistory() {
+    const toggle = document.getElementById('saveHistoryToggle');
+    const isActive = toggle.classList.contains('active');
+    if (isActive) {
+        toggle.classList.remove('active');
+        localStorage.setItem('saveHistory', 'false');
+    } else {
+        toggle.classList.add('active');
+        localStorage.setItem('saveHistory', 'true');
+    }
+}
+
+function toggleReminders() {
+    const toggle = document.getElementById('remindersToggle');
+    const isActive = toggle.classList.contains('active');
+    if (isActive) {
+        toggle.classList.remove('active');
+        localStorage.setItem('reminders', 'false');
+    } else {
+        toggle.classList.add('active');
+        localStorage.setItem('reminders', 'true');
+        if ('Notification' in window && Notification.permission === 'default') {
+            Notification.requestPermission();
+        }
+    }
+}
+
+function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+    });
+}
+
+// ================= INITIALIZE CARDS =================
+function initializeCards() {
+    const cards = document.querySelectorAll('.path-card');
+    cards.forEach(card => {
+        const url = card.getAttribute('data-url');
+        const title = card.getAttribute('data-title');
+        
+        if (url && title) {
+            const newCard = card.cloneNode(true);
+            card.parentNode.replaceChild(newCard, card);
+            
+            newCard.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleCardClick(url, title);
+            });
+        }
+    });
+}
+
+// Auto-refresh tips at midnight
+function scheduleMidnightRefresh() {
+    const now = new Date();
+    const night = new Date(now);
+    night.setHours(24, 0, 0, 0);
+    const msUntilMidnight = night - now;
+    
+    setTimeout(() => {
+        loadDailyTips();
+        scheduleMidnightRefresh();
+    }, msUntilMidnight);
+}
+
+// ================= INITIALIZATION =================
+function init() {
+    updateGreeting();
+    updateActiveLanguageDisplay();
+    
+    document.querySelectorAll('.level-btn').forEach(btn => {
+        if (btn.dataset.level === userLevel) btn.classList.add('active');
+    });
+    
+    document.getElementById('globalLanguage').value = currentLanguage;
+    
+    const levelNames = { 'beginner': '🌱 Beginner Level', 'intermediate': '🌟 Intermediate Level', 'advanced': '🚀 Advanced Level' };
+    document.getElementById('levelBadge').innerHTML = levelNames[userLevel];
+    
+    const saveHistory = localStorage.getItem('saveHistory') !== 'false';
+    const reminders = localStorage.getItem('reminders') === 'true';
+    
+    if (saveHistory) document.getElementById('saveHistoryToggle')?.classList.add('active');
+    if (reminders) document.getElementById('remindersToggle')?.classList.add('active');
+    
+    startSession().then(() => { loadDashboardStats(); loadDailyTips(); });
+    
+    // Language selector event
+    document.getElementById('globalLanguage').addEventListener('change', function(e) {
+        setLanguage(e.target.value);
+    });
+    
+    // Initialize cards after everything
+    setTimeout(() => {
+        initializeCards();
+        checkPremiumStatus();
+    }, 500);
+    
+    // Schedule midnight refresh for tips
+    scheduleMidnightRefresh();
+}
+
+// Start the app
 init();
 
 // Make functions available globally
-window.toggleSidebar = toggleSidebar;
-window.showSidebar = showSidebar;
+window.openSidebar = openSidebar;
+window.closeSidebar = closeSidebar;
 window.selectLevel = selectLevel;
-window.refreshTips = refreshTips;
+window.refreshTipsManually = refreshTipsManually;
 window.prevTip = prevTip;
 window.nextTip = nextTip;
 window.goToTip = goToTip;
 window.toggleSaveHistory = toggleSaveHistory;
 window.toggleReminders = toggleReminders;
 window.closeUpgradeModal = closeUpgradeModal;
+window.setLanguage = setLanguage;
 </script>
 </body>
 </html>

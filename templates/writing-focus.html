@@ -454,41 +454,51 @@ const languageFlags = {
     zh: '🇨🇳', pt: '🇵🇹', sw: '🇹🇿', de: '🇩🇪', it: '🇮🇹'
 };
 
+// Default languages that we know work
+const DEFAULT_LANGUAGES = ['en', 'es', 'fr', 'ar', 'zh', 'pt', 'sw', 'de', 'it'];
+
 // ==================== LOAD AVAILABLE LANGUAGES ====================
 async function loadAvailableLanguages() {
     const statusBar = document.getElementById('statusBar');
-    statusBar.innerHTML = '🔄 Loading available languages from API...';
+    statusBar.innerHTML = '🔄 Loading available languages...';
+    
+    // Start with default languages
+    let languages = [...DEFAULT_LANGUAGES];
     
     try {
         const response = await fetch('/api/words/list');
-        const data = await response.json();
-        
-        if (data.success && data.languages && data.languages.length > 0) {
-            const languages = data.languages;
-            statusBar.innerHTML = `✅ Found ${languages.length} language word banks: ${languages.join(', ')}`;
-            
-            // Create language buttons
-            const selector = document.getElementById('languageSelector');
-            selector.innerHTML = '';
-            languages.forEach(lang => {
-                const btn = document.createElement('button');
-                btn.className = 'lang-btn';
-                if (lang === currentLang) btn.classList.add('active');
-                btn.setAttribute('data-lang', lang);
-                btn.innerHTML = `${languageFlags[lang] || '🌐'} ${languageNames[lang] || lang.toUpperCase()}`;
-                btn.onclick = () => switchLanguage(lang);
-                selector.appendChild(btn);
-            });
-            
-            return languages;
+        if (response.ok) {
+            const data = await response.json();
+            if (data.success && data.languages && data.languages.length > 0) {
+                languages = data.languages;
+                console.log('✅ Languages loaded from API:', languages);
+            } else {
+                console.log('⚠️ API returned no languages, using defaults');
+            }
         } else {
-            throw new Error('No languages found');
+            console.log('⚠️ API endpoint not found, using default languages');
         }
     } catch (error) {
-        console.error('Error loading languages:', error);
-        statusBar.innerHTML = '⚠️ Could not load languages. Using default English.';
-        return ['en'];
+        console.error('❌ Error loading languages from API:', error);
+        console.log('📚 Using default languages');
     }
+    
+    statusBar.innerHTML = `✅ Found ${languages.length} language word banks: ${languages.join(', ')}`;
+    
+    // Create language buttons
+    const selector = document.getElementById('languageSelector');
+    selector.innerHTML = '';
+    languages.forEach(lang => {
+        const btn = document.createElement('button');
+        btn.className = 'lang-btn';
+        if (lang === currentLang) btn.classList.add('active');
+        btn.setAttribute('data-lang', lang);
+        btn.innerHTML = `${languageFlags[lang] || '🌐'} ${languageNames[lang] || lang.toUpperCase()}`;
+        btn.onclick = () => switchLanguage(lang);
+        selector.appendChild(btn);
+    });
+    
+    return languages;
 }
 
 // ==================== LOAD JSON VIA API ====================
