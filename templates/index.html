@@ -247,6 +247,19 @@ body {
     gap: 5px;
 }
 
+/* Premium Badge */
+.premium-badge {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
 /* ========= AI TIPS CAROUSEL ========= */
 .tips-section {
     background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.1));
@@ -470,6 +483,128 @@ body {
 .badge-intermediate { background: #f59e0b; color: white; }
 .badge-advanced { background: #ef4444; color: white; }
 .badge-all { background: #8b5cf6; color: white; }
+.badge-premium { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
+
+/* ========= USER SECTION IN SIDEBAR ========= */
+.user-section {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #334155;
+}
+
+.user-avatar {
+    font-size: 3rem;
+    margin-bottom: 8px;
+}
+
+.user-name {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+}
+
+.user-status {
+    font-size: 0.65rem;
+    color: #94a3b8;
+    margin-top: 4px;
+}
+
+.login-btn, .register-btn {
+    width: 100%;
+    padding: 8px;
+    margin-top: 8px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.login-btn {
+    background: #3b82f6;
+    color: white;
+}
+
+.register-btn {
+    background: #10b981;
+    color: white;
+}
+
+.login-btn:hover, .register-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Coming Soon Overlay */
+.coming-soon {
+    position: relative;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.coming-soon::after {
+    content: "🔒 Coming Soon";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.8);
+    color: #f59e0b;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.coming-soon-btn {
+    position: relative;
+    opacity: 0.7;
+}
+
+.coming-soon-btn::after {
+    content: "🔒 Soon";
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #f59e0b;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 0.6rem;
+    font-weight: bold;
+}
+
+/* Premium Banner */
+.premium-banner {
+    background: linear-gradient(135deg, #f59e0b20, #d9770620);
+    border: 1px solid #f59e0b;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.premium-banner-text {
+    font-size: 0.7rem;
+    color: #fbbf24;
+    margin-bottom: 8px;
+}
+
+.premium-banner-btn {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
 
 /* ========= SIDEBAR STYLES ========= */
 .sidebar-content {
@@ -713,76 +848,6 @@ body {
     animation: spin 0.8s linear infinite;
 }
 
-/* ========= UPGRADE MODAL ========= */
-.upgrade-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 2000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: fadeIn 0.3s ease;
-}
-
-.upgrade-modal-content {
-    background: linear-gradient(135deg, #1e293b, #0f172a);
-    max-width: 450px;
-    width: 90%;
-    border-radius: 28px;
-    padding: 35px;
-    text-align: center;
-    border: 1px solid #f59e0b;
-    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-}
-
-.upgrade-modal-content h2 {
-    color: white;
-    margin-bottom: 15px;
-}
-
-.upgrade-modal-content p {
-    color: #94a3b8;
-    margin-bottom: 20px;
-}
-
-.upgrade-benefits {
-    background: #0f172a;
-    border-radius: 20px;
-    padding: 20px;
-    margin: 20px 0;
-    text-align: left;
-}
-
-.upgrade-benefits p {
-    color: #cbd5e1;
-    margin: 8px 0;
-}
-
-.upgrade-btn {
-    background: linear-gradient(135deg, #f59e0b, #d97706);
-    border: none;
-    padding: 14px 30px;
-    border-radius: 50px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    margin: 10px;
-}
-
-.later-btn {
-    background: transparent;
-    border: 1px solid #475569;
-    padding: 14px 30px;
-    border-radius: 50px;
-    color: #94a3b8;
-    cursor: pointer;
-    margin: 10px;
-}
-
 /* ========= RESPONSIVE ========= */
 @media (min-width: 768px) {
     .main-content {
@@ -850,6 +915,22 @@ body {
         </div>
         
         <div class="sidebar-content">
+            <!-- USER SECTION (Future Registration) -->
+            <div class="user-section">
+                <div class="user-avatar" id="userAvatar">👤</div>
+                <div class="user-name" id="userName">Guest User</div>
+                <div class="user-status" id="userStatus">Free Account</div>
+                <button class="login-btn" onclick="showComingSoon('Login')">🔐 Login</button>
+                <button class="register-btn" onclick="showComingSoon('Registration')">📝 Register</button>
+            </div>
+
+            <!-- PREMIUM BANNER (Future Premium) -->
+            <div class="premium-banner">
+                <div class="premium-banner-text">⭐ Upgrade to Premium</div>
+                <div class="premium-banner-text" style="font-size: 0.6rem;">Unlimited AI features • Priority support</div>
+                <button class="premium-banner-btn" onclick="showComingSoon('Premium')">🚀 Coming Soon</button>
+            </div>
+
             <div class="section">
                 <div class="section-title">🌍 TARGET LANGUAGE</div>
                 <select id="globalLanguage" class="lang-select">
@@ -1193,7 +1274,7 @@ const API_BASE = '/api';
 let sessionId = localStorage.getItem('sessionId');
 let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
 let userLevel = localStorage.getItem('userLevel') || 'beginner';
-let userName = localStorage.getItem('userName') || 'Learner';
+let userName = localStorage.getItem('userName') || 'Guest';
 let isPremiumUser = false;
 
 // Language flags and names
@@ -1214,6 +1295,11 @@ const languageInfo = {
     'tr': { flag: '🇹🇷', name: 'Turkish', native: 'Türkçe' },
     'nl': { flag: '🇳🇱', name: 'Dutch', native: 'Nederlands' }
 };
+
+// ================= COMING SOON FUNCTION =================
+function showComingSoon(feature) {
+    showToast(`🔒 ${feature} feature is coming soon! Stay tuned.`, 'info');
+}
 
 // ================= TODAY'S ACTIVITY TRACKING =================
 let todayActivities = {
@@ -1499,29 +1585,8 @@ function navigateToPage(url, title) {
 }
 
 async function handleCardClick(url, title) {
-    const isPremium = await checkPremiumStatus();
-    if (isPremium) {
-        navigateToPage(url, title);
-    } else {
-        showUpgradeModal(title);
-    }
-}
-
-async function checkPremiumStatus() {
-    try {
-        const response = await fetch('/api/check-premium');
-        const data = await response.json();
-        isPremiumUser = data.is_premium;
-        const badge = document.getElementById('subscriptionBadge');
-        if (isPremiumUser) {
-            badge.innerHTML = '⭐ Premium Member';
-            badge.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
-        } else {
-            badge.innerHTML = '📖 Free Account';
-            badge.style.background = 'rgba(59, 130, 246, 0.2)';
-        }
-        return isPremiumUser;
-    } catch (error) { return false; }
+    // For now, all features are free. Premium check will be activated later.
+    navigateToPage(url, title);
 }
 
 function openSidebar() {
@@ -1596,7 +1661,7 @@ async function loadDashboardStats() {
     } catch (error) { console.error('Error loading stats:', error); }
 }
 
-// ================= DAILY TIPS =================
+// ================= DAILY TIPS WITH 24-HOUR AUTO-REFRESH =================
 let tipsData = [], currentTipIndex = 0, autoSlideInterval = null;
 
 function getTodayKey() { return new Date().toISOString().split('T')[0]; }
@@ -1612,41 +1677,14 @@ function saveTipsToStorage(tips) {
     localStorage.setItem('tipsDate', getTodayKey());
 }
 
-async function loadDailyTips() {
-    const track = document.getElementById('carouselTrack');
-    const dotsContainer = document.getElementById('carouselDots');
-    document.getElementById('tipDate').innerHTML = `📅 ${new Date().toLocaleDateString()}`;
-    
-    const cachedTips = getStoredTips();
-    if (cachedTips && cachedTips.length > 0) {
-        tipsData = cachedTips;
-        displayTipsInCarousel(track, dotsContainer);
-        startAutoSlide();
-        return;
-    }
-    
-    track.innerHTML = '<div class="carousel-slide"><div class="tip-card-integrated"><div class="tip-icon-large">🤖</div><div class="tip-content-wrapper"><div class="tip-title-bold">Generating daily tips...</div><div class="tip-text-bold">Creating fresh educational content for you!</div></div></div></div>';
-    
-    try {
-        const response = await fetch(`${API_BASE}/tips/generate?category=all&language=${currentLanguage}&count=6`);
-        const data = await response.json();
-        if (data.success && data.tips) {
-            tipsData = data.tips.map(tip => ({ icon: getIconForCategory(tip.category), title: tip.title, content: tip.content, category: tip.category }));
-            saveTipsToStorage(tipsData);
-        } else throw new Error();
-    } catch (error) {
-        tipsData = getFallbackTips();
-        saveTipsToStorage(tipsData);
-    }
-    displayTipsInCarousel(track, dotsContainer);
-    startAutoSlide();
-}
-
 function getFallbackTips() {
     return [
         { icon: "💡", title: "15-Minute Rule", content: "Study for 15 minutes daily - consistency beats intensity!", category: "Learning" },
         { icon: "🧠", title: "Spaced Repetition", content: "Review words just before you forget them!", category: "Memory" },
-        { icon: "🎯", title: "Set Small Goals", content: "Small daily goals lead to big achievements!", category: "Motivation" }
+        { icon: "🎯", title: "Set Small Goals", content: "Small daily goals lead to big achievements!", category: "Motivation" },
+        { icon: "🗣️", title: "Practice Speaking", content: "Talk to yourself in your target language - it works!", category: "Speaking" },
+        { icon: "📖", title: "Read Daily", content: "Read 5 minutes every day in your target language!", category: "Reading" },
+        { icon: "✍️", title: "Write Every Day", content: "Keep a journal in your target language - even one sentence helps!", category: "Writing" }
     ];
 }
 
@@ -1655,8 +1693,135 @@ function getIconForCategory(category) {
     return icons[category?.toLowerCase()] || '💡';
 }
 
+function loadSavedTips() {
+    const savedTips = localStorage.getItem('savedTips');
+    const savedDate = localStorage.getItem('savedTipsDate');
+    const today = new Date().toISOString().split('T')[0];
+    
+    if (savedTips && savedDate === today) {
+        try {
+            tipsData = JSON.parse(savedTips);
+            const track = document.getElementById('carouselTrack');
+            const dotsContainer = document.getElementById('carouselDots');
+            displayTipsInCarousel(track, dotsContainer);
+            startAutoSlide();
+            console.log('📦 Loaded today\'s tips from cache');
+            return true;
+        } catch(e) {
+            console.error('Error loading cached tips:', e);
+            return false;
+        }
+    }
+    return false;
+}
+
+async function fetchFreshTips() {
+    const track = document.getElementById('carouselTrack');
+    const dotsContainer = document.getElementById('carouselDots');
+    
+    track.innerHTML = '<div class="carousel-slide"><div class="tip-card-integrated"><div class="tip-icon-large">🤖</div><div class="tip-content-wrapper"><div class="tip-title-bold">Loading fresh daily tips...</div><div class="tip-text-bold">Getting your daily dose of amazing facts!</div><div class="tip-category-light">Daily Refresh</div></div></div></div>';
+    
+    try {
+        const response = await fetch(`${API_BASE}/tips/generate?category=all&language=${currentLanguage}&count=6&refresh=true&t=${Date.now()}`);
+        const data = await response.json();
+        
+        if (data.success && data.tips && data.tips.length > 0) {
+            tipsData = data.tips.map(tip => ({
+                icon: tip.icon || '💡',
+                title: tip.title,
+                content: tip.content,
+                category: tip.category
+            }));
+            
+            displayTipsInCarousel(track, dotsContainer);
+            startAutoSlide();
+            
+            // Save to localStorage for today
+            const today = new Date().toISOString().split('T')[0];
+            localStorage.setItem('savedTips', JSON.stringify(tipsData));
+            localStorage.setItem('savedTipsDate', today);
+            localStorage.setItem('lastTipsFetchDate', today);
+            
+            // Update date display
+            const tipDateSpan = document.getElementById('tipDate');
+            if (tipDateSpan) {
+                tipDateSpan.innerHTML = `📅 ${new Date().toLocaleDateString()} (Fresh daily tips)`;
+            }
+            
+            showToast('✨ Fresh daily tips loaded! ✨', 'success');
+            return true;
+        } else {
+            throw new Error('No tips received');
+        }
+    } catch (error) {
+        console.error('Error fetching fresh tips:', error);
+        showToast('⚠️ Could not load fresh tips. Using cached version.', 'info');
+        
+        // Try to load any cached tips
+        const anyCachedTips = localStorage.getItem('savedTips');
+        if (anyCachedTips) {
+            tipsData = JSON.parse(anyCachedTips);
+            displayTipsInCarousel(track, dotsContainer);
+            startAutoSlide();
+        }
+        return false;
+    }
+}
+
+async function loadDailyTips() {
+    const tipDateSpan = document.getElementById('tipDate');
+    if (tipDateSpan) {
+        tipDateSpan.innerHTML = `📅 ${new Date().toLocaleDateString()}`;
+    }
+    
+    // Try to load today's saved tips first
+    if (loadSavedTips()) {
+        return;
+    }
+    
+    // If no saved tips for today, fetch fresh
+    await fetchFreshTips();
+}
+
+function checkForNewDay() {
+    const today = new Date().toISOString().split('T')[0];
+    const lastFetch = localStorage.getItem('lastTipsFetchDate');
+    
+    if (lastFetch && lastFetch !== today) {
+        console.log('🌅 New day detected! Fetching fresh tips...');
+        fetchFreshTips();
+    }
+}
+
+// Tab visibility detection - refresh when user returns to tab
+document.addEventListener('visibilitychange', async () => {
+    if (!document.hidden) {
+        console.log('👁️ User returned to tab, checking if tips need refresh');
+        
+        const today = new Date().toISOString().split('T')[0];
+        const lastFetch = localStorage.getItem('lastTipsFetchDate');
+        
+        if (!lastFetch || lastFetch !== today) {
+            console.log('🔄 No tips for today, fetching fresh tips...');
+            await fetchFreshTips();
+        } else {
+            const savedTips = localStorage.getItem('savedTips');
+            if (savedTips && (!tipsData || tipsData.length === 0)) {
+                tipsData = JSON.parse(savedTips);
+                const track = document.getElementById('carouselTrack');
+                const dotsContainer = document.getElementById('carouselDots');
+                displayTipsInCarousel(track, dotsContainer);
+                startAutoSlide();
+            }
+            console.log('✅ Today\'s tips are still fresh');
+        }
+    }
+});
+
 function displayTipsInCarousel(track, dotsContainer) {
-    track.innerHTML = tipsData.map(tip => `
+    if (!tipsData || tipsData.length === 0) tipsData = getFallbackTips();
+    
+    track.innerHTML = tipsData.map((tip) => `
         <div class="carousel-slide">
             <div class="tip-card-integrated">
                 <div class="tip-icon-large">${tip.icon}</div>
@@ -1668,16 +1833,96 @@ function displayTipsInCarousel(track, dotsContainer) {
             </div>
         </div>
     `).join('');
-    dotsContainer.innerHTML = tipsData.map((_, i) => `<div class="dot ${i === 0 ? 'active' : ''}" onclick="goToTip(${i})"></div>`).join('');
+    
+    dotsContainer.innerHTML = tipsData.map((_, index) => `<div class="dot ${index === 0 ? 'active' : ''}" onclick="goToTip(${index})"></div>`).join('');
     currentTipIndex = 0;
+    updateCarouselPosition();
 }
 
-function startAutoSlide() { if (autoSlideInterval) clearInterval(autoSlideInterval); autoSlideInterval = setInterval(() => nextTip(), 7000); }
-function nextTip() { if (tipsData.length) currentTipIndex = (currentTipIndex + 1) % tipsData.length; updateCarousel(); }
-function prevTip() { if (tipsData.length) currentTipIndex = (currentTipIndex - 1 + tipsData.length) % tipsData.length; updateCarousel(); }
-function goToTip(index) { currentTipIndex = index; updateCarousel(); startAutoSlide(); }
-function updateCarousel() { const track = document.getElementById('carouselTrack'); if (track) track.style.transform = `translateX(-${currentTipIndex * 100}%)`; document.querySelectorAll('.dot').forEach((dot, i) => dot.classList.toggle('active', i === currentTipIndex)); }
-function refreshTipsManually() { localStorage.removeItem('dailyTips'); localStorage.removeItem('tipsDate'); loadDailyTips(); showToast('✨ Fresh tips loaded!', 'success'); }
+function startAutoSlide() {
+    if (autoSlideInterval) clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(() => nextTip(), 7000);
+}
+
+function nextTip() {
+    if (tipsData.length === 0) return;
+    currentTipIndex = (currentTipIndex + 1) % tipsData.length;
+    updateCarouselPosition();
+    updateDots();
+}
+
+function prevTip() {
+    if (tipsData.length === 0) return;
+    currentTipIndex = (currentTipIndex - 1 + tipsData.length) % tipsData.length;
+    updateCarouselPosition();
+    updateDots();
+}
+
+function goToTip(index) {
+    if (index >= tipsData.length) return;
+    currentTipIndex = index;
+    updateCarouselPosition();
+    updateDots();
+    startAutoSlide();
+}
+
+function updateCarouselPosition() {
+    const track = document.getElementById('carouselTrack');
+    if (track) {
+        track.style.transform = `translateX(-${currentTipIndex * 100}%)`;
+    }
+}
+
+function updateDots() {
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+        if (index === currentTipIndex) dot.classList.add('active');
+        else dot.classList.remove('active');
+    });
+}
+
+async function refreshTipsManually() {
+    const track = document.getElementById('carouselTrack');
+    const dotsContainer = document.getElementById('carouselDots');
+    
+    track.innerHTML = '<div class="carousel-slide"><div class="tip-card-integrated"><div class="tip-icon-large">🤖</div><div class="tip-content-wrapper"><div class="tip-title-bold">Generating fresh tips...</div><div class="tip-text-bold">Creating unique educational content for you!</div><div class="tip-category-light">Manual Refresh</div></div></div></div>';
+    
+    try {
+        const response = await fetch(`${API_BASE}/tips/generate?category=all&language=${currentLanguage}&count=6&refresh=true&t=${Date.now()}`);
+        const data = await response.json();
+        
+        if (data.success && data.tips && data.tips.length > 0) {
+            tipsData = data.tips.map(tip => ({
+                icon: tip.icon || '💡',
+                title: tip.title,
+                content: tip.content,
+                category: tip.category
+            }));
+            
+            displayTipsInCarousel(track, dotsContainer);
+            startAutoSlide();
+            
+            // Update cache
+            const today = new Date().toISOString().split('T')[0];
+            localStorage.setItem('savedTips', JSON.stringify(tipsData));
+            localStorage.setItem('savedTipsDate', today);
+            localStorage.setItem('lastTipsFetchDate', today);
+            
+            showToast('✨ Fresh tips generated! ✨', 'success');
+        } else {
+            throw new Error('No tips received');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showToast('⚠️ Could not generate new tips. Please try again.', 'error');
+        const cachedTips = localStorage.getItem('savedTips');
+        if (cachedTips) {
+            tipsData = JSON.parse(cachedTips);
+            displayTipsInCarousel(track, dotsContainer);
+            startAutoSlide();
+        }
+    }
+}
 
 // ================= UTILITIES =================
 let notifications = JSON.parse(localStorage.getItem('notifications') || '[]');
@@ -1712,19 +1957,14 @@ function toggleReminders() {
     showToast(toggle.classList.contains('active') ? 'Daily reminders enabled!' : 'Daily reminders disabled', 'info');
 }
 
-function showUpgradeModal(cardName) {
-    const modal = document.createElement('div');
-    modal.className = 'upgrade-modal';
-    modal.innerHTML = `<div class="upgrade-modal-content"><div style="font-size:4rem;">🔒</div><h2>Premium Required</h2><p>"${escapeHtml(cardName)}" is a premium feature.</p><button class="upgrade-btn" onclick="this.parentElement.parentElement.remove()">Close</button></div>`;
-    document.body.appendChild(modal);
-}
-
 function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m])); }
 
 function initializeCards() {
     document.querySelectorAll('.path-card').forEach(card => {
         const url = card.dataset.url, title = card.dataset.title;
-        if (url && title) card.addEventListener('click', () => handleCardClick(url, title));
+        if (url && title) {
+            card.addEventListener('click', () => handleCardClick(url, title));
+        }
     });
 }
 
@@ -1759,7 +1999,6 @@ function loadSettings() {
     
     updateReminderDisplay();
     
-    // Load saved preferences toggles
     const saveHistory = localStorage.getItem('saveHistory') !== 'false';
     const reminders = localStorage.getItem('reminders') === 'true';
     if (saveHistory) document.getElementById('saveHistoryToggle')?.classList.add('active');
@@ -1773,7 +2012,6 @@ function init() {
     document.getElementById('globalLanguage').addEventListener('change', e => setLanguage(e.target.value));
     document.querySelectorAll('.level-btn').forEach(btn => { if (btn.dataset.level === userLevel) btn.classList.add('active'); });
     
-    // Set up event listeners for new features
     document.getElementById('dailyGoal').addEventListener('change', saveDailyGoal);
     document.getElementById('wordsPerDay').addEventListener('change', saveWordsPerDay);
     document.getElementById('reminderEnableToggle').addEventListener('click', toggleReminderEnabled);
@@ -1787,12 +2025,13 @@ function init() {
     startSession().then(() => { loadDashboardStats(); loadDailyTips(); });
     loadTodayActivities();
     initializeCards();
-    checkPremiumStatus();
+    checkForNewDay(); // Check if it's a new day for fresh tips
     scheduleMidnightRefresh();
     
     if (Notification.permission === 'default') Notification.requestPermission();
 }
 
+// Make functions global
 window.openSidebar = openSidebar;
 window.closeSidebar = closeSidebar;
 window.selectLevel = selectLevel;
@@ -1811,6 +2050,7 @@ window.toggleDailyReport = toggleDailyReport;
 window.toggleBrowserReport = toggleBrowserReport;
 window.saveReportFormat = saveReportFormat;
 window.viewReportHistory = viewReportHistory;
+window.showComingSoon = showComingSoon;
 
 init();
 </script>
