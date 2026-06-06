@@ -44,6 +44,8 @@ body {
     text-decoration: none;
     color: white;
     transition: all 0.3s;
+    cursor: pointer;
+    display: inline-block;
 }
 
 .back-btn:hover {
@@ -432,6 +434,17 @@ body {
     background: #ef444420;
 }
 
+/* Track Activity Button */
+.track-activity {
+    background: #10b981;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -454,24 +467,25 @@ body {
 
 <div class="container">
     <div class="header">
-        <button class="back-btn" onclick="goBack()">← Back to Dashboard</button>
-      
-        <div>📚 Vocabulary Builder <span style="background: #8b5cf6; padding: 2px 8px; border-radius: 15px; font-size: 0.7em;">🤖 AI Verified</span></div>
-        <div>
-            <select id="languageSelect" class="filter-select" onchange="changeLanguage()">
-                <option value="en">🇬🇧 English</option>
-                <option value="es">🇪🇸 Spanish</option>
-                <option value="fr">🇫🇷 French</option>
-                <option value="de">🇩🇪 German</option>
-                <option value="it">🇮🇹 Italian</option>
-                <option value="pt">🇵🇹 Portuguese</option>
-                <option value="zh">🇨🇳 Chinese</option>
-                <option value="ja">🇯🇵 Japanese</option>
-                <option value="ko">🇰🇷 Korean</option>
-            </select>
-        </div>
+    <a href="/" class="back-btn">← Back to Dashboard</a>
+  
+    <div>📚 Vocabulary Builder <span style="background: #8b5cf6; padding: 2px 8px; border-radius: 15px; font-size: 0.7em;">🤖 AI Verified</span></div>
+    <div>
+        <select id="languageSelect" class="filter-select" onchange="changeLanguage()">
+            <option value="en">🇬🇧 English</option>
+            <option value="es">🇪🇸 Spanish</option>
+            <option value="fr">🇫🇷 French</option>
+            <option value="de">🇩🇪 German</option>
+            <option value="it">🇮🇹 Italian</option>
+            <option value="pt">🇵🇹 Portuguese</option>
+            <option value="zh">🇨🇳 Chinese</option>
+            <option value="ja">🇯🇵 Japanese</option>
+            <option value="ko">🇰🇷 Korean</option>
+            <option value="sw">🇹🇿 Swahili</option>
+            <option value="ar">🇸🇦 Arabic</option>
+        </select>
     </div>
-
+</div>
     <div class="nav-tabs">
         <button class="tab-btn active" onclick="switchTab('words')">📖 My Words</button>
         <button class="tab-btn" onclick="switchTab('practice')">🎯 Practice</button>
@@ -630,7 +644,24 @@ body {
 </div>
 
 <script>
-let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
+// ================= GET LANGUAGE FROM URL =================
+function getLanguageFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang');
+    if (lang) {
+        localStorage.setItem('preferredLanguage', lang);
+        sessionStorage.setItem('selectedLanguage', lang);
+        return lang;
+    }
+    const sessionLang = sessionStorage.getItem('selectedLanguage');
+    if (sessionLang) {
+        localStorage.setItem('preferredLanguage', sessionLang);
+        return sessionLang;
+    }
+    return localStorage.getItem('preferredLanguage') || 'en';
+}
+
+let currentLanguage = getLanguageFromURL();
 let currentPage = 1;
 let totalPages = 1;
 let currentQuestions = [];
@@ -639,6 +670,33 @@ let currentVerification = null;
 let currentLookupData = null;
 
 document.getElementById('languageSelect').value = currentLanguage;
+
+// ================= TRACK ACTIVITY FOR PARENT =================
+function trackWordLearned(word) {
+    let todayActivities = JSON.parse(localStorage.getItem('todayActivities') || '{}');
+    todayActivities.wordsLearned = (todayActivities.wordsLearned || 0) + 1;
+    todayActivities.lastActivityDate = new Date().toDateString();
+    localStorage.setItem('todayActivities', JSON.stringify(todayActivities));
+    
+    if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ 
+            type: 'learning_activity', 
+            activity: { type: 'word', word: word } 
+        }, '*');
+    }
+}
+
+// Track study time
+let studyStartTime = Date.now();
+window.addEventListener('beforeunload', function() {
+    const minutesStudied = Math.round((Date.now() - studyStartTime) / 60000);
+    if (minutesStudied > 0) {
+        let todayActivities = JSON.parse(localStorage.getItem('todayActivities') || '{}');
+        todayActivities.minutesStudied = (todayActivities.minutesStudied || 0) + minutesStudied;
+        todayActivities.lastActivityDate = new Date().toDateString();
+        localStorage.setItem('todayActivities', JSON.stringify(todayActivities));
+    }
+});
 
 // ================= TOAST NOTIFICATION =================
 function showToast(message, type = 'success') {
@@ -752,7 +810,7 @@ async function lookupWord() {
     showToast('🔍 Looking up word...', 'info');
     
     try {
-        const response = await fetch('/api/vocabulary/lookup', {
+        const response = await fetch('/api/lingua/lookup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ word: word, language: currentLanguage })
@@ -809,6 +867,7 @@ async function addLookedUpWord() {
         
         if (data.success) {
             showToast(`✅ "${currentLookupData.word}" added to your vocabulary!`);
+            trackWordLearned(currentLookupData.word);
             document.getElementById('lookupWord').value = '';
             document.getElementById('lookupResult').style.display = 'none';
             currentLookupData = null;
@@ -836,7 +895,7 @@ async function verifyMeaning() {
     showToast('🔍 AI is verifying your definition...', 'info');
     
     try {
-        const response = await fetch('/api/vocabulary/verify-meaning', {
+        const response = await fetch('/api/lingua/verify-meaning', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ word: word, meaning: meaning, language: currentLanguage })
@@ -935,7 +994,6 @@ async function addWordWithVerification() {
         return;
     }
     
-    // If verification exists and is partial, ask if they want to use correct meaning
     if (currentVerification && currentVerification.status === 'partial') {
         const useCorrect = confirm(`Your definition is ${currentVerification.score}% accurate.\n\nCorrect meaning: ${currentVerification.correct_meaning}\n\nDo you want to use the correct meaning instead?`);
         if (useCorrect && currentVerification.correct_meaning) {
@@ -968,6 +1026,7 @@ async function addWordWithVerification() {
                 message = `✅ "${word}" added! ${currentVerification.whats_missing || 'Keep practicing!'}`;
             }
             showToast(message);
+            trackWordLearned(word);
             document.getElementById('newWord').value = '';
             document.getElementById('newMeaning').value = '';
             document.getElementById('newExample').value = '';
@@ -1089,6 +1148,7 @@ async function markPractice(wordId, correct) {
         const data = await response.json();
         if (data.success) {
             loadWords();
+            if (correct) trackWordLearned(data.word || 'word');
             showToast(correct ? `✓ Correct! Mastery level: ${data.mastery_level}/5` : '✗ Keep practicing!', correct ? 'success' : 'error');
         }
     } catch (error) {
@@ -1207,7 +1267,8 @@ async function pronounceWord(word) {
 
 function fallbackPronounce(word) {
     const utterance = new SpeechSynthesisUtterance(word);
-    utterance.lang = 'en-US';
+    const langMap = { en: 'en-US', es: 'es-ES', fr: 'fr-FR', de: 'de-DE', it: 'it-IT', pt: 'pt-PT', sw: 'sw-KE' };
+    utterance.lang = langMap[currentLanguage] || 'en-US';
     utterance.rate = 0.8;
     speechSynthesis.speak(utterance);
 }
@@ -1215,15 +1276,21 @@ function fallbackPronounce(word) {
 function changeLanguage() {
     currentLanguage = document.getElementById('languageSelect').value;
     localStorage.setItem('preferredLanguage', currentLanguage);
+    sessionStorage.setItem('selectedLanguage', currentLanguage);
     currentPage = 1;
     loadWords();
     loadStatistics();
+    showToast(`Language changed to ${currentLanguage.toUpperCase()}`, 'success');
 }
 
 function closeQuizModal() {
     document.getElementById('quizModal').style.display = 'none';
     document.getElementById('quizContent').innerHTML = '';
     document.getElementById('quizResult').innerHTML = '';
+}
+
+function goBack() {
+    window.location.href = '/';
 }
 
 function escapeHtml(str) {

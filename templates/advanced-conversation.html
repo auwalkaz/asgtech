@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>💬 Advanced Conversation - Language Learning</title>
 
 <style>
@@ -48,6 +48,7 @@ body {
 
 .back-btn:hover {
     background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
 }
 
 .chat-container {
@@ -147,6 +148,10 @@ body {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
+.btn:active {
+    transform: scale(0.98);
+}
+
 .topics-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -198,6 +203,11 @@ body {
     .topics-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    
+    .btn {
+        padding: 10px 15px;
+        font-size: 0.85em;
+    }
 }
 </style>
 </head>
@@ -206,7 +216,7 @@ body {
 
 <div class="container">
     <div class="header">
-        <a href="index.html" class="back-btn">← Back to Dashboard</a>
+        <a href="/" class="back-btn">← Back to Dashboard</a>
         <div>💬 Advanced Conversation</div>
         <div id="languageDisplay">English</div>
     </div>
@@ -223,7 +233,7 @@ body {
         <div class="chat-input-area">
             <input type="text" id="chatInput" class="chat-input" placeholder="Type your message here..." onkeypress="handleEnter(event)">
             <button class="btn btn-primary" onclick="sendMessage()">📤 Send</button>
-            <button class="btn btn-success" onclick="startVoiceInput()">🎤 Speak</button>
+            <button class="btn btn-success" id="voiceBtn" onclick="startVoiceInput()">🎤 Speak</button>
         </div>
     </div>
 
@@ -245,7 +255,51 @@ body {
 </div>
 
 <script>
-let currentLang = localStorage.getItem('preferredLanguage') || 'en';
+// ================= GET LANGUAGE FROM URL =================
+function getLanguageFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang');
+    if (lang) {
+        localStorage.setItem('preferredLanguage', lang);
+        sessionStorage.setItem('selectedLanguage', lang);
+        return lang;
+    }
+    const sessionLang = sessionStorage.getItem('selectedLanguage');
+    if (sessionLang) {
+        localStorage.setItem('preferredLanguage', sessionLang);
+        return sessionLang;
+    }
+    return localStorage.getItem('preferredLanguage') || 'en';
+}
+
+// ================= TRACK ACTIVITY FOR DASHBOARD =================
+function trackConversationActivity() {
+    let todayActivities = JSON.parse(localStorage.getItem('todayActivities') || '{}');
+    todayActivities.speaking = (todayActivities.speaking || 0) + 1;
+    todayActivities.lastActivityDate = new Date().toDateString();
+    localStorage.setItem('todayActivities', JSON.stringify(todayActivities));
+    
+    if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ 
+            type: 'learning_activity', 
+            activity: { type: 'speaking', amount: 1 } 
+        }, '*');
+    }
+}
+
+// Track study time
+let studyStartTime = Date.now();
+window.addEventListener('beforeunload', function() {
+    const minutesStudied = Math.round((Date.now() - studyStartTime) / 60000);
+    if (minutesStudied > 0) {
+        let todayActivities = JSON.parse(localStorage.getItem('todayActivities') || '{}');
+        todayActivities.minutesStudied = (todayActivities.minutesStudied || 0) + minutesStudied;
+        todayActivities.lastActivityDate = new Date().toDateString();
+        localStorage.setItem('todayActivities', JSON.stringify(todayActivities));
+    }
+});
+
+let currentLang = getLanguageFromURL();
 let currentTopic = 'greetings';
 let isRecording = false;
 let recognition = null;
@@ -282,7 +336,7 @@ function addMessage(text, type) {
     const messagesDiv = document.getElementById('chatMessages');
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${type}`;
-    messageDiv.innerHTML = `<div class="message-bubble">${type === 'user' ? '👤 ' : '🤖 '}${text}</div>`;
+    messageDiv.innerHTML = `<div class="message-bubble">${type === 'user' ? '👤 ' : '🤖 '}${escapeHtml(text)}</div>`;
     messagesDiv.appendChild(messageDiv);
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
@@ -294,6 +348,9 @@ async function sendMessage() {
     
     addMessage(message, 'user');
     input.value = '';
+    
+    // Track activity
+    trackConversationActivity();
     
     // Show typing indicator
     const typingIndicator = document.createElement('div');
@@ -351,19 +408,20 @@ function changeTopic(topic) {
 }
 
 function startVoiceInput() {
+    const voiceBtn = document.getElementById('voiceBtn');
+    
     if (!SpeechRecognitionAPI) {
         addMessage("❌ Speech recognition is not supported in this browser. Please try Chrome or Edge.", 'ai');
         return;
     }
-    
-    const micBtn = event.target;
     
     if (isRecording) {
         if (recognition) {
             recognition.stop();
         }
         isRecording = false;
-        micBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        voiceBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        voiceBtn.innerHTML = '🎤 Speak';
         return;
     }
     
@@ -374,7 +432,8 @@ function startVoiceInput() {
     
     recognition.onstart = () => {
         isRecording = true;
-        micBtn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+        voiceBtn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+        voiceBtn.innerHTML = '⏹️ Stop';
         addMessage("🎙️ Listening... Please speak clearly.", 'ai');
     };
     
@@ -383,19 +442,32 @@ function startVoiceInput() {
         document.getElementById('chatInput').value = spoken;
         sendMessage();
         isRecording = false;
-        micBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        voiceBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        voiceBtn.innerHTML = '🎤 Speak';
     };
     
     recognition.onerror = (event) => {
         console.error('Speech recognition error:', event.error);
-        addMessage("❌ Could not hear you. Please check your microphone and try again.", 'ai');
+        let errorMsg = "❌ Could not hear you. ";
+        if (event.error === 'not-allowed') {
+            errorMsg += "Please allow microphone access.";
+        } else if (event.error === 'no-speech') {
+            errorMsg += "No speech detected. Please speak louder.";
+        } else {
+            errorMsg += "Please check your microphone and try again.";
+        }
+        addMessage(errorMsg, 'ai');
         isRecording = false;
-        micBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        voiceBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        voiceBtn.innerHTML = '🎤 Speak';
     };
     
     recognition.onend = () => {
-        isRecording = false;
-        micBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        if (isRecording) {
+            isRecording = false;
+            voiceBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            voiceBtn.innerHTML = '🎤 Speak';
+        }
     };
     
     recognition.start();
@@ -438,14 +510,34 @@ async function saveActivity(type, points) {
         });
     } catch (error) {
         console.log('Activity saved locally');
+        // Store in localStorage as backup
+        const activities = JSON.parse(localStorage.getItem('activities') || '[]');
+        activities.push({ type, points, date: new Date().toISOString() });
+        localStorage.setItem('activities', JSON.stringify(activities));
     }
 }
+
+function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+    });
+}
+
+// Clean up on page unload
+window.addEventListener('beforeunload', () => {
+    if (recognition && isRecording) {
+        recognition.stop();
+    }
+});
 
 // Start with greetings topic
 setTimeout(() => {
     changeTopic('greetings');
 }, 500);
 </script>
-
 </body>
 </html>

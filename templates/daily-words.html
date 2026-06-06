@@ -450,7 +450,7 @@ body {
 
 <div class="container">
     <div class="header">
-        <a href="index.html" class="back-btn">← Back to Dashboard</a>
+        <a href="/" class="back-btn">← Back to Dashboard</a>
         <div>
             📅 Daily 10 Words Challenge 
             <span style="background: #8b5cf6; padding: 2px 8px; border-radius: 15px; font-size: 0.7em;">👄 With Visual Pronunciation</span>
@@ -535,7 +535,51 @@ body {
 </div>
 
 <script>
-let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
+// ================= GET LANGUAGE FROM URL =================
+function getLanguageFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang');
+    if (lang) {
+        localStorage.setItem('preferredLanguage', lang);
+        sessionStorage.setItem('selectedLanguage', lang);
+        return lang;
+    }
+    const sessionLang = sessionStorage.getItem('selectedLanguage');
+    if (sessionLang) {
+        localStorage.setItem('preferredLanguage', sessionLang);
+        return sessionLang;
+    }
+    return localStorage.getItem('preferredLanguage') || 'en';
+}
+
+// ================= TRACK ACTIVITY FOR DASHBOARD =================
+function trackVocabularyActivity(wordLearned) {
+    let todayActivities = JSON.parse(localStorage.getItem('todayActivities') || '{}');
+    todayActivities.vocabulary = (todayActivities.vocabulary || 0) + 1;
+    todayActivities.lastActivityDate = new Date().toDateString();
+    localStorage.setItem('todayActivities', JSON.stringify(todayActivities));
+    
+    if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ 
+            type: 'learning_activity', 
+            activity: { type: 'vocabulary', word: wordLearned } 
+        }, '*');
+    }
+}
+
+// Track study time
+let studyStartTime = Date.now();
+window.addEventListener('beforeunload', function() {
+    const minutesStudied = Math.round((Date.now() - studyStartTime) / 60000);
+    if (minutesStudied > 0) {
+        let todayActivities = JSON.parse(localStorage.getItem('todayActivities') || '{}');
+        todayActivities.minutesStudied = (todayActivities.minutesStudied || 0) + minutesStudied;
+        todayActivities.lastActivityDate = new Date().toDateString();
+        localStorage.setItem('todayActivities', JSON.stringify(todayActivities));
+    }
+});
+
+let currentLanguage = getLanguageFromURL();
 let currentWords = [];
 let learnedWords = JSON.parse(localStorage.getItem('dailyLearned') || '{}');
 let streakData = JSON.parse(localStorage.getItem('streakData') || '{"streak":0,"lastDate":""}');
@@ -548,25 +592,18 @@ document.getElementById('languageSelect').value = currentLanguage;
 function getPronunciationData(word) {
     const cleanWord = word.toLowerCase().replace(/[^\w]/g, '');
     
-    // Comprehensive pronunciation database
     const phoneticsDB = {
         "perseverance": { phonetic: "/ˌpɜː.sɪˈvɪə.rəns/", syllables: ["per", "se", "ver", "ance"], stressed: [2], mouth: "😤", tongue: "Tongue behind teeth, determined sound" },
         "serendipity": { phonetic: "/ˌser.ənˈdɪp.ə.ti/", syllables: ["ser", "en", "dip", "i", "ty"], stressed: [2], mouth: "😊", tongue: "Tongue taps roof for 'd'" },
         "meticulous": { phonetic: "/məˈtɪk.jə.ləs/", syllables: ["me", "tic", "u", "lous"], stressed: [1], mouth: "😐", tongue: "Tongue touches teeth for 't'" },
         "benevolent": { phonetic: "/bəˈnev.əl.ənt/", syllables: ["be", "nev", "o", "lent"], stressed: [1], mouth: "😊", tongue: "Lips together for 'b'" },
-        "eloquent": { phonetic: "/ˈel.ə.kwənt/", syllables: ["el", "o", "quent"], stressed: [0], mouth: "😮", tongue: "Round lips for 'qu'" },
-        "gregarious": { phonetic: "/ɡrɪˈɡeə.ri.əs/", syllables: ["gre", "gar", "i", "ous"], stressed: [1], mouth: "😁", tongue: "Tongue rolls for 'r'" },
-        "ubiquitous": { phonetic: "/juːˈbɪk.wɪ.təs/", syllables: ["u", "biqu", "i", "tous"], stressed: [1], mouth: "😯", tongue: "Lips round for 'u'" },
-        "ephemeral": { phonetic: "/ɪˈfem.ər.əl/", syllables: ["e", "phem", "er", "al"], stressed: [1], mouth: "😐", tongue: "Teeth on lip for 'ph'" },
-        "brilliant": { phonetic: "/ˈbrɪl.jənt/", syllables: ["bril", "liant"], stressed: [0], mouth: "😁", tongue: "Lips together for 'br'" },
-        "magnificent": { phonetic: "/mæɡˈnɪf.ɪ.sənt/", syllables: ["mag", "nif", "i", "cent"], stressed: [1], mouth: "😮", tongue: "Tongue at back for 'g'" }
+        "eloquent": { phonetic: "/ˈel.ə.kwənt/", syllables: ["el", "o", "quent"], stressed: [0], mouth: "😮", tongue: "Round lips for 'qu'" }
     };
     
     if (phoneticsDB[cleanWord]) {
         return phoneticsDB[cleanWord];
     }
     
-    // Generate dynamic guide
     const syllables = cleanWord.split(/(?<=[aeiouy])(?=[^aeiouy])/i).filter(s => s.length > 0);
     const stressIndex = Math.floor(syllables.length / 2);
     const mouthShapes = ['😮', '😬', '😁', '😯', '😙', '😐', '😊', '😤'];
@@ -581,18 +618,6 @@ function getPronunciationData(word) {
     };
 }
 
-function getMouthShapeForWord(word) {
-    const firstLetter = word.charAt(0).toLowerCase();
-    const shapes = {
-        'a': '😮', 'b': '👄', 'c': '😐', 'd': '😬', 'e': '😬',
-        'f': '😤', 'g': '😮', 'h': '😤', 'i': '😁', 'j': '😗',
-        'k': '😮', 'l': '👅', 'm': '🤐', 'n': '👃', 'o': '😯',
-        'p': '💨', 'q': '😯', 'r': '😗', 's': '😁', 't': '😬',
-        'u': '😙', 'v': '😬', 'w': '😯', 'x': '😐', 'y': '😁', 'z': '😁'
-    };
-    return shapes[firstLetter] || '😐';
-}
-
 function showPronunciationPopup(word) {
     currentPopupWord = word;
     const data = getPronunciationData(word);
@@ -602,7 +627,6 @@ function showPronunciationPopup(word) {
     document.getElementById('popupMouthShape').textContent = data.mouth;
     document.getElementById('popupTonguePosition').innerHTML = `👅 ${data.tongue}`;
     
-    // Build syllables with stress marks
     const syllablesHtml = data.syllables.map((syl, idx) => `
         <span class="syllable ${data.stressed.includes(idx) ? 'stressed' : ''}">
             ${syl} ${data.stressed.includes(idx) ? '●' : '○'}
@@ -632,7 +656,6 @@ async function pronouncePopupWord(speed) {
 async function pronounceText(text, speed = 0.8) {
     if (!text) return;
     
-    // Animate mouth shape
     const mouthShape = document.getElementById('popupMouthShape');
     if (mouthShape) {
         mouthShape.style.animation = 'none';
@@ -709,11 +732,8 @@ async function loadDailyWords() {
         
         if (data.success && data.words) {
             currentWords = data.words;
-            
-            // Save to localStorage for offline access
             const today = getTodayKey();
             localStorage.setItem(`dailyWords_${today}_${currentLanguage}`, JSON.stringify(currentWords));
-            
             displayWords();
             updateStats();
             updateStreak();
@@ -723,7 +743,6 @@ async function loadDailyWords() {
         }
     } catch (error) {
         console.error('Error loading words:', error);
-        // Try loading from localStorage
         const today = getTodayKey();
         const cached = localStorage.getItem(`dailyWords_${today}_${currentLanguage}`);
         if (cached) {
@@ -783,6 +802,10 @@ function markLearned(index) {
         learnedWords[key].push(index);
         localStorage.setItem('dailyLearned', JSON.stringify(learnedWords));
         
+        // Track activity for dashboard
+        const word = currentWords[index]?.word || 'word';
+        trackVocabularyActivity(word);
+        
         // Play celebration sound
         pronounceText("Excellent! You learned a new word!", 0.8);
         
@@ -813,7 +836,6 @@ function updateStreak() {
     const learnedToday = learnedWords[key] || [];
     
     if (learnedToday.length === 10) {
-        // Check if they completed yesterday too
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
         const yesterdayStr = yesterday.toISOString().split('T')[0];
@@ -839,6 +861,7 @@ function getTodayKey() {
 function changeLanguage() {
     currentLanguage = document.getElementById('languageSelect').value;
     localStorage.setItem('preferredLanguage', currentLanguage);
+    sessionStorage.setItem('selectedLanguage', currentLanguage);
     loadDailyWords();
 }
 

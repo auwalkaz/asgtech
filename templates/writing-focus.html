@@ -46,6 +46,7 @@ body {
     text-decoration: none;
     color: #cbd5e1;
     font-weight: 500;
+    transition: all 0.3s;
 }
 
 .back-btn:hover {
@@ -347,7 +348,7 @@ body {
 
 <div class="container">
     <div class="header">
-        <a href="index.html" class="back-btn">← Dashboard</a>
+        <a href="/" class="back-btn">← Dashboard</a>
         <div style="font-weight: 700;">📚 Writing Practice <span class="ai-badge">API Powered</span></div>
         <div class="language-selector" id="languageSelector">
             <!-- Languages will be loaded dynamically -->
@@ -423,8 +424,56 @@ body {
 </div>
 
 <script>
+// ==================== GET LANGUAGE FROM URL ====================
+function getLanguageFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang');
+    if (lang) {
+        localStorage.setItem('preferredLanguage', lang);
+        sessionStorage.setItem('selectedLanguage', lang);
+        return lang;
+    }
+    const sessionLang = sessionStorage.getItem('selectedLanguage');
+    if (sessionLang) {
+        localStorage.setItem('preferredLanguage', sessionLang);
+        return sessionLang;
+    }
+    return localStorage.getItem('preferredLanguage') || 'en';
+}
+
+// ==================== TRACK ACTIVITY FOR DASHBOARD ====================
+function trackWritingActivity(type, amount = 1) {
+    let todayActivities = JSON.parse(localStorage.getItem('todayActivities') || '{}');
+    if (type === 'spelling') {
+        todayActivities.writing = (todayActivities.writing || 0) + amount;
+    } else if (type === 'sentence') {
+        todayActivities.writing = (todayActivities.writing || 0) + amount;
+    }
+    todayActivities.lastActivityDate = new Date().toDateString();
+    localStorage.setItem('todayActivities', JSON.stringify(todayActivities));
+    
+    if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ 
+            type: 'learning_activity', 
+            activity: { type: 'writing', amount: amount } 
+        }, '*');
+    }
+}
+
+// Track study time
+let studyStartTime = Date.now();
+window.addEventListener('beforeunload', function() {
+    const minutesStudied = Math.round((Date.now() - studyStartTime) / 60000);
+    if (minutesStudied > 0) {
+        let todayActivities = JSON.parse(localStorage.getItem('todayActivities') || '{}');
+        todayActivities.minutesStudied = (todayActivities.minutesStudied || 0) + minutesStudied;
+        todayActivities.lastActivityDate = new Date().toDateString();
+        localStorage.setItem('todayActivities', JSON.stringify(todayActivities));
+    }
+});
+
 // ==================== GLOBALS ====================
-let currentLang = 'en';
+let currentLang = getLanguageFromURL();
 let currentLevel = 'all';
 let vocabularyData = [];
 let wordToPOS = {};
@@ -774,6 +823,7 @@ async function submitSentence() {
             updateProgress();
             saveProgress();
             showCelebration();
+            trackWritingActivity('sentence', 1);
         }
         sentenceValidated = true;
         
@@ -811,6 +861,7 @@ async function checkSpelling() {
             updateProgress();
             saveProgress();
             showCelebration();
+            trackWritingActivity('spelling', 1);
         }
         
         setTimeout(() => {
@@ -987,7 +1038,7 @@ document.getElementById('spellingInput').addEventListener('keypress', (e) => {
 // Start the app
 async function init() {
     await loadAvailableLanguages();
-    await switchLanguage('en');
+    await switchLanguage(currentLang);
     loadSavedProgress();
     initSpeechRecognition();
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>🎤 Speaking Practice - AI Generated Phrases</title>
 
 <style>
@@ -16,6 +16,7 @@ body {
     background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
     font-family: 'Segoe UI', system-ui, sans-serif;
     color: white;
+    min-height: 100vh;
 }
 
 .container {
@@ -42,6 +43,12 @@ body {
     border-radius: 10px;
     text-decoration: none;
     color: white;
+    transition: all 0.3s;
+}
+
+.back-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
 }
 
 .speaking-card {
@@ -60,23 +67,38 @@ body {
     padding: 30px;
     background: #0f172a;
     border-radius: 20px;
+    word-break: break-word;
 }
 
 .microphone-btn {
     background: linear-gradient(135deg, #ef4444, #dc2626);
     width: 100px;
     height: 100px;
-    border-radius: 50px;
+    border-radius: 50%;
     border: none;
     font-size: 2.5em;
     cursor: pointer;
     margin: 20px auto;
     transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .microphone-btn:hover {
     transform: scale(1.1);
     box-shadow: 0 0 30px rgba(239,68,68,0.5);
+}
+
+.microphone-btn.recording {
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239,68,68,0.7); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(239,68,68,0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239,68,68,0); }
 }
 
 .scenarios {
@@ -199,19 +221,27 @@ body {
     margin-left: 10px;
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
 .ai-generating {
     animation: pulse 1s infinite;
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
     .phrase-display {
         font-size: 1.5em;
+        padding: 20px;
+    }
+    .speaking-card {
+        padding: 25px;
+    }
+    .scenarios {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.85em;
     }
 }
 </style>
@@ -221,7 +251,7 @@ body {
 
 <div class="container">
     <div class="header">
-        <a href="index.html" class="back-btn">← Back to Dashboard</a>
+        <a href="/" class="back-btn">← Back to Dashboard</a>
         <div>🎤 Speaking Practice <span class="ai-badge">AI Generated</span></div>
         <div id="languageDisplay">English</div>
     </div>
@@ -238,7 +268,7 @@ body {
             <button class="btn btn-purple" onclick="generateNewAIPhrases()">✨ Generate New AI Phrases</button>
         </div>
         
-        <button class="microphone-btn" onclick="startSpeaking()">🎙️</button>
+        <button class="microphone-btn" id="micBtn" onclick="startSpeaking()">🎙️</button>
         <p>Click the microphone and speak the phrase</p>
         
         <div class="feedback-area" id="feedbackArea">
@@ -270,15 +300,66 @@ body {
 </div>
 
 <script>
-let currentLang = localStorage.getItem('preferredLanguage') || 'en';
+// ================= GET LANGUAGE FROM URL =================
+function getLanguageFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang');
+    if (lang) {
+        localStorage.setItem('preferredLanguage', lang);
+        sessionStorage.setItem('selectedLanguage', lang);
+        return lang;
+    }
+    const sessionLang = sessionStorage.getItem('selectedLanguage');
+    if (sessionLang) {
+        localStorage.setItem('preferredLanguage', sessionLang);
+        return sessionLang;
+    }
+    return localStorage.getItem('preferredLanguage') || 'en';
+}
+
+let currentLang = getLanguageFromURL();
 let currentScenario = null;
 let masteredPhrases = 0;
 let currentPhrases = [];
 let currentPhraseIndex = 0;
 let masteredIndices = new Set();
 let isGenerating = false;
+let isRecording = false;
+let recognition = null;
 
-// Available topics pool
+// Update language display
+document.getElementById('languageDisplay').innerHTML = currentLang.toUpperCase();
+
+// ================= TRACK ACTIVITY FOR DASHBOARD =================
+function trackSpeakingActivity() {
+    // Track for daily report
+    let todayActivities = JSON.parse(localStorage.getItem('todayActivities') || '{}');
+    todayActivities.speaking = (todayActivities.speaking || 0) + 1;
+    todayActivities.lastActivityDate = new Date().toDateString();
+    localStorage.setItem('todayActivities', JSON.stringify(todayActivities));
+    
+    // Send to parent window if in iframe
+    if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ 
+            type: 'learning_activity', 
+            activity: { type: 'speaking', amount: 1 } 
+        }, '*');
+    }
+}
+
+// Track study time for dashboard
+let studyStartTime = Date.now();
+window.addEventListener('beforeunload', function() {
+    const minutesStudied = Math.round((Date.now() - studyStartTime) / 60000);
+    if (minutesStudied > 0) {
+        let todayActivities = JSON.parse(localStorage.getItem('todayActivities') || '{}');
+        todayActivities.minutesStudied = (todayActivities.minutesStudied || 0) + minutesStudied;
+        todayActivities.lastActivityDate = new Date().toDateString();
+        localStorage.setItem('todayActivities', JSON.stringify(todayActivities));
+    }
+});
+
+// ================= TOPICS =================
 const topicPool = [
     { id: "greeting", name: "Greetings", icon: "👋", description: "Say hello, introduce yourself" },
     { id: "introduction", name: "Self Introduction", icon: "🙋", description: "Introduce yourself to others" },
@@ -294,7 +375,6 @@ const topicPool = [
     { id: "small_talk", name: "Small Talk", icon: "💬", description: "Casual conversations" }
 ];
 
-// Get today's random topics (changes daily)
 function getTodaysTopics() {
     const today = new Date().toISOString().split('T')[0];
     const saved = localStorage.getItem(`topics_${today}_${currentLang}`);
@@ -303,7 +383,6 @@ function getTodaysTopics() {
         return JSON.parse(saved);
     }
     
-    // Randomly select 4 topics for today
     const shuffled = [...topicPool];
     for (let i = shuffled.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -315,7 +394,6 @@ function getTodaysTopics() {
     return todaysTopics;
 }
 
-// Display topics
 function displayTopics() {
     const topics = getTodaysTopics();
     const container = document.getElementById('scenariosContainer');
@@ -329,13 +407,11 @@ function displayTopics() {
     `).join('');
 }
 
-// Refresh topics manually
 function refreshTopics() {
     const today = new Date().toISOString().split('T')[0];
     localStorage.removeItem(`topics_${today}_${currentLang}`);
     displayTopics();
     
-    // Load first topic automatically
     const topics = getTodaysTopics();
     if (topics.length > 0) {
         loadScenario(topics[0].id);
@@ -350,7 +426,7 @@ function refreshTopics() {
     }, 2000);
 }
 
-// Generate completely new AI phrases
+// ================= PHRASE MANAGEMENT =================
 async function generateNewAIPhrases() {
     if (!currentScenario) {
         alert('Please select a topic first!');
@@ -374,7 +450,6 @@ async function generateNewAIPhrases() {
     feedback.style.color = 'white';
     
     try {
-        // Add timestamp and force refresh
         const timestamp = new Date().getTime();
         const response = await fetch(`/api/speaking/phrases?language=${currentLang}&scenario=${currentScenario}&count=5&refresh=true&_=${timestamp}`);
         const data = await response.json();
@@ -390,13 +465,11 @@ async function generateNewAIPhrases() {
             feedback.innerHTML = `✨ ${data.fresh ? 'AI generated' : 'Loaded'} ${currentPhrases.length} fresh phrases! Practice these new ones! 🌟`;
             feedback.style.background = '#10b981';
             
-            // Also update the phrase display to show it's new
             const phraseDisplay = document.getElementById('currentPhrase');
             phraseDisplay.style.animation = 'pulse 0.5s ease';
             setTimeout(() => {
                 phraseDisplay.style.animation = '';
             }, 500);
-            
         } else {
             throw new Error('No phrases returned');
         }
@@ -405,7 +478,6 @@ async function generateNewAIPhrases() {
         feedback.innerHTML = '❌ Could not generate new phrases. Using fallback phrases. Please try again.';
         feedback.style.background = '#ef4444';
         
-        // Use fallback as backup
         currentPhrases = getFallbackPhrases(currentScenario, currentLang);
         if (currentPhrases.length > 0) {
             updatePhraseDisplay();
@@ -427,14 +499,12 @@ async function generateNewAIPhrases() {
     }
 }
 
-// Load scenario with AI-generated phrases
 async function loadScenario(scenario) {
     currentScenario = scenario;
     currentPhraseIndex = 0;
     masteredPhrases = 0;
     masteredIndices.clear();
     
-    // Update active styling
     document.querySelectorAll('.scenario-card').forEach(card => {
         card.classList.remove('active');
         if (card.dataset.scenario === scenario) {
@@ -442,13 +512,11 @@ async function loadScenario(scenario) {
         }
     });
     
-    // Show loading state with AI indicator
     document.getElementById('currentPhrase').innerHTML = '🤖 AI is thinking...';
     document.getElementById('feedbackArea').innerHTML = '🎨 Generating fresh AI conversation phrases...';
     document.getElementById('feedbackArea').style.background = '#8b5cf6';
     
     try {
-        // Always get fresh phrases (refresh=true)
         const timestamp = new Date().getTime();
         const response = await fetch(`/api/speaking/phrases?language=${currentLang}&scenario=${scenario}&count=5&refresh=true&_=${timestamp}`);
         const data = await response.json();
@@ -471,7 +539,6 @@ async function loadScenario(scenario) {
         updatePhraseDisplay();
         updateProgress();
         
-        // Reset feedback color after 2 seconds
         setTimeout(() => {
             if (document.getElementById('feedbackArea').style.background !== '#0f172a') {
                 document.getElementById('feedbackArea').style.background = '#0f172a';
@@ -492,6 +559,19 @@ function getFallbackPhrases(scenario, language) {
                 { phrase: "Nice to meet you!", translation: "When meeting someone new" },
                 { phrase: "Good morning!", translation: "Morning greeting" },
                 { phrase: "Goodbye, see you later!", translation: "Farewell" }
+            ],
+            es: [
+                { phrase: "¡Hola! ¿Cómo estás?", translation: "Hello, how are you?" },
+                { phrase: "Mucho gusto", translation: "Nice to meet you" },
+                { phrase: "Buenos días", translation: "Good morning" }
+            ],
+            fr: [
+                { phrase: "Bonjour, comment allez-vous?", translation: "Hello, how are you?" },
+                { phrase: "Enchanté!", translation: "Nice to meet you" }
+            ],
+            sw: [
+                { phrase: "Hujambo?", translation: "Hello, how are you?" },
+                { phrase: "Nafurahi kukujua", translation: "Nice to meet you" }
             ]
         },
         restaurant: {
@@ -499,6 +579,9 @@ function getFallbackPhrases(scenario, language) {
                 { phrase: "I would like a coffee, please.", translation: "Ordering a drink" },
                 { phrase: "Can I see the menu?", translation: "Asking for menu" },
                 { phrase: "The food is delicious!", translation: "Complimenting food" }
+            ],
+            es: [
+                { phrase: "Me gustaría un café, por favor.", translation: "I would like a coffee, please" }
             ]
         },
         shopping: {
@@ -545,37 +628,62 @@ function listenToPhrase() {
     if (currentPhrases && currentPhrases[currentPhraseIndex]) {
         const phrase = currentPhrases[currentPhraseIndex].phrase;
         const utterance = new SpeechSynthesisUtterance(phrase);
-        const langMap = { 'en': 'en-US', 'fr': 'fr-FR', 'es': 'es-ES', 'pt': 'pt-PT' };
+        const langMap = { 'en': 'en-US', 'fr': 'fr-FR', 'es': 'es-ES', 'pt': 'pt-PT', 'de': 'de-DE', 'it': 'it-IT', 'sw': 'sw-KE', 'ar': 'ar-SA', 'zh': 'zh-CN' };
         utterance.lang = langMap[currentLang] || 'en-US';
         utterance.rate = 0.8;
         speechSynthesis.speak(utterance);
     }
 }
 
-// Speaking practice with improved feedback
+// ================= SPEAKING PRACTICE =================
 function startSpeaking() {
     if (!currentPhrases.length) {
         alert('Please select a topic first!');
         return;
     }
     
+    const micBtn = document.getElementById('micBtn');
     const currentPhrase = currentPhrases[currentPhraseIndex];
     const expectedPhrase = currentPhrase.phrase;
     
-    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    const langMap = { 'en': 'en-US', 'fr': 'fr-FR', 'es': 'es-ES', 'pt': 'pt-PT' };
+    if (isRecording) {
+        if (recognition) {
+            recognition.stop();
+        }
+        isRecording = false;
+        micBtn.classList.remove('recording');
+        micBtn.innerHTML = '🎙️';
+        return;
+    }
+    
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+        document.getElementById('feedbackArea').innerHTML = '❌ Speech recognition not supported in this browser. Try Chrome or Edge.';
+        return;
+    }
+    
+    recognition = new SpeechRecognition();
+    const langMap = { 'en': 'en-US', 'es': 'es-ES', 'fr': 'fr-FR', 'pt': 'pt-PT', 'de': 'de-DE', 'it': 'it-IT', 'sw': 'sw-KE', 'ar': 'ar-SA', 'zh': 'zh-CN' };
     recognition.lang = langMap[currentLang] || 'en-US';
+    recognition.interimResults = false;
+    recognition.continuous = false;
     
     const feedback = document.getElementById('feedbackArea');
     feedback.innerHTML = '🎙️ Listening... Please speak clearly 🎤';
     feedback.style.background = '#f59e0b';
     feedback.style.color = '#0f172a';
     
+    isRecording = true;
+    micBtn.classList.add('recording');
+    micBtn.innerHTML = '⏹️';
+    
     recognition.start();
     
     recognition.onresult = async (event) => {
         const spoken = event.results[0][0].transcript;
         feedback.innerHTML = `You said: "${spoken}"<br>🤖 Checking pronunciation...`;
+        
+        trackSpeakingActivity();
         
         try {
             const response = await fetch('/api/check/answer', {
@@ -596,7 +704,6 @@ function startSpeaking() {
                 if (!masteredIndices.has(currentPhraseIndex)) {
                     masteredIndices.add(currentPhraseIndex);
                     masteredPhrases = masteredIndices.size;
-                    saveProgress();
                     updateProgress();
                 }
                 
@@ -621,31 +728,69 @@ function startSpeaking() {
                 feedback.style.color = 'white';
             }
         } catch (error) {
-            // Fallback comparison
             const spokenLower = spoken.toLowerCase().trim();
             const expectedLower = expectedPhrase.toLowerCase().trim();
-            const similarity = spokenLower === expectedLower || expectedLower.includes(spokenLower) && spokenLower.length > expectedLower.length * 0.7;
+            const similarity = spokenLower === expectedLower || (expectedLower.includes(spokenLower) && spokenLower.length > expectedLower.length * 0.7);
             
             if (similarity) {
                 if (!masteredIndices.has(currentPhraseIndex)) {
                     masteredIndices.add(currentPhraseIndex);
                     masteredPhrases = masteredIndices.size;
-                    saveProgress();
                     updateProgress();
                 }
                 feedback.innerHTML = `✅ Great job! 🎉`;
                 feedback.style.background = '#10b981';
+                
+                if (currentPhraseIndex < currentPhrases.length - 1) {
+                    setTimeout(() => {
+                        currentPhraseIndex++;
+                        updatePhraseDisplay();
+                        feedback.innerHTML = 'Next phrase! 💪';
+                        feedback.style.background = '#0f172a';
+                    }, 2000);
+                }
             } else {
                 feedback.innerHTML = `❌ Try again! Expected: "${expectedPhrase}"<br>You said: "${spoken}"`;
                 feedback.style.background = '#ef4444';
             }
         }
+        
+        isRecording = false;
+        micBtn.classList.remove('recording');
+        micBtn.innerHTML = '🎙️';
+        if (recognition) recognition = null;
     };
     
-    recognition.onerror = () => {
-        feedback.innerHTML = '❌ Could not hear you. Check microphone permissions and try again. 🎙️';
+    recognition.onerror = (event) => {
+        let errorMsg = '';
+        switch(event.error) {
+            case 'not-allowed':
+                errorMsg = 'Microphone access denied. Please allow microphone permissions.';
+                break;
+            case 'no-speech':
+                errorMsg = 'No speech detected. Please speak clearly.';
+                break;
+            case 'audio-capture':
+                errorMsg = 'No microphone found. Please check your microphone.';
+                break;
+            default:
+                errorMsg = `Error: ${event.error}. Please try again.`;
+        }
+        feedback.innerHTML = `❌ ${errorMsg} 🎙️`;
         feedback.style.background = '#ef4444';
         feedback.style.color = 'white';
+        isRecording = false;
+        micBtn.classList.remove('recording');
+        micBtn.innerHTML = '🎙️';
+        if (recognition) recognition = null;
+    };
+    
+    recognition.onend = () => {
+        if (isRecording) {
+            isRecording = false;
+            micBtn.classList.remove('recording');
+            micBtn.innerHTML = '🎙️';
+        }
     };
 }
 
@@ -656,28 +801,8 @@ function updateProgress() {
     document.getElementById('statsText').innerHTML = `Phrases mastered: ${masteredPhrases}/${total}`;
 }
 
-async function saveProgress() {
-    try {
-        await fetch('/api/activity/save', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-                language: currentLang, 
-                type: 'speaking_practice', 
-                points: 10 
-            })
-        });
-    } catch (error) {
-        // Silent fail - progress still saved locally
-        console.log('Progress saved locally');
-    }
-}
-
-// Initialize
-document.getElementById('languageDisplay').innerHTML = currentLang.toUpperCase();
+// ================= INITIALIZATION =================
 displayTopics();
-
-// Load first topic automatically
 const topics = getTodaysTopics();
 if (topics.length > 0) {
     loadScenario(topics[0].id);

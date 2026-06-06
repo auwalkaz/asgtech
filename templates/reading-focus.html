@@ -496,7 +496,7 @@ body {
 
 <div class="container">
     <div class="header">
-        <a href="index.html" class="back-btn">← Back to Dashboard</a>
+        <a href="/" class="back-btn">← Back to Dashboard</a>
         <div>📖 Reading Practice <span style="background: #8b5cf6; padding: 2px 8px; border-radius: 15px; font-size: 0.7em;">🤖 AI Dictation + Accent Analysis</span></div>
         <div id="languageDisplay">English</div>
     </div>
@@ -614,7 +614,55 @@ body {
 </div>
 
 <script>
-let currentLang = localStorage.getItem('preferredLanguage') || 'en';
+// ================= GET LANGUAGE FROM URL =================
+function getLanguageFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang');
+    if (lang) {
+        localStorage.setItem('preferredLanguage', lang);
+        sessionStorage.setItem('selectedLanguage', lang);
+        return lang;
+    }
+    const sessionLang = sessionStorage.getItem('selectedLanguage');
+    if (sessionLang) {
+        localStorage.setItem('preferredLanguage', sessionLang);
+        return sessionLang;
+    }
+    return localStorage.getItem('preferredLanguage') || 'en';
+}
+
+// ================= TRACK ACTIVITY FOR DASHBOARD =================
+function trackReadingActivity(type, amount = 1) {
+    let todayActivities = JSON.parse(localStorage.getItem('todayActivities') || '{}');
+    if (type === 'word') {
+        todayActivities.reading = (todayActivities.reading || 0) + amount;
+    } else if (type === 'story') {
+        todayActivities.reading = (todayActivities.reading || 0) + amount;
+    }
+    todayActivities.lastActivityDate = new Date().toDateString();
+    localStorage.setItem('todayActivities', JSON.stringify(todayActivities));
+    
+    if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ 
+            type: 'learning_activity', 
+            activity: { type: 'reading', amount: amount } 
+        }, '*');
+    }
+}
+
+// Track study time
+let studyStartTime = Date.now();
+window.addEventListener('beforeunload', function() {
+    const minutesStudied = Math.round((Date.now() - studyStartTime) / 60000);
+    if (minutesStudied > 0) {
+        let todayActivities = JSON.parse(localStorage.getItem('todayActivities') || '{}');
+        todayActivities.minutesStudied = (todayActivities.minutesStudied || 0) + minutesStudied;
+        todayActivities.lastActivityDate = new Date().toDateString();
+        localStorage.setItem('todayActivities', JSON.stringify(todayActivities));
+    }
+});
+
+let currentLang = getLanguageFromURL();
 let currentLevel = localStorage.getItem('userLevel') || 'beginner';
 let currentStoryIndex = 0;
 let stories = [];
@@ -859,7 +907,7 @@ function learnWord(idx, word, meaning) {
     vocabAnswered[idx] = true;
     wordScores.recognized++;
     updateProgress();
-    saveActivity('reading_practice', 10);
+    trackReadingActivity('word', 1);
     pronounceText(word);
     displayVocabularyWords();
     
@@ -984,7 +1032,7 @@ function listenToStory() {
     pronounceText(storyContent);
 }
 
-// ================= AI-POWERED DICTATION WITH ACCENT ANALYSIS =================
+// ================= AI-POWERED DICTATION =================
 async function startDictation() {
     if (!SpeechRecognitionAPI) {
         document.getElementById('speechFeedback').innerHTML = '❌ Speech recognition not supported. Please use Chrome, Edge, or Safari.';
@@ -1023,7 +1071,6 @@ async function startDictation() {
         feedback.className = 'feedback info';
         startVolumeMeter();
         
-        // Auto-stop after 15 seconds
         recordingTimeout = setTimeout(() => {
             if (isRecording && recognition) {
                 recognition.stop();
@@ -1040,11 +1087,10 @@ async function startDictation() {
         const spoken = event.results[0][0].transcript;
         
         document.getElementById('userSentence').innerHTML = `🎤 <strong>You said:</strong> "${spoken}"`;
-        feedback.innerHTML = '🤖 AI is analyzing your pronunciation and accent...';
+        feedback.innerHTML = '🤖 AI is analyzing your pronunciation...';
         showLoading('Analyzing pronunciation...');
         
         try {
-            // First, get basic comparison
             const compareResponse = await fetch('/api/reading/compare', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -1060,44 +1106,16 @@ async function startDictation() {
             const accuracyFill = document.getElementById('accuracyFill');
             accuracyFill.style.width = `${accuracy}%`;
             
-            // Get detailed accent analysis
-            const accentResponse = await fetch('/api/reading/accent-analysis', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    user_text: spoken,
-                    expected_text: expectedSentence,
-                    language: currentLang
-                })
-            });
-            
-            const accentData = await accentResponse.json();
             const comparisonDiv = document.getElementById('comparisonResult');
             
             if (compareData.is_match || accuracy >= 70) {
-                let accentHtml = '';
-                if (accentData.problem_words && accentData.problem_words.length > 0) {
-                    accentHtml = `
-                        <div style="margin-top: 10px; padding: 10px; background: #1e3a5f; border-radius: 8px;">
-                            <div style="color: #fbbf24; margin-bottom: 8px;">🎯 Accent Improvement Tips:</div>
-                            <div style="font-size: 0.85em;">${accentData.accent_tips || 'Keep practicing to sound more natural!'}</div>
-                            ${accentData.practice_words && accentData.practice_words.length > 0 ? `
-                                <div style="margin-top: 8px; color: #a78bfa;">
-                                    Practice these words: ${accentData.practice_words.map(w => `<button class="word-btn-small" onclick="pronounceText('${w}')" style="margin: 2px;">🔊 ${w}</button>`).join('')}
-                                </div>
-                            ` : ''}
-                        </div>
-                    `;
-                }
-                
                 comparisonDiv.innerHTML = `
                     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
                         <span style="color: #10b981;">✅ GREAT JOB! (${accuracy}% accuracy)</span>
                         <span>🎉 Excellent reading!</span>
                     </div>
                     <div>${compareData.feedback || 'Excellent pronunciation!'}</div>
-                    ${accentHtml}
-                    <div style="margin-top: 10px; color: #60a5fa;">💪 Keep practicing to reduce your accent and sound more fluent!</div>
+                    <div style="margin-top: 10px; color: #60a5fa;">💪 Keep practicing to improve your accent!</div>
                 `;
                 comparisonDiv.className = 'comparison-result comparison-match';
                 feedback.innerHTML = `✅ ${compareData.feedback || 'Excellent!'} 🎉`;
@@ -1106,93 +1124,54 @@ async function startDictation() {
                 if (wordScores.dictation < 100) {
                     wordScores.dictation = Math.min(100, wordScores.dictation + Math.min(15, Math.floor(accuracy / 10)));
                     updateProgress();
-                    saveActivity('speaking_practice', Math.min(15, Math.floor(accuracy / 10)));
                 }
             } else {
-                let problemWordsHtml = '';
-                if (accentData.problem_words && accentData.problem_words.length > 0) {
-                    problemWordsHtml = `
-                        <div style="margin-top: 10px; padding: 10px; background: #0f172a; border-radius: 8px;">
-                            <div style="color: #fbbf24; margin-bottom: 8px;">🔍 Words to Focus On:</div>
-                            ${accentData.problem_words.map(pw => `
-                                <div style="margin-bottom: 10px; padding: 8px; background: #1e293b; border-radius: 6px;">
-                                    <div><span style="color: #ef4444;">❌</span> <strong>${pw.word}</strong></div>
-                                    <div style="font-size: 0.85em; margin-top: 4px;">
-                                        📝 You said: "${pw.user_said || 'different pronunciation'}"<br>
-                                        🎯 Correct: "${pw.should_sound || pw.word}"<br>
-                                        💡 ${pw.common_mistake || 'Practice this sound slowly'}
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    `;
-                }
-                
                 comparisonDiv.innerHTML = `
                     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
                         <span style="color: #ef4444;">❌ NEEDS PRACTICE (${accuracy}%)</span>
                     </div>
                     <div>${compareData.feedback || 'Keep practicing! You can do it!'}</div>
-                    ${problemWordsHtml}
+                    <div style="margin-top: 10px;">💡 Expected: "${expectedSentence}"</div>
+                    <div style="margin-top: 8px;">📝 You said: "${spoken}"</div>
                     <div style="margin-top: 10px; padding: 10px; background: #1e3a5f; border-radius: 8px;">
                         <div style="color: #fbbf24; margin-bottom: 5px;">💡 Accent Reduction Tips:</div>
-                        <div style="font-size: 0.85em;">${accentData.accent_tips || 'Listen carefully to each sound. Break words into syllables and practice slowly.'}</div>
-                        ${accentData.practice_words && accentData.practice_words.length > 0 ? `
-                            <div style="margin-top: 8px;">
-                                Practice these sounds: 
-                                ${accentData.practice_words.map(w => `<button class="word-btn-small" onclick="pronounceText('${w}')" style="margin: 2px;">🔊 ${w}</button>`).join('')}
-                            </div>
-                        ` : ''}
-                    </div>
-                    <div style="margin-top: 10px; color: #a78bfa;">
-                        💪 Pro tip: Click any word above to hear correct pronunciation!
+                        <div style="font-size: 0.85em;">Break words into syllables. Practice slowly first, then increase speed.</div>
                     </div>
                 `;
                 comparisonDiv.className = 'comparison-result comparison-mismatch';
-                feedback.innerHTML = `❌ ${Math.round(accuracy)}% accurate. Let's fix those sounds!`;
+                feedback.innerHTML = `❌ ${Math.round(accuracy)}% accurate. Let's practice!`;
                 feedback.className = 'feedback wrong';
             }
         } catch (error) {
             console.error('Analysis error:', error);
-            // Enhanced fallback with better word matching
             const spokenLower = spoken.toLowerCase().trim();
             const expectedLower = expectedSentence.toLowerCase().trim();
             const spokenWords = spokenLower.split(/\s+/);
             const expectedWords = expectedLower.split(/\s+/);
             
             let correctWords = 0;
-            const matchedExpected = new Array(expectedWords.length).fill(false);
-            
             for (let spokenWord of spokenWords) {
-                for (let i = 0; i < expectedWords.length; i++) {
-                    if (!matchedExpected[i] && spokenWord === expectedWords[i]) {
-                        correctWords++;
-                        matchedExpected[i] = true;
-                        break;
-                    }
+                if (expectedWords.includes(spokenWord)) {
+                    correctWords++;
                 }
             }
-            const accuracy = Math.round((correctWords / expectedWords.length) * 100);
+            const accuracy = Math.min(100, Math.round((correctWords / expectedWords.length) * 100));
             document.getElementById('accuracyFill').style.width = `${accuracy}%`;
             
             const comparisonDiv = document.getElementById('comparisonResult');
-            
             comparisonDiv.innerHTML = `
                 <div><span style="color: ${accuracy >= 70 ? '#10b981' : '#ef4444'};">${accuracy >= 70 ? '✅' : '❌'} ${accuracy}% accurate</span></div>
                 <div style="margin-top: 10px;">💡 Expected: "${expectedSentence}"</div>
                 <div>📝 You said: "${spoken}"</div>
                 <div style="margin-top: 10px; color: #fbbf24;">🔊 Click "Listen to Sentence" to hear the correct pronunciation.</div>
-                <div style="margin-top: 8px;">💪 Tip: Break the sentence into smaller parts and practice each word slowly.</div>
-                <div style="margin-top: 8px;">🎯 Remember: Focus on vowel sounds and word stress!</div>
             `;
             comparisonDiv.className = accuracy >= 70 ? 'comparison-result comparison-match' : 'comparison-result comparison-mismatch';
-            feedback.innerHTML = accuracy >= 70 ? '✅ Good effort! Keep practicing to reduce your accent!' : '❌ Keep practicing! Focus on the highlighted words.';
+            feedback.innerHTML = accuracy >= 70 ? '✅ Good effort! Keep practicing!' : '❌ Keep practicing!';
             feedback.className = accuracy >= 70 ? 'feedback correct' : 'feedback wrong';
             
             if (accuracy >= 70 && wordScores.dictation < 100) {
                 wordScores.dictation = Math.min(100, wordScores.dictation + 10);
                 updateProgress();
-                saveActivity('speaking_practice', 10);
             }
         } finally {
             hideLoading();
@@ -1266,7 +1245,7 @@ function checkAnswers() {
             wordScores.stories++;
             storyCompleted[currentStoryIndex] = true;
             updateProgress();
-            saveActivity('reading_practice', 20);
+            trackReadingActivity('story', 1);
         }
         setTimeout(() => {
             if (currentStoryIndex < stories.length - 1) {
@@ -1298,22 +1277,6 @@ function updateProgress() {
     document.getElementById('dictationScore').textContent = `${Math.round(wordScores.dictation)}%`;
 }
 
-async function saveActivity(type, points) {
-    try {
-        await fetch('/api/activity/save', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ language: currentLang, type: type, points: points })
-        });
-    } catch (error) {
-        console.log('Activity saved locally:', type, points);
-        // Store in localStorage as backup
-        const activities = JSON.parse(localStorage.getItem('activities') || '[]');
-        activities.push({ type, points, date: new Date().toISOString() });
-        localStorage.setItem('activities', JSON.stringify(activities));
-    }
-}
-
 function escapeHtml(str) {
     if (!str) return '';
     return str.replace(/[&<>]/g, function(m) {
@@ -1326,22 +1289,18 @@ function escapeHtml(str) {
 
 // Keyboard shortcuts
 document.addEventListener('keydown', (e) => {
-    // Spacebar to start/stop recording (if not typing in input)
     if (e.code === 'Space' && !e.target.matches('input, textarea, button')) {
         e.preventDefault();
         startDictation();
     }
-    // Ctrl+L to listen to current sentence
     if (e.code === 'KeyL' && e.ctrlKey) {
         e.preventDefault();
         listenToCurrentSentence();
     }
-    // Ctrl+N for next sentence
     if (e.code === 'KeyN' && e.ctrlKey) {
         e.preventDefault();
         nextSentence();
     }
-    // Ctrl+P for previous sentence
     if (e.code === 'KeyP' && e.ctrlKey) {
         e.preventDefault();
         previousSentence();
