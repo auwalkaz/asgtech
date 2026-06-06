@@ -1,158 +1,209 @@
 from flask import Blueprint, request, jsonify
 from datetime import datetime
 import random
+import json
+import os
+
+# Import AI service
+from services.ai_service import ai_service
 
 tips_bp = Blueprint("tips", __name__, url_prefix="/api")
 
+# Cache for AI-generated tips (short-lived for variety)
+tips_cache = {}
+last_cache_clear = datetime.now()
+
+# Comprehensive topic list for unlimited variety
+ALL_TOPICS = [
+    "nature", "wildlife", "ocean", "forests", "mountains", "deserts", "rivers", "volcanoes", "earthquakes",
+    "history", "ancient civilizations", "egypt", "rome", "greece", "china", "maya", "inca", "aztec",
+    "cities", "landmarks", "paris", "tokyo", "new york", "london", "dubai", "singapore", "sydney",
+    "science", "physics", "chemistry", "biology", "astronomy", "geology", "medicine", "genetics",
+    "space", "planets", "stars", "galaxies", "black holes", "nasa", "astronauts", "telescopes",
+    "animals", "mammals", "birds", "reptiles", "insects", "sea creatures", "dinosaurs", "endangered species",
+    "technology", "ai", "robotics", "computers", "internet", "smartphones", "gaming", "virtual reality",
+    "art", "painting", "sculpture", "famous artists", "museums", "renaissance", "modern art",
+    "music", "instruments", "composers", "bands", "concerts", "music history", "genres",
+    "sports", "olympics", "world cup", "basketball", "soccer", "tennis", "swimming", "athletics",
+    "food", "cuisine", "cooking", "ingredients", "restaurants", "street food", "baking",
+    "engineering", "bridges", "buildings", "dams", "tunnels", "skyscrapers", "roads",
+    "architecture", "cathedrals", "temples", "mosques", "pyramids", "castles", "palaces",
+    "culture", "traditions", "festivals", "holidays", "clothing", "dance", "theatre",
+    "literature", "books", "authors", "poetry", "novels", "libraries", "writing",
+    "mythology", "greek myths", "norse legends", "egyptian gods", "folk tales",
+    "psychology", "brain", "memory", "learning", "emotions", "dreams", "intelligence",
+    "business", "entrepreneurship", "companies", "marketing", "leadership", "innovation",
+    "environment", "climate change", "renewable energy", "recycling", "conservation", "pollution"
+]
+
+# Topic emoji mapping
+TOPIC_EMOJIS = {
+    "nature": "🌍", "wildlife": "🦁", "ocean": "🌊", "forests": "🌲", "mountains": "🏔️", "deserts": "🏜️", "volcanoes": "🌋",
+    "history": "🏛️", "ancient civilizations": "🗿", "egypt": "🐫", "rome": "🏟️", "greece": "🏺",
+    "cities": "🏙️", "landmarks": "🗽", "paris": "🗼", "tokyo": "🗻", "new york": "🗽",
+    "science": "🔬", "physics": "⚛️", "chemistry": "🧪", "biology": "🧬", "astronomy": "🔭",
+    "space": "🚀", "planets": "🪐", "stars": "⭐", "galaxies": "🌌", "black holes": "⚫",
+    "animals": "🐘", "dinosaurs": "🦕", "birds": "🦅", "sea creatures": "🐋",
+    "technology": "🤖", "ai": "🧠", "robotics": "🦾", "computers": "💻", "internet": "🌐",
+    "art": "🎨", "music": "🎵", "sports": "⚽", "food": "🍕", "engineering": "🏗️",
+    "architecture": "🏛️", "culture": "🎭", "literature": "📚", "mythology": "🔱",
+    "psychology": "🧠", "business": "💼", "environment": "🌱"
+}
+
 @tips_bp.route("/tips/generate", methods=["GET"])
 def generate_tips():
-    """Generate smart tips - always works, no AI required yet"""
+    """Generate UNLIMITED AI-generated tips - always fresh, always unique"""
     try:
         category = request.args.get("category", "all")
         language = request.args.get("language", "en")
         count = min(int(request.args.get("count", 6)), 10)
+        force_fresh = request.args.get("refresh", "false").lower() == "true"
         
-        # Get comprehensive tips database
-        tips_database = get_comprehensive_tips_database()
+        # Clear old cache every 30 minutes for maximum freshness
+        global last_cache_clear
+        if (datetime.now() - last_cache_clear).seconds > 1800:  # 30 minutes
+            tips_cache.clear()
+            last_cache_clear = datetime.now()
+            print("🔄 Tips cache cleared for maximum freshness")
         
-        # Get tips for the language
-        lang_tips = tips_database.get(language, tips_database["en"])
+        # ALWAYS try AI first - this is the primary source
+        ai_tips = get_ai_generated_tips(language, category, count, force_fresh)
         
-        # Filter by category if needed
-        if category != "all":
-            filtered = [t for t in lang_tips if t.get("category", "").lower() == category.lower()]
-            if filtered:
-                lang_tips = filtered
+        if ai_tips and len(ai_tips) > 0:
+            return jsonify({
+                "success": True,
+                "category": category,
+                "language": language,
+                "tips": ai_tips,
+                "source": "ai_generated",
+                "generated_at": datetime.now().isoformat(),
+                "message": "🤖 AI-generated fresh tips! Refresh for UNLIMITED new tips!",
+                "unlimited": True,
+                "topics_count": len(ALL_TOPICS)
+            })
         
-        # If still no tips, get from English
-        if not lang_tips:
-            lang_tips = tips_database["en"]
-            if category != "all":
-                filtered = [t for t in lang_tips if t.get("category", "").lower() == category.lower()]
-                if filtered:
-                    lang_tips = filtered
-        
-        # Shuffle for variety
-        random.shuffle(lang_tips)
-        
-        # Use time-based seed for variety
-        hour_seed = datetime.now().strftime("%Y-%m-%d-%H")
-        random.seed(hour_seed + language + category)
-        random.shuffle(lang_tips)
-        
+        # Only use static as emergency fallback (should rarely happen)
+        print("⚠️ AI failed, using emergency fallback tips")
         return jsonify({
             "success": True,
             "category": category,
             "language": language,
-            "tips": lang_tips[:count],
-            "source": "smart_tips",
-            "generated_at": datetime.now().isoformat(),
-            "message": "💡 Smart tips - refresh for more!"
+            "tips": get_emergency_tips(language)[:count],
+            "source": "emergency_fallback",
+            "message": "⚠️ AI temporarily unavailable. Please try again for fresh tips!"
         })
         
     except Exception as e:
         print(f"Tips generation error: {e}")
         return jsonify({
             "success": True,
-            "tips": get_emergency_tips(language)[:count],
+            "tips": get_emergency_tips("en")[:count],
             "source": "emergency"
         })
 
-def get_comprehensive_tips_database():
-    """Return a comprehensive database of tips in multiple languages"""
+def get_ai_generated_tips(language, category, count, force_fresh=False):
+    """Generate UNLIMITED fresh AI tips - completely random and unique each time"""
+    global tips_cache
     
-    return {
-        "en": [
-            # Language Learning Tips
-            {"icon": "💡", "title": "The 15-Minute Rule", "content": "Study for 15 minutes daily - consistency beats intensity for language learning!", "category": "learning"},
-            {"icon": "🧠", "title": "Spaced Repetition Magic", "content": "Review words just before you forget them - it's the most efficient way to memorize!", "category": "memory"},
-            {"icon": "🎯", "title": "Set SMART Goals", "content": "Specific, Measurable, Achievable, Relevant, Time-bound goals keep you motivated!", "category": "motivation"},
-            {"icon": "🗣️", "title": "Shadowing Technique", "content": "Repeat after native speakers immediately - it improves pronunciation and fluency!", "category": "speaking"},
-            {"icon": "📱", "title": "Immerse Yourself", "content": "Change your phone's language to your target language - it's free daily practice!", "category": "learning"},
-            {"icon": "🎧", "title": "Listen While Commuting", "content": "Use podcasts or audiobooks during your commute - turn wasted time into learning time!", "category": "listening"},
-            {"icon": "📖", "title": "Read What You Love", "content": "Read books, articles, or social media posts about topics you actually enjoy!", "category": "reading"},
-            {"icon": "✍️", "title": "Keep a Journal", "content": "Write 3 sentences daily about your day - small habit, big results!", "category": "writing"},
-            
-            # Nigerian/African Culture
-            {"icon": "🇳🇬", "title": "Nigeria's Giant Status", "content": "Nigeria is Africa's most populous country with over 200 million people!", "category": "culture"},
-            {"icon": "🎬", "title": "Nollywood's Global Reach", "content": "Nigeria's film industry produces more movies annually than Hollywood!", "category": "culture"},
-            {"icon": "🦁", "title": "African Elephant Fact", "content": "The African elephant is the largest land animal, weighing up to 6,000 kg!", "category": "nature"},
-            {"icon": "🌍", "title": "Linguistic Diversity", "content": "Africa is home to over 2,000 languages - about 30% of the world's languages!", "category": "culture"},
-            {"icon": "🦒", "title": "Giraffe Necks", "content": "Giraffes have the same number of neck vertebrae as humans - just 7, but much longer!", "category": "nature"},
-            {"icon": "🌿", "title": "Baobab Trees", "content": "Baobab trees can live for over 1,000 years and store up to 30,000 gallons of water!", "category": "nature"},
-            
-            # Science & Technology
-            {"icon": "🔬", "title": "Brain Plasticity", "content": "Your brain can learn new languages at ANY age - neuroplasticity never stops!", "category": "science"},
-            {"icon": "🧬", "title": "Human DNA Fact", "content": "Humans share 99.9% of their DNA with each other - we're almost identical!", "category": "science"},
-            {"icon": "🤖", "title": "AI Language Learning", "content": "AI tutors can personalize your learning and give instant feedback 24/7!", "category": "technology"},
-            {"icon": "🚀", "title": "Space Fact", "content": "One day on Venus is longer than one year on Venus - it rotates very slowly!", "category": "science"},
-            {"icon": "💻", "title": "Free Learning Apps", "content": "Use Duolingo, Memrise, Anki, or HelloTalk - all have free versions!", "category": "technology"},
-            
-            # Environment
-            {"icon": "🌎", "title": "Amazon Oxygen", "content": "The Amazon rainforest produces 20% of the world's oxygen!", "category": "environment"},
-            {"icon": "🌱", "title": "Tree Communication", "content": "Trees in a forest communicate through underground fungal networks!", "category": "environment"},
-            {"icon": "🐝", "title": "Bee Importance", "content": "Bees pollinate 70% of the world's crops - they're essential for food!", "category": "environment"},
-            
-            # Engineering
-            {"icon": "🏗️", "title": "Great Wall Fact", "content": "The Great Wall of China is over 13,000 miles long - visible from space!", "category": "engineering"},
-            {"icon": "🌉", "title": "Burj Khalifa", "content": "The Burj Khalifa is the world's tallest building at 828 meters!", "category": "engineering"},
-            
-            # Motivation
-            {"icon": "💪", "title": "Mistakes Are Learning", "content": "Every mistake is a learning opportunity - embrace them, don't fear them!", "category": "motivation"},
-            {"icon": "🎉", "title": "Celebrate Small Wins", "content": "Celebrate every new word and correct sentence - progress is progress!", "category": "motivation"},
-            {"icon": "🌟", "title": "Consistency Over Perfection", "content": "Showing up every day matters more than being perfect. Just keep going!", "category": "motivation"}
-        ],
+    # Use timestamp for maximum freshness (cache only for 30 minutes)
+    current_hour = datetime.now().strftime("%Y-%m-%d-%H")
+    minute_seed = datetime.now().strftime("%M")
+    cache_key = f"{language}_{category}_{current_hour}_{minute_seed}"
+    
+    # Only use cache if not forcing fresh and cache is very recent (within same 5 minutes)
+    if not force_fresh and cache_key in tips_cache and len(tips_cache[cache_key]) >= count:
+        cached_tips = tips_cache[cache_key][:count]
+        random.shuffle(cached_tips)
+        print(f"📦 Using cached tips (still fresh from this session)")
+        return cached_tips
+    
+    if not ai_service or not ai_service.client:
+        print("⚠️ AI service not available")
+        return None
+    
+    try:
+        # Language names
+        language_names = {
+            'en': 'English', 'es': 'Spanish', 'fr': 'French', 'de': 'German',
+            'it': 'Italian', 'pt': 'Portuguese', 'sw': 'Swahili', 'ar': 'Arabic',
+            'zh': 'Chinese', 'ja': 'Japanese', 'ko': 'Korean', 'hi': 'Hindi',
+            'ru': 'Russian', 'tr': 'Turkish', 'nl': 'Dutch'
+        }
         
-        "ar": [
-            {"icon": "💡", "title": "قاعدة الـ 15 دقيقة", "content": "ادرس 15 دقيقة يومياً - الاستمرارية أهم من الشدة في تعلم اللغة!", "category": "learning"},
-            {"icon": "🇸🇦", "title": "ثراء اللغة العربية", "content": "اللغة العربية تحتوي على أكثر من 12 مليون كلمة - من أغنى لغات العالم!", "category": "culture"},
-            {"icon": "🧠", "title": "التكرار المتباعد", "content": "راجع الكلمات قبل أن تنساها - هذه الطريقة الأكثر فعالية للحفظ!", "category": "memory"},
-            {"icon": "📖", "title": "اقرأ ما تحب", "content": "اقرأ كتباً أو مقالات عن مواضيع تستمتع بها - ستتعلم بشكل أسرع!", "category": "reading"},
-            {"icon": "🎤", "title": "سجل صوتك", "content": "سجل نفسك وأنت تتحدث واستمع - ستلاحظ تحسناً كبيراً!", "category": "speaking"},
-            {"icon": "🇳🇬", "title": "تنوع نيجيريا اللغوي", "content": "نيجيريا تضم أكثر من 500 لغة أصلية - من أكثر الدول تنوعاً لغوياً!", "category": "culture"},
-            {"icon": "🔬", "title": "مرونة الدماغ", "content": "يمكن لدماغك تعلم لغة جديدة في أي عمر - المرونة العصبية لا تتوقف!", "category": "science"}
-        ],
+        lang_name = language_names.get(language, 'English')
         
-        "fr": [
-            {"icon": "💡", "title": "La Règle des 15 Minutes", "content": "Étudiez 15 minutes par jour - la constance bat l'intensité!", "category": "learning"},
-            {"icon": "🇫🇷", "title": "Richesse du Français", "content": "Le français compte plus de 100 000 mots dans son dictionnaire officiel!", "category": "culture"},
-            {"icon": "🥖", "title": "Gastronomie Française", "content": "La France produit plus de 1000 variétés de fromage différentes!", "category": "culture"},
-            {"icon": "📖", "title": "Lisez des BD", "content": "Les bandes dessinées françaises sont excellentes pour apprendre la langue!", "category": "reading"}
-        ],
+        # Select 3 random topics for variety in each batch
+        random_topics = random.sample(ALL_TOPICS, min(3, len(ALL_TOPICS)))
+        random_seed = random.randint(1, 999999)
+        time_seed = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
         
-        "es": [
-            {"icon": "💡", "title": "La Regla de 15 Minutos", "content": "Estudia 15 minutos diarios - la consistencia es clave!", "category": "learning"},
-            {"icon": "🇪🇸", "title": "Segundo Idioma Mundial", "content": "El español es el segundo idioma más hablado del mundo!", "category": "culture"},
-            {"icon": "💃", "title": "Cultura Latina", "content": "Hay 20 países donde el español es idioma oficial!", "category": "culture"},
-            {"icon": "📖", "title": "Lectura Diaria", "content": "Lee noticias en español todos los días - mejora tu vocabulario rápidamente!", "category": "reading"}
-        ],
+        # Build topic prompt
+        topics_text = ", ".join(random_topics)
         
-        "pt": [
-            {"icon": "💡", "title": "Regra dos 15 Minutos", "content": "Estude 15 minutos por dia - consistência é mais importante que intensidade!", "category": "learning"},
-            {"icon": "🇧🇷", "title": "Países Lusófonos", "content": "O português é língua oficial em 9 países em 4 continentes diferentes!", "category": "culture"},
-            {"icon": "🌍", "title": "Comunidade Global", "content": "Mais de 260 milhões de pessoas falam português no mundo!", "category": "culture"},
-            {"icon": "📖", "title": "Leitura Prazerosa", "content": "Leia livros que você ama em português - aprenda naturalmente!", "category": "reading"}
-        ],
+        prompt = f"""You are a fascinating fact generator. Generate {count} completely UNIQUE, surprising, and educational facts about RANDOM topics from this list: {topics_text}
+
+IMPORTANT RULES:
+1. Each fact must be from a DIFFERENT topic
+2. Facts should be surprising, interesting, and memorable
+3. Include a mix of: amazing discoveries, little-known facts, world records, historical events, scientific breakthroughs
+4. Make each fact something people would want to share with friends
+5. Keep facts factual and educational
+
+Random seed for uniqueness: {random_seed}{time_seed}
+
+Return ONLY valid JSON array, NO markdown, NO extra text.
+
+Each fact must be a JSON object with:
+- "icon": a relevant emoji (choose from: 🌍 🏛️ 🏙️ 🔬 🚀 🦁 🤖 🎨 🎵 ⚽ 🍕 🏗️ 🌊 🏔️ 🗿 🦕 🧬 🌌)
+- "title": short catchy title (max 50 characters)
+- "content": the fascinating fact (max 150 characters)
+- "category": the topic category
+
+Example:
+{{"icon": "🦕", "title": "T-Rex Bite Force", "content": "T-Rex had the strongest bite force of any land animal ever - 12,800 pounds!", "category": "animals"}}
+
+Generate {count} UNIQUE, DIVERSE facts. Make each one different from the others. Return as JSON array."""
+
+        print(f"🤖 AI generating {count} fresh tips (topics: {topics_text})")
         
-        "sw": [
-            {"icon": "💡", "title": "Kanuni ya Dakika 15", "content": "Jifunze dakika 15 kila siku - uthabiti ni muhimu zaidi!", "category": "learning"},
-            {"icon": "🇹🇿", "title": "Lugha ya Kiswahili", "content": "Kiswahili kinazungumzwa na zaidi ya watu milioni 200 duniani!", "category": "culture"},
-            {"icon": "🦁", "title": "Safari ya Afrika", "content": "Kusema 'Hakuna Matata' ni Kikabila maarufu kutoka Afrika Mashariki!", "category": "culture"},
-            {"icon": "📖", "title": "Soma Hadithi", "content": "Soma hadithi fupi za Kiswahili - zitakusaidia kujifunza maneno mapya!", "category": "reading"}
-        ]
-    }
+        # Use AI service to generate JSON
+        result = ai_service.generate_json(prompt, temperature=0.95, max_tokens=1500)
+        
+        if result and isinstance(result, list) and len(result) > 0:
+            valid_tips = []
+            for tip in result[:count]:
+                if isinstance(tip, dict) and 'content' in tip and len(tip.get('content', '')) > 10:
+                    # Ensure icon is appropriate
+                    icon = tip.get("icon", "💡")
+                    if len(icon) > 2:  # Not an emoji
+                        icon = "💡"
+                    
+                    valid_tips.append({
+                        "icon": icon,
+                        "title": tip.get("title", "Amazing Fact")[:50],
+                        "content": tip.get("content", "")[:200],
+                        "category": tip.get("category", "general")
+                    })
+            
+            if len(valid_tips) >= count // 2:  # At least half the requested count
+                # Cache the tips
+                tips_cache[cache_key] = valid_tips
+                print(f"✅ AI generated {len(valid_tips)} UNIQUE fresh tips!")
+                return valid_tips
+        
+        print(f"⚠️ AI returned invalid response, retrying...")
+        return None
+        
+    except Exception as e:
+        print(f"❌ AI tips generation error: {e}")
+        return None
 
 def get_emergency_tips(language):
-    """Ultimate fallback tips - always works"""
-    emergency_tips = {
-        "en": [
-            {"icon": "💡", "title": "Keep Practicing", "content": "Every day of practice brings you closer to fluency!", "category": "motivation"},
-            {"icon": "📚", "title": "Learn 5 Words Daily", "content": "Learning just 5 new words a day means 1,825 words per year!", "category": "learning"},
-            {"icon": "🎯", "title": "Stay Consistent", "content": "Consistency is more important than the amount of time you study!", "category": "motivation"}
-        ],
-        "ar": [
-            {"icon": "💡", "title": "استمر في الممارسة", "content": "كل يوم من الممارسة يقرّبك من الطلاقة!", "category": "motivation"},
-            {"icon": "📚", "title": "تعلم 5 كلمات يومياً", "content": "تعلم 5 كلمات جديدة يومياً يعني 1825 كلمة سنوياً!", "category": "learning"}
-        ]
-    }
-    return emergency_tips.get(language, emergency_tips["en"])
+    """Emergency fallback - only used if AI completely fails"""
+    return [
+        {"icon": "🤖", "title": "AI Tips Loading", "content": "Please click 'Get New Tips' again for AI-generated content!", "category": "info"},
+        {"icon": "💡", "title": "Unlimited Facts", "content": "Our AI generates fresh facts every time - try again!", "category": "info"},
+        {"icon": "🚀", "title": "Coming Soon", "content": "More amazing facts being generated. Click refresh!", "category": "info"}
+    ]
+
+print("✅ UNLIMITED AI TIPS loaded - every click generates fresh, unique content!")
