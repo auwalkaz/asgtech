@@ -623,6 +623,54 @@ body {
     left: 20px;
 }
 
+/* Reminder Info Box */
+.reminder-info {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 12px;
+    text-align: center;
+    border: 1px solid #334155;
+}
+
+.reminder-time {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #60a5fa;
+}
+
+.next-reminder {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    margin-top: 5px;
+}
+
+/* Today's Progress Cards */
+.today-stats {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.today-stat-card {
+    flex: 1;
+    background: #0f172a;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.today-stat-number {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #60a5fa;
+}
+
+.today-stat-label {
+    font-size: 0.6rem;
+    color: #94a3b8;
+}
+
 /* Toast Notification */
 .toast {
     position: fixed;
@@ -775,6 +823,10 @@ body {
         margin-left: 280px;
         padding: 24px 32px;
     }
+    
+    .today-stats {
+        gap: 12px;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -828,6 +880,110 @@ body {
                 </div>
             </div>
 
+            <!-- DAILY GOAL SETTINGS -->
+            <div class="section">
+                <div class="section-title">🎯 DAILY GOAL</div>
+                <div class="toggle-item">
+                    <span>Daily Study Target</span>
+                    <select id="dailyGoal" class="lang-select" style="width: auto; padding: 6px 12px;" onchange="saveDailyGoal()">
+                        <option value="5">5 minutes</option>
+                        <option value="10">10 minutes</option>
+                        <option value="15">15 minutes</option>
+                        <option value="30">30 minutes</option>
+                        <option value="60">60 minutes</option>
+                    </select>
+                </div>
+                <div class="toggle-item">
+                    <span>Words per day</span>
+                    <select id="wordsPerDay" class="lang-select" style="width: auto; padding: 6px 12px;" onchange="saveWordsPerDay()">
+                        <option value="5">5 words</option>
+                        <option value="10">10 words</option>
+                        <option value="15">15 words</option>
+                        <option value="20">20 words</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- REMINDER SETTINGS -->
+            <div class="section">
+                <div class="section-title">⏰ DAILY REMINDER</div>
+                <div class="toggle-item">
+                    <span>🔔 Enable Daily Reminder</span>
+                    <div class="toggle-switch" id="reminderEnableToggle" onclick="toggleReminderEnabled()">
+                        <div class="toggle-knob"></div>
+                    </div>
+                </div>
+                <div class="toggle-item" id="reminderTimeSection" style="display: none;">
+                    <span>⏰ Reminder Time</span>
+                    <select id="reminderTime" class="lang-select" style="width: auto; padding: 6px 12px;" onchange="saveReminderTime()">
+                        <option value="6:00">6:00 AM 🌅</option>
+                        <option value="7:00">7:00 AM</option>
+                        <option value="8:00">8:00 AM</option>
+                        <option value="9:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="19:00">7:00 PM</option>
+                        <option value="21:00">9:00 PM 🌙</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- DAILY REPORT SETTINGS -->
+            <div class="section">
+                <div class="section-title">📊 DAILY REPORT</div>
+                <div class="toggle-item">
+                    <span>📧 Send Daily Summary</span>
+                    <div class="toggle-switch" id="dailyReportToggle" onclick="toggleDailyReport()">
+                        <div class="toggle-knob"></div>
+                    </div>
+                </div>
+                <div class="toggle-item">
+                    <span>📱 Browser Notification</span>
+                    <div class="toggle-switch" id="browserReportToggle" onclick="toggleBrowserReport()">
+                        <div class="toggle-knob"></div>
+                    </div>
+                </div>
+                <div class="toggle-item">
+                    <span>📊 Report Format</span>
+                    <select id="reportFormat" class="lang-select" style="width: auto; padding: 6px 12px;" onchange="saveReportFormat()">
+                        <option value="simple">Simple Summary</option>
+                        <option value="detailed">Detailed Report</option>
+                        <option value="motivational">Motivational Style</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- TODAY'S PROGRESS -->
+            <div class="section">
+                <div class="section-title">📈 TODAY'S PROGRESS</div>
+                <div class="today-stats">
+                    <div class="today-stat-card">
+                        <div class="today-stat-number" id="todayWords">0</div>
+                        <div class="today-stat-label">Words Learned</div>
+                    </div>
+                    <div class="today-stat-card">
+                        <div class="today-stat-number" id="todayMinutes">0</div>
+                        <div class="today-stat-label">Minutes Studied</div>
+                    </div>
+                    <div class="today-stat-card">
+                        <div class="today-stat-number" id="todayStreak">0</div>
+                        <div class="today-stat-label">Streak</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEXT REMINDER INFO -->
+            <div class="section">
+                <div class="reminder-info" id="reminderInfoBox">
+                    <div class="reminder-time" id="nextReminderTime">--:--</div>
+                    <div class="next-reminder" id="reminderStatus">Set your reminder time</div>
+                </div>
+                <button class="level-btn" onclick="viewReportHistory()" style="width: 100%; margin-top: 12px;">📜 View Report History</button>
+            </div>
+
+            <!-- PROGRESS STATS -->
             <div class="section">
                 <div class="section-title">📈 YOUR PROGRESS</div>
                 <div class="stats-grid">
@@ -1059,29 +1215,271 @@ const languageInfo = {
     'nl': { flag: '🇳🇱', name: 'Dutch', native: 'Nederlands' }
 };
 
+// ================= TODAY'S ACTIVITY TRACKING =================
+let todayActivities = {
+    wordsLearned: 0,
+    minutesStudied: 0,
+    exercisesCompleted: 0,
+    lastActivityDate: new Date().toDateString(),
+    activities: []
+};
+
+function loadTodayActivities() {
+    const saved = localStorage.getItem('todayActivities');
+    if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed.lastActivityDate === new Date().toDateString()) {
+            todayActivities = parsed;
+        } else {
+            if (parsed.wordsLearned > 0 || parsed.minutesStudied > 0) {
+                sendDailyReport(parsed);
+            }
+            todayActivities = {
+                wordsLearned: 0,
+                minutesStudied: 0,
+                exercisesCompleted: 0,
+                lastActivityDate: new Date().toDateString(),
+                activities: []
+            };
+        }
+    }
+    updateTodayStatsDisplay();
+}
+
+function updateTodayStatsDisplay() {
+    document.getElementById('todayWords').textContent = todayActivities.wordsLearned;
+    document.getElementById('todayMinutes').textContent = todayActivities.minutesStudied;
+    document.getElementById('todayStreak').textContent = localStorage.getItem('streak') || 0;
+}
+
+function recordActivity(type, amount = 1, duration = 0) {
+    if (todayActivities.lastActivityDate !== new Date().toDateString()) {
+        if (todayActivities.wordsLearned > 0 || todayActivities.minutesStudied > 0) {
+            sendDailyReport(todayActivities);
+        }
+        todayActivities = {
+            wordsLearned: 0,
+            minutesStudied: 0,
+            exercisesCompleted: 0,
+            lastActivityDate: new Date().toDateString(),
+            activities: []
+        };
+    }
+    
+    if (type === 'word') {
+        todayActivities.wordsLearned += amount;
+    } else if (type === 'practice') {
+        todayActivities.exercisesCompleted += amount;
+    } else if (type === 'study') {
+        todayActivities.minutesStudied += duration;
+    }
+    
+    localStorage.setItem('todayActivities', JSON.stringify(todayActivities));
+    updateTodayStatsDisplay();
+    checkDailyGoalCompletion();
+}
+
+function checkDailyGoalCompletion() {
+    const wordsGoal = parseInt(localStorage.getItem('wordsPerDay') || '10');
+    const todayWords = todayActivities.wordsLearned;
+    
+    if (todayWords >= wordsGoal && !localStorage.getItem('goalAchievedToday')) {
+        addNotification(`🎉 Amazing! You reached your daily goal of ${wordsGoal} words!`, 'success');
+        localStorage.setItem('goalAchievedToday', 'true');
+    }
+}
+
+// ================= DAILY GOAL SETTINGS =================
+function saveDailyGoal() {
+    const goal = document.getElementById('dailyGoal').value;
+    localStorage.setItem('dailyGoalMinutes', goal);
+    showToast(`Daily study goal set to ${goal} minutes`, 'success');
+}
+
+function saveWordsPerDay() {
+    const words = document.getElementById('wordsPerDay').value;
+    localStorage.setItem('wordsPerDay', words);
+    showToast(`Goal: ${words} words per day`, 'success');
+}
+
+// ================= REMINDER SYSTEM =================
+let reminderInterval = null;
+
+function toggleReminderEnabled() {
+    const toggle = document.getElementById('reminderEnableToggle');
+    const isEnabled = toggle.classList.toggle('active');
+    localStorage.setItem('reminderEnabled', isEnabled);
+    
+    const timeSection = document.getElementById('reminderTimeSection');
+    if (timeSection) timeSection.style.display = isEnabled ? 'flex' : 'none';
+    
+    if (isEnabled) {
+        const savedTime = localStorage.getItem('reminderTime') || '19:00';
+        document.getElementById('reminderTime').value = savedTime;
+        startReminderScheduler();
+        showToast('Daily reminders enabled!', 'success');
+        updateReminderDisplay();
+    } else {
+        if (reminderInterval) clearInterval(reminderInterval);
+        showToast('Daily reminders disabled', 'info');
+        updateReminderDisplay();
+    }
+}
+
+function saveReminderTime() {
+    const time = document.getElementById('reminderTime').value;
+    localStorage.setItem('reminderTime', time);
+    startReminderScheduler();
+    updateReminderDisplay();
+    showToast(`Reminder set for ${time}`, 'success');
+}
+
+function startReminderScheduler() {
+    if (reminderInterval) clearInterval(reminderInterval);
+    
+    reminderInterval = setInterval(() => {
+        const enabled = localStorage.getItem('reminderEnabled') === 'true';
+        if (!enabled) return;
+        
+        const now = new Date();
+        const currentTime = `${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
+        const reminderTime = localStorage.getItem('reminderTime') || '19:00';
+        
+        if (currentTime === reminderTime) {
+            const lastSent = localStorage.getItem('lastReminderSent');
+            const today = new Date().toDateString();
+            
+            if (lastSent !== today) {
+                sendLearningReminder();
+                localStorage.setItem('lastReminderSent', today);
+            }
+        }
+    }, 60000);
+}
+
+function sendLearningReminder() {
+    const streak = parseInt(localStorage.getItem('streak') || '0');
+    const todayWords = todayActivities.wordsLearned;
+    const wordsGoal = localStorage.getItem('wordsPerDay') || 10;
+    
+    let message = '';
+    
+    if (todayWords === 0) {
+        message = `🌅 Time to practice! You haven't learned any words today. ${streak > 0 ? `Keep your ${streak} day streak alive!` : 'Start building your streak today!'}`;
+    } else if (todayWords < wordsGoal) {
+        message = `📚 You've learned ${todayWords}/${wordsGoal} words today. Keep going!`;
+    } else {
+        message = `🎉 Great job! You've reached your goal of ${todayWords} words! Streak: ${streak} days!`;
+    }
+    
+    if (localStorage.getItem('browserReportToggle') === 'true' && Notification.permission === 'granted') {
+        new Notification('Astech Learning Reminder', { body: message, icon: '/favicon.ico' });
+    }
+    
+    addNotification(message, 'reminder');
+}
+
+function updateReminderDisplay() {
+    const enabled = localStorage.getItem('reminderEnabled') === 'true';
+    const reminderTime = localStorage.getItem('reminderTime') || '19:00';
+    
+    if (enabled) {
+        document.getElementById('nextReminderTime').textContent = reminderTime;
+        document.getElementById('reminderStatus').textContent = 'Daily reminder active';
+    } else {
+        document.getElementById('nextReminderTime').textContent = 'Disabled';
+        document.getElementById('reminderStatus').textContent = 'Enable reminders in settings';
+    }
+}
+
+// ================= DAILY REPORT SYSTEM =================
+function toggleDailyReport() {
+    const toggle = document.getElementById('dailyReportToggle');
+    const isEnabled = toggle.classList.toggle('active');
+    localStorage.setItem('dailyReportEnabled', isEnabled);
+    showToast(isEnabled ? 'Daily reports enabled' : 'Daily reports disabled', 'info');
+}
+
+function toggleBrowserReport() {
+    const toggle = document.getElementById('browserReportToggle');
+    const isEnabled = toggle.classList.toggle('active');
+    localStorage.setItem('browserReportToggle', isEnabled);
+    
+    if (isEnabled && Notification.permission === 'default') {
+        Notification.requestPermission();
+    }
+    showToast(isEnabled ? 'Browser notifications enabled' : 'Browser notifications disabled', 'info');
+}
+
+function saveReportFormat() {
+    const format = document.getElementById('reportFormat').value;
+    localStorage.setItem('reportFormat', format);
+    showToast(`Report format: ${format}`, 'success');
+}
+
+function sendDailyReport(dayData) {
+    const reportEnabled = localStorage.getItem('dailyReportEnabled') === 'true';
+    if (!reportEnabled) return;
+    
+    const format = localStorage.getItem('reportFormat') || 'detailed';
+    const streak = parseInt(localStorage.getItem('streak') || '0');
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const dateStr = yesterday.toLocaleDateString();
+    
+    let report = '';
+    
+    if (format === 'simple') {
+        report = `📊 Daily Report (${dateStr})\n\nWords learned: ${dayData.wordsLearned}\nMinutes studied: ${dayData.minutesStudied}\nCurrent streak: ${streak} days`;
+    } else if (format === 'detailed') {
+        report = `📊 DETAILED DAILY REPORT\n━━━━━━━━━━━━━━━━━━━━━━\n📅 Date: ${dateStr}\n━━━━━━━━━━━━━━━━━━━━━━\n📖 Words Learned: ${dayData.wordsLearned}\n⏱️ Minutes Studied: ${dayData.minutesStudied}\n✅ Exercises: ${dayData.exercisesCompleted}\n🔥 Current Streak: ${streak} days`;
+        if (dayData.wordsLearned >= 10) {
+            report += `\n\n🏆 EXCELLENT! You exceeded your daily goal!`;
+        } else if (dayData.wordsLearned > 0) {
+            report += `\n\n💪 Good progress! Aim higher tomorrow!`;
+        }
+    } else if (format === 'motivational') {
+        const messages = ["🌟 Every word learned opens a new door!", "🚀 You're building a bridge to a new culture!", "💪 Small steps every day lead to big results!"];
+        report = `🌟 MOTIVATIONAL REPORT 🌟\n\n✨ You learned ${dayData.wordsLearned} words!\n⏰ Studied for ${dayData.minutesStudied} minutes.\n🔥 ${streak} day streak!\n\n${messages[Math.floor(Math.random() * messages.length)]}`;
+    }
+    
+    const reportHistory = JSON.parse(localStorage.getItem('reportHistory') || '[]');
+    reportHistory.unshift({ date: dateStr, report: report, wordsLearned: dayData.wordsLearned });
+    if (reportHistory.length > 30) reportHistory.pop();
+    localStorage.setItem('reportHistory', JSON.stringify(reportHistory));
+    
+    if (localStorage.getItem('browserReportToggle') === 'true' && Notification.permission === 'granted') {
+        new Notification('📊 Daily Learning Report', { body: `You learned ${dayData.wordsLearned} words yesterday!`, icon: '/favicon.ico' });
+    }
+    
+    addNotification(`📊 Daily Report: ${dayData.wordsLearned} words learned!`, 'info');
+}
+
+function viewReportHistory() {
+    const reportHistory = JSON.parse(localStorage.getItem('reportHistory') || '[]');
+    if (reportHistory.length === 0) {
+        showToast('No reports yet. Keep learning!', 'info');
+        return;
+    }
+    
+    let historyText = '📊 RECENT REPORTS\n━━━━━━━━━━━━━━━━━━━━━━\n';
+    reportHistory.slice(0, 7).forEach(report => {
+        historyText += `📅 ${report.date}\n   Words: ${report.wordsLearned}\n━━━━━━━━━━━━━━━━━━━━━━\n`;
+    });
+    alert(historyText);
+}
+
 // ================= LANGUAGE MANAGEMENT =================
 function setLanguage(langCode) {
     currentLanguage = langCode;
     localStorage.setItem('preferredLanguage', langCode);
     sessionStorage.setItem('selectedLanguage', langCode);
-    
-    // Update UI
     updateActiveLanguageDisplay();
-    
-    // Update language selector dropdown
     const langSelect = document.getElementById('globalLanguage');
     if (langSelect) langSelect.value = langCode;
-    
-    // Refresh tips for new language (clear cache)
     localStorage.removeItem('dailyTips');
     localStorage.removeItem('tipsDate');
-    
-    // Reload stats and tips for new language
-    startSession().then(() => { 
-        loadDashboardStats(); 
-        loadDailyTips(); 
-    });
-    
+    startSession().then(() => { loadDashboardStats(); loadDailyTips(); });
     showToast(`🌍 Language changed to ${languageInfo[langCode]?.name || langCode}`, 'success');
 }
 
@@ -1093,58 +1491,39 @@ function updateActiveLanguageDisplay() {
     document.getElementById('languageBadge').innerHTML = `${info.flag} Learning ${info.name}`;
 }
 
-// ================= CARD NAVIGATION WITH LANGUAGE =================
 function navigateToPage(url, title) {
-    // Save current language before navigating
     localStorage.setItem('preferredLanguage', currentLanguage);
     sessionStorage.setItem('selectedLanguage', currentLanguage);
-    
-    // Add language parameter to URL
     const separator = url.includes('?') ? '&' : '?';
-    const finalUrl = `${url}${separator}lang=${currentLanguage}`;
-    
-    window.location.href = finalUrl;
+    window.location.href = `${url}${separator}lang=${currentLanguage}`;
 }
 
 async function handleCardClick(url, title) {
-    // First check premium status
     const isPremium = await checkPremiumStatus();
-    
     if (isPremium) {
         navigateToPage(url, title);
     } else {
-        // Free user - show upgrade modal
         showUpgradeModal(title);
     }
 }
 
-// ================= PREMIUM CHECK FUNCTIONALITY =================
 async function checkPremiumStatus() {
     try {
         const response = await fetch('/api/check-premium');
         const data = await response.json();
         isPremiumUser = data.is_premium;
-        
-        // Update subscription badge
         const badge = document.getElementById('subscriptionBadge');
         if (isPremiumUser) {
             badge.innerHTML = '⭐ Premium Member';
             badge.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
-            badge.style.color = 'white';
         } else {
             badge.innerHTML = '📖 Free Account';
             badge.style.background = 'rgba(59, 130, 246, 0.2)';
-            badge.style.color = '#60a5fa';
         }
-        
         return isPremiumUser;
-    } catch (error) {
-        console.error('Error checking premium:', error);
-        return false;
-    }
+    } catch (error) { return false; }
 }
 
-// ================= SIDEBAR FUNCTIONS =================
 function openSidebar() {
     document.getElementById('sidebar').classList.add('open');
     document.getElementById('overlay').classList.add('active');
@@ -1160,21 +1539,17 @@ function closeSidebar() {
 function updateGreeting() {
     const hour = new Date().getHours();
     const greetingElement = document.getElementById('greetingText');
-    let greeting = '';
-    let emoji = '';
-    
+    let greeting = '', emoji = '';
     if (hour < 12) { greeting = 'Good morning'; emoji = '🌅'; }
     else if (hour < 18) { greeting = 'Good afternoon'; emoji = '☀️'; }
     else { greeting = 'Good evening'; emoji = '🌙'; }
-    
     greetingElement.innerHTML = `${greeting}, ${userName}! ${emoji}`;
 }
 
 async function startSession() {
     try {
         const response = await fetch(`${API_BASE}/session/start`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ language: currentLanguage, level: userLevel, name: userName })
         });
         const data = await response.json();
@@ -1184,10 +1559,7 @@ async function startSession() {
             return true;
         }
         return false;
-    } catch (error) {
-        console.error('Session error:', error);
-        return false;
-    }
+    } catch (error) { return false; }
 }
 
 function selectLevel(level) {
@@ -1197,7 +1569,7 @@ function selectLevel(level) {
         btn.classList.remove('active');
         if (btn.dataset.level === level) btn.classList.add('active');
     });
-    const levelNames = { 'beginner': '🌱 Beginner Level', 'intermediate': '🌟 Intermediate Level', 'advanced': '🚀 Advanced Level' };
+    const levelNames = { beginner: '🌱 Beginner Level', intermediate: '🌟 Intermediate Level', advanced: '🚀 Advanced Level' };
     document.getElementById('levelBadge').innerHTML = levelNames[level];
     startSession().then(() => loadDashboardStats());
 }
@@ -1224,25 +1596,15 @@ async function loadDashboardStats() {
     } catch (error) { console.error('Error loading stats:', error); }
 }
 
-// ================= DAILY TIPS WITH AUTO-REFRESH =================
-let tipsData = [];
-let currentTipIndex = 0;
-let autoSlideInterval = null;
-const slideIntervalTime = 7000;
+// ================= DAILY TIPS =================
+let tipsData = [], currentTipIndex = 0, autoSlideInterval = null;
 
-function getTodayKey() {
-    return new Date().toISOString().split('T')[0];
-}
+function getTodayKey() { return new Date().toISOString().split('T')[0]; }
 
 function getStoredTips() {
     const stored = localStorage.getItem('dailyTips');
     const storedDate = localStorage.getItem('tipsDate');
-    const today = getTodayKey();
-    
-    if (stored && storedDate === today) {
-        return JSON.parse(stored);
-    }
-    return null;
+    return (stored && storedDate === getTodayKey()) ? JSON.parse(stored) : null;
 }
 
 function saveTipsToStorage(tips) {
@@ -1253,12 +1615,8 @@ function saveTipsToStorage(tips) {
 async function loadDailyTips() {
     const track = document.getElementById('carouselTrack');
     const dotsContainer = document.getElementById('carouselDots');
-    const tipDateSpan = document.getElementById('tipDate');
+    document.getElementById('tipDate').innerHTML = `📅 ${new Date().toLocaleDateString()}`;
     
-    // Show today's date
-    tipDateSpan.innerHTML = `📅 ${new Date().toLocaleDateString()}`;
-    
-    // Check if we already have today's tips
     const cachedTips = getStoredTips();
     if (cachedTips && cachedTips.length > 0) {
         tipsData = cachedTips;
@@ -1267,172 +1625,70 @@ async function loadDailyTips() {
         return;
     }
     
-    // Fetch new tips from API
-    track.innerHTML = '<div class="carousel-slide"><div class="tip-card-integrated"><div class="tip-icon-large">🤖</div><div class="tip-content-wrapper"><div class="tip-title-bold">Generating daily tips...</div><div class="tip-text-bold">Creating fresh educational content for you!</div><div class="tip-category-light">AI Generating</div></div></div></div>';
+    track.innerHTML = '<div class="carousel-slide"><div class="tip-card-integrated"><div class="tip-icon-large">🤖</div><div class="tip-content-wrapper"><div class="tip-title-bold">Generating daily tips...</div><div class="tip-text-bold">Creating fresh educational content for you!</div></div></div></div>';
     
     try {
-        const response = await fetch(`${API_BASE}/tips/generate?category=all&language=${currentLanguage}&count=6&t=${Date.now()}`);
+        const response = await fetch(`${API_BASE}/tips/generate?category=all&language=${currentLanguage}&count=6`);
         const data = await response.json();
-        
-        if (data.success && data.tips && data.tips.length > 0) {
-            tipsData = data.tips.map(tip => ({
-                icon: getIconForCategory(tip.category),
-                title: tip.title,
-                content: tip.content,
-                category: tip.category
-            }));
+        if (data.success && data.tips) {
+            tipsData = data.tips.map(tip => ({ icon: getIconForCategory(tip.category), title: tip.title, content: tip.content, category: tip.category }));
             saveTipsToStorage(tipsData);
-        } else {
-            throw new Error('No tips received');
-        }
+        } else throw new Error();
     } catch (error) {
-        console.error('Tips error:', error);
         tipsData = getFallbackTips();
         saveTipsToStorage(tipsData);
     }
-    
     displayTipsInCarousel(track, dotsContainer);
     startAutoSlide();
-}
-
-function refreshTipsManually() {
-    // Clear cached tips to force new fetch
-    localStorage.removeItem('dailyTips');
-    localStorage.removeItem('tipsDate');
-    loadDailyTips();
-    showToast('✨ Fetching fresh tips!', 'success');
 }
 
 function getFallbackTips() {
     return [
         { icon: "💡", title: "15-Minute Rule", content: "Study for 15 minutes daily - consistency beats intensity!", category: "Learning" },
-        { icon: "🧠", title: "Spaced Repetition", content: "Review words just before you forget them - it's the most efficient way to memorize!", category: "Memory" },
-        { icon: "🎯", title: "Set Small Goals", content: "Small daily goals lead to big achievements!", category: "Motivation" },
-        { icon: "🗣️", title: "Practice Speaking", content: "Talk to yourself in your target language - it works!", category: "Speaking" },
-        { icon: "📖", title: "Read Daily", content: "Read 5 minutes every day in your target language!", category: "Reading" },
-        { icon: "✍️", title: "Write Every Day", content: "Keep a journal in your target language - even one sentence helps!", category: "Writing" }
+        { icon: "🧠", title: "Spaced Repetition", content: "Review words just before you forget them!", category: "Memory" },
+        { icon: "🎯", title: "Set Small Goals", content: "Small daily goals lead to big achievements!", category: "Motivation" }
     ];
 }
 
 function getIconForCategory(category) {
-    const icons = { 
-        'learning': '💡', 'memory': '🧠', 'motivation': '🎯', 
-        'speaking': '🗣️', 'reading': '📖', 'writing': '✍️', 
-        'listening': '🎧', 'culture': '🌍', 'grammar': '📐',
-        'vocabulary': '📚', 'pronunciation': '🔊'
-    };
+    const icons = { learning: '💡', memory: '🧠', motivation: '🎯', speaking: '🗣️', reading: '📖', writing: '✍️' };
     return icons[category?.toLowerCase()] || '💡';
 }
 
 function displayTipsInCarousel(track, dotsContainer) {
-    if (!tipsData || tipsData.length === 0) tipsData = getFallbackTips();
-    
-    track.innerHTML = tipsData.map((tip) => `
+    track.innerHTML = tipsData.map(tip => `
         <div class="carousel-slide">
             <div class="tip-card-integrated">
                 <div class="tip-icon-large">${tip.icon}</div>
                 <div class="tip-content-wrapper">
                     <div class="tip-title-bold">${escapeHtml(tip.title)}</div>
                     <div class="tip-text-bold">${escapeHtml(tip.content)}</div>
-                    <div class="tip-category-light">📖 ${tip.category || 'Education'}</div>
+                    <div class="tip-category-light">📖 ${tip.category}</div>
                 </div>
             </div>
         </div>
     `).join('');
-    
-    dotsContainer.innerHTML = tipsData.map((_, index) => `<div class="dot ${index === 0 ? 'active' : ''}" onclick="goToTip(${index})"></div>`).join('');
+    dotsContainer.innerHTML = tipsData.map((_, i) => `<div class="dot ${i === 0 ? 'active' : ''}" onclick="goToTip(${i})"></div>`).join('');
     currentTipIndex = 0;
-    updateCarouselPosition();
 }
 
-function startAutoSlide() {
-    if (autoSlideInterval) clearInterval(autoSlideInterval);
-    autoSlideInterval = setInterval(() => nextTip(), slideIntervalTime);
-}
-
-function nextTip() {
-    if (tipsData.length === 0) return;
-    currentTipIndex = (currentTipIndex + 1) % tipsData.length;
-    updateCarouselPosition();
-    updateDots();
-}
-
-function prevTip() {
-    if (tipsData.length === 0) return;
-    currentTipIndex = (currentTipIndex - 1 + tipsData.length) % tipsData.length;
-    updateCarouselPosition();
-    updateDots();
-}
-
-function goToTip(index) {
-    if (index >= tipsData.length) return;
-    currentTipIndex = index;
-    updateCarouselPosition();
-    updateDots();
-    startAutoSlide();
-}
-
-function updateCarouselPosition() {
-    const track = document.getElementById('carouselTrack');
-    if (track) {
-        track.style.transform = `translateX(-${currentTipIndex * 100}%)`;
-    }
-}
-
-function updateDots() {
-    const dots = document.querySelectorAll('.dot');
-    dots.forEach((dot, index) => {
-        if (index === currentTipIndex) dot.classList.add('active');
-        else dot.classList.remove('active');
-    });
-}
-
-// ================= UPGRADE MODAL =================
-function showUpgradeModal(cardName) {
-    const existingModal = document.getElementById('upgradeModal');
-    if (existingModal) existingModal.remove();
-    
-    const modal = document.createElement('div');
-    modal.id = 'upgradeModal';
-    modal.className = 'upgrade-modal';
-    
-    modal.innerHTML = `
-        <div class="upgrade-modal-content">
-            <div style="font-size: 4rem; margin-bottom: 10px;">🔒</div>
-            <h2>Premium Required</h2>
-            <p>"<strong style="color: #f59e0b;">${escapeHtml(cardName)}</strong>" is a premium feature.</p>
-            <p>Upgrade to unlock all learning features!</p>
-            
-            <div class="upgrade-benefits">
-                <p>✓ Unlimited AI grammar checks</p>
-                <p>✓ Unlimited vocabulary words</p>
-                <p>✓ Voice pronunciation lessons</p>
-                <p>✓ Downloadable certificates</p>
-                <p>✓ No advertisements</p>
-                <p>✓ Priority support</p>
-            </div>
-            
-            <div>
-                <button class="upgrade-btn" onclick="window.location.href='/upgrade'">🚀 Upgrade Now</button>
-                <button class="later-btn" onclick="closeUpgradeModal()">Maybe Later</button>
-            </div>
-            
-            <div style="margin-top: 15px; font-size: 0.7rem; color: #475569;">
-                <a href="/auth" style="color: #60a5fa;">Switch account</a> | 
-                <a href="/dev-panel" style="color: #60a5fa;">Developer Panel</a>
-            </div>
-        </div>
-    `;
-    
-    document.body.appendChild(modal);
-}
-
-function closeUpgradeModal() {
-    const modal = document.getElementById('upgradeModal');
-    if (modal) modal.remove();
-}
+function startAutoSlide() { if (autoSlideInterval) clearInterval(autoSlideInterval); autoSlideInterval = setInterval(() => nextTip(), 7000); }
+function nextTip() { if (tipsData.length) currentTipIndex = (currentTipIndex + 1) % tipsData.length; updateCarousel(); }
+function prevTip() { if (tipsData.length) currentTipIndex = (currentTipIndex - 1 + tipsData.length) % tipsData.length; updateCarousel(); }
+function goToTip(index) { currentTipIndex = index; updateCarousel(); startAutoSlide(); }
+function updateCarousel() { const track = document.getElementById('carouselTrack'); if (track) track.style.transform = `translateX(-${currentTipIndex * 100}%)`; document.querySelectorAll('.dot').forEach((dot, i) => dot.classList.toggle('active', i === currentTipIndex)); }
+function refreshTipsManually() { localStorage.removeItem('dailyTips'); localStorage.removeItem('tipsDate'); loadDailyTips(); showToast('✨ Fresh tips loaded!', 'success'); }
 
 // ================= UTILITIES =================
+let notifications = JSON.parse(localStorage.getItem('notifications') || '[]');
+
+function addNotification(message, type = 'info') {
+    const icons = { success: '🎉', warning: '⚠️', info: 'ℹ️', reminder: '🔔' };
+    notifications.unshift({ id: Date.now(), message, icon: icons[type] || '📌', timestamp: new Date().toLocaleTimeString(), read: false });
+    if (notifications.length > 50) notifications.pop();
+    localStorage.setItem('notifications', JSON.stringify(notifications));
+}
+
 function showToast(message, type = 'success') {
     const toast = document.createElement('div');
     toast.className = 'toast';
@@ -1444,115 +1700,88 @@ function showToast(message, type = 'success') {
 
 function toggleSaveHistory() {
     const toggle = document.getElementById('saveHistoryToggle');
-    const isActive = toggle.classList.contains('active');
-    if (isActive) {
-        toggle.classList.remove('active');
-        localStorage.setItem('saveHistory', 'false');
-    } else {
-        toggle.classList.add('active');
-        localStorage.setItem('saveHistory', 'true');
-    }
+    toggle.classList.toggle('active');
+    localStorage.setItem('saveHistory', toggle.classList.contains('active'));
 }
 
 function toggleReminders() {
     const toggle = document.getElementById('remindersToggle');
-    const isActive = toggle.classList.contains('active');
-    if (isActive) {
-        toggle.classList.remove('active');
-        localStorage.setItem('reminders', 'false');
-    } else {
-        toggle.classList.add('active');
-        localStorage.setItem('reminders', 'true');
-        if ('Notification' in window && Notification.permission === 'default') {
-            Notification.requestPermission();
-        }
-    }
+    toggle.classList.toggle('active');
+    localStorage.setItem('reminders', toggle.classList.contains('active'));
+    if (Notification.permission === 'default') Notification.requestPermission();
+    showToast(toggle.classList.contains('active') ? 'Daily reminders enabled!' : 'Daily reminders disabled', 'info');
 }
 
-function escapeHtml(str) {
-    if (!str) return '';
-    return str.replace(/[&<>]/g, function(m) {
-        if (m === '&') return '&amp;';
-        if (m === '<') return '&lt;';
-        if (m === '>') return '&gt;';
-        return m;
-    });
+function showUpgradeModal(cardName) {
+    const modal = document.createElement('div');
+    modal.className = 'upgrade-modal';
+    modal.innerHTML = `<div class="upgrade-modal-content"><div style="font-size:4rem;">🔒</div><h2>Premium Required</h2><p>"${escapeHtml(cardName)}" is a premium feature.</p><button class="upgrade-btn" onclick="this.parentElement.parentElement.remove()">Close</button></div>`;
+    document.body.appendChild(modal);
 }
 
-// ================= INITIALIZE CARDS =================
+function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m])); }
+
 function initializeCards() {
-    const cards = document.querySelectorAll('.path-card');
-    cards.forEach(card => {
-        const url = card.getAttribute('data-url');
-        const title = card.getAttribute('data-title');
-        
-        if (url && title) {
-            const newCard = card.cloneNode(true);
-            card.parentNode.replaceChild(newCard, card);
-            
-            newCard.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                handleCardClick(url, title);
-            });
-        }
+    document.querySelectorAll('.path-card').forEach(card => {
+        const url = card.dataset.url, title = card.dataset.title;
+        if (url && title) card.addEventListener('click', () => handleCardClick(url, title));
     });
 }
 
-// Auto-refresh tips at midnight
 function scheduleMidnightRefresh() {
     const now = new Date();
     const night = new Date(now);
     night.setHours(24, 0, 0, 0);
-    const msUntilMidnight = night - now;
-    
-    setTimeout(() => {
-        loadDailyTips();
-        scheduleMidnightRefresh();
-    }, msUntilMidnight);
+    setTimeout(() => { loadDailyTips(); scheduleMidnightRefresh(); }, night - now);
 }
 
-// ================= INITIALIZATION =================
+function loadSettings() {
+    const savedDailyGoal = localStorage.getItem('dailyGoalMinutes') || '15';
+    const savedWordsPerDay = localStorage.getItem('wordsPerDay') || '10';
+    const reminderEnabled = localStorage.getItem('reminderEnabled') === 'true';
+    const reminderTime = localStorage.getItem('reminderTime') || '19:00';
+    const dailyReport = localStorage.getItem('dailyReportEnabled') === 'true';
+    const browserReport = localStorage.getItem('browserReportToggle') === 'true';
+    const reportFormat = localStorage.getItem('reportFormat') || 'detailed';
+    
+    document.getElementById('dailyGoal').value = savedDailyGoal;
+    document.getElementById('wordsPerDay').value = savedWordsPerDay;
+    document.getElementById('reminderTime').value = reminderTime;
+    document.getElementById('reportFormat').value = reportFormat;
+    
+    if (reminderEnabled) {
+        document.getElementById('reminderEnableToggle')?.classList.add('active');
+        document.getElementById('reminderTimeSection').style.display = 'flex';
+        startReminderScheduler();
+    }
+    if (dailyReport) document.getElementById('dailyReportToggle')?.classList.add('active');
+    if (browserReport) document.getElementById('browserReportToggle')?.classList.add('active');
+    
+    updateReminderDisplay();
+}
+
 function init() {
     updateGreeting();
     updateActiveLanguageDisplay();
-    
-    document.querySelectorAll('.level-btn').forEach(btn => {
-        if (btn.dataset.level === userLevel) btn.classList.add('active');
-    });
-    
     document.getElementById('globalLanguage').value = currentLanguage;
-    
-    const levelNames = { 'beginner': '🌱 Beginner Level', 'intermediate': '🌟 Intermediate Level', 'advanced': '🚀 Advanced Level' };
-    document.getElementById('levelBadge').innerHTML = levelNames[userLevel];
+    document.getElementById('globalLanguage').addEventListener('change', e => setLanguage(e.target.value));
+    document.querySelectorAll('.level-btn').forEach(btn => { if (btn.dataset.level === userLevel) btn.classList.add('active'); });
     
     const saveHistory = localStorage.getItem('saveHistory') !== 'false';
     const reminders = localStorage.getItem('reminders') === 'true';
-    
     if (saveHistory) document.getElementById('saveHistoryToggle')?.classList.add('active');
     if (reminders) document.getElementById('remindersToggle')?.classList.add('active');
     
     startSession().then(() => { loadDashboardStats(); loadDailyTips(); });
-    
-    // Language selector event
-    document.getElementById('globalLanguage').addEventListener('change', function(e) {
-        setLanguage(e.target.value);
-    });
-    
-    // Initialize cards after everything
-    setTimeout(() => {
-        initializeCards();
-        checkPremiumStatus();
-    }, 500);
-    
-    // Schedule midnight refresh for tips
+    loadTodayActivities();
+    loadSettings();
+    initializeCards();
+    checkPremiumStatus();
     scheduleMidnightRefresh();
+    
+    if (Notification.permission === 'default') Notification.requestPermission();
 }
 
-// Start the app
-init();
-
-// Make functions available globally
 window.openSidebar = openSidebar;
 window.closeSidebar = closeSidebar;
 window.selectLevel = selectLevel;
@@ -1562,8 +1791,17 @@ window.nextTip = nextTip;
 window.goToTip = goToTip;
 window.toggleSaveHistory = toggleSaveHistory;
 window.toggleReminders = toggleReminders;
-window.closeUpgradeModal = closeUpgradeModal;
 window.setLanguage = setLanguage;
+window.saveDailyGoal = saveDailyGoal;
+window.saveWordsPerDay = saveWordsPerDay;
+window.toggleReminderEnabled = toggleReminderEnabled;
+window.saveReminderTime = saveReminderTime;
+window.toggleDailyReport = toggleDailyReport;
+window.toggleBrowserReport = toggleBrowserReport;
+window.saveReportFormat = saveReportFormat;
+window.viewReportHistory = viewReportHistory;
+
+init();
 </script>
 </body>
 </html>
