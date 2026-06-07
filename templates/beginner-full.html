@@ -616,6 +616,33 @@
 </div>
 
 <script>
+    // ==================== TRACK ACTIVITY FOR DASHBOARD ====================
+    function trackVocabularyActivity(wordLearned) {
+        let todayActivities = JSON.parse(localStorage.getItem('todayActivities') || '{}');
+        todayActivities.vocabulary = (todayActivities.vocabulary || 0) + 1;
+        todayActivities.lastActivityDate = new Date().toDateString();
+        localStorage.setItem('todayActivities', JSON.stringify(todayActivities));
+        
+        if (window.parent && window.parent !== window) {
+            window.parent.postMessage({ 
+                type: 'learning_activity', 
+                activity: { type: 'vocabulary', word: wordLearned } 
+            }, '*');
+        }
+    }
+
+    // Track study time
+    let studyStartTime = Date.now();
+    window.addEventListener('beforeunload', function() {
+        const minutesStudied = Math.round((Date.now() - studyStartTime) / 60000);
+        if (minutesStudied > 0) {
+            let todayActivities = JSON.parse(localStorage.getItem('todayActivities') || '{}');
+            todayActivities.minutesStudied = (todayActivities.minutesStudied || 0) + minutesStudied;
+            todayActivities.lastActivityDate = new Date().toDateString();
+            localStorage.setItem('todayActivities', JSON.stringify(todayActivities));
+        }
+    });
+
     // ==================== GET LANGUAGE FROM URL / STORAGE ====================
     function getInitialLanguage() {
         // Priority 1: URL parameter
@@ -795,7 +822,6 @@
     }
     
     function resetLearning() {
-        currentWordIndex = 0;
         currentStep = 1;
         stepCompleted = { 1: false, 2: false, 3: false, 4: false, 5: false };
         updateStepsUI();
@@ -809,7 +835,7 @@
                     <div style="font-size: 4rem;">🏆🎉</div>
                     <h2>Congratulations!</h2>
                     <p>You've completed all ${vocabularyWords.length} words!</p>
-                    <button class="btn btn-primary" onclick="resetLearning()" style="margin-top: 15px;">Start Over</button>
+                    <button class="btn btn-primary" onclick="location.reload()" style="margin-top: 15px;">Start New Session</button>
                 </div>
             `;
             return;
@@ -1118,12 +1144,45 @@
                 totalPoints += 30;
                 updateStats();
                 triggerConfetti();
+                // Track activity for dashboard
+                trackVocabularyActivity(currentWord.word);
             }
-            setTimeout(() => { currentWordIndex++; resetLearning(); }, 1500);
+            
+            // Auto-advance to next word after celebration
+            setTimeout(() => { 
+                currentWordIndex++;
+                
+                if (currentWordIndex < vocabularyWords.length) {
+                    // Load next word
+                    currentStep = 1;
+                    stepCompleted = { 1: false, 2: false, 3: false, 4: false, 5: false };
+                    updateStepsUI();
+                    loadCurrentWord();
+                    showToast(`Next word: ${vocabularyWords[currentWordIndex]?.word || 'Loading...'}`, 'info');
+                } else {
+                    // All words completed
+                    document.getElementById('learningCard').innerHTML = `
+                        <div style="text-align: center; padding: 40px;">
+                            <div style="font-size: 4rem;">🏆🎉</div>
+                            <h2>Congratulations!</h2>
+                            <p>You've mastered all ${vocabularyWords.length} words!</p>
+                            <button class="btn btn-primary" onclick="location.reload()" style="margin-top: 15px;">Start New Session</button>
+                        </div>
+                    `;
+                }
+            }, 2000);
         } else {
             feedback.innerHTML = `<div class="feedback wrong">❌ Correct word: "${escapeHtml(correct)}"</div>`;
             streak = 0;
             updateStats();
+            
+            // Clear feedback after 3 seconds
+            setTimeout(() => {
+                if (feedback.innerHTML.includes('❌')) {
+                    feedback.innerHTML = '';
+                    feedback.className = 'feedback';
+                }
+            }, 3000);
         }
     }
     
