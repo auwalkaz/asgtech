@@ -4,6 +4,7 @@ from config import config
 from datetime import datetime
 import os
 import secrets
+import hashlib
 from datetime import timedelta
 from functools import wraps
 
@@ -35,13 +36,30 @@ app.register_blueprint(lingua_bp)
 app.register_blueprint(translation_bp)
 app.register_blueprint(json_bp)
 
+# ================= HELPER FUNCTION FOR JSON PATH (FIXED FOR RENDER) =================
+def get_json_folder():
+    """Get the correct JSON folder path that works on both local and Render"""
+    possible_paths = [
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), 'json'),
+        '/opt/render/project/src/json',
+        os.path.join(os.getcwd(), 'json'),
+        '/home/auwalkz/app/json',
+    ]
+    
+    for path in possible_paths:
+        if os.path.exists(path):
+            print(f"✅ Found JSON folder at: {path}")
+            return path
+    
+    os.makedirs(possible_paths[0], exist_ok=True)
+    return possible_paths[0]
+
 # ================= PREMIUM CHECK DECORATOR =================
 
 def premium_required(f):
     """Decorator to check if user has premium access"""
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        # Check if user is logged in
         if 'user_id' not in session:
             return redirect('/auth')
         
@@ -50,7 +68,6 @@ def premium_required(f):
         user_data = users.get(user_email, {})
         subscription_tier = user_data.get('subscription_tier', 'free')
         
-        # Check if user has premium (not free)
         if subscription_tier == 'free':
             return redirect('/upgrade-required')
         
@@ -70,7 +87,6 @@ def get_user_subscription():
 def home():
     return render_template('index.html')
 
-# Premium-only routes (require premium subscription)
 @app.route("/beginner-full.html")
 @premium_required
 def beginner_full():
@@ -116,7 +132,6 @@ def language_translator():
 def grammar_practice():
     return render_template('grammar-practice.html')
 
-# Writing practice route
 @app.route("/writing")
 @premium_required
 def writing_practice():
@@ -140,27 +155,20 @@ def health_check():
 @app.route('/login')
 @app.route('/signup')
 def auth_page():
-    """Serve the authentication page"""
-    # If already logged in, redirect to home
     if 'user_id' in session:
         return redirect('/')
     return render_template('auth.html')
 
-# ================= UPGRADE PAGES =================
-
 @app.route('/upgrade-required')
 def upgrade_required():
-    """Page shown when free user tries to access premium content"""
     return render_template('upgrade-required.html')
 
 @app.route('/upgrade')
 def upgrade_page():
-    """Premium upgrade page"""
     return render_template('upgrade.html')
 
 @app.route('/api/check-premium')
 def check_premium():
-    """API endpoint to check if user has premium access"""
     subscription_tier = get_user_subscription()
     return jsonify({
         'is_premium': subscription_tier != 'free',
@@ -168,168 +176,324 @@ def check_premium():
         'is_logged_in': 'user_id' in session
     })
 
-# ================= DEVELOPMENT QUICK LOGIN =================
+# ================= JSON ROUTES FOR WORDBANK FILES =================
 
-@app.route('/dev-login')
-def dev_login():
-    """Quick development login - bypasses password"""
-    test_email = 'dev@localhost'
-    test_name = 'Developer'
+@app.route('/api/words/<language>')
+def get_words_api(language):
+    """Get words for a specific language"""
+    import json
+    import random
     
-    if 'users' not in session:
-        session['users'] = {}
+    json_folder = get_json_folder()
+    file_path = os.path.join(json_folder, f'wordbank_{language}.json')
     
-    if test_email not in session['users']:
-        user_id = 'dev_' + secrets.token_hex(8)
-        session['users'][test_email] = {
-            'id': user_id,
-            'email': test_email,
-            'name': test_name,
-            'subscription_tier': 'premium_yearly',
-            'subscription_expires': (datetime.now() + timedelta(days=365)).isoformat(),
-            'created_at': datetime.now().isoformat(),
-            'total_points': 9999,
-            'streak_days': 30,
-            'last_active': datetime.now().isoformat(),
-            'usage': {}
+    if not os.path.exists(file_path):
+        file_path = os.path.join(json_folder, f'{language}.json')
+    
+    if os.path.exists(file_path):
+        with open(file_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        if isinstance(data, dict) and 'words' in data:
+            words = data['words']
+        elif isinstance(data, list):
+            words = data
+        else:
+            words = []
+        
+        return jsonify({
+            "success": True,
+            "language": language,
+            "words": words,
+            "count": len(words)
+        })
+    
+    return jsonify({"success": False, "error": f"No word bank for {language}", "words": []}), 404
+
+@app.route('/api/words/list')
+def get_languages_list():
+    """Get list of available languages"""
+    import json
+    
+    json_folder = get_json_folder()
+    languages = ['en', 'es', 'fr', 'de', 'it', 'pt', 'sw', 'zh', 'ar', 'hi']
+    
+    if os.path.exists(json_folder):
+        found = []
+        for file in os.listdir(json_folder):
+            if file.startswith('wordbank_') and file.endswith('.json'):
+                lang = file.replace('wordbank_', '').replace('.json', '')
+                found.append(lang)
+        if found:
+            languages = found
+    
+    return jsonify({"success": True, "languages": sorted(languages)})
+
+# ================= VOCABULARY API =================
+
+@app.route('/api/vocabulary/words', methods=['GET'])
+def get_vocabulary_words():
+    """Get vocabulary words"""
+    import json
+    
+    language = request.args.get('language', 'en')
+    page = int(request.args.get('page', 1))
+    search = request.args.get('search', '')
+    per_page = 12
+    
+    json_folder = get_json_folder()
+    file_path = os.path.join(json_folder, f'wordbank_{language}.json')
+    
+    if os.path.exists(file_path):
+        with open(file_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        words = data.get('words', []) if isinstance(data, dict) else data
+        
+        if search:
+            words = [w for w in words if search.lower() in w.get('word', '').lower()]
+        
+        for idx, w in enumerate(words):
+            if 'id' not in w:
+                w['id'] = str(idx + 1)
+            if 'mastery_level' not in w:
+                w['mastery_level'] = 0
+        
+        total = len(words)
+        total_pages = (total + per_page - 1) // per_page
+        start = (page - 1) * per_page
+        end = start + per_page
+        
+        return jsonify({
+            'success': True,
+            'words': words[start:end],
+            'page': page,
+            'total_pages': total_pages,
+            'total': total
+        })
+    
+    return jsonify({'success': True, 'words': [], 'page': 1, 'total_pages': 0, 'total': 0})
+
+@app.route('/api/vocabulary/words', methods=['POST'])
+def add_vocabulary_word():
+    """Add a word to vocabulary"""
+    data = request.json
+    # Store in session for now
+    if 'user_vocabulary' not in session:
+        session['user_vocabulary'] = []
+    
+    word_data = {
+        'id': str(len(session['user_vocabulary']) + 1),
+        'word': data.get('word'),
+        'meaning': data.get('meaning'),
+        'example': data.get('example', ''),
+        'part_of_speech': data.get('part_of_speech', 'noun'),
+        'mastery_level': 0,
+        'created_at': datetime.now().isoformat()
+    }
+    
+    session['user_vocabulary'].append(word_data)
+    session.modified = True
+    
+    return jsonify({'success': True, 'word': word_data})
+
+@app.route('/api/vocabulary/words/<word_id>', methods=['DELETE'])
+def delete_vocabulary_word(word_id):
+    """Delete a word from vocabulary"""
+    if 'user_vocabulary' in session:
+        session['user_vocabulary'] = [w for w in session['user_vocabulary'] if w.get('id') != word_id]
+        session.modified = True
+    
+    return jsonify({'success': True})
+
+@app.route('/api/vocabulary/practice/record', methods=['POST'])
+def record_practice():
+    """Record practice result"""
+    data = request.json
+    word_id = data.get('word_id')
+    correct = data.get('correct', False)
+    
+    if 'user_vocabulary' in session:
+        for word in session['user_vocabulary']:
+            if word.get('id') == word_id:
+                if correct and word.get('mastery_level', 0) < 5:
+                    word['mastery_level'] = word.get('mastery_level', 0) + 1
+                break
+        session.modified = True
+    
+    return jsonify({'success': True, 'mastery_level': word.get('mastery_level', 0) if 'word' in locals() else 0})
+
+@app.route('/api/vocabulary/quiz/generate', methods=['POST'])
+def generate_quiz():
+    """Generate a quiz"""
+    import random
+    
+    data = request.json
+    language = data.get('language', 'en')
+    word_count = min(data.get('word_count', 5), 10)
+    
+    json_folder = get_json_folder()
+    file_path = os.path.join(json_folder, f'wordbank_{language}.json')
+    
+    if os.path.exists(file_path):
+        import json
+        with open(file_path, 'r', encoding='utf-8') as f:
+            words_data = json.load(f)
+        
+        words = words_data.get('words', []) if isinstance(words_data, dict) else words_data
+        random.shuffle(words)
+        selected = words[:word_count]
+        
+        questions = []
+        for w in selected:
+            options = [w.get('meaning', '')]
+            other_meanings = [ow.get('meaning', '') for ow in words if ow.get('word') != w.get('word')]
+            options.extend(random.sample(other_meanings, min(3, len(other_meanings))))
+            random.shuffle(options)
+            
+            questions.append({
+                'id': w.get('id', w.get('word')),
+                'question': f"What is the meaning of '{w.get('word')}'?",
+                'options': options,
+                'correct_answer': w.get('meaning', ''),
+                'example': w.get('example', '')
+            })
+        
+        return jsonify({'success': True, 'questions': questions, 'total': len(questions)})
+    
+    return jsonify({'success': False, 'error': 'No words available'}), 404
+
+@app.route('/api/vocabulary/stats')
+def get_vocabulary_stats():
+    """Get vocabulary statistics"""
+    language = request.args.get('language', 'en')
+    
+    json_folder = get_json_folder()
+    file_path = os.path.join(json_folder, f'wordbank_{language}.json')
+    
+    total_words = 0
+    if os.path.exists(file_path):
+        import json
+        with open(file_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        words = data.get('words', []) if isinstance(data, dict) else data
+        total_words = len(words)
+    
+    mastered = 0
+    if 'user_vocabulary' in session:
+        mastered = len([w for w in session['user_vocabulary'] if w.get('mastery_level', 0) >= 3])
+    
+    return jsonify({
+        'success': True,
+        'stats': {
+            'total_words': total_words,
+            'mastered_words': mastered,
+            'learning_words': max(0, total_words - mastered),
+            'total_practices': 0,
+            'streak_days': 0,
+            'weekly_progress': 0,
+            'average_accuracy': 0
         }
+    })
+
+# ================= DAILY WORDS API =================
+
+@app.route('/api/daily-words')
+def get_daily_words():
+    """Get daily words"""
+    import json
+    import random
     
-    session.permanent = True
-    session['user_id'] = session['users'][test_email]['id']
-    session['user_email'] = test_email
-    session['user_name'] = test_name
+    language = request.args.get('language', 'en')
+    json_folder = get_json_folder()
+    file_path = os.path.join(json_folder, f'wordbank_{language}.json')
+    
+    if os.path.exists(file_path):
+        with open(file_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        words = data.get('words', []) if isinstance(data, dict) else data
+        random.shuffle(words)
+        
+        return jsonify({
+            'success': True,
+            'words': words[:10],
+            'date': datetime.now().strftime('%Y-%m-%d')
+        })
+    
+    # Fallback
+    return jsonify({
+        'success': True,
+        'words': [
+            {'word': 'Hello', 'meaning': 'A greeting', 'example': 'Hello world!', 'pronunciation': '/həˈləʊ/'},
+            {'word': 'World', 'meaning': 'The earth', 'example': 'Hello world!', 'pronunciation': '/wɜːld/'}
+        ],
+        'date': datetime.now().strftime('%Y-%m-%d')
+    })
+
+# ================= DASHBOARD STATS =================
+
+@app.route('/api/dashboard/stats')
+def dashboard_stats():
+    """Get dashboard statistics"""
+    return jsonify({
+        'success': True,
+        'stats': {
+            'words_learned': len(session.get('user_vocabulary', [])),
+            'speaking_score': 0,
+            'writing_score': 0,
+            'reading_score': 0,
+            'daily_streak': 0,
+            'overall_progress': 0
+        }
+    })
+
+@app.route('/api/session/start', methods=['POST'])
+def start_session():
+    """Start a learning session"""
+    return jsonify({'success': True, 'session_id': secrets.token_hex(16)})
+
+@app.route('/api/activity/save', methods=['POST'])
+def save_activity():
+    """Save user activity"""
+    data = request.json
+    if 'activities' not in session:
+        session['activities'] = []
+    
+    session['activities'].append({
+        'type': data.get('type'),
+        'points': data.get('points', 0),
+        'timestamp': datetime.now().isoformat()
+    })
     session.modified = True
     
-    return '''
-    <html>
-    <head><title>Dev Login - Astech</title>
-    <style>
-        body { background: linear-gradient(135deg, #0f172a, #1e1b4b); font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; color: white; }
-        .container { text-align: center; background: #1e293b; padding: 40px; border-radius: 20px; }
-        button { background: #3b82f6; border: none; padding: 10px 20px; border-radius: 10px; color: white; cursor: pointer; margin-top: 20px; }
-        .premium-badge { background: #f59e0b; display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 12px; margin-top: 10px; }
-    </style>
-    </head>
-    <body>
-        <div class="container">
-            <h1>✅ Login Successful!</h1>
-            <p>Welcome back, <strong>Developer</strong>!</p>
-            <div class="premium-badge">⭐ PREMIUM ACCESS</div>
-            <p style="margin-top: 20px;">You have full access to all features.</p>
-            <button onclick="window.location.href='/'">Go to Dashboard</button>
-        </div>
-        <script>setTimeout(() => { window.location.href = '/'; }, 1500);</script>
-    </body>
-    </html>
-    '''
+    return jsonify({'success': True})
 
-@app.route('/dev-switch-user/<user_type>')
-def dev_switch_user(user_type):
-    """Switch between different test user types"""
-    users_config = {
-        'premium': {'name': 'Premium User', 'tier': 'premium_yearly', 'points': 5000},
-        'free': {'name': 'Free User', 'tier': 'free', 'points': 150}
-    }
-    
-    config = users_config.get(user_type, users_config['premium'])
-    test_email = f'{user_type}@dev.local'
-    
-    if 'users' not in session:
-        session['users'] = {}
-    
-    session['users'][test_email] = {
-        'id': f'dev_{user_type}',
-        'email': test_email,
-        'name': config['name'],
-        'subscription_tier': config['tier'],
-        'subscription_expires': (datetime.now() + timedelta(days=365)).isoformat() if config['tier'] != 'free' else None,
-        'created_at': datetime.now().isoformat(),
-        'total_points': config['points'],
-        'streak_days': 15,
-        'last_active': datetime.now().isoformat(),
-        'usage': {}
-    }
-    
-    session['user_id'] = f'dev_{user_type}'
-    session['user_email'] = test_email
-    session['user_name'] = config['name']
-    session.modified = True
-    
-    return f'''
-    <html>
-    <head><title>Dev Login - Astech</title>
-    <style>
-        body {{ background: linear-gradient(135deg, #0f172a, #1e1b4b); font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; color: white; }}
-        .container {{ text-align: center; background: #1e293b; padding: 40px; border-radius: 20px; }}
-        .premium-badge {{ background: {'#f59e0b' if config['tier'] != 'free' else '#475569'}; display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 12px; margin-top: 10px; }}
-        button {{ background: #3b82f6; border: none; padding: 10px 20px; border-radius: 10px; color: white; cursor: pointer; margin-top: 20px; }}
-    </style>
-    </head>
-    <body>
-        <div class="container">
-            <h1>✅ Switched to {config['name']}</h1>
-            <div class="premium-badge">{'⭐ PREMIUM' if config['tier'] != 'free' else '📖 FREE'}</div>
-            <button onclick="window.location.href='/'">Go to Dashboard</button>
-        </div>
-        <script>setTimeout(() => {{ window.location.href = '/'; }}, 1000);</script>
-    </body>
-    </html>
-    '''
+# ================= TIPS GENERATION =================
 
-@app.route('/dev-panel')
-def dev_panel():
-    """Development panel"""
-    return '''
-    <html>
-    <head><title>Dev Panel - Astech</title>
-    <style>
-        body { background: #0f172a; font-family: sans-serif; color: white; padding: 20px; }
-        .card { background: #1e293b; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
-        button { background: #3b82f6; border: none; padding: 10px 15px; border-radius: 8px; color: white; cursor: pointer; margin: 5px; }
-        .btn-success { background: #10b981; }
-        .btn-warning { background: #f59e0b; }
-        .btn-danger { background: #ef4444; }
-    </style>
-    </head>
-    <body>
-        <h1>🔧 Astech Developer Panel</h1>
-        <div class="card">
-            <h2>Quick Login</h2>
-            <button onclick="location.href='/dev-login'">🚀 Dev Login (Premium)</button>
-            <button class="btn-success" onclick="location.href='/dev-switch-user/premium'">⭐ Premium User</button>
-            <button class="btn-warning" onclick="location.href='/dev-switch-user/free'">📖 Free User</button>
-            <button class="btn-danger" onclick="location.href='/reset'">🗑️ Reset Session</button>
-        </div>
-        <div class="card">
-            <h2>Navigation</h2>
-            <button onclick="location.href='/'">🏠 Home</button>
-            <button onclick="location.href='/auth'">🔐 Auth Page</button>
-            <button onclick="location.href='/upgrade'">⭐ Upgrade Page</button>
-            <button onclick="location.href='/writing'">✍️ Writing</button>
-        </div>
-        <div class="card">
-            <h2>Session Info</h2>
-            <button onclick="checkSession()">Check Session</button>
-            <pre id="sessionInfo"></pre>
-        </div>
-        <script>
-            async function checkSession() {
-                const res = await fetch('/api/auth/status');
-                const data = await res.json();
-                document.getElementById('sessionInfo').innerHTML = JSON.stringify(data, null, 2);
-            }
-        </script>
-    </body>
-    </html>
-    '''
+@app.route('/api/tips/generate')
+def generate_tips():
+    """Generate AI tips"""
+    language = request.args.get('language', 'en')
+    count = min(int(request.args.get('count', 6)), 10)
+    
+    tips = [
+        {"icon": "💡", "title": "The 15-Minute Rule", "content": "Study for 15 minutes daily - consistency beats intensity!", "category": "Learning"},
+        {"icon": "🧠", "title": "Spaced Repetition", "content": "Review words just before you forget them - it's the most efficient way to memorize!", "category": "Memory"},
+        {"icon": "🎯", "title": "Set SMART Goals", "content": "Specific, Measurable, Achievable, Relevant, Time-bound goals keep you motivated!", "category": "Motivation"},
+        {"icon": "🗣️", "title": "Shadowing Technique", "content": "Repeat after native speakers immediately - it improves pronunciation and fluency!", "category": "Speaking"},
+        {"icon": "📱", "title": "Immerse Yourself", "content": "Change your phone's language to your target language - it's free daily practice!", "category": "Learning"},
+        {"icon": "🎧", "title": "Listen While Commuting", "content": "Use podcasts or audiobooks during your commute - turn wasted time into learning time!", "category": "Listening"}
+    ]
+    
+    return jsonify({
+        'success': True,
+        'tips': tips[:count],
+        'source': 'ai_generated',
+        'generated_at': datetime.now().isoformat()
+    })
 
-@app.route('/reset')
-def reset_session():
-    """Reset session"""
-    session.clear()
-    return '<html><body style="background:#0f172a;color:white;text-align:center;padding:50px;"><h1>✅ Session Reset</h1><p>Redirecting...</p><script>setTimeout(()=>{window.location.href="/auth";},1500);</script></body></html>'
-
-# ================= SUBSCRIPTION PLANS API =================
+# ================= SUBSCRIPTION PLANS =================
 
 SUBSCRIPTION_PLANS = {
     'premium_monthly': {
@@ -355,232 +519,33 @@ SUBSCRIPTION_PLANS = {
 @app.route('/api/subscription/plans')
 def get_subscription_plans():
     """Get available subscription plans"""
-    return jsonify({
-        'success': True,
-        'plans': SUBSCRIPTION_PLANS
-    })
+    return jsonify({'success': True, 'plans': SUBSCRIPTION_PLANS})
 
 @app.route('/api/subscription/upgrade', methods=['POST'])
 def upgrade_subscription():
     """Upgrade user subscription"""
-    try:
-        data = request.json
-        plan_id = data.get('plan_id')
+    data = request.json
+    plan_id = data.get('plan_id')
+    
+    if plan_id not in SUBSCRIPTION_PLANS:
+        return jsonify({'success': False, 'error': 'Invalid plan'}), 400
+    
+    user_email = session.get('user_email')
+    users = session.get('users', {})
+    
+    if user_email in users:
+        users[user_email]['subscription_tier'] = plan_id
+        session.modified = True
         
-        if plan_id not in SUBSCRIPTION_PLANS:
-            return jsonify({'success': False, 'error': 'Invalid plan'}), 400
-        
-        user_email = session.get('user_email')
-        users = session.get('users', {})
-        
-        if user_email in users:
-            users[user_email]['subscription_tier'] = plan_id
-            session.modified = True
-            
-            return jsonify({
-                'success': True,
-                'message': f'Successfully upgraded to {SUBSCRIPTION_PLANS[plan_id]["name"]}!'
-            })
-        
-        return jsonify({'success': False, 'error': 'User not found'}), 404
-        
-    except Exception as e:
-        return jsonify({'success': False, 'error': str(e)}), 500
+        return jsonify({'success': True, 'message': f'Successfully upgraded to {SUBSCRIPTION_PLANS[plan_id]["name"]}!'})
+    
+    return jsonify({'success': False, 'error': 'User not found'}), 404
 
-# ================= JSON ROUTES FOR WORDBANK FILES =================
-
-@app.route('/debug/json/<language>')
-def debug_json(language):
-    import json
-    
-    json_folder = '/home/auwalkz/app/json'
-    file_path = os.path.join(json_folder, f'wordbank_{language}.json')
-    
-    if not os.path.exists(file_path):
-        file_path = os.path.join(json_folder, f'{language}.json')
-    
-    if os.path.exists(file_path):
-        with open(file_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        return {
-            'status': 'success',
-            'language': language,
-            'file': file_path,
-            'keys': list(data.keys()) if isinstance(data, dict) else f'Array with {len(data)} items',
-            'size': os.path.getsize(file_path),
-            'preview': str(data)[:500] + '...' if len(str(data)) > 500 else str(data)
-        }
-    else:
-        return {
-            'status': 'error',
-            'language': language,
-            'file': file_path,
-            'message': 'File not found'
-        }
-
-@app.route('/api/json/<language>')
-def get_json_data(language):
-    """API endpoint to get JSON data for a language"""
-    import json
-    
-    json_folder = '/home/auwalkz/app/json'
-    file_path = os.path.join(json_folder, f'wordbank_{language}.json')
-    
-    if not os.path.exists(file_path):
-        file_path = os.path.join(json_folder, f'{language}.json')
-    
-    if os.path.exists(file_path):
-        with open(file_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        
-        if isinstance(data, dict):
-            return jsonify(data)
-        elif isinstance(data, list):
-            return jsonify({'words': data})
-        else:
-            return jsonify({'data': data})
-    else:
-        return jsonify({'error': f'No data for {language}', 'words': []}), 404
-
-@app.route('/api/vocabulary/words')
-def get_vocabulary_words():
-    """Get vocabulary words for a language"""
-    import json
-    
-    language = request.args.get('language', 'en')
-    page = int(request.args.get('page', 1))
-    search = request.args.get('search', '')
-    
-    json_folder = '/home/auwalkz/app/json'
-    file_path = os.path.join(json_folder, f'wordbank_{language}.json')
-    
-    if not os.path.exists(file_path):
-        file_path = os.path.join(json_folder, f'{language}.json')
-    
-    if not os.path.exists(file_path):
-        return jsonify({'success': False, 'error': 'No vocabulary found', 'words': [], 'page': 1, 'total_pages': 0})
-    
-    with open(file_path, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-    
-    if isinstance(data, dict) and 'words' in data:
-        words = data['words']
-    elif isinstance(data, list):
-        words = data
-    else:
-        words = []
-    
-    if search:
-        words = [w for w in words if search.lower() in w.get('word', '').lower() or search.lower() in w.get('meaning', '').lower()]
-    
-    for idx, word in enumerate(words):
-        if 'id' not in word:
-            word['id'] = str(idx + 1)
-        if 'mastery_level' not in word:
-            word['mastery_level'] = 0
-    
-    per_page = 12
-    total = len(words)
-    total_pages = (total + per_page - 1) // per_page
-    start = (page - 1) * per_page
-    end = start + per_page
-    paginated_words = words[start:end]
-    
-    return jsonify({
-        'success': True,
-        'words': paginated_words,
-        'page': page,
-        'total_pages': total_pages,
-        'total': total
-    })
-
-@app.route('/api/vocabulary/stats')
-def get_vocabulary_stats():
-    """Get vocabulary statistics"""
-    import json
-    
-    language = request.args.get('language', 'en')
-    
-    json_folder = '/home/auwalkz/app/json'
-    file_path = os.path.join(json_folder, f'wordbank_{language}.json')
-    
-    if not os.path.exists(file_path):
-        file_path = os.path.join(json_folder, f'{language}.json')
-    
-    words = []
-    if os.path.exists(file_path):
-        with open(file_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        if isinstance(data, dict) and 'words' in data:
-            words = data['words']
-        elif isinstance(data, list):
-            words = data
-    
-    total_words = len(words)
-    mastered = len([w for w in words if w.get('mastery_level', 0) >= 3])
-    learning = len([w for w in words if 0 < w.get('mastery_level', 0) < 3])
-    
-    return jsonify({
-        'success': True,
-        'stats': {
-            'total_words': total_words,
-            'mastered_words': mastered,
-            'learning_words': learning,
-            'total_practices': 0,
-            'streak_days': 0,
-            'weekly_progress': 0,
-            'average_accuracy': 0
-        }
-    })
-
-@app.route('/debug-files')
-def debug_files():
-    files = os.listdir('templates/')
-    return {'templates_folder': '/app/templates', 'files': files}
-
-# ================= COMPATIBILITY ENDPOINTS =================
-
-@app.route("/get_user_info", methods=["GET"])
-def get_user_info_compat():
-    """Compatibility endpoint for frontend - returns user info"""
-    subscription_tier = get_user_subscription()
-    return jsonify({
-        "success": True,
-        "user_id": session.get('user_id', 'guest'),
-        "name": session.get('user_name', 'Language Learner'),
-        "email": session.get('user_email', 'guest@example.com'),
-        "language": session.get('language', 'en'),
-        "level": session.get('level', 'beginner'),
-        "points": session.get('total_points', 0),
-        "streak": session.get('streak_days', 0),
-        "premium": subscription_tier != 'free',
-        "subscription_tier": subscription_tier
-    })
-
-@app.route("/api/user/info", methods=["GET"])
-def get_user_info_api():
-    """API endpoint for user info"""
-    subscription_tier = get_user_subscription()
-    return jsonify({
-        "success": True,
-        "user": {
-            "id": session.get('user_id', 'guest'),
-            "name": session.get('user_name', 'Language Learner'),
-            "email": session.get('user_email', ''),
-            "language": session.get('language', 'en'),
-            "level": session.get('level', 'beginner'),
-            "points": session.get('total_points', 0),
-            "streak": session.get('streak_days', 0),
-            "subscription_tier": subscription_tier,
-            "is_premium": subscription_tier != 'free'
-        }
-    })
-
-# ================= AUTHENTICATION API (for frontend) =================
+# ================= AUTHENTICATION API =================
 
 @app.route('/api/auth/register', methods=['POST'])
 def api_register():
-    """Register new user via API"""
+    """Register new user"""
     try:
         data = request.json
         email = data.get('email', '').strip().lower()
@@ -611,35 +576,23 @@ def api_register():
             'name': name if name else email.split('@')[0],
             'created_at': datetime.now().isoformat(),
             'subscription_tier': 'free',
-            'subscription_expires': None,
             'total_points': 0,
-            'streak_days': 0,
-            'last_active': datetime.now().isoformat(),
-            'usage': {}
+            'streak_days': 0
         }
         session.modified = True
         
-        session.permanent = True
         session['user_id'] = user_id
         session['user_email'] = email
         session['user_name'] = name if name else email.split('@')[0]
         
-        return jsonify({
-            'success': True,
-            'user': {
-                'id': user_id,
-                'email': email,
-                'name': name if name else email.split('@')[0],
-                'subscription_tier': 'free'
-            }
-        })
+        return jsonify({'success': True, 'user': {'id': user_id, 'email': email, 'name': session['user_name'], 'subscription_tier': 'free'}})
         
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
 
 @app.route('/api/auth/login', methods=['POST'])
 def api_login():
-    """Login user via API"""
+    """Login user"""
     try:
         data = request.json
         email = data.get('email', '').strip().lower()
@@ -656,23 +609,12 @@ def api_login():
         if password_hash != user_data['password_hash']:
             return jsonify({'success': False, 'error': 'Invalid credentials'}), 401
         
-        user_data['last_active'] = datetime.now().isoformat()
-        session.modified = True
-        
-        session.permanent = True
         session['user_id'] = user_data['id']
         session['user_email'] = email
         session['user_name'] = user_data['name']
+        session.modified = True
         
-        return jsonify({
-            'success': True,
-            'user': {
-                'id': user_data['id'],
-                'email': email,
-                'name': user_data['name'],
-                'subscription_tier': user_data.get('subscription_tier', 'free')
-            }
-        })
+        return jsonify({'success': True, 'user': {'id': user_data['id'], 'email': email, 'name': user_data['name'], 'subscription_tier': user_data.get('subscription_tier', 'free')}})
         
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
@@ -683,28 +625,80 @@ def api_logout():
     session.pop('user_id', None)
     session.pop('user_email', None)
     session.pop('user_name', None)
-    session.modified = True
-    return jsonify({'success': True, 'message': 'Logged out'})
+    return jsonify({'success': True})
 
 @app.route('/api/auth/status')
 def api_auth_status():
-    """Get current auth status"""
-    user_id = session.get('user_id')
-    user_email = session.get('user_email')
-    user_name = session.get('user_name')
-    subscription_tier = get_user_subscription()
-    
+    """Get auth status"""
     return jsonify({
         'success': True,
         'logged_in': 'user_id' in session,
         'user': {
-            'id': user_id,
-            'email': user_email,
-            'name': user_name,
-            'subscription_tier': subscription_tier,
-            'is_premium': subscription_tier != 'free'
+            'id': session.get('user_id'),
+            'email': session.get('user_email'),
+            'name': session.get('user_name'),
+            'subscription_tier': get_user_subscription()
         } if 'user_id' in session else None
     })
 
+# ================= DEVELOPMENT ENDPOINTS =================
+
+@app.route('/dev-login')
+def dev_login():
+    """Quick development login"""
+    if 'users' not in session:
+        session['users'] = {}
+    
+    test_email = 'dev@localhost'
+    if test_email not in session['users']:
+        session['users'][test_email] = {
+            'id': 'dev_' + secrets.token_hex(8),
+            'email': test_email,
+            'name': 'Developer',
+            'subscription_tier': 'premium_yearly',
+            'created_at': datetime.now().isoformat()
+        }
+    
+    session['user_id'] = session['users'][test_email]['id']
+    session['user_email'] = test_email
+    session['user_name'] = 'Developer'
+    session.modified = True
+    
+    return redirect('/')
+
+@app.route('/dev-panel')
+def dev_panel():
+    """Developer panel"""
+    return render_template('dev-panel.html') if os.path.exists('templates/dev-panel.html') else "Dev Panel - App is running"
+
+@app.route('/reset')
+def reset_session():
+    """Reset session"""
+    session.clear()
+    return redirect('/auth')
+
+@app.route('/debug-files')
+def debug_files():
+    """Debug endpoint to list files"""
+    templates = os.listdir('templates/') if os.path.exists('templates/') else []
+    return {'templates_folder': 'templates', 'files': templates}
+
+# ================= ERROR HANDLERS =================
+
+@app.errorhandler(404)
+def not_found(e):
+    return jsonify({"error": "Page not found"}), 404
+
+@app.errorhandler(500)
+def server_error(e):
+    return jsonify({"error": "Internal server error"}), 500
+
+# ================= RUN APP =================
+
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=False, host='0.0.0.0', port=port)
+
+print("=" * 50)
+print("🚀 Astech Language Learning App is running!")
+print("=" * 50)
