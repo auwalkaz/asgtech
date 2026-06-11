@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upgrade to Premium - Astech</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            color: white;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+        .plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .plan-card {
+            background: #1e293b;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #334155;
+            transition: all 0.3s;
+        }
+        .plan-card:hover {
+            transform: translateY(-5px);
+            border-color: #f59e0b;
+        }
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .plan-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #f59e0b;
+            margin-bottom: 20px;
+        }
+        .plan-features {
+            text-align: left;
+            margin: 20px 0;
+            padding: 15px;
+            background: #0f172a;
+            border-radius: 15px;
+        }
+        .plan-features li {
+            margin: 8px 0;
+            color: #94a3b8;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05);
+        }
+        .back-btn {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-btn a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⭐ Upgrade to Premium</h1>
+            <p>Unlock unlimited learning features and accelerate your language journey!</p>
+        </div>
+        <div class="plans">
+            <div class="plan-card">
+                <div class="plan-name">Monthly</div>
+                <div class="plan-price">$9.99<span style="font-size: 1rem;">/month</span></div>
+                <div class="plan-features">
+                    <ul style="list-style: none;">
+                        <li>✓ Unlimited vocabulary</li>
+                        <li>✓ Unlimited AI chat</li>
+                        <li>✓ No advertisements</li>
+                        <li>✓ Voice lessons</li>
+                        <li>✓ Priority support</li>
+                    </ul>
+                </div>
+                <button class="btn" onclick="alert('Upgrade feature coming soon!')">Upgrade Now</button>
+            </div>
+            <div class="plan-card">
+                <div class="plan-name">Yearly</div>
+                <div class="plan-price">$79.99<span style="font-size: 1rem;">/year</span></div>
+                <div class="plan-features">
+                    <ul style="list-style: none;">
+                        <li>✓ All monthly features</li>
+                        <li>✓ Save 33%</li>
+                        <li>✓ Certificate of completion</li>
+                        <li>✓ Advanced analytics</li>
+                    </ul>
+                </div>
+                <button class="btn" onclick="alert('Upgrade feature coming soon!')">Upgrade Now</button>
+            </div>
+            <div class="plan-card">
+                <div class="plan-name">Lifetime</div>
+                <div class="plan-price">$199.99<span style="font-size: 1rem;">/one-time</span></div>
+                <div class="plan-features">
+                    <ul style="list-style: none;">
+                        <li>✓ All premium features forever</li>
+                        <li>✓ Lifetime updates</li>
+                        <li>✓ Personal mentor access</li>
+                        <li>✓ Custom learning path</li>
+                    </ul>
+                </div>
+                <button class="btn" onclick="alert('Upgrade feature coming soon!')">Upgrade Now</button>
+            </div>
+        </div>
+        <div class="back-btn">
+            <a href="/">← Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

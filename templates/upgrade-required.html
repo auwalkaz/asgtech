@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upgrade Required - Astech</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 40px;
+            background: rgba(30, 41, 59, 0.9);
+            border-radius: 30px;
+            max-width: 500px;
+            margin: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid #f59e0b;
+        }
+        .lock-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin-bottom: 15px;
+            color: #f59e0b;
+        }
+        p {
+            margin-bottom: 25px;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #475569;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05);
+        }
+        .features {
+            text-align: left;
+            margin: 20px 0;
+            padding: 15px;
+            background: #0f172a;
+            border-radius: 15px;
+        }
+        .features li {
+            margin: 8px 0;
+            color: #cbd5e1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="lock-icon">🔒</div>
+        <h1>Premium Feature</h1>
+        <p>This feature requires a premium subscription.</p>
+        <div class="features">
+            <strong>✨ Premium Benefits:</strong>
+            <ul style="margin-top: 10px; list-style: none;">
+                <li>✓ Unlimited AI grammar checks</li>
+                <li>✓ Unlimited vocabulary words</li>
+                <li>✓ Voice pronunciation lessons</li>
+                <li>✓ Downloadable certificates</li>
+                <li>✓ Priority support</li>
+            </ul>
+        </div>
+        <div>
+            <a href="/upgrade" class="btn">🚀 Upgrade Now</a>
+            <a href="/" class="btn btn-outline">🏠 Back to Dashboard</a>
+        </div>
+        <div style="margin-top: 20px; font-size: 0.8rem; color: #475569;">
+            <a href="/auth" style="color: #60a5fa;">Switch account</a> | 
+            <a href="/dev-panel" style="color: #60a5fa;">Developer Panel</a>
+        </div>
+    </div>
+</body>
+</html>
